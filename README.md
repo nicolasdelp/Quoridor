@@ -14,7 +14,3 @@ L'adversaire pose des barrières pour vous ralentir mais il doit laisser au moin
 ##### • Plateau de 81 tuiles carrées (9x9)
 ##### • Une fois placés sur le plateau, les murs ne peuvent plus être retirés ni bougés de la partie
 ##### • Les pions peuvent être déplacés d'une tuile à une tuile adjacente, mais pas en diagonale.
-
-### Diagram de l'archicture du code :
-![Diagram](fichiers-annexes/Diagram-projet.png)
-
