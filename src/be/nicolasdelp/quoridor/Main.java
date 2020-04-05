@@ -25,9 +25,9 @@ public class Main extends Application {
         StackPane root = new StackPane();
         root.getChildren().add(btn);
 
-        Scene scene = new Scene(root, 300, 250);
+        Scene scene = new Scene(root, 1300, 900);
 
-        primaryStage.setTitle("Hello World!");
+        primaryStage.setTitle("Quoridor");
         primaryStage.setScene(scene);
         primaryStage.show();
     }
