@@ -3,7 +3,7 @@ package be.nicolasdelp.quoridor;
 public class Wall extends GamePieces implements PlayableGamePieces {
 
     private int x, y;
-    private WallPosition sens = WallPosition.Horizontal; // Le mur est horizontal de base pour être stocké
+    private WallSens sens = WallSens.Horizontal; // Le mur est horizontal de base pour être stocké
 
     /**
      * Constructeur
@@ -51,7 +51,7 @@ public class Wall extends GamePieces implements PlayableGamePieces {
      * Récupère la direction du mur
      *
      */
-    public WallPosition getWallPosition() {
+    public WallSens getWallSens() {
         return sens;
     }
 
@@ -60,7 +60,7 @@ public class Wall extends GamePieces implements PlayableGamePieces {
      *
      * @param position la position du mur (HORIZONTAL ou VERTICAL)
      */
-    public void setWallPosition(WallPosition sens) {
+    public void setWallSens(WallSens sens) {
         this.sens = sens;
     }
 }

@@ -1,6 +1,6 @@
 package be.nicolasdelp.quoridor;
 
-public enum WallPosition {
+public enum WallSens {
 
     Horizontal(0), Vertical(1);
 
@@ -11,7 +11,7 @@ public enum WallPosition {
      *
      * @param position Soit HORIZONTAL ou VERTICAL
      */
-    private WallPosition(int sens) {
+    private WallSens(int sens) {
         this.sens = sens;
     }
 
@@ -20,7 +20,7 @@ public enum WallPosition {
      *
      * @return HORIZONTAL ou VERTICAL
      */
-    public int getWallPosition() {
+    public int getWallSens() {
         return this.sens;
     }
 }
