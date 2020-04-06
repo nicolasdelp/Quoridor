@@ -1,18 +1,21 @@
 package be.nicolasdelp.quoridor;
 
 public class Box {
-    
+
     private boolean isPawnBox = false;
     private boolean isWallBox = false;
+    private boolean isOccuped = false;
     private GamePieces object;
+    private int x, y;
 
     /**
      * Constructeur
      *
-     * @param object un objet (Mur ou Pion)
+     * @param position une positon (x, y)
      */
-    public Box(GamePieces object){
-        this.object = object;
+    public Box(Position position) {
+        this.x = position.getX();
+        this.y = position.getY();
     }
 
     /**
@@ -22,7 +25,7 @@ public class Box {
      * @return vrai si c'est un nombre impair sinon faux
      */
     public static boolean isImpair(int x) {
-        if (x%2 == 1) {
+        if (x % 2 == 1) {
             return true;
         } else {
             return false;
@@ -34,10 +37,20 @@ public class Box {
      * 
      * @return vrai si c'est une case pour un mur sinon faux
      */
-    public void isPawnBox() {
-        if (isImpair(object.getX()) && isImpair(object.getY())){
-            this.isPawnBox = true;
+    public boolean isPawnBox(int x, int y) {
+        if (isImpair(x) && isImpair(y)) {
+            return true;
+        } else {
+            return false;
         }
+    }
+
+    /**
+     * Implémente la case comme une case à pion
+     * 
+     */
+    public void setPawnBox() {
+        this.isPawnBox = true;
     }
 
     /**
@@ -45,10 +58,30 @@ public class Box {
      * 
      * @return vrai si c'est une case pour un mur sinon faux
      */
-    public void isWallBox() {
-        if ((isImpair(object.getX()) && !isImpair(object.getY())) || (!isImpair(object.getX()) && isImpair(object.getY())) || (isImpair(object.getX()) && isImpair(object.getY()))) {
-            this.isWallBox = true;
+    public boolean isWallBox(int x, int y) {
+        if ((isImpair(x) && !isImpair(y)) || (!isImpair(x) && isImpair(y)) || (isImpair(x) && isImpair(y))) {
+            return true;
+        } else {
+            return false;
         }
     }
 
+    /**
+     * Implémente la case comme une case à mur
+     * 
+     */
+    public void setWallBox() {
+        this.isWallBox = true;
+    }
+
+    public String getStatut() {
+        if (this.isPawnBox == true) {
+            return "isPawnBox";
+        }
+        if (this.isWallBox == true) {
+            return "isWallBox";
+        } else {
+            return "Erreur";
+        }
+    }
 }

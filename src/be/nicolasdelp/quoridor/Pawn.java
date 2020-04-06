@@ -1,23 +1,20 @@
 package be.nicolasdelp.quoridor;
 
-public class Pawn extends GamePieces implements PlayableGamePieces{
+public class Pawn extends GamePieces implements PlayableGamePieces {
 
     private int x, y;
-    private Board board;
 
     /**
      * Constructeur
      *
-     * @param Board un plateau (Plateau de jeu)
-     * @param x une abscisse
-     * @param y une ordonnée
+     * @param color une couleur de pion
+     * @param position une positon (x, y)
      */
-    public Pawn(Board board, int x, int y) {
-        this.board = board;
-        this.x = x;
-        this.y = y;
+    public Pawn(String color, Position position) {
+        this.x = position.getX();
+        this.y = position.getY();
     }
-    
+
     /**
      * Récupère l'abcisse du pion
      *
@@ -45,8 +42,8 @@ public class Pawn extends GamePieces implements PlayableGamePieces{
      * @param y l'ordonnée
      */
     @Override
-    public void setCoordinates(int x, int y) {
-        this.x = x;
-        this.y = y;
+    public void setCoordinates(Position position) {
+        this.x = position.getX();
+        this.y = position.getY();
     }
 }

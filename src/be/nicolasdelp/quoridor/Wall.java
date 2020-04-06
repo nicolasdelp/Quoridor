@@ -1,24 +1,20 @@
 package be.nicolasdelp.quoridor;
 
-public class Wall extends GamePieces implements PlayableGamePieces{
+public class Wall extends GamePieces implements PlayableGamePieces {
 
     private int x, y;
-    private Board board;
-    private WallPosition pos = WallPosition.Horizontal; //Le mur est horizontal de base pour être stocké
+    private WallPosition sens = WallPosition.Horizontal; // Le mur est horizontal de base pour être stocké
 
     /**
      * Constructeur
      *
-     * @param Board un plateau (Plateau de jeu ou Plateau de stockage)
-     * @param x une abscisse
-     * @param y une ordonnée
+     * @param position une positon (x, y)
      */
-    public Wall(Board board, int x, int y) {
-        this.board = board;
-        this.x = x;
-        this.y = y;
+    public Wall(Position position) {
+        this.x = position.getX();
+        this.y = position.getY();
     }
-    
+
     /**
      * Récupère l'abcisse du mur
      *
@@ -46,17 +42,17 @@ public class Wall extends GamePieces implements PlayableGamePieces{
      * @param y l'ordonnée
      */
     @Override
-    public void setCoordinates(int x, int y) {
-        this.x = x;
-        this.y = y;
+    public void setCoordinates(Position position) {
+        this.x = position.getX();
+        this.y = position.getY();
     }
 
     /**
      * Récupère la direction du mur
      *
      */
-    public WallPosition getWallPosition(){
-        return pos;
+    public WallPosition getWallPosition() {
+        return sens;
     }
 
     /**
@@ -64,7 +60,7 @@ public class Wall extends GamePieces implements PlayableGamePieces{
      *
      * @param position la position du mur (HORIZONTAL ou VERTICAL)
      */
-    public void setWallPosition(WallPosition position){
-        this.pos = position;
+    public void setWallPosition(WallPosition sens) {
+        this.sens = sens;
     }
 }

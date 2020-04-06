@@ -6,5 +6,5 @@ public abstract class GamePieces {
 
     public abstract int getY();
 
-    public abstract void setCoordinates(int x, int y);
+    public abstract void setCoordinates(Position position);
 }

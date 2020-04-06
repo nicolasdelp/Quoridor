@@ -4,15 +4,15 @@ public enum WallPosition {
 
     Horizontal(0), Vertical(1);
 
-    private int position;
+    private int sens;
 
     /**
      * Constructeur
      *
      * @param position Soit HORIZONTAL ou VERTICAL
      */
-    private WallPosition(int position){
-        this.position = position;
+    private WallPosition(int sens) {
+        this.sens = sens;
     }
 
     /**
@@ -20,13 +20,7 @@ public enum WallPosition {
      *
      * @return HORIZONTAL ou VERTICAL
      */
-    public int getWallPosition(){
-        return this.position;
+    public int getWallPosition() {
+        return this.sens;
     }
-
-    public static void main(String[] args) {
-        WallPosition x = WallPosition.Horizontal;
-        System.out.println(x.getWallPosition());
-    }
-
 }

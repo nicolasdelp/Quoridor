@@ -5,14 +5,32 @@ public class Player {
     private int Walls;
     private Wall[] wallInventory;
     private Pawn pawnPlayer;
+    private int ID;
 
     /**
      * Constructeur
      *
      * @param pawn une pion
      */
-    public Player(Pawn pawn){
+    public Player(Pawn pawn, int ID) {
         this.pawnPlayer = pawn;
+        this.ID = ID;
+    }
+
+    /**
+     * Récupère l'ID du joueur
+     *
+     */
+    public int getID() {
+        return this.ID;
+    }
+
+    /**
+     * Implémente un ID au joueur
+     *
+     */
+    public void setID(int ID) {
+        this.ID = ID;
     }
 
     /**
@@ -21,15 +39,23 @@ public class Player {
      * @return nombre de murs
      */
     public int getWalls() {
-		return Walls;
+        return this.Walls;
     }
-    
+
     /**
      * Implémente un nombre de mur au joueur
      *
      */
     public void setWalls(int x) {
-		this.Walls = x;
-	}
+        this.Walls = x;
+    }
+
+    /**
+     * Implémente une position au pion
+     *
+     */
+    public void setPawn(Position position) {
+        this.pawnPlayer.setCoordinates(position);
+    }
 
 }
