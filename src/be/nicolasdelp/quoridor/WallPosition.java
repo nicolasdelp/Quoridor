@@ -9,10 +9,10 @@ public enum WallPosition {
     /**
      * Constructeur
      *
-     * @param index Soit HORIZONTAL ou VERTICAL
+     * @param position Soit HORIZONTAL ou VERTICAL
      */
-    private WallPosition(int index){
-        this.position = index;
+    private WallPosition(int position){
+        this.position = position;
     }
 
     /**
