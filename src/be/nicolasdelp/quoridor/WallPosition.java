@@ -6,10 +6,20 @@ public enum WallPosition {
 
     private int position;
 
+    /**
+     * Constructeur
+     *
+     * @param index Soit HORIZONTAL ou VERTICAL
+     */
     private WallPosition(int index){
         this.position = index;
     }
 
+    /**
+     * Récupère la position du mur
+     *
+     * @return HORIZONTAL ou VERTICAL
+     */
     public int getWallPosition(){
         return this.position;
     }

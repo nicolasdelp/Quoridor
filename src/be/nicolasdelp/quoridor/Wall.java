@@ -4,8 +4,15 @@ public class Wall extends GamePieces implements PlayableGamePieces{
 
     private int x, y;
     private Board board;
-    private WallPosition pos = WallPosition.Horizontal; //Le mur est horizontal de base
+    private WallPosition pos = WallPosition.Horizontal; //Le mur est horizontal de base pour être stocké
 
+    /**
+     * Constructeur
+     *
+     * @param Board un plateau (Plateau de jeu ou Plateau de stockage)
+     * @param x une abscisse
+     * @param y une ordonnée
+     */
     public Wall(Board board, int x, int y) {
         this.board = board;
         this.x = x;
@@ -13,7 +20,7 @@ public class Wall extends GamePieces implements PlayableGamePieces{
     }
     
     /**
-     * Permet de récupérer l'abcisse du mur
+     * Récupère l'abcisse du mur
      *
      * @return X
      */
@@ -23,7 +30,7 @@ public class Wall extends GamePieces implements PlayableGamePieces{
     }
 
     /**
-     * Permet de récupérer l'ordonnée du mur
+     * Récupère l'ordonnée du mur
      *
      * @return Y
      */

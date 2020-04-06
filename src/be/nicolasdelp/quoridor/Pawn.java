@@ -2,18 +2,24 @@ package be.nicolasdelp.quoridor;
 
 public class Pawn extends GamePieces implements PlayableGamePieces{
 
-    private int x, y, dir;
+    private int x, y;
     private Board board;
 
-    public Pawn(Board board, int x, int y, int dir) {
+    /**
+     * Constructeur
+     *
+     * @param Board un plateau (Plateau de jeu)
+     * @param x une abscisse
+     * @param y une ordonnée
+     */
+    public Pawn(Board board, int x, int y) {
         this.board = board;
         this.x = x;
         this.y = y;
-        this.dir = dir;
     }
     
     /**
-     * Permet de récupérer l'abcisse du pion
+     * Récupère l'abcisse du pion
      *
      * @return X
      */
@@ -23,7 +29,7 @@ public class Pawn extends GamePieces implements PlayableGamePieces{
     }
 
     /**
-     * Permet de récupérer l'ordonnée du pion
+     * Récupère l'ordonnée du pion
      *
      * @return Y
      */

@@ -6,6 +6,11 @@ public class Box {
     private boolean isWallBox = false;
     private GamePieces object;
 
+    /**
+     * Constructeur
+     *
+     * @param object un objet (Mur ou Pion)
+     */
     public Box(GamePieces object){
         this.object = object;
     }
