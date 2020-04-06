@@ -4,15 +4,15 @@ public enum WallSens {
 
     Horizontal(0), Vertical(1);
 
-    private int sens;
+    private final int index;
 
     /**
      * Constructeur
      *
      * @param position Soit HORIZONTAL ou VERTICAL
      */
-    private WallSens(int sens) {
-        this.sens = sens;
+    private WallSens(int index) {
+        this.index = index;
     }
 
     /**
@@ -21,6 +21,6 @@ public enum WallSens {
      * @return HORIZONTAL ou VERTICAL
      */
     public int getWallSens() {
-        return this.sens;
+        return this.index;
     }
 }
