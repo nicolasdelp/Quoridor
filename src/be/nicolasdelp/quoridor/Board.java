@@ -32,7 +32,7 @@ public class Board {
         creatBoard();                                       //création du plateau
         for(int i=0; i<players.length; i++){
             players[i].setWalls(totalWall/players.length);  //donne à chaque joueur ses murs de départ
-            players[i].setPawn(startPosition[i]);           //donne à chaque joueur sa position de départ
+            players[i].setPawn(startPosition[i]);           //mets chaque pion à sa position de départ
         }
     }
 

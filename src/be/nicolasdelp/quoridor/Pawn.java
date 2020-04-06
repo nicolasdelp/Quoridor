@@ -2,48 +2,46 @@ package be.nicolasdelp.quoridor;
 
 public class Pawn extends GamePieces implements PlayableGamePieces {
 
-    private int x, y;
+    private final String color;
+    private Position position;
 
     /**
      * Constructeur
      *
      * @param color une couleur de pion
-     * @param position une positon (x, y)
+     * @param startPosition une positon (x, y)
      */
-    public Pawn(String color, Position position) {
-        this.x = position.getX();
-        this.y = position.getY();
+    public Pawn(String color, Position startPosition) {
+        this.color = color;
+        this.position = startPosition;
     }
 
     /**
-     * Récupère l'abcisse du pion
+     * Récupère la couleur du pion
      *
-     * @return X
+     * @return la couleur du pion
      */
     @Override
-    public int getX() {
-        return this.x;
+    public String getColor() {
+        return this.color;
     }
 
     /**
-     * Récupère l'ordonnée du pion
+     * Récupère la position du pion
      *
-     * @return Y
+     * @return la position actuelle
      */
-    @Override
-    public int getY() {
-        return this.y;
+    public Position getPosition() {
+        return position;
     }
 
     /**
-     * Implémente des nouvelles coordonnées au pion
+     * Implémente la nouvelle position du pion
      *
-     * @param x l'abscisse
-     * @param y l'ordonnée
+     * @param newPosition la nouvelle position
      */
     @Override
-    public void setCoordinates(Position position) {
-        this.x = position.getX();
-        this.y = position.getY();
+    public void setPosition(Position newPosition) {
+        this.position = newPosition;
     }
 }

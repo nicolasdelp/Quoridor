@@ -2,9 +2,9 @@ package be.nicolasdelp.quoridor;
 
 public abstract class GamePieces {
 
-    public abstract int getX();
+    public abstract Position getPosition();
 
-    public abstract int getY();
-
-    public abstract void setCoordinates(Position position);
+    public abstract void setPosition(Position position);
+    
+    public abstract String getColor();
 }

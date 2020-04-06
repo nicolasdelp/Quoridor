@@ -6,16 +6,13 @@ public class Box {
     private boolean isWallBox = false;
     private boolean isOccuped = false;
     private GamePieces object;
-    private int x, y;
 
     /**
      * Constructeur
      *
      * @param position une positon (x, y)
      */
-    public Box(Position position) {
-        this.x = position.getX();
-        this.y = position.getY();
+    public Box() {
     }
 
     /**

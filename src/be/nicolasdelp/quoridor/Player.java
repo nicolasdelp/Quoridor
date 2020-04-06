@@ -2,35 +2,27 @@ package be.nicolasdelp.quoridor;
 
 public class Player {
 
-    private int Walls;
-    private Wall[] wallInventory;
+    private final int ID;
     private Pawn pawnPlayer;
-    private int ID;
+    private int Walls;
 
     /**
      * Constructeur
      *
+     * @param ID l'ID unique du joueur
      * @param pawn une pion
      */
-    public Player(Pawn pawn, int ID) {
-        this.pawnPlayer = pawn;
+    public Player(int ID, Pawn pawn) {
         this.ID = ID;
+        this.pawnPlayer = pawn;
     }
 
     /**
-     * Récupère l'ID du joueur
+     * Récupère l'ID unique du joueur
      *
      */
     public int getID() {
         return this.ID;
-    }
-
-    /**
-     * Implémente un ID au joueur
-     *
-     */
-    public void setID(int ID) {
-        this.ID = ID;
     }
 
     /**
@@ -54,8 +46,8 @@ public class Player {
      * Implémente une position au pion
      *
      */
-    public void setPawn(Position position) {
-        this.pawnPlayer.setCoordinates(position);
+    public void movePawnOnBoard(Position position) {
+        this.pawnPlayer.setPosition(position);
     }
 
 }
