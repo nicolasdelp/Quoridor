@@ -2,17 +2,88 @@ package be.nicolasdelp.quoridor;
 
 public class Box {
 
-    private boolean isPawnBox = false;
-    private boolean isWallBox = false;
-    private boolean isOccuped = false;
+    private boolean isPawnBox;
+    private boolean isWallBox;
+    private boolean isOccuped;
     private GamePieces object;
 
     /**
      * Constructeur
      *
-     * @param position une positon (x, y)
      */
     public Box() {
+        this.isPawnBox = false;
+        this.isWallBox = false;
+        this.isOccuped = false;
+    }
+
+    /**
+     * Vérifie si la case est occupé par un objet
+     * 
+     */
+    public boolean isOccuped() {
+        return this.isOccuped;
+    }
+
+    /**
+     * Retourne l'objet qui occupe la case
+     * 
+     */
+    public GamePieces isOccupedBy() {
+        if (this.isOccuped){
+            return this.object;
+        }
+        else{
+            return null;
+        }
+    }
+
+    /**
+     * Implémente un objet dans la case
+     * 
+     */
+    public void setObjectInBox(GamePieces object) {
+        this.object = object;
+    }
+
+    /**
+     * Récupère la valeur de isPawnBox
+     * 
+     * @return la valeur de isPawnBox (true ou false)
+     */
+    public boolean getPawnBox() {
+        return this.isPawnBox;
+    }
+
+    /**
+     * Vérifie si la case est bien une case pour un pion
+     * 
+     */
+    public void isPawnBox(Position position) {
+        if (isImpair(position.getX()) && isImpair(position.getY())) {
+            this.isPawnBox = true;
+        }
+    }
+
+    /**
+     * Récupère la valeur de isWallBox
+     * 
+     * @return la valeur de isWallBox (true ou false)
+     */
+    public boolean getWallBox() {
+        return this.isWallBox;
+    }
+
+    /**
+     * Vérifie si la case est bien une case pour un mur
+     *
+     */
+    public void isWallBox(Position position) {
+        if ((isImpair(position.getX()) && !isImpair(position.getY()))
+                || (!isImpair(position.getX()) && isImpair(position.getY()))
+                || (isImpair(position.getY()) & isImpair(position.getY()))) {
+            this.isWallBox = true;
+        }
     }
 
     /**
@@ -26,59 +97,6 @@ public class Box {
             return true;
         } else {
             return false;
-        }
-    }
-
-    /**
-     * Verifie si la case est bien une case pour un pion
-     * 
-     * @return vrai si c'est une case pour un mur sinon faux
-     */
-    public boolean isPawnBox(int x, int y) {
-        if (isImpair(x) && isImpair(y)) {
-            return true;
-        } else {
-            return false;
-        }
-    }
-
-    /**
-     * Implémente la case comme une case à pion
-     * 
-     */
-    public void setPawnBox() {
-        this.isPawnBox = true;
-    }
-
-    /**
-     * Verifie si la case est bien une case pour un mur
-     * 
-     * @return vrai si c'est une case pour un mur sinon faux
-     */
-    public boolean isWallBox(int x, int y) {
-        if ((isImpair(x) && !isImpair(y)) || (!isImpair(x) && isImpair(y)) || (isImpair(x) && isImpair(y))) {
-            return true;
-        } else {
-            return false;
-        }
-    }
-
-    /**
-     * Implémente la case comme une case à mur
-     * 
-     */
-    public void setWallBox() {
-        this.isWallBox = true;
-    }
-
-    public String getStatut() {
-        if (this.isPawnBox == true) {
-            return "isPawnBox";
-        }
-        if (this.isWallBox == true) {
-            return "isWallBox";
-        } else {
-            return "Erreur";
         }
     }
 }

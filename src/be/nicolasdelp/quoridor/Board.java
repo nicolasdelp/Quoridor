@@ -1,5 +1,8 @@
 package be.nicolasdelp.quoridor;
 
+import java.util.List;
+import java.util.LinkedList;
+
 public class Board {
 
     private final int totalWall = 20;
@@ -7,17 +10,14 @@ public class Board {
     private final Position[] startPosition = { new Position(8, 0), new Position(8, 16), new Position(0, 8), new Position(16, 8) };
     private Player[] players;
     private Box[][] boardBoxes;
+    private List<String> historique;
 
     private void creatBoard() {
-        this.boardBoxes = new Box[(boardSize * 2) - 1][(boardSize * 2) - 1];
+        this.boardBoxes = new Box[(boardSize * 2) - 1][(boardSize * 2) - 1]; // Crée un tableau 17x17 de Box
         for (int i = 0; i < boardBoxes.length; i++) {
             for (int j = 0; j < boardBoxes.length; j++) {
-                if (boardBoxes[i][j].isPawnBox(i, j)) {
-                    boardBoxes[i][j].setPawnBox();
-                }
-                if (boardBoxes[i][j].isWallBox(i, j)) {
-                    boardBoxes[i][j].setWallBox();
-                }
+                boardBoxes[i][j].isPawnBox(new Position(i, j)); // Si la case est une case à pion isPawnBox sera égal à True
+                boardBoxes[i][j].isWallBox(new Position(i, j)); // Si la case est une case à mur isWallBox sera égal à True
             }
         }
     }
@@ -25,18 +25,19 @@ public class Board {
     /**
      * Constructeur
      *
-     * @param players une liste de joueurs
+     * @param players la liste des joueurs
      */
-    public Board(Player[] players){
+    public Board(Player[] players) {
+        this.historique = new LinkedList<String>();
         this.players = players;
-        creatBoard();                                       //création du plateau
-        for(int i=0; i<players.length; i++){
-            players[i].setWalls(totalWall/players.length);  //donne à chaque joueur ses murs de départ
-            players[i].setPawn(startPosition[i]);           //mets chaque pion à sa position de départ
+        creatBoard(); // création du plateau
+        for (int i = 0; i < players.length; i++) {
+            players[i].setWalls(totalWall / players.length); // donne à chaque joueur ses murs de départ (20/nmbr de joueurs)
+            players[i].movePawnOnBoard(startPosition[i]); // mets chaque pion à sa position de départ
         }
     }
 
-    public static void main(String[] args) {
-
+    public void isOverLimit(){
+        
     }
 }
