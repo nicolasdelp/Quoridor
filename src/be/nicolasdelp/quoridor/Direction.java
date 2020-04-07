@@ -29,7 +29,7 @@ public enum Direction {
      * 
      * @return la direction opposée
      */
-    public Direction opposite() {
+    public Direction oppositeDirection() {
         if (this == Direction.UP) {
             return Direction.DOWN;
         } 
