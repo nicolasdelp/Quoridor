@@ -2,7 +2,6 @@ package be.nicolasdelp.quoridor;
 
 import java.util.List;
 import java.util.LinkedList;
-import java.util.HashMap;
 
 public class Test {
 
