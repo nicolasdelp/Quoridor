@@ -12,9 +12,10 @@ import java.util.ArrayList;
 
 public class SaveLoadDeleteGame {
 
-    private final static char[] Alphabet = { 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z' };
-    private final static int décallage = 19;
-    private static List<String> textCrypt = new ArrayList<String>();;
+    private final static char[] Alphabet = { 'a', '1', 'b', '2', 'c', '3', 'd', '4', 'e', '5', 'f', '6', 'g', '7', 'h', '8', 'i', '9', 'j', 'A', 'k', 'A', 'l', 'B', 'm', 'C', 'n', 'D', 'o', 'E', 'p', 'F', 'q', 'G', 'r', 'H', 's', 'I', 't', 'J', 'u', 'K', 'v', 'L', 'w', 'M', 'x', 'N', 'y', 'O', 'z', 'P', '@', 'Q', '#', 'R', '\\','S', '/', 'T', '!', 'U', '*', 'V', '&', 'W', '<', 'X', '+', 'Y', '-', 'Z' };
+    private final static int décallage = Alphabet.length/2;
+    private static List<String> textCrypt = new ArrayList<String>();
+    private static List<String> textDecrypt = new ArrayList<String>();
 
     /**
      * Crée une fichier de sauvegarde
@@ -110,6 +111,32 @@ public class SaveLoadDeleteGame {
     }
 
     /**
+     * Décryptage de César
+     *
+     * @param text une chaine de caractère
+     * @return une chaine de caractère décryptée
+     */
+    public static String decryptage(String text) {
+        char[] textIn = text.toCharArray();
+        char[] textOut = new char[textIn.length];
+        for(int i = 0; i < textIn.length; i++){
+            int x1 = charPosition(textIn[i], Alphabet);
+            int x2 = newCharPosition(x1);
+            if(x2 == -1){
+                textOut[i] = textIn[i]; //on ne change pas le caractère si c'est pas un chiffre ou une lettre
+            }
+            else{
+                textOut[i] = Alphabet[x2];
+            }
+        }
+        String res = "";
+        for(char i: textOut){
+            res = res+i;
+        }
+        return res;
+    }
+
+    /**
      * Donne le position d'un caractère dans char[] Alphabet
      *
      * @param x une lettre
@@ -133,10 +160,10 @@ public class SaveLoadDeleteGame {
     public static int newCharPosition(int x) {
         int res;
         int positionInitial = x;
-        if(positionInitial <= -1) {
+        if(positionInitial == -1) {
             res = -1;   
         } else {
-            res = (positionInitial + décallage) % (Alphabet.length);
+            res = ((positionInitial + décallage) % Alphabet.length);
         }
         return res;
     }
@@ -172,7 +199,41 @@ public class SaveLoadDeleteGame {
         }
     }
 
+    /**
+     * Déryptage de César du fichier de sauvegarde
+     *
+     */
+    public static void decryptageFile(String startFile, String finishFile) {
+        creatFile(finishFile);
+        try {
+            FileReader sf = new FileReader(startFile);
+            BufferedReader br = new BufferedReader(sf);
+            String sline = br.readLine();
+            while (sline != null) {
+                textDecrypt.add(decryptage(sline));
+                sline = br.readLine();
+            }
+            br.close();
+            sf.close();
+
+            FileWriter ff = new FileWriter(finishFile);
+            BufferedWriter bw = new BufferedWriter(ff);
+            for(String fline : textDecrypt){
+                bw.write(fline);
+                bw.newLine();
+            }
+            bw.close();
+            ff.close();
+        } catch (IOException exception) {
+            System.out.println("Il y a eu une erreur...");
+            exception.printStackTrace();
+        }
+    }
+
     public static void main(String[] args) {
         cryptageFile("Backup.txt", "CryptBackup.txt");
+        deleteFile("Backup.txt");
+        decryptageFile("CryptBackup.txt", "Backup.txt");
+        deleteFile("CryptBackup.txt");
     }
 }

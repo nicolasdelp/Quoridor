@@ -5,7 +5,3 @@ Joueur 1 = Nicolas
 Pion = rouge
 Mur en (5,4)
 Reste 5 murs
-
-sfsdfiuysf
-
-sdufyksjdqf
