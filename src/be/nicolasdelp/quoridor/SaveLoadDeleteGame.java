@@ -1,30 +1,34 @@
 package be.nicolasdelp.quoridor;
 
-import java.io.*;
-import java.util.Scanner;
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.FileNotFoundException;
+import java.io.File;
+import java.util.List;
 import java.util.ArrayList;
 
 public class SaveLoadDeleteGame {
 
     private final static char[] Alphabet = { 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z' };
-    private final static int décallage = 2;
-    private static ArrayList<String> textCrypt = new ArrayList<String>();
+    private final static int décallage = 19;
+    private static List<String> textCrypt = new ArrayList<String>();;
 
     /**
      * Crée une fichier de sauvegarde
      *
      */
     public static void creatFile(String File) {
-        try {
-            File backup = new File(File);
-            if (backup.createNewFile()) {
-                System.out.println("Le fichier " + backup.getName() + " a bien été créé !");
-            } else {
-                System.out.println("Le fichier existe déjà !");
+        File f = new File(File);
+        if(!f.exists()){
+            try {
+                f.createNewFile();
+            }catch (IOException exception) {
+                System.out.println("Il y a eu une erreur...");
+                exception.printStackTrace();
             }
-        } catch (IOException exception) {
-            System.out.println("Il y a eu une erreur...");
-            exception.printStackTrace();
         }
     }
 
@@ -34,10 +38,12 @@ public class SaveLoadDeleteGame {
      */
     public static void writeFile(String File, String text) {
         try {
-            FileWriter backup = new FileWriter(File);
-            backup.write(text + "\n");
-            backup.close();
-            System.out.println("Le texte à bien été écrit !");
+            FileWriter f = new FileWriter(File);
+            BufferedWriter bw = new BufferedWriter(f);
+            bw.write(text);
+            bw.newLine();
+            bw.close();
+            f.close();
         } catch (IOException exception) {
             System.out.println("Il y a eu une erreur...");
             exception.printStackTrace();
@@ -48,15 +54,16 @@ public class SaveLoadDeleteGame {
      * Lecture du contenu dans le fichier de sauvegarde
      *
      */
-    public static void readFile(String File) {
+    public static void readFile(String File) throws IOException{
         try {
-            File backup = new File(File);
-            Scanner read = new Scanner(backup);
-            while (read.hasNextLine()) {
-                String data = read.nextLine();
-                System.out.println(data);
+            FileReader f = new FileReader(File);
+            BufferedReader br = new BufferedReader(f);
+            String line = br.readLine();
+            while (line != null) {
+                System.out.println(line);
+                line = br.readLine();
             }
-            read.close();
+            br.close();
         } catch (FileNotFoundException exception) {
             System.out.println("Il y a eu une erreur...");
             exception.printStackTrace();
@@ -68,9 +75,9 @@ public class SaveLoadDeleteGame {
      *
      */
     public static void deleteFile(String File) {
-        File backup = new File(File);
-        if (backup.delete()) {
-            System.out.println("Le fichier : " + backup.getName() + " a bien été supprimé !");
+        File f = new File(File);
+        if (f.delete()) {
+            System.out.println("Le fichier : " + f.getName() + " a bien été supprimé !");
         } else {
             System.out.println("Il y a eu une erreur...");
         }
@@ -135,22 +142,31 @@ public class SaveLoadDeleteGame {
     }
 
     /**
-     * Cryptage de César
+     * Cryptage de César du fichier de sauvegarde
      *
      */
     public static void cryptageFile(String startFile, String finishFile) {
+        creatFile(finishFile);
         try {
-            File backup = new File(startFile);
-            Scanner read = new Scanner(backup);
-            while (read.hasNextLine()) {
-                textCrypt.add(cryptage(read.nextLine())); //cryptage de chaque ligne et stockage dans une ArrayList
+            FileReader sf = new FileReader(startFile);
+            BufferedReader br = new BufferedReader(sf);
+            String sline = br.readLine();
+            while (sline != null) {
+                textCrypt.add(cryptage(sline));
+                sline = br.readLine();
             }
-            read.close();
-            creatFile(finishFile);
-            for(int i=0; i<textCrypt.size(); i++){
-                writeFile(finishFile, textCrypt.get(i)); //écriture dans le nouveau fichier crypté
+            br.close();
+            sf.close();
+
+            FileWriter ff = new FileWriter(finishFile);
+            BufferedWriter bw = new BufferedWriter(ff);
+            for(String fline : textCrypt){
+                bw.write(fline);
+                bw.newLine();
             }
-        } catch (FileNotFoundException exception) {
+            bw.close();
+            ff.close();
+        } catch (IOException exception) {
             System.out.println("Il y a eu une erreur...");
             exception.printStackTrace();
         }
