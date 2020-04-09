@@ -1,7 +1,4 @@
-Ceci est le fichier de sauvegarde du jeu Quoridor. 
-Ceci est la deuxième ligne du fichier de sauvegarde !
-
-Joueur 1 = Nicolas
-Pion = rouge
-Mur en (5,4)
-Reste 5 murs
+Nicolas
+Rouge
+54
+5
