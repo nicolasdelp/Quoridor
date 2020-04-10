@@ -231,7 +231,7 @@ public class SaveLoadDeleteGame {
     }
 
     public static void main(String[] args) {
-        cryptageFile("Backup.txt", "CryptBackup.txt");
+        cryptageFile("Backup.txt", "File/CryptBackup.txt");
         deleteFile("Backup.txt");
         decryptageFile("CryptBackup.txt", "Backup.txt");
         deleteFile("CryptBackup.txt");
