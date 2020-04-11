@@ -5,23 +5,23 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox prefHeight="400.0" prefWidth="640.0" styleClass="background" stylesheets="@stylesheet.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<VBox prefHeight="400.0" prefWidth="640.0" styleClass="background" stylesheets="@stylesheet.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="be.nicolasdelp.quoridor.FXMLController">
   <children>
     <AnchorPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="800.0" VBox.vgrow="ALWAYS">
       <children>
-            <Button defaultButton="true" layoutX="250.0" layoutY="197.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="300.0" styleClass="button1" stylesheets="@stylesheet.css" text="Reprendre ma partie" textAlignment="CENTER" textFill="WHITE">
+            <Button fx:id="resumeGameButton" defaultButton="true" layoutX="250.0" layoutY="197.0" mnemonicParsing="false" onAction="#resumeGame" prefHeight="45.0" prefWidth="300.0" styleClass="button1" stylesheets="@stylesheet.css" text="Reprendre ma partie" textAlignment="CENTER" textFill="WHITE">
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor></Button>
-            <Button defaultButton="true" layoutX="250.0" layoutY="317.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="300.0" styleClass="button3" text="Options" textAlignment="CENTER" textFill="WHITE">
+            <Button fx:id="newGameButton" defaultButton="true" layoutX="250.0" layoutY="257.0" mnemonicParsing="false" onAction="#newGame" prefHeight="45.0" prefWidth="300.0" styleClass="button2" text="Nouvelle partie" textAlignment="CENTER" textFill="WHITE">
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor></Button>
-            <Button defaultButton="true" layoutX="250.0" layoutY="377.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="300.0" styleClass="button4" text="Crédits" textAlignment="CENTER" textFill="WHITE">
+            <Button fx:id="optionButton" defaultButton="true" layoutX="250.0" layoutY="317.0" mnemonicParsing="false" onAction="#option" prefHeight="45.0" prefWidth="300.0" styleClass="button3" text="Options" textAlignment="CENTER" textFill="WHITE">
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor></Button>
-            <Button defaultButton="true" layoutX="250.0" layoutY="257.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="300.0" styleClass="button2" text="Nouvelle partie" textAlignment="CENTER" textFill="WHITE">
+            <Button fx:id="creditsButton" defaultButton="true" layoutX="250.0" layoutY="377.0" mnemonicParsing="false" onAction="#credits" prefHeight="45.0" prefWidth="300.0" styleClass="button4" text="Crédits" textAlignment="CENTER" textFill="WHITE">
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor></Button>

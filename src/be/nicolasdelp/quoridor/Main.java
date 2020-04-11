@@ -1,5 +1,6 @@
 package be.nicolasdelp.quoridor;
 
+
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -19,6 +20,5 @@ public class Main extends Application{
         primaryStage.setScene(new Scene(root));
         primaryStage.setResizable(false);
         primaryStage.show();
-
     }
 }
