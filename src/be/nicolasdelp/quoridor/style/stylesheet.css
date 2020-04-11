@@ -32,3 +32,10 @@
 .button4:hover{
     -fx-background-color: #ffff0025;
 }
+
+.tablePlayers{
+    -fx-color: #ffffff;
+    -fx-background-color: #ffffff;
+    -fx-font-family: "Comfortaa";
+
+}

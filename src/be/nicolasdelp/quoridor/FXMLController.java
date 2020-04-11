@@ -6,45 +6,48 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.TabPane;
+import javafx.scene.layout.Pane;
 
 public class FXMLController implements Initializable{
 
     @FXML
     private ResourceBundle resources;
-
-    @FXML
     private URL location;
-
-    @FXML
+    private Pane menuPane;
     private Button resumeGameButton;
-
-    @FXML
     private Button newGameButton;
-
-    @FXML
     private Button optionButton;
-
-    @FXML
     private Button creditsButton;
+    private Pane newGamePane;
+    private TabPane tabPlayers;
+    private Button startGameButton;
+    private ChoiceBox<?> numberOfPlayers;
 
     @FXML
-    void resumeGame(ActionEvent event) {
-        System.out.println("Action resumeGame");
+    void credits(ActionEvent event) {
+        System.out.println("Coucou");
     }
 
     @FXML
     void newGame(ActionEvent event) {
-        System.out.println("Action newgame");
+
     }
 
     @FXML
     void option(ActionEvent event) {
-        System.out.println("Action options");
+
     }
 
     @FXML
-    void credits(ActionEvent event) {
-        System.out.println("Action credits");
+    void resumeGame(ActionEvent event) {
+
+    }
+
+    @FXML
+    void startGame(ActionEvent event) {
+
     }
 
     @Override
