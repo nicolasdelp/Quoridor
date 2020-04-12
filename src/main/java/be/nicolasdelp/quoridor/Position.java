@@ -1,4 +1,4 @@
-package main.be.nicolasdelp.quoridor;
+package main.java.be.nicolasdelp.quoridor;
 
 public class Position {
 
@@ -17,7 +17,7 @@ public class Position {
     }
 
     /**
-     * Récupérer X
+     * Recuperer X
      * 
      * @return X
      */
@@ -26,7 +26,7 @@ public class Position {
     }
 
     /**
-     * Récupérer Y
+     * Recuperer Y
      * 
      * @return Y
      */

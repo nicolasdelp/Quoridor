@@ -1,16 +1,16 @@
-package main.be.nicolasdelp.quoridor;
+package test.java.be.nicolasdelp.quoridor;
 
 public class Wall extends GamePieces implements PlayableGamePieces {
 
     private final String color;
     private Position position;
-    private WallSens sens = WallSens.Horizontal; // Le mur est horizontal de base pour être stocké
+    private WallSens sens = WallSens.Horizontal; // Le mur est horizontal de base pour etre stocke
 
     /**
      * Constructeur
      *
-     * @param color la couleur des murs (la même que le pion du joueur)
-     * @param startPosition la position de départ
+     * @param color la couleur des murs (la meme que le pion du joueur)
+     * @param startPosition la position de depart
      */
     public Wall(String color, Position startPosition) {
         this.color = color;
@@ -18,7 +18,7 @@ public class Wall extends GamePieces implements PlayableGamePieces {
     }
 
     /**
-     * Récupère la couleur du pion
+     * Recupere la couleur du pion
      *
      * @return la couleur du pion
      */
@@ -28,7 +28,7 @@ public class Wall extends GamePieces implements PlayableGamePieces {
     }
     
     /**
-     * Récupère la position du mur
+     * Recupere la position du mur
      *
      * @return la position actuelle
      */
@@ -38,7 +38,7 @@ public class Wall extends GamePieces implements PlayableGamePieces {
     }
     
     /**
-     * Implémente une nouvelle position
+     * Implemente une nouvelle position
      *
      * @param newPosition la nouvelle position
      */
@@ -48,7 +48,7 @@ public class Wall extends GamePieces implements PlayableGamePieces {
     }
 
     /**
-     * Récupère le sens du mur
+     * Recupere le sens du mur
      *
      */
     public WallSens getWallSens() {

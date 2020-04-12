@@ -1,4 +1,4 @@
-package main.be.nicolasdelp.quoridor;
+package main.java.be.nicolasdelp.quoridor;
 
 public abstract class GamePieces {
 

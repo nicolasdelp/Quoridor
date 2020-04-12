@@ -1,4 +1,4 @@
-package main.be.nicolasdelp.quoridor;
+package main.java.be.nicolasdelp.quoridor;
 
 public class Pawn extends GamePieces implements PlayableGamePieces {
 
@@ -17,7 +17,7 @@ public class Pawn extends GamePieces implements PlayableGamePieces {
     }
 
     /**
-     * Récupère la couleur du pion
+     * Recupere la couleur du pion
      *
      * @return la couleur du pion
      */
@@ -27,7 +27,7 @@ public class Pawn extends GamePieces implements PlayableGamePieces {
     }
 
     /**
-     * Récupère la position du pion
+     * Recupere la position du pion
      *
      * @return la position actuelle
      */
@@ -36,7 +36,7 @@ public class Pawn extends GamePieces implements PlayableGamePieces {
     }
 
     /**
-     * Implémente la nouvelle position du pion
+     * Implemente la nouvelle position du pion
      *
      * @param newPosition la nouvelle position
      */

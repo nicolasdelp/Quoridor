@@ -1,4 +1,4 @@
-package main.be.nicolasdelp.quoridor;
+package test.java.be.nicolasdelp.quoridor;
 
 public enum Direction {
 
@@ -9,25 +9,25 @@ public enum Direction {
     /**
      * Constructeur
      *
-     * @param index l'index de la driection (0 ou 1 ou 2 ou 3)
+     * @param index l index de la direction (0 ou 1 ou 2 ou 3)
      */
     private Direction(int index) {
         this.index = index;
     }
 
     /**
-     * Récupère l'index de la direction
+     * Recupère l index de la direction
      *
-     * @return l'index de la direction
+     * @return l index de la direction
      */
     public int getIndex() {
         return this.index;
     }
 
     /**
-     * Récupérer la direction opposée
+     * Recuperer la direction opposee
      * 
-     * @return la direction opposée
+     * @return la direction opposee
      */
     public Direction oppositeDirection() {
         if (this == Direction.UP) {

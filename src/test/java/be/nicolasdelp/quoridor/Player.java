@@ -1,4 +1,4 @@
-package main.be.nicolasdelp.quoridor;
+package test.java.be.nicolasdelp.quoridor;
 
 public class Player {
 
@@ -9,7 +9,7 @@ public class Player {
     /**
      * Constructeur
      *
-     * @param ID l'ID unique du joueur
+     * @param ID l ID unique du joueur
      * @param pawn une pion
      */
     public Player(int ID, Pawn pawn) {
@@ -18,7 +18,7 @@ public class Player {
     }
 
     /**
-     * Récupère l'ID unique du joueur
+     * Recupere l ID unique du joueur
      *
      */
     public int getID() {
@@ -26,7 +26,7 @@ public class Player {
     }
 
     /**
-     * Récupère le nombre de murs restant du joueur
+     * Recupere le nombre de murs restant du joueur
      *
      * @return nombre de murs
      */
@@ -35,7 +35,7 @@ public class Player {
     }
 
     /**
-     * Implémente un nombre de mur au joueur
+     * Implemente un nombre de mur au joueur
      *
      */
     public void setWalls(int x) {
@@ -43,7 +43,7 @@ public class Player {
     }
 
     /**
-     * Implémente une position au pion
+     * Implemente une position au pion
      *
      */
     public void movePawnOnBoard(Position position) {

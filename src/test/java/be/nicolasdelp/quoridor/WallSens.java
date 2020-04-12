@@ -1,4 +1,4 @@
-package main.be.nicolasdelp.quoridor;
+package test.java.be.nicolasdelp.quoridor;
 
 public enum WallSens {
 
@@ -16,7 +16,7 @@ public enum WallSens {
     }
 
     /**
-     * Récupère la position du mur
+     * Recupere la position du mur
      *
      * @return HORIZONTAL ou VERTICAL
      */

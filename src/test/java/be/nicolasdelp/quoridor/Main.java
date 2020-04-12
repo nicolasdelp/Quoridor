@@ -1,4 +1,4 @@
-package main.be.nicolasdelp.quoridor;
+package test.java.be.nicolasdelp.quoridor;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -10,7 +10,7 @@ public class Main extends Application{
 
     @Override
     public void start(final Stage primaryStage) throws java.lang.Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("style/style.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("../ressources/style/style.fxml"));
         primaryStage.setTitle("QUORIDOR");
         primaryStage.setScene(new Scene(root));
         primaryStage.setResizable(false);

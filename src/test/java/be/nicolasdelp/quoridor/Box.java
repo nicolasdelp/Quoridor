@@ -1,4 +1,4 @@
-package main.be.nicolasdelp.quoridor;
+package test.java.be.nicolasdelp.quoridor;
 
 public class Box {
 
@@ -18,7 +18,7 @@ public class Box {
     }
 
     /**
-     * Vérifie si la case est occupé par un objet
+     * Verifie si la case est occupe par un objet
      * 
      */
     public boolean isOccuped() {
@@ -26,7 +26,7 @@ public class Box {
     }
 
     /**
-     * Retourne l'objet qui occupe la case
+     * Retourne l objet qui occupe la case
      * 
      */
     public GamePieces isOccupedBy() {
@@ -39,7 +39,7 @@ public class Box {
     }
 
     /**
-     * Implémente un objet dans la case
+     * Implemente un objet dans la case
      * 
      */
     public void setObjectInBox(GamePieces object) {
@@ -47,7 +47,7 @@ public class Box {
     }
 
     /**
-     * Récupère la valeur de isPawnBox
+     * Recupere la valeur de isPawnBox
      * 
      * @return la valeur de isPawnBox (true ou false)
      */
@@ -56,7 +56,7 @@ public class Box {
     }
 
     /**
-     * Vérifie si la case est bien une case pour un pion
+     * Verifie si la case est bien une case pour un pion
      * 
      */
     public void isPawnBox(Position position) {
@@ -66,7 +66,7 @@ public class Box {
     }
 
     /**
-     * Récupère la valeur de isWallBox
+     * Recupere la valeur de isWallBox
      * 
      * @return la valeur de isWallBox (true ou false)
      */
@@ -75,7 +75,7 @@ public class Box {
     }
 
     /**
-     * Vérifie si la case est bien une case pour un mur
+     * Verifie si la case est bien une case pour un mur
      *
      */
     public void isWallBox(Position position) {
@@ -87,10 +87,10 @@ public class Box {
     }
 
     /**
-     * Vérifie si le nombre est impair
+     * Verifie si le nombre est impair
      * 
      * @param x un entier
-     * @return vrai si c'est un nombre impair sinon faux
+     * @return vrai si c est un nombre impair sinon faux
      */
     public static boolean isImpair(int x) {
         if (x % 2 == 1) {
