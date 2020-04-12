@@ -1,4 +1,4 @@
-package be.nicolasdelp.quoridor;
+package main.be.nicolasdelp.quoridor;
 
 import java.util.List;
 import java.util.LinkedList;

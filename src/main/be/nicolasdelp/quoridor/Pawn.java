@@ -1,4 +1,4 @@
-package be.nicolasdelp.quoridor;
+package main.be.nicolasdelp.quoridor;
 
 public class Pawn extends GamePieces implements PlayableGamePieces {
 

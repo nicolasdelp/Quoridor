@@ -1,0 +1,35 @@
+plugins {
+    id 'java' // Utilise le plugin Java
+    id 'application' // On développe une application
+}
+
+plugins {
+    id 'application'
+    id 'org.openjfx.javafxplugin' version '0.0.8'
+}
+
+repositories {
+    // Endroit où trouver les dépendances
+    // (serveur jcenter.bintray.com)
+    jcenter()
+}
+
+dependencies {
+    // Dépendance pour envoyer des mails
+    implementation 'com.sun.mail:javax.mail:1.6.2'
+}
+
+application {
+    // Classe principale à exécuter
+    mainClassName = 'src.be.nicolasdelp.quoridor.main.Main.java'
+}
+
+javafx {
+    version = "14"
+    modules = [ 'javafx.controls' ]
+}
+
+javafx {
+    version = "11.0.2"
+    modules = [ 'javafx.controls' ]
+}

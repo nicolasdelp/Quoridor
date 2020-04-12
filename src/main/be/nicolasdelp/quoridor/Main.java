@@ -1,5 +1,4 @@
-package be.nicolasdelp.quoridor;
-
+package main.be.nicolasdelp.quoridor;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
