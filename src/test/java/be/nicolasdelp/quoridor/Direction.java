@@ -1,4 +1,4 @@
-package test.java.be.nicolasdelp.quoridor;
+package be.nicolasdelp.quoridor;
 
 public enum Direction {
 

@@ -1,0 +1,41 @@
+@font-face {
+    font-family: 'Comfortaa';
+    src: url('../fonts/Comfortaa-Bold.ttf');
+}
+
+.background{
+    -fx-background-image: url("../img/Quoridor.png");
+}
+
+.button1, .button2, .button3, .button4{
+    -fx-text-fill:#000000;
+    -fx-background-color: #ffffff;
+    -fx-border-color: #000000;
+    -fx-border-width: 2px;
+    -fx-border-radius: 15px;
+    -fx-background-radius: 16px;
+    -fx-font-family: "Comfortaa";
+}
+
+.button1:hover{
+    -fx-background-color: #00ff0025;
+}
+
+.button2:hover{
+    -fx-background-color: #ff000025;
+}
+
+.button3:hover{
+    -fx-background-color: #ff00ff25;
+}
+
+.button4:hover{
+    -fx-background-color: #ffff0025;
+}
+
+.tablePlayers{
+    -fx-color: #ffffff;
+    -fx-background-color: #ffffff;
+    -fx-font-family: "Comfortaa";
+
+}

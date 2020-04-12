@@ -1,4 +1,4 @@
-package main.java.be.nicolasdelp.quoridor;
+package be.nicolasdelp.quoridor;
 
 public class Wall extends GamePieces implements PlayableGamePieces {
 
