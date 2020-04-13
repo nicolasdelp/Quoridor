@@ -16,6 +16,7 @@ public class Main extends Application {
         primaryStage.setScene(new Scene(root, 650, 400));
         primaryStage.setResizable(false);
         primaryStage.setTitle("QUORIDOR");
+        primaryStage.centerOnScreen();
         primaryStage.show();
     }
 

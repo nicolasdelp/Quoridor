@@ -4,15 +4,14 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
 
-
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="650.0" styleClass="background" stylesheets="@../css/quoridorMenu.css" fx:controller="be.nicolasdelp.quoridor.FXMLControllerMenu" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<VBox fx:id="menuWindow" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="650.0" styleClass="background" stylesheets="@../css/quoridorMenu.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="be.nicolasdelp.quoridor.FXMLControllerMenu">
    <children>
       <AnchorPane prefHeight="400.0" prefWidth="650.0">
          <children>
-            <Button layoutX="203.0" layoutY="155.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="245.0" styleClass="buttonMenu" stylesheets="@../css/quoridorMenu.css" text="REPRENDRE LA PARTIE" />
-            <Button layoutX="203.0" layoutY="210.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="245.0" styleClass="buttonMenu" stylesheets="@../css/quoridorMenu.css" text="NOUVELLE PARTIE" />
-            <Button layoutX="203.0" layoutY="265.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="245.0" styleClass="buttonMenu" stylesheets="@../css/quoridorMenu.css" text="OPTIONS" />
-            <Button layoutX="203.0" layoutY="320.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="245.0" styleClass="buttonMenu" stylesheets="@../css/quoridorMenu.css" text="CREDITS" />
+            <Button fx:id="resumeButton" layoutX="203.0" layoutY="155.0" mnemonicParsing="false" onMouseClicked="#resumeButtonClicked" prefHeight="40.0" prefWidth="245.0" styleClass="buttonMenu" stylesheets="@../css/quoridorMenu.css" text="REPRENDRE LA PARTIE" visible="false" />
+            <Button fx:id="newPartyButton" layoutX="203.0" layoutY="210.0" mnemonicParsing="false" onMouseClicked="#newPartyButtonClicked" prefHeight="40.0" prefWidth="245.0" styleClass="buttonMenu" stylesheets="@../css/quoridorMenu.css" text="NOUVELLE PARTIE" />
+            <Button fx:id="optionsButton" layoutX="203.0" layoutY="265.0" mnemonicParsing="false" onMouseClicked="#optionsButtonClicked" prefHeight="40.0" prefWidth="245.0" styleClass="buttonMenu" stylesheets="@../css/quoridorMenu.css" text="OPTIONS" />
+            <Button fx:id="creditsButton" layoutX="203.0" layoutY="320.0" mnemonicParsing="false" onMouseClicked="#creditsButtonClicked" prefHeight="40.0" prefWidth="245.0" styleClass="buttonMenu" stylesheets="@../css/quoridorMenu.css" text="CREDITS" />
          </children>
       </AnchorPane>
    </children>

@@ -2,6 +2,7 @@ package be.nicolasdelp.quoridor;
 
 public class Player {
 
+    private final String type;;
     private final int ID;
     private Pawn pawnPlayer;
     private int Walls;
@@ -12,9 +13,18 @@ public class Player {
      * @param ID l ID unique du joueur
      * @param pawn une pion
      */
-    public Player(int ID, Pawn pawn) {
+    public Player(String type, int ID, Pawn pawn) {
+        this.type = type;
         this.ID = ID;
         this.pawnPlayer = pawn;
+    }
+
+    /**
+     * Recupere le type de joueur
+     *
+     */
+    public String getType() {
+        return this.type;
     }
 
     /**
