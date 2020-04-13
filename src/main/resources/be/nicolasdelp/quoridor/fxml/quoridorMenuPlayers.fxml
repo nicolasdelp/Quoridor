@@ -5,6 +5,8 @@
 <?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
@@ -107,7 +109,12 @@
                   <ChoiceBox fx:id="levelIAPlayer44" disable="true" layoutX="648.0" layoutY="238.0" prefWidth="150.0" />
                </children>
             </Pane>
-            <Button disable="true" layoutX="295.0" layoutY="389.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="245.0" styleClass="buttonStart" stylesheets="@../css/quoridorMenuPlayers.css" text="LANCER LA PARTIE" />
+            <Button fx:id="startGame" disable="true" layoutX="295.0" layoutY="389.0" mnemonicParsing="false" onMouseClicked="#startGameClicked" prefHeight="40.0" prefWidth="245.0" styleClass="buttonStart" stylesheets="@../css/quoridorMenuPlayers.css" text="LANCER LA PARTIE" />
+            <ImageView fx:id="goBack" fitHeight="33.0" fitWidth="35.0" layoutX="7.0" layoutY="9.0" onMouseClicked="#goBackClicked" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../img/fleche-retour.png" />
+               </image>
+            </ImageView>
          </children>
       </AnchorPane>
    </children>
