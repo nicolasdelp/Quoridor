@@ -12,7 +12,7 @@
 
 <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="450.0" prefWidth="835.0" styleClass="background" stylesheets="@../css/quoridorMenuPlayers.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="be.nicolasdelp.quoridor.FXMLControllerMenuPlayers">
    <children>
-      <AnchorPane prefHeight="454.0" prefWidth="836.0">
+      <AnchorPane onMouseMoved="#visibleIAChoice" prefHeight="454.0" prefWidth="836.0">
          <children>
             <CheckBox fx:id="twoPlayersCheckbox" layoutX="326.0" layoutY="61.0" mnemonicParsing="false" onAction="#twoPlayersCheckboxCheck" styleClass="font" text="2 Joueurs" />
             <CheckBox fx:id="fourPlayersCheckbox" layoutX="438.0" layoutY="61.0" mnemonicParsing="false" onAction="#fourPlayersCheckboxCheck" styleClass="font" text="4 Joueurs" />
@@ -21,7 +21,7 @@
                   <Font size="18.0" />
                </font>
             </Label>
-            <Pane fx:id="pane2Players" layoutX="63.0" layoutY="103.0" prefHeight="276.0" prefWidth="712.0" visible="false">
+            <Pane fx:id="pane2Players" layoutX="63.0" layoutY="103.0" prefHeight="276.0" prefWidth="712.0">
                <children>
                   <Label layoutX="199.0" layoutY="15.0" styleClass="font" text="Joueur 1">
                      <font>
@@ -33,9 +33,9 @@
                   <Label layoutX="174.0" layoutY="102.0" styleClass="font" text="Choisissez la couleur" />
                   <ChoiceBox fx:id="colorPlayer12" layoutX="154.0" layoutY="127.0" prefWidth="150.0" />
                   <Label layoutX="185.0" layoutY="157.0" styleClass="font" text="Entrez le pseudo" />
-                  <TextField alignment="CENTER" layoutX="155.0" layoutY="182.0" />
-                  <Label disable="true" layoutX="159.0" layoutY="212.0" styleClass="font" text="Choisissez le niveau de l'IA" />
-                  <ChoiceBox disable="true" layoutX="154.0" layoutY="237.0" prefWidth="150.0" />
+                  <TextField fx:id="pseudoOfPlayer12" alignment="CENTER" layoutX="155.0" layoutY="182.0" />
+                  <Label fx:id="labelIALevel12" disable="true" layoutX="159.0" layoutY="212.0" styleClass="font" text="Choisissez le niveau de l'IA" />
+                  <ChoiceBox fx:id="levelIAPlayer12" disable="true" layoutX="154.0" layoutY="237.0" prefWidth="150.0" />
                   <Label layoutX="454.0" layoutY="14.0" styleClass="font" text="Joueur 2">
                      <font>
                         <Font size="16.0" />
@@ -46,12 +46,12 @@
                   <Label layoutX="429.0" layoutY="101.0" styleClass="font" text="Choisissez la couleur" />
                   <ChoiceBox fx:id="colorPlayer22" layoutX="409.0" layoutY="126.0" prefWidth="150.0" />
                   <Label layoutX="440.0" layoutY="156.0" styleClass="font" text="Entrez le pseudo" />
-                  <TextField alignment="CENTER" layoutX="410.0" layoutY="181.0" />
-                  <Label disable="true" layoutX="414.0" layoutY="211.0" styleClass="font" text="Choisissez le niveau de l'IA" />
-                  <ChoiceBox disable="true" layoutX="409.0" layoutY="236.0" prefWidth="150.0" />
+                  <TextField fx:id="pseudoOfPlayer22" alignment="CENTER" layoutX="410.0" layoutY="181.0" />
+                  <Label fx:id="labelIALevel22" disable="true" layoutX="414.0" layoutY="211.0" styleClass="font" text="Choisissez le niveau de l'IA" />
+                  <ChoiceBox fx:id="levelIAPlayer22" disable="true" layoutX="409.0" layoutY="236.0" prefWidth="150.0" />
                </children>
             </Pane>
-            <Pane fx:id="pane4Players" layoutX="-1.0" layoutY="103.0" prefHeight="276.0" prefWidth="836.0">
+            <Pane fx:id="pane4Players" layoutX="-1.0" layoutY="103.0" prefHeight="276.0" prefWidth="836.0" visible="false">
                <children>
                   <Label layoutX="83.0" layoutY="14.0" text="Joueur 1">
                      <font>
@@ -63,9 +63,9 @@
                   <Label layoutX="58.0" layoutY="101.0" text="Choisissez la couleur" />
                   <ChoiceBox fx:id="colorPlayer14" layoutX="38.0" layoutY="126.0" prefWidth="150.0" />
                   <Label layoutX="69.0" layoutY="156.0" text="Entrez le pseudo" />
-                  <TextField alignment="CENTER" layoutX="39.0" layoutY="181.0" />
-                  <Label disable="true" layoutX="43.0" layoutY="211.0" text="Choisissez le niveau de l'IA" />
-                  <ChoiceBox disable="true" layoutX="38.0" layoutY="236.0" prefWidth="150.0" />
+                  <TextField fx:id="pseudoOfPlayer14" alignment="CENTER" layoutX="39.0" layoutY="181.0" />
+                  <Label fx:id="labelIALevel14" disable="true" layoutX="43.0" layoutY="211.0" text="Choisissez le niveau de l'IA" />
+                  <ChoiceBox fx:id="levelIAPlayer14" disable="true" layoutX="38.0" layoutY="236.0" prefWidth="150.0" />
                   <Label layoutX="286.0" layoutY="15.0" text="Joueur 2">
                      <font>
                         <Font size="16.0" />
@@ -76,9 +76,9 @@
                   <Label layoutX="261.0" layoutY="102.0" text="Choisissez la couleur" />
                   <ChoiceBox fx:id="colorPlayer24" layoutX="241.0" layoutY="127.0" prefWidth="150.0" />
                   <Label layoutX="272.0" layoutY="157.0" text="Entrez le pseudo" />
-                  <TextField alignment="CENTER" layoutX="242.0" layoutY="182.0" />
-                  <Label disable="true" layoutX="246.0" layoutY="212.0" text="Choisissez le niveau de l'IA" />
-                  <ChoiceBox disable="true" layoutX="241.0" layoutY="237.0" prefWidth="150.0" />
+                  <TextField fx:id="pseudoOfPlayer24" alignment="CENTER" layoutX="242.0" layoutY="182.0" />
+                  <Label fx:id="labelIALevel24" disable="true" layoutX="246.0" layoutY="212.0" text="Choisissez le niveau de l'IA" />
+                  <ChoiceBox fx:id="levelIAPlayer24" disable="true" layoutX="241.0" layoutY="237.0" prefWidth="150.0" />
                   <Label layoutX="490.0" layoutY="15.0" text="Joueur 3">
                      <font>
                         <Font size="16.0" />
@@ -89,9 +89,9 @@
                   <Label layoutX="465.0" layoutY="102.0" text="Choisissez la couleur" />
                   <ChoiceBox fx:id="colorPlayer34" layoutX="445.0" layoutY="127.0" prefWidth="150.0" />
                   <Label layoutX="476.0" layoutY="157.0" text="Entrez le pseudo" />
-                  <TextField alignment="CENTER" layoutX="446.0" layoutY="182.0" />
-                  <Label disable="true" layoutX="450.0" layoutY="212.0" text="Choisissez le niveau de l'IA" />
-                  <ChoiceBox disable="true" layoutX="445.0" layoutY="237.0" prefWidth="150.0" />
+                  <TextField fx:id="pseudoOfPlayer34" alignment="CENTER" layoutX="446.0" layoutY="182.0" />
+                  <Label fx:id="labelIALevel34" disable="true" layoutX="450.0" layoutY="212.0" text="Choisissez le niveau de l'IA" />
+                  <ChoiceBox fx:id="levelIAPlayer34" disable="true" layoutX="445.0" layoutY="237.0" prefWidth="150.0" />
                   <Label layoutX="693.0" layoutY="16.0" text="Joueur 4">
                      <font>
                         <Font size="16.0" />
@@ -102,9 +102,9 @@
                   <Label layoutX="668.0" layoutY="103.0" text="Choisissez la couleur" />
                   <ChoiceBox fx:id="colorPlayer44" layoutX="648.0" layoutY="128.0" prefWidth="150.0" />
                   <Label layoutX="679.0" layoutY="158.0" text="Entrez le pseudo" />
-                  <TextField alignment="CENTER" layoutX="649.0" layoutY="183.0" />
-                  <Label disable="true" layoutX="653.0" layoutY="213.0" text="Choisissez le niveau de l'IA" />
-                  <ChoiceBox disable="true" layoutX="648.0" layoutY="238.0" prefWidth="150.0" />
+                  <TextField fx:id="pseudoOfPlayer44" alignment="CENTER" layoutX="649.0" layoutY="183.0" />
+                  <Label fx:id="labelIALevel44" disable="true" layoutX="653.0" layoutY="213.0" text="Choisissez le niveau de l'IA" />
+                  <ChoiceBox fx:id="levelIAPlayer44" disable="true" layoutX="648.0" layoutY="238.0" prefWidth="150.0" />
                </children>
             </Pane>
             <Button disable="true" layoutX="295.0" layoutY="389.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="245.0" styleClass="buttonStart" stylesheets="@../css/quoridorMenuPlayers.css" text="LANCER LA PARTIE" />
