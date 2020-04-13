@@ -338,7 +338,7 @@ public class FXMLControllerMenuPlayers implements Initializable {
             FXMLLoader fxmloader = new FXMLLoader(getClass().getResource("fxml/quoridorBoard.fxml"));
             Parent root = (Parent) fxmloader.load();
             Stage secondStage = new Stage();
-            secondStage.setScene(new Scene(root, 1300, 1000));
+            secondStage.setScene(new Scene(root, 1500, 1000));
             secondStage.setResizable(false);
             secondStage.setTitle("QUORIDOR");
             secondStage.centerOnScreen();
