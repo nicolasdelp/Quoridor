@@ -1,7 +1,6 @@
-## PROJET D'INFORMATIQUE BAB1 : QUORIDOR
-BAB1 - Projet d'informatique : Jeu Quoridor
+## PROJET D'INFORMATIQUE BAB1 : Jeu QUORIDOR
 
-##### par Delplanque Nicolas & Borgelion Florent
+##### par Delplanque Nicolas
 
 ### But du jeu :
 Atteindre le premier la ligne opposée
