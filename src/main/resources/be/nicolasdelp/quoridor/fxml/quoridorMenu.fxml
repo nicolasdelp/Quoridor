@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+
+
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="650.0" styleClass="background" stylesheets="@../css/quoridorMenu.css" fx:controller="be.nicolasdelp.quoridor.FXMLControllerMenu" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <AnchorPane prefHeight="400.0" prefWidth="650.0">
+         <children>
+            <Button layoutX="203.0" layoutY="155.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="245.0" styleClass="buttonMenu" stylesheets="@../css/quoridorMenu.css" text="REPRENDRE LA PARTIE" />
+            <Button layoutX="203.0" layoutY="210.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="245.0" styleClass="buttonMenu" stylesheets="@../css/quoridorMenu.css" text="NOUVELLE PARTIE" />
+            <Button layoutX="203.0" layoutY="265.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="245.0" styleClass="buttonMenu" stylesheets="@../css/quoridorMenu.css" text="OPTIONS" />
+            <Button layoutX="203.0" layoutY="320.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="245.0" styleClass="buttonMenu" stylesheets="@../css/quoridorMenu.css" text="CREDITS" />
+         </children>
+      </AnchorPane>
+   </children>
+</VBox>

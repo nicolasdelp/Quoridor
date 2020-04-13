@@ -1,0 +1,27 @@
+@font-face {
+    font-family: 'Comfortaa';
+    src: url('../fonts/Comfortaa-Bold.ttf');
+}
+
+.background {
+  -fx-background-image: url("../img/fondMenuPlayers.png");
+}
+
+.buttonStart {
+    -fx-text-fill:#000000;
+    -fx-background-color: #ffffff;
+    -fx-border-color: #000000;
+    -fx-border-width: 2px;
+    -fx-border-radius: 15px;
+    -fx-background-radius: 16px;
+    -fx-font-family: "Comfortaa";
+}
+
+.buttonStart:hover {
+    -fx-background-color: #3498db70;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.75), 10, 0, 0, 0);
+}
+
+.font{
+    -fx-font-family: "Comfortaa";
+}
