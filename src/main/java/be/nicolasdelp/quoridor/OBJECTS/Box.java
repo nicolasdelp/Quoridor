@@ -86,6 +86,7 @@ public class Box {
      */
     public void setObject(GamePieces object) {
         this.object = object;
+        this.isOccuped = true;
     }
 
     /**

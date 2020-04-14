@@ -15,7 +15,7 @@ public class Player {
     private final int ID;
     private final Color color;
     private Pawn pawnPlayer;
-    private int Walls;
+    private Wall[] walls;
     private List<String> historique = new ArrayList<String>();
 
     /**
@@ -93,7 +93,7 @@ public class Player {
      * @return le nombre de murs restants du joueur
      */
     public int getWalls() {
-        return this.Walls;
+        return this.walls.length;
     }
 
     /**
@@ -102,7 +102,10 @@ public class Player {
      * @param walls un nombre de murs
      */
     public void setWalls(int walls) {
-        this.Walls = walls;
+        this.walls = new Wall[walls];
+        for(int i=0; i<walls; i++){
+            this.walls[i] = new Wall();
+        }
     }
 
     /**
@@ -126,9 +129,19 @@ public class Player {
     /**
      * Bouge le pion à une position
      *
-     * @param newPosition la position
+     * @param Position la position
      */
     public void movePawn(Position Position) {
         this.pawnPlayer.setPosition(Position);
+    }
+
+    /**
+     * Met un mur à une position
+     *
+     * @param Position la position
+     */
+    public void moveWall(int i, WallDirection direction, Position Position) {
+        this.walls[i].setWallDirection(direction);
+        this.walls[i].setPosition(Position);
     }
 }

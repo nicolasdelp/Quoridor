@@ -16,8 +16,8 @@ public class Wall extends GamePieces {
      * @param color la couleur du mur
      * @param position une position
      */
-    public Wall(Position position) {
-        this.position = position;
+    public Wall() {
+        this.position = null;
     }
     
     /**

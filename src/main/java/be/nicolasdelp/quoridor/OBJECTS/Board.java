@@ -96,7 +96,20 @@ public class Board {
      *
      * @param newPosition la position
      */
-    public void setWallOnBoard(Player player, WallDirection direction, Position Position) {
-        //TO DO
+    public void setWallOnBoard(Player player,int indexWall, WallDirection direction, Position position) {
+        if(!this.boardBoxes[position.getX()][position.getY()].getisWallBox())
+            throw new IllegalArgumentException("Ce n'est pas une case pour un mur !");
+        if(direction == WallDirection.Horizontal) {
+            if(this.boardBoxes[position.getX()][position.getY()].getisOccuped() || this.boardBoxes[position.getX()-1][position.getY()].getisOccuped() || this.boardBoxes[position.getX()+1][position.getY()].getisOccuped()) 
+                throw new IllegalArgumentException("Il y a déjà un mur dans cette case !");
+        }
+        if(direction == WallDirection.Vertical) {
+            if(this.boardBoxes[position.getX()][position.getY()].getisOccuped() || this.boardBoxes[position.getX()][position.getY()-1].getisOccuped() || this.boardBoxes[position.getX()][position.getY()+1].getisOccuped()) 
+                throw new IllegalArgumentException("Il y a déjà un mur dans cette case !");
+        }
+        if(direction == WallDirection.Vertical) //////////////////////////////////////////TO DO
+            throw new IllegalArgumentException("Vous ne pouvez pas placer ce mur vous bloquer un joueur !"); 
+
+        player.moveWall(indexWall, direction, position);//Si tout se passe bien
     }
 }
