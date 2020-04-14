@@ -1,4 +1,4 @@
-package be.nicolasdelp.quoridor;
+package be.nicolasdelp.quoridor.GUI;
 
 import java.net.URL;
 import java.util.ResourceBundle;

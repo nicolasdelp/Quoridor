@@ -1,4 +1,4 @@
-package be.nicolasdelp.quoridor;
+package be.nicolasdelp.quoridor.OBJECTS;
 
 import java.util.List;
 import java.util.LinkedList;
@@ -14,16 +14,6 @@ public class Board {
     private List<String> histoP2; //l historique des faits de jeux du joueur 2
     private List<String> histoP3; //l historique des faits de jeux du joueur 3
     private List<String> histoP4; //l historique des faits de jeux du joueur 4
-
-    private void creatBoard() {
-        this.boardBoxes = new Box[(boardSize * 2) - 1][(boardSize * 2) - 1]; // Cree un tableau 17x17 de Box
-        for (int i = 0; i < boardBoxes.length; i++) {
-            for (int j = 0; j < boardBoxes.length; j++) {
-                boardBoxes[i][j].isPawnBox(new Position(i, j)); // Si la case est une case a pion isPawnBox sera egal a True sinon False
-                boardBoxes[i][j].isWallBox(new Position(i, j)); // Si la case est une case a mur isWallBox sera egal a True sinon False
-            }
-        }
-    }
 
     /**
      * Constructeur
@@ -46,6 +36,20 @@ public class Board {
         for (int i = 0; i < players.length; i++) {
             players[i].setWalls(totalWall / players.length); // donne a chaque joueur ses murs de depart (20/nmbr de joueurs)
             players[i].movePawnOnBoard(startPosition[i]); // mets chaque pion a sa position de depart
+        }
+    }
+    
+    /**
+     * Créeation du plateau de jeu
+     *
+     */
+    private void creatBoard() {
+        this.boardBoxes = new Box[(boardSize * 2) - 1][(boardSize * 2) - 1]; // Cree un tableau 17x17 de Box
+        for (int i = 0; i < boardBoxes.length; i++) {
+            for (int j = 0; j < boardBoxes.length; j++) {
+                boardBoxes[i][j].isPawnBox(new Position(i, j)); // Si la case est une case a pion isPawnBox sera egal a True sinon False
+                boardBoxes[i][j].isWallBox(new Position(i, j)); // Si la case est une case a mur isWallBox sera egal a True sinon False
+            }
         }
     }
 

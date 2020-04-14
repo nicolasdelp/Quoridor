@@ -1,4 +1,4 @@
-package be.nicolasdelp.quoridor;
+package be.nicolasdelp.quoridor.OBJECTS;
 
 public class Position {
 

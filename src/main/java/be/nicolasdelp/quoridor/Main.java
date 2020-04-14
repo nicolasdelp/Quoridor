@@ -1,5 +1,9 @@
 package be.nicolasdelp.quoridor;
 
+import be.nicolasdelp.quoridor.GUI.*;
+import be.nicolasdelp.quoridor.OBJECTS.*;
+import be.nicolasdelp.quoridor.SAVELOAD.*;
+
 import java.io.IOException;
 
 import javafx.application.Application;
@@ -9,6 +13,13 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 public class Main extends Application {
+
+    public void Engine(){
+        FXMLControllerMenu ControllerMenu = new FXMLControllerMenu();
+        FXMLControllerMenuPlayers controllerMenuPlayers = new FXMLControllerMenuPlayers();
+        FXMLControllerBoard ControllerBoard = new FXMLControllerBoard();
+
+    }
 
     @Override
     public void start(Stage primaryStage) throws IOException {
