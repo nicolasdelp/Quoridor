@@ -1,15 +1,20 @@
 package be.nicolasdelp.quoridor.OBJECTS;
 
-public class Pawn extends GamePieces implements PlayableGamePieces {
+/**
+* La class Pawn représente un objet Pion
+*
+* @author Delplanque Nicolas
+*/
+public class Pawn extends GamePieces {
 
     private final String color;
     private Position position;
 
     /**
-     * Constructeur
+     * Constructeur de Pawn
      *
      * @param color une couleur de pion
-     * @param Position une positon (x, y)
+     * @param Position une positon
      */
     public Pawn(String color, Position Position) {
         this.color = color;
@@ -17,7 +22,7 @@ public class Pawn extends GamePieces implements PlayableGamePieces {
     }
 
     /**
-     * Recupere la couleur du pion
+     * Accesseur de la couleur du pion
      *
      * @return la couleur du pion
      */
@@ -27,16 +32,16 @@ public class Pawn extends GamePieces implements PlayableGamePieces {
     }
 
     /**
-     * Recupere la position du pion
+     * Accesseur de la position du pion
      *
-     * @return la position actuelle
+     * @return la position actuelle du pion
      */
     public Position getPosition() {
-        return position;
+        return this.position;
     }
 
     /**
-     * Implemente la nouvelle position du pion
+     * Mutateur de la position du pion
      *
      * @param newPosition la nouvelle position
      */

@@ -6,7 +6,6 @@ import java.util.List;
 * La class Player représente un objet Joueur
 *
 * @author Delplanque Nicolas
-*@
 */
 public class Player {
 
@@ -97,7 +96,7 @@ public class Player {
      *
      * @param event un evenement
      */
-    public void setHistoriqueStep(String event){
+    public void setHistorique(String event){
         this.historique.add(event);
     }
 
