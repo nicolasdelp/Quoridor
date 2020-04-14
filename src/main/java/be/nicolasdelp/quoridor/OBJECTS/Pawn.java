@@ -9,11 +9,11 @@ public class Pawn extends GamePieces implements PlayableGamePieces {
      * Constructeur
      *
      * @param color une couleur de pion
-     * @param startPosition une positon (x, y)
+     * @param Position une positon (x, y)
      */
-    public Pawn(String color, Position startPosition) {
+    public Pawn(String color, Position Position) {
         this.color = color;
-        this.position = startPosition;
+        this.position = Position;
     }
 
     /**

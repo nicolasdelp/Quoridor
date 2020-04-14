@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="340.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <AnchorPane prefHeight="401.0" prefWidth="600.0">
+         <children>
+            <ImageView fitHeight="340.0" fitWidth="600.0" layoutX="-2.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../img/credits-fond.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="220.0" layoutY="24.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../img/credits-profil.png" />
+               </image>
+            </ImageView>
+            <Label layoutX="198.0" layoutY="185.0" text="DELPLANQUE Nicolas">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+            <Label layoutX="232.0" layoutY="218.0" text="Université de Mons">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Label>
+            <Separator layoutX="157.0" layoutY="269.0" prefHeight="12.0" prefWidth="279.0" />
+            <Label layoutX="186.0" layoutY="283.0" text="Projet d'informatique BAB1 : QUORIDOR" />
+            <Label layoutX="263.0" layoutY="306.0" text="2019 - 2020" />
+            <Label layoutX="221.0" layoutY="247.0" text="delplanque.n@outlook.com" textFill="#0097e6" />
+         </children>
+      </AnchorPane>
+   </children>
+</VBox>

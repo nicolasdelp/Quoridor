@@ -30,10 +30,6 @@ public class FXMLControllerMenu implements Initializable {
     @FXML
     private Button creditsButton;
 
-    void setVisibleResumeButton(){ //lorsqu'il n'y a pas de sauvegardes /!\ TO DO /!\
-        resumeButton.visibleProperty().set(true);
-    }
-
     @FXML
     void resumeButtonClicked(MouseEvent event) {
         //TO DO
@@ -58,12 +54,34 @@ public class FXMLControllerMenu implements Initializable {
 
     @FXML
     void optionsButtonClicked(MouseEvent event) {
-        //TO DO
+        try{
+            FXMLLoader fxmloader = new FXMLLoader(getClass().getResource("../fxml/quoridorOptions.fxml"));
+            Parent root = (Parent) fxmloader.load();
+            Stage secondStage = new Stage();
+            secondStage.setScene(new Scene(root, 600, 340));
+            secondStage.setResizable(false);
+            secondStage.setTitle("CREDITS");
+            secondStage.centerOnScreen();
+            secondStage.show();
+        } catch(Exception exception){
+            System.out.println(exception);
+        }
     }
 
     @FXML
     void creditsButtonClicked(MouseEvent event) {
-        //TO DO
+        try{
+            FXMLLoader fxmloader = new FXMLLoader(getClass().getResource("../fxml/quoridorCredits.fxml"));
+            Parent root = (Parent) fxmloader.load();
+            Stage secondStage = new Stage();
+            secondStage.setScene(new Scene(root, 600, 340));
+            secondStage.setResizable(false);
+            secondStage.setTitle("CREDITS");
+            secondStage.centerOnScreen();
+            secondStage.show();
+        } catch(Exception exception){
+            System.out.println(exception);
+        }
     }
     
     @Override
