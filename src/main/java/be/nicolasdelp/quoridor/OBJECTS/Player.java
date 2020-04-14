@@ -10,7 +10,8 @@ import java.util.List;
 */
 public class Player {
 
-    private final String type;;
+    private final String type;
+    private final String username;
     private final int ID;
     private final Color color;
     private Pawn pawnPlayer;
@@ -24,8 +25,9 @@ public class Player {
      * @param ID ID unique du joueur
      * @param pawn un pion
      */
-    public Player(String type, int ID, Color color, Pawn pawn) {
+    public Player(String type, String username, int ID, Color color, Pawn pawn) {
         this.type = type;
+        this.username = username;
         this.ID = ID;
         this.color = color;
         this.pawnPlayer = pawn;
@@ -38,6 +40,15 @@ public class Player {
      */
     public String getType() {
         return this.type;
+    }
+
+    /**
+     * Accesseur dun pseudo du joueur
+     *
+     * @return le pseudo du joueur
+     */
+    public String getUsername() {
+        return this.username;
     }
 
     /**

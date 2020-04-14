@@ -1,22 +1,22 @@
 package be.nicolasdelp.quoridor.OBJECTS;
 
 /**
-* L'enum WallSens représente les sens possible pour les murs
+* L'enum WallDirection représente les sens possible pour les murs
 *
 * @author Delplanque Nicolas
 */
-public enum WallSens {
+public enum WallDirection {
 
     Horizontal(0), Vertical(1);
 
     private final int index;
 
     /**
-     * Constructeur de WallSens
+     * Constructeur de WallDirection
      *
      * @param index 0 ou 1
      */
-    private WallSens(int index) {
+    private WallDirection(int index) {
         this.index = index;
     }
 
@@ -25,7 +25,7 @@ public enum WallSens {
      *
      * @return 0 ou 1
      */
-    public int getWallSens() {
+    public int getWallDirection() {
         return this.index;
     }
 }

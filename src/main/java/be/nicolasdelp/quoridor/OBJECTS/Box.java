@@ -11,12 +11,14 @@ public class Box {
     private boolean isWallBox;
     private boolean isOccuped;
     private GamePieces object;
+    private final Position position;
 
     /**
      * Constructeur de Box
      *
      */
-    public Box() {
+    public Box(Position position) {
+        this.position = position;
         this.isPawnBox = false;
         this.isWallBox = false;
         this.isOccuped = false;
@@ -24,7 +26,7 @@ public class Box {
     }
 
     /**
-     * Acesseur de la valeur isPawnBox
+     * Accesseur de la valeur isPawnBox
      * 
      * @return true ou false
      */
@@ -42,7 +44,7 @@ public class Box {
     }
 
     /**
-     * Acesseur de la valeur isWallBox
+     * Accesseur de la valeur isWallBox
      * 
      * @return true ou false
      */
@@ -60,7 +62,7 @@ public class Box {
     }
 
     /**
-     * Acesseur de la valeur isOccuped
+     * Accesseur de la valeur isOccuped
      * 
      * @return true ou false
      */
@@ -104,8 +106,8 @@ public class Box {
      * Verifie si la case est bien une case à pion
      * 
      */
-    public void isPawnBox(Position position) {
-        if (isImpair(position.getX()) && isImpair(position.getY())) {
+    public void isPawnBox() {
+        if (!isImpair(this.position.getX()) && !isImpair(this.position.getY())) {
             setisPawnBox(true);
         }
     }
@@ -114,10 +116,10 @@ public class Box {
      * Verifie si la case est bien une case à mur
      *
      */
-    public void isWallBox(Position position) {
-        if ((isImpair(position.getX()) && !isImpair(position.getY()))
-                || (!isImpair(position.getX()) && isImpair(position.getY()))
-                || (isImpair(position.getY()) & isImpair(position.getY()))) {
+    public void isWallBox() {
+        if ((isImpair(this.position.getX()) && !isImpair(this.position.getY()))
+                || (!isImpair(this.position.getX()) && isImpair(this.position.getY()))
+                || (isImpair(this.position.getY()) & isImpair(this.position.getY()))) {
             setisWallBox(true);
         }
     }

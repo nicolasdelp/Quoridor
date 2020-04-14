@@ -7,9 +7,8 @@ package be.nicolasdelp.quoridor.OBJECTS;
 */
 public class Wall extends GamePieces {
 
-    private final Color color;
     private Position position;
-    private WallSens sens = WallSens.Horizontal;
+    private WallDirection direction = WallDirection.Horizontal;
 
     /**
      * Constructeur de Wall
@@ -17,19 +16,8 @@ public class Wall extends GamePieces {
      * @param color la couleur du mur
      * @param position une position
      */
-    public Wall(Color color, Position position) {
-        this.color = color;
+    public Wall(Position position) {
         this.position = position;
-    }
-
-    /**
-     * Accesseur de la couleur du pion
-     *
-     * @return la couleur du pion
-     */
-    @Override
-    public Color getColor() {
-        return this.color;
     }
     
     /**
@@ -57,16 +45,16 @@ public class Wall extends GamePieces {
      *
      * @return le sens du mur (Horizontal ou Vertical)
      */
-    public WallSens getWallSens() {
-        return this.sens;
+    public WallDirection getWallDirection() {
+        return this.direction;
     }
 
     /**
      * Mutateur du sens du mur
      *
-     * @param sens le sens du mur (Horizontal ou Vertical)
+     * @param direction le sens du mur (Horizontal ou Vertical)
      */
-    public void setWallSens(WallSens sens) {
-        this.sens = sens;
+    public void setWallDirection(WallDirection direction) {
+        this.direction = direction;
     }
 }
