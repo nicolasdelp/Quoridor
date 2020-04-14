@@ -1,5 +1,6 @@
 package be.nicolasdelp.quoridor.OBJECTS;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -14,7 +15,7 @@ public class Player {
     private final Color color;
     private Pawn pawnPlayer;
     private int Walls;
-    private List<String> historique;
+    private List<String> historique = new ArrayList<String>();
 
     /**
      * Constructeur de Player
@@ -103,11 +104,11 @@ public class Player {
     }
 
     /**
-     * Mutateur d'une étape dans l'historique du joueur
+     * Rajoute une étape dans l'historique du joueur
      *
      * @param event un evenement
      */
-    public void setHistorique(String event){
+    public void addEvent(String event){
         this.historique.add(event);
     }
 

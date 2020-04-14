@@ -1,8 +1,5 @@
 package be.nicolasdelp.quoridor.OBJECTS;
 
-import java.util.List;
-import java.util.LinkedList;
-
 /**
  * La class Board représente un objet Plateau
  *
