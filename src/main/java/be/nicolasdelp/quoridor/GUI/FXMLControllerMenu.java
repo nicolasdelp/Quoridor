@@ -42,7 +42,7 @@ public class FXMLControllerMenu implements Initializable {
     @FXML
     void newPartyButtonClicked(MouseEvent event) {
         try{
-            FXMLLoader fxmloader = new FXMLLoader(getClass().getResource("fxml/quoridorMenuPlayers.fxml"));
+            FXMLLoader fxmloader = new FXMLLoader(getClass().getResource("../fxml/quoridorMenuPlayers.fxml"));
             Parent root = (Parent) fxmloader.load();
             Stage secondStage = new Stage();
             secondStage.setScene(new Scene(root, 835, 450));
@@ -52,7 +52,7 @@ public class FXMLControllerMenu implements Initializable {
             menuWindow.getScene().getWindow().hide();
             secondStage.show();
         } catch(Exception exception){
-            System.out.println("Il y a eu un problème !");
+            System.out.println(exception);
         }
     }
 

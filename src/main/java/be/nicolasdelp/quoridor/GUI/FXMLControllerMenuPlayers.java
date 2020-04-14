@@ -138,7 +138,7 @@ public class FXMLControllerMenuPlayers implements Initializable {
     @FXML
     void goBackClicked(MouseEvent event) {
         try{
-            FXMLLoader fxmloader = new FXMLLoader(getClass().getResource("fxml/quoridorMenu.fxml"));
+            FXMLLoader fxmloader = new FXMLLoader(getClass().getResource("../fxml/quoridorMenu.fxml"));
             Parent root = (Parent) fxmloader.load();
             Stage secondStage = new Stage();
             secondStage.setScene(new Scene(root, 650, 400));
@@ -148,7 +148,7 @@ public class FXMLControllerMenuPlayers implements Initializable {
             pane2Players.getScene().getWindow().hide();
             secondStage.show();
         } catch(Exception exception){
-            System.out.println("Il y a eu un problème !");
+            System.out.println(exception);
         }
     }
 
@@ -335,7 +335,7 @@ public class FXMLControllerMenuPlayers implements Initializable {
     @FXML
     void startGameClicked(MouseEvent event) {
         try{
-            FXMLLoader fxmloader = new FXMLLoader(getClass().getResource("fxml/quoridorBoard.fxml"));
+            FXMLLoader fxmloader = new FXMLLoader(getClass().getResource("../fxml/quoridorBoard.fxml"));
             Parent root = (Parent) fxmloader.load();
             Stage secondStage = new Stage();
             secondStage.setScene(new Scene(root, 1500, 1000));
@@ -345,7 +345,7 @@ public class FXMLControllerMenuPlayers implements Initializable {
             pane2Players.getScene().getWindow().hide();
             secondStage.show();
         } catch(Exception exception){
-            System.out.println("Il y a eu un problème !");
+            System.out.println(exception);
         }
     }
 }

@@ -13,7 +13,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1000.0" prefWidth="1500.0" styleClass="background" stylesheets="@../css/quoridorBoard.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="be.nicolasdelp.quoridor.FXMLControllerBoard">
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1000.0" prefWidth="1500.0" styleClass="background" stylesheets="@../css/quoridorBoard.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="be.nicolasdelp.quoridor.GUI.FXMLControllerBoard">
    <children>
       <AnchorPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="1004.0" prefWidth="1300.0">
          <children>

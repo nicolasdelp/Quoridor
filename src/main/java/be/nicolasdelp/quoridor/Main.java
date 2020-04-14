@@ -14,13 +14,6 @@ import javafx.stage.Stage;
 
 public class Main extends Application {
 
-    public void Engine(){
-        FXMLControllerMenu ControllerMenu = new FXMLControllerMenu();
-        FXMLControllerMenuPlayers controllerMenuPlayers = new FXMLControllerMenuPlayers();
-        FXMLControllerBoard ControllerBoard = new FXMLControllerBoard();
-
-    }
-
     @Override
     public void start(Stage primaryStage) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("fxml/quoridorMenu.fxml"));

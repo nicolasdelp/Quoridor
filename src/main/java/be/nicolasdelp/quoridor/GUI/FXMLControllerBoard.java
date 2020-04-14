@@ -23,10 +23,10 @@ public class FXMLControllerBoard implements Initializable {
 
     @FXML
     void box28Clicked(MouseEvent event) {
-        final URL imageURL = getClass().getResource("img/pion-vert.png");  
+        final URL imageURL = getClass().getResource("../img/pion-vert.png");  
         final Image image = new Image(imageURL.toExternalForm());
         box28.setImage(image);
-        final URL imageURL2 = getClass().getResource("img/case.png");  
+        final URL imageURL2 = getClass().getResource("../img/case.png");  
         final Image image2 = new Image(imageURL2.toExternalForm());
         box08.setImage(image2);
     }
