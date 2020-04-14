@@ -7,7 +7,7 @@ package be.nicolasdelp.quoridor.OBJECTS;
 */
 public class Pawn extends GamePieces {
 
-    private final String color;
+    private final Color color;
     private Position position;
 
     /**
@@ -16,7 +16,7 @@ public class Pawn extends GamePieces {
      * @param color une couleur de pion
      * @param Position une positon
      */
-    public Pawn(String color, Position Position) {
+    public Pawn(Color color, Position Position) {
         this.color = color;
         this.position = Position;
     }
@@ -27,7 +27,7 @@ public class Pawn extends GamePieces {
      * @return la couleur du pion
      */
     @Override
-    public String getColor() {
+    public Color getColor() {
         return this.color;
     }
 

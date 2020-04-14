@@ -7,7 +7,7 @@ package be.nicolasdelp.quoridor.OBJECTS;
 */
 public class Wall extends GamePieces {
 
-    private final String color;
+    private final Color color;
     private Position position;
     private WallSens sens = WallSens.Horizontal;
 
@@ -17,7 +17,7 @@ public class Wall extends GamePieces {
      * @param color la couleur du mur
      * @param position une position
      */
-    public Wall(String color, Position position) {
+    public Wall(Color color, Position position) {
         this.color = color;
         this.position = position;
     }
@@ -28,7 +28,7 @@ public class Wall extends GamePieces {
      * @return la couleur du pion
      */
     @Override
-    public String getColor() {
+    public Color getColor() {
         return this.color;
     }
     

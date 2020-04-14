@@ -6,5 +6,5 @@ public abstract class GamePieces {
 
     public abstract void setPosition(Position position);
     
-    public abstract String getColor();
+    public abstract Color getColor();
 }

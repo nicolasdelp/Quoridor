@@ -1,5 +1,10 @@
 package be.nicolasdelp.quoridor.OBJECTS;
 
+/**
+ * La class Box représente un objet Case
+ *
+ * @author Delplanque Nicolas
+ */
 public class Box {
 
     private boolean isPawnBox;
@@ -8,95 +13,112 @@ public class Box {
     private GamePieces object;
 
     /**
-     * Constructeur
+     * Constructeur de Box
      *
      */
     public Box() {
         this.isPawnBox = false;
         this.isWallBox = false;
         this.isOccuped = false;
+        this.object = null;
     }
 
     /**
-     * Verifie si la case est occupe par un objet
+     * Acesseur de la valeur isPawnBox
      * 
+     * @return true ou false
      */
-    public boolean isOccuped() {
-        return this.isOccuped;
-    }
-
-    /**
-     * Retourne l objet qui occupe la case
-     * 
-     */
-    public GamePieces isOccupedBy() {
-        if (this.isOccuped){
-            return this.object;
-        }
-        else{
-            return null;
-        }
-    }
-
-    /**
-     * Implemente un objet dans la case
-     * 
-     */
-    public void setObjectInBox(GamePieces object) {
-        this.object = object;
-    }
-
-    /**
-     * Recupere la valeur de isPawnBox
-     * 
-     * @return la valeur de isPawnBox (true ou false)
-     */
-    public boolean getPawnBox() {
+    public boolean getisPawnBox() {
         return this.isPawnBox;
     }
 
     /**
-     * Verifie si la case est bien une case pour un pion
+     * Mutateur de la valeur isPawnBox
      * 
+     * @param valeur true ou false
      */
-    public void isPawnBox(Position position) {
-        if (isImpair(position.getX()) && isImpair(position.getY())) {
-            this.isPawnBox = true;
-        }
+    public void setisPawnBox(Boolean valeur) {
+        this.isPawnBox = valeur;
     }
 
     /**
-     * Recupere la valeur de isWallBox
+     * Acesseur de la valeur isWallBox
      * 
-     * @return la valeur de isWallBox (true ou false)
+     * @return true ou false
      */
-    public boolean getWallBox() {
+    public boolean getisWallBox() {
         return this.isWallBox;
     }
 
     /**
-     * Verifie si la case est bien une case pour un mur
-     *
+     * Mutateur de la valeur isWallBox
+     * 
+     * @param valeur true ou false
      */
-    public void isWallBox(Position position) {
-        if ((isImpair(position.getX()) && !isImpair(position.getY()))
-                || (!isImpair(position.getX()) && isImpair(position.getY()))
-                || (isImpair(position.getY()) & isImpair(position.getY()))) {
-            this.isWallBox = true;
-        }
+    public void setisWallBox(Boolean valeur) {
+        this.isWallBox = valeur;
+    }
+
+    /**
+     * Acesseur de la valeur isOccuped
+     * 
+     * @return true ou false
+     */
+    public boolean getisOccuped() {
+        return this.isOccuped;
+    }
+
+    /**
+     * Mutateur de la valeur isOccuped
+     * 
+     * @param valeur true ou false
+     */
+    public void setisOccuped(Boolean valeur) {
+        this.isOccuped = valeur;
+    }
+
+    /**
+     * Mutateur de la valeur object
+     * 
+     * @param object true ou false
+     */
+    public void setObject(GamePieces object) {
+        this.object = object;
     }
 
     /**
      * Verifie si le nombre est impair
      * 
      * @param x un entier
-     * @return vrai si c est un nombre impair sinon faux
+     * @return true ou false
      */
     public static boolean isImpair(int x) {
         if (x % 2 == 1) {
             return true;
         } else {
             return false;
+        }
+    }
+
+    /**
+     * Verifie si la case est bien une case à pion
+     * 
+     */
+    public void isPawnBox(Position position) {
+        if (isImpair(position.getX()) && isImpair(position.getY())) {
+            setisPawnBox(true);
+        }
+    }
+
+    /**
+     * Verifie si la case est bien une case à mur
+     *
+     */
+    public void isWallBox(Position position) {
+        if ((isImpair(position.getX()) && !isImpair(position.getY()))
+                || (!isImpair(position.getX()) && isImpair(position.getY()))
+                || (isImpair(position.getY()) & isImpair(position.getY()))) {
+            setisWallBox(true);
         }
     }
 }

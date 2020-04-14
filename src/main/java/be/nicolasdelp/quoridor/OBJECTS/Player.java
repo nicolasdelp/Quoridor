@@ -11,6 +11,7 @@ public class Player {
 
     private final String type;;
     private final int ID;
+    private final Color color;
     private Pawn pawnPlayer;
     private int Walls;
     private List<String> historique;
@@ -22,9 +23,10 @@ public class Player {
      * @param ID ID unique du joueur
      * @param pawn un pion
      */
-    public Player(String type, int ID, Pawn pawn) {
+    public Player(String type, int ID, Color color, Pawn pawn) {
         this.type = type;
         this.ID = ID;
+        this.color = color;
         this.pawnPlayer = pawn;
     }
 
@@ -44,6 +46,15 @@ public class Player {
      */
     public int getID() {
         return this.ID;
+    }
+
+    /**
+     * Accesseur de la couleur du joueur
+     *
+     * @return la couleur du joueur
+     */
+    public Color getColor() {
+        return this.color;
     }
 
     /**

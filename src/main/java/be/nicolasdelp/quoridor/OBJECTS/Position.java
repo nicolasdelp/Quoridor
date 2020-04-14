@@ -1,12 +1,17 @@
 package be.nicolasdelp.quoridor.OBJECTS;
 
+/**
+* La class Position représente un objet Position
+*
+* @author Delplanque Nicolas
+*/
 public class Position {
 
     private int x;
     private int y;
     
     /**
-     * Constucteur
+     * Constucteur de Position
      * 
      * @param x la colonne
      * @param y la ligne
@@ -17,21 +22,20 @@ public class Position {
     }
 
     /**
-     * Recuperer X
+     * Accesseur de x
      * 
-     * @return X
+     * @return x
      */
     public int getX() {
-        return x;
+        return this.x;
     }
 
     /**
-     * Recuperer Y
+     * Accesseur de y
      * 
-     * @return Y
+     * @return y
      */
     public int getY() {
-        return y;
+        return this.y;
     }
-
 }

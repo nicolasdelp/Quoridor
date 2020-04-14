@@ -1,5 +1,10 @@
 package be.nicolasdelp.quoridor.OBJECTS;
 
+/**
+* L'enum WallSens représente les sens possible pour les murs
+*
+* @author Delplanque Nicolas
+*/
 public enum WallSens {
 
     Horizontal(0), Vertical(1);
@@ -7,18 +12,18 @@ public enum WallSens {
     private final int index;
 
     /**
-     * Constructeur
+     * Constructeur de WallSens
      *
-     * @param position Soit HORIZONTAL ou VERTICAL
+     * @param index 0 ou 1
      */
     private WallSens(int index) {
         this.index = index;
     }
 
     /**
-     * Recupere la position du mur
+     * Accesseur du sens du mur
      *
-     * @return HORIZONTAL ou VERTICAL
+     * @return 0 ou 1
      */
     public int getWallSens() {
         return this.index;
