@@ -128,7 +128,7 @@ public class Player {
      *
      * @param newPosition la nouvelle position
      */
-    public void movePawnOnBoard(Position newPosition) {
+    public void movePawn(Position newPosition) {
         this.pawnPlayer.setPosition(newPosition);
     }
 }

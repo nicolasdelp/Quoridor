@@ -7,8 +7,8 @@ package be.nicolasdelp.quoridor.OBJECTS;
  */
 public class Board {
 
-    private final int totalWall; //nombre de murs au total
-    private final int boardSize; //nombre de cases pour pions par cote
+    private final int totalWall = 20; //nombre de murs au total
+    private final int boardSize = 9; //nombre de cases pour pions par cote
     private final Position[] startPosition = { new Position(0, 8), new Position(16, 8), new Position(8, 0), new Position(8, 16) }; //les 4 cases de depart possible
     public Player[] players; //la liste des joueurs
     private Box[][] boardBoxes; //stockage dans un tableau des Box
@@ -19,8 +19,7 @@ public class Board {
      * @param players la liste des joueurs
      */
     public Board() {
-        this.totalWall = 20;
-        this.boardSize = 9;
+
     }
     
     /**
@@ -32,7 +31,7 @@ public class Board {
             throw new IllegalArgumentException("Il ne peux y avoir que 2 ou 4 joueurs !");
         for (int i = 0; i < players.length; i++) {
             this.players[i].setWalls(totalWall / players.length); // donne a chaque joueur ses murs de depart (20/nmbr de joueurs)
-            this.players[i].movePawnOnBoard(startPosition[i]); // mets chaque pion a sa position de depart
+            this.players[i].movePawn(startPosition[i]); // mets chaque pion a sa position de depart
         }
         this.boardBoxes = new Box[(this.boardSize * 2) - 1][(this.boardSize * 2) - 1]; // Cree un tableau 17x17 de Box
         for (int i = 0; i < this.boardBoxes.length; i++) {
@@ -69,5 +68,16 @@ public class Board {
      */
     public Player getPlayer(int ID){
         return this.players[ID];
+    }
+
+    /**
+     * Bouge le pion à une position su le plateau
+     *
+     * @param newPosition la nouvelle position
+     */
+    public void movePawnOnBoard(Player player, Position newPosition) {
+        if((newPosition.getX() > this.boardBoxes.length) || (newPosition.getX() < 0) || (newPosition.getY() > this.boardBoxes.length) || (newPosition.getY() < 0)) 
+            throw new IllegalArgumentException("Vous êtes hors des limites du plateau !");
+        player.movePawn(newPosition);
     }
 }

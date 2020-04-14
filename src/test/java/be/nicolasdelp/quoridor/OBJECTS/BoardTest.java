@@ -113,4 +113,22 @@ public class BoardTest {
         b.createBoard();
         assertEquals(b.players[3].getPawn().getPosition().getY(), 16);
     }
+
+    @Test
+    public void testCreateBoard13(){
+        Board b = new Board();
+        Player[] p = {new Player("Humain", "Nico", 0, Color.Rouge, new Pawn()), new Player("Ordinateur", "Ordi1", 1, Color.Rouge, new Pawn()), new Player("Humain", "Alex", 2, Color.Rouge, new Pawn()), new Player("Ordinateur", "Ordi2", 3, Color.Rouge, new Pawn())};
+        b.setPlayer(p);
+        b.createBoard();
+        assertEquals(b.players[2].getPawn().getPosition().getX(), 8);
+    }
+
+    @Test
+    public void testCreateBoard14(){
+        Board b = new Board();
+        Player[] p = {new Player("Humain", "Nico", 0, Color.Rouge, new Pawn()), new Player("Ordinateur", "Ordi1", 1, Color.Rouge, new Pawn()), new Player("Humain", "Alex", 2, Color.Rouge, new Pawn()), new Player("Ordinateur", "Ordi2", 3, Color.Rouge, new Pawn())};
+        b.setPlayer(p);
+        b.createBoard();
+        assertEquals(b.players[2].getPawn().getPosition().getY(), 0);
+    }
 }

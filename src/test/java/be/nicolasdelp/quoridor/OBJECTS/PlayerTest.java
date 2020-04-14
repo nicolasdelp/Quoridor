@@ -32,7 +32,7 @@ public class PlayerTest {
     @Test
     public void testMovePawnOnBoard(){
         Player x = new Player("Ordinateur", "Ordi1", 0, Color.Rouge, new Pawn());
-        x.movePawnOnBoard(new Position(7,8));
+        x.movePawn(new Position(7,8));
         assertEquals(x.getPawn().getPosition().getX(), 7);
         assertEquals(x.getPawn().getPosition().getY(), 8);
     }
