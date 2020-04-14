@@ -1,24 +1,29 @@
 package be.nicolasdelp.quoridor.OBJECTS;
 
-public class Wall extends GamePieces implements PlayableGamePieces {
+/**
+* La class Wall représente un objet Mur
+*
+* @author Delplanque Nicolas
+*/
+public class Wall extends GamePieces {
 
     private final String color;
     private Position position;
-    private WallSens sens = WallSens.Horizontal; // Le mur est horizontal de base pour etre stocke
+    private WallSens sens = WallSens.Horizontal;
 
     /**
-     * Constructeur
+     * Constructeur de Wall
      *
-     * @param color la couleur des murs (la meme que le pion du joueur)
-     * @param startPosition la position de depart
+     * @param color la couleur du mur
+     * @param position une position
      */
-    public Wall(String color, Position startPosition) {
+    public Wall(String color, Position position) {
         this.color = color;
-        this.position = startPosition;
+        this.position = position;
     }
 
     /**
-     * Recupere la couleur du pion
+     * Accesseur de la couleur du pion
      *
      * @return la couleur du pion
      */
@@ -28,17 +33,17 @@ public class Wall extends GamePieces implements PlayableGamePieces {
     }
     
     /**
-     * Recupere la position du mur
+     * Accesseur de la position du mur
      *
-     * @return la position actuelle
+     * @return la position actuelle du mur
      */
     @Override
     public Position getPosition() {
-        return position;
+        return this.position;
     }
     
     /**
-     * Implemente une nouvelle position
+     * Mutateur de la position du mur
      *
      * @param newPosition la nouvelle position
      */
@@ -48,19 +53,20 @@ public class Wall extends GamePieces implements PlayableGamePieces {
     }
 
     /**
-     * Recupere le sens du mur
+     * Accesseur du sens du mur
      *
+     * @return le sens du mur (Horizontal ou Vertical)
      */
     public WallSens getWallSens() {
-        return sens;
+        return this.sens;
     }
 
     /**
-     * Change la direction du mur
+     * Mutateur du sens du mur
      *
-     * @param position la position du mur (HORIZONTAL ou VERTICAL)
+     * @param sens le sens du mur (Horizontal ou Vertical)
      */
-    public void setNewWallSens(WallSens sens) {
+    public void setWallSens(WallSens sens) {
         this.sens = sens;
     }
 }
