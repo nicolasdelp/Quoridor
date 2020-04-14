@@ -3,17 +3,18 @@ package be.nicolasdelp.quoridor.OBJECTS;
 import java.util.List;
 import java.util.LinkedList;
 
+/**
+ * La class Board représente un objet Plateau
+ *
+ * @author Delplanque Nicolas
+ */
 public class Board {
 
     private final int totalWall = 20; //nombre de murs au total
     private final int boardSize = 9; //nombre de cases pour pions par cote
-    private final Position[] startPosition = { new Position(8, 0), new Position(8, 16), new Position(0, 8), new Position(16, 8) }; //les 4 cases de depart possible
+    private final Position[] startPosition = { new Position(0, 8), new Position(16, 8), new Position(8, 0), new Position(8, 16) }; //les 4 cases de depart possible
     private Player[] players; //la liste des joueurs
     private Box[][] boardBoxes; //stockage dans un tableau des Box
-    private List<String> histoP1; //l historique des faits de jeux du joueur 1
-    private List<String> histoP2; //l historique des faits de jeux du joueur 2
-    private List<String> histoP3; //l historique des faits de jeux du joueur 3
-    private List<String> histoP4; //l historique des faits de jeux du joueur 4
 
     /**
      * Constructeur
@@ -21,17 +22,9 @@ public class Board {
      * @param players la liste des joueurs
      */
     public Board(Player[] players) {
+        if((players.length != 2) || (players.length != 4)) 
+            throw new IllegalArgumentException("Il ne peux y avoir que 2 ou 4 joueurs !");
         this.players = players;
-        if(players.length == 2){
-            this.histoP1 = new LinkedList<String>();
-            this.histoP2 = new LinkedList<String>();
-        }
-        if(players.length == 4){
-            this.histoP1 = new LinkedList<String>();
-            this.histoP2 = new LinkedList<String>();
-            this.histoP3 = new LinkedList<String>();
-            this.histoP4 = new LinkedList<String>();
-        }
         creatBoard(); // creation du plateau
         for (int i = 0; i < players.length; i++) {
             players[i].setWalls(totalWall / players.length); // donne a chaque joueur ses murs de depart (20/nmbr de joueurs)
