@@ -71,13 +71,32 @@ public class Board {
     }
 
     /**
-     * Bouge le pion à une position su le plateau
+     * Bouge le pion à une position sur le plateau
      *
-     * @param newPosition la nouvelle position
+     * @param Position la position
      */
-    public void movePawnOnBoard(Player player, Position newPosition) {
-        if((newPosition.getX() > this.boardBoxes.length) || (newPosition.getX() < 0) || (newPosition.getY() > this.boardBoxes.length) || (newPosition.getY() < 0)) 
-            throw new IllegalArgumentException("Vous êtes hors des limites du plateau !");
-        player.movePawn(newPosition);
+    public void movePawnOnBoard(Player player, Position Position) {
+        if((Position.getX() >= this.boardBoxes.length) || (Position.getX() < 0) || (Position.getY() >= this.boardBoxes.length) || (Position.getY() < 0)) 
+            throw new IllegalArgumentException("Vous êtes en dehors des limites du plateau !");
+        if(Position.getX() >= this.boardBoxes.length) //TO DO
+            throw new IllegalArgumentException("Il y a un mur devant vous !");
+        if(Position.getX() >= this.boardBoxes.length) //TO DO
+            throw new IllegalArgumentException("Vous ne pouvez avancez que de 1 case à la fois !");
+        if(Position.getX() >= this.boardBoxes.length) //TO DO
+            throw new IllegalArgumentException("Il y a un pion dans cette case !");
+        if(Position.getX() >= this.boardBoxes.length) //TO DO
+            throw new IllegalArgumentException("Cette case est une case pour mur !");
+        if(Position.getX() >= this.boardBoxes.length) //TO DO
+            throw new IllegalArgumentException("Vous ne pouvez avancer que vers le haut, le bas, la droite et la gauche sauf si vous êtes bloqué !");
+        player.movePawn(Position);
+    }
+
+    /**
+     * Place un mur à une position sur le plateau
+     *
+     * @param newPosition la position
+     */
+    public void setWallOnBoard(Player player, WallDirection direction, Position Position) {
+        //TO DO
     }
 }

@@ -126,9 +126,9 @@ public class Player {
     /**
      * Bouge le pion à une position
      *
-     * @param newPosition la nouvelle position
+     * @param newPosition la position
      */
-    public void movePawn(Position newPosition) {
-        this.pawnPlayer.setPosition(newPosition);
+    public void movePawn(Position Position) {
+        this.pawnPlayer.setPosition(Position);
     }
 }
