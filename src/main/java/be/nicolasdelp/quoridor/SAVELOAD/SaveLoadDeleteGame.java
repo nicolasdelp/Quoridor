@@ -21,7 +21,7 @@ public class SaveLoadDeleteGame {
      * Cree une fichier de sauvegarde
      *
      */
-    public static void creatFile(String File) {
+    public static void createFile(String File) {
         File f = new File(File);
         if(!f.exists()){
             try {
@@ -173,7 +173,7 @@ public class SaveLoadDeleteGame {
      *
      */
     public static void cryptageFile(String startFile, String finishFile) {
-        creatFile(finishFile);
+        createFile(finishFile);
         try {
             FileReader sf = new FileReader(startFile);
             BufferedReader br = new BufferedReader(sf);
@@ -204,7 +204,7 @@ public class SaveLoadDeleteGame {
      *
      */
     public static void decryptageFile(String startFile, String finishFile) {
-        creatFile(finishFile);
+        createFile(finishFile);
         try {
             FileReader sf = new FileReader(startFile);
             BufferedReader br = new BufferedReader(sf);
