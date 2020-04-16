@@ -16,6 +16,7 @@ public class Player {
     private final Color color;
     private Pawn pawnPlayer;
     private Wall[] walls;
+    private int wallIndex = 0;
     private List<String> historique = new ArrayList<String>();
 
     /**
@@ -90,10 +91,10 @@ public class Player {
     /**
      * Accesseur des murs du joueur
      *
-     * @return le nombre de murs restants du joueur
+     * @return la liste de murs
      */
-    public int getWalls() {
-        return this.walls.length;
+    public Wall[] getWalls() {
+        return this.walls;
     }
 
     /**
@@ -106,6 +107,15 @@ public class Player {
         for(int i=0; i<walls; i++){
             this.walls[i] = new Wall();
         }
+    }
+
+    /**
+     * Accesseur de l'index du prochain mur
+     *
+     * @return l'index
+     */
+    public int getWallIndex() {
+        return this.wallIndex;
     }
 
     /**
@@ -140,8 +150,9 @@ public class Player {
      *
      * @param Position la position
      */
-    public void moveWall(int i, WallDirection direction, Position Position) {
-        this.walls[i].setWallDirection(direction);
-        this.walls[i].setPosition(Position);
+    public void moveWall(Wall wall, WallDirection direction, Position Position) {
+        wall.setWallDirection(direction);
+        wall.setPosition(Position);
+        this.wallIndex++;
     }
 }

@@ -12,7 +12,7 @@ public class BoardTest {
         Player[] p = {new Player("Humain", "Nico", 0, Color.Rouge, new Pawn()), new Player("Ordinateur", "Ordi", 1, Color.Rouge, new Pawn())};
         b.setPlayer(p);
         b.createBoard();
-        assertEquals(b.players[0].getWalls(), 10);
+        assertEquals(b.players[0].getWalls().length, 10);
     }
 
     @Test
@@ -93,7 +93,7 @@ public class BoardTest {
         Player[] p = {new Player("Humain", "Nico", 0, Color.Rouge, new Pawn()), new Player("Ordinateur", "Ordi1", 1, Color.Rouge, new Pawn()), new Player("Humain", "Alex", 2, Color.Rouge, new Pawn()), new Player("Ordinateur", "Ordi2", 3, Color.Rouge, new Pawn())};
         b.setPlayer(p);
         b.createBoard();
-        assertEquals(b.players[2].getWalls(), 5);
+        assertEquals(b.players[2].getWalls().length, 5);
     }
 
     @Test
