@@ -21,17 +21,67 @@ public class Board {
     public Board() {
 
     }
-    
+
+    /**
+     * Accesseur du tableau contenant les box
+     *
+     */
+    public Box[][] getBoardBoxes(){
+        return this.boardBoxes;
+    }
+
+    /**
+     * Accesseur d'une box en position position
+     *
+     * @param position une position
+     */
+    public Box getBoardBox(Position position){
+        return this.boardBoxes[position.getX()][position.getY()];
+    }
+
+    /**
+     * Accesseur de la liste des joueurs
+     *
+     */
+    public Player[] getPlayers(){
+        return this.players;
+    }
+
+    /**
+     * Récupère un joueur grâce à son ID dans la liste Players
+     *
+     * @param ID du joueur
+     */
+    public Player getAPlayer(int ID){
+        Player res = null;
+        for(int i=0; i<players.length; i++){
+            if(players[i].getID() == ID){
+                res = players[i];
+            }
+        }
+        return res;
+    }
+
+    /**
+     * Implemente une liste de joueurs
+     *
+     * @param players la liste des joueurs
+     */
+    public void setPlayer(Player[] players){
+        this.players = players;
+    }
+
+
     /**
      * Création du plateau de jeu
      *
      */
     public void createBoard() {
-        if(!((players.length == 2) || (players.length == 4))) 
+        if(!((this.players.length == 2) || (this.players.length == 4))) 
             throw new IllegalArgumentException("Il ne peux y avoir que 2 ou 4 joueurs !");
-        for (int i = 0; i < players.length; i++) {
-            this.players[i].setWalls(totalWall / players.length); // donne a chaque joueur ses murs de depart (20/nmbr de joueurs)
-            this.players[i].movePawn(startPosition[i]); // mets chaque pion a sa position de depart
+        for (int i = 0; i < this.players.length; i++) {
+            this.players[i].setWalls(this.totalWall / this.players.length); // donne a chaque joueur ses murs de depart (20/nmbr de joueurs)
+            this.players[i].movePawn(this.startPosition[i]); // mets chaque pion a sa position de depart
         }
         this.boardBoxes = new Box[(this.boardSize * 2) - 1][(this.boardSize * 2) - 1]; // Cree un tableau 17x17 de Box
         for (int i = 0; i < this.boardBoxes.length; i++) {
@@ -43,32 +93,9 @@ public class Board {
         }
     }
 
-    /**
-     * Accesseur de la box en position position
-     *
-     * @param position une position
-     */
-    public Box getBoardBox(Position position){
-        return this.boardBoxes[position.getX()][position.getY()];
-    }
 
-    /**
-     * Implemente la liste des joueurs
-     *
-     * @param players la liste des joueurs
-     */
-    public void setPlayer(Player[] players){
-        this.players = players;
-    }
 
-    /**
-     * Recupere un joueur dans la liste de joueurs
-     *
-     * @param ID l ID du joueur
-     */
-    public Player getPlayer(int ID){
-        return this.players[ID];
-    }
+    
 
     /**
      * Bouge le pion à une position sur le plateau
