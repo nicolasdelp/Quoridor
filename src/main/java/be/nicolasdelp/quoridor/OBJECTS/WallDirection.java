@@ -1,4 +1,4 @@
-package be.nicolasdelp.quoridor.OBJECTS;
+package be.nicolasdelp.quoridor.objects;
 
 /**
 * L'enum WallDirection représente les sens possible pour les murs

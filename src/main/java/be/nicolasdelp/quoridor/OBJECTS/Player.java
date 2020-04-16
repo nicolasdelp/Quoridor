@@ -1,4 +1,4 @@
-package be.nicolasdelp.quoridor.OBJECTS;
+package be.nicolasdelp.quoridor.objects;
 
 import java.util.ArrayList;
 import java.util.List;

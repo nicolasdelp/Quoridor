@@ -1,4 +1,4 @@
-package be.nicolasdelp.quoridor.OBJECTS;
+package be.nicolasdelp.quoridor.objects;
 
 /**
 * La class Wall représente un objet Mur

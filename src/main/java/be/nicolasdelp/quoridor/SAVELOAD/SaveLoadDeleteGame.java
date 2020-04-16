@@ -1,4 +1,4 @@
-package be.nicolasdelp.quoridor.SAVELOAD;
+package be.nicolasdelp.quoridor.saveload;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;

@@ -1,4 +1,6 @@
-package be.nicolasdelp.quoridor.OBJECTS;
+package be.nicolasdelp.quoridor.objects;
+
+import be.nicolasdelp.quoridor.rules.*;
 
 /**
  * La class Board représente un objet Plateau
@@ -12,6 +14,7 @@ public class Board {
     private final Position[] startPosition = { new Position(0, 8), new Position(16, 8), new Position(8, 0), new Position(8, 16) }; //les 4 cases de depart possible
     public Player[] players; //la liste des joueurs
     private Box[][] boardBoxes; //stockage dans un tableau des Box
+    private PlayerRule[] playerRules = {new PlayerIsInBounds()};
 
     /**
      * Constructeur
@@ -71,6 +74,13 @@ public class Board {
         this.players = players;
     }
 
+    public int length(){
+        return boardBoxes.length;
+    }
+
+    public int width(){
+        return boardBoxes[0].length;
+    }
 
     /**
      * Création du plateau de jeu
@@ -102,20 +112,23 @@ public class Board {
      *
      * @param Position la position
      */
-    public void movePawnOnBoard(Player player, Position Position) {
-        if((Position.getX() >= this.boardBoxes.length) || (Position.getX() < 0) || (Position.getY() >= this.boardBoxes.length) || (Position.getY() < 0)) 
-            throw new IllegalArgumentException("Vous êtes en dehors des limites du plateau !");
-        if(Position.getX() >= this.boardBoxes.length) //TO DO
-            throw new IllegalArgumentException("Il y a un mur devant vous !");
-        if(Position.getX() >= this.boardBoxes.length) //TO DO
-            throw new IllegalArgumentException("Vous ne pouvez avancez que de 1 case à la fois !");
-        if(Position.getX() >= this.boardBoxes.length) //TO DO
-            throw new IllegalArgumentException("Il y a un pion dans cette case !");
-        if(Position.getX() >= this.boardBoxes.length) //TO DO
-            throw new IllegalArgumentException("Cette case est une case pour mur !");
-        if(Position.getX() >= this.boardBoxes.length) //TO DO
-            throw new IllegalArgumentException("Vous ne pouvez avancer que vers le haut, le bas, la droite et la gauche sauf si vous êtes bloqué !");
-        player.movePawn(Position);
+    public void movePawnOnBoard(Player player, Position position) throws RuleViolated{
+        for(int i=0; i<playerRules.length; i++){
+            playerRules[i].verify(this, player, position);
+        }
+        // if((Position.getX() >= this.boardBoxes.length) || (Position.getX() < 0) || (Position.getY() >= this.boardBoxes.length) || (Position.getY() < 0)) 
+        //     throw new IllegalArgumentException("Vous êtes en dehors des limites du plateau !");
+        // if(Position.getX() >= this.boardBoxes.length) //TO DO
+        //     throw new IllegalArgumentException("Il y a un mur devant vous !");
+        // if(Position.getX() >= this.boardBoxes.length) //TO DO
+        //     throw new IllegalArgumentException("Vous ne pouvez avancez que de 1 case à la fois !");
+        // if(Position.getX() >= this.boardBoxes.length) //TO DO
+        //     throw new IllegalArgumentException("Il y a un pion dans cette case !");
+        // if(Position.getX() >= this.boardBoxes.length) //TO DO
+        //     throw new IllegalArgumentException("Cette case est une case pour mur !");
+        // if(Position.getX() >= this.boardBoxes.length) //TO DO
+        //     throw new IllegalArgumentException("Vous ne pouvez avancer que vers le haut, le bas, la droite et la gauche sauf si vous êtes bloqué !");
+        player.movePawn(position);
     }
 
     /**

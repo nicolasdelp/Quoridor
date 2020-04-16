@@ -1,4 +1,4 @@
-package be.nicolasdelp.quoridor.OBJECTS;
+package be.nicolasdelp.quoridor.objects;
 
 public abstract class GamePieces {
 
