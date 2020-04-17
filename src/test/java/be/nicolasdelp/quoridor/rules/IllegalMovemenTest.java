@@ -5,7 +5,7 @@ import org.junit.jupiter.api.Test;
 
 import be.nicolasdelp.quoridor.objects.*;
 
-public class OneBoxByStepTest {
+public class IllegalMovemenTest {
 
     @Test
     public void testVerify1(){
@@ -21,7 +21,7 @@ public class OneBoxByStepTest {
         } catch (RuleViolated e) {
             Assertions.fail("rule violated");
         }
-        PlayerRule playerRule = new OneBoxByStep();
+        PlayerRule playerRule = new IllegalMovement();
         Assertions.assertThrows(RuleViolated.class, () -> {
             playerRule.verify(b, b.players[0], new Position(4, 8));
           });
@@ -41,7 +41,7 @@ public class OneBoxByStepTest {
         } catch (RuleViolated e) {
             Assertions.fail("rule violated");
         }
-        PlayerRule playerRule = new OneBoxByStep();
+        PlayerRule playerRule = new IllegalMovement();
         Assertions.assertThrows(RuleViolated.class, () -> {
             playerRule.verify(b, b.players[0], new Position(8, 4));
           });
@@ -61,7 +61,7 @@ public class OneBoxByStepTest {
         } catch (RuleViolated e) {
             Assertions.fail("rule violated");
         }
-        PlayerRule playerRule = new OneBoxByStep();
+        PlayerRule playerRule = new IllegalMovement();
         Assertions.assertThrows(RuleViolated.class, () -> {
             playerRule.verify(b, b.players[0], new Position(12, 8));
           });
@@ -81,7 +81,7 @@ public class OneBoxByStepTest {
         } catch (RuleViolated e) {
             Assertions.fail("rule violated");
         }
-        PlayerRule playerRule = new OneBoxByStep();
+        PlayerRule playerRule = new IllegalMovement();
         Assertions.assertThrows(RuleViolated.class, () -> {
             playerRule.verify(b, b.players[0], new Position(8, 12));
           });
@@ -101,7 +101,7 @@ public class OneBoxByStepTest {
         } catch (RuleViolated e) {
             Assertions.fail("rule violated");
         }
-        PlayerRule playerRule = new OneBoxByStep();
+        PlayerRule playerRule = new IllegalMovement();
         Assertions.assertThrows(RuleViolated.class, () -> {
             playerRule.verify(b, b.players[0], new Position(0, 8));
           });
@@ -121,7 +121,7 @@ public class OneBoxByStepTest {
         } catch (RuleViolated e) {
             Assertions.fail("rule violated");
         }
-        PlayerRule playerRule = new OneBoxByStep();
+        PlayerRule playerRule = new IllegalMovement();
         Assertions.assertThrows(RuleViolated.class, () -> {
             playerRule.verify(b, b.players[0], new Position(8, 0));
           });
@@ -141,7 +141,7 @@ public class OneBoxByStepTest {
         } catch (RuleViolated e) {
             Assertions.fail("rule violated");
         }
-        PlayerRule playerRule = new OneBoxByStep();
+        PlayerRule playerRule = new IllegalMovement();
         Assertions.assertThrows(RuleViolated.class, () -> {
             playerRule.verify(b, b.players[0], new Position(16, 8));
           });
@@ -161,9 +161,89 @@ public class OneBoxByStepTest {
         } catch (RuleViolated e) {
             Assertions.fail("rule violated");
         }
-        PlayerRule playerRule = new OneBoxByStep();
+        PlayerRule playerRule = new IllegalMovement();
         Assertions.assertThrows(RuleViolated.class, () -> {
             playerRule.verify(b, b.players[0], new Position(8, 16));
+          });
+    }
+
+    @Test
+    public void testVerify9(){
+        Board b = new Board();
+        Player[] p = {new Player("Humain", "Nico", 0, Color.Rouge, new Pawn()), new Player("Ordinateur", "Ordi1", 1, Color.Rouge, new Pawn()), new Player("Humain", "Alex", 2, Color.Rouge, new Pawn()), new Player("Ordinateur", "Ordi2", 3, Color.Rouge, new Pawn())};
+        b.setPlayer(p);
+        b.createBoard();
+        try {
+            b.movePawnOnBoard(b.players[0], new Position(2, 8));
+            b.movePawnOnBoard(b.players[0], new Position(4, 8));
+            b.movePawnOnBoard(b.players[0], new Position(6, 8));
+            b.movePawnOnBoard(b.players[0], new Position(8, 8));
+        } catch (RuleViolated e) {
+            Assertions.fail("rule violated");
+        }
+        PlayerRule playerRule = new IllegalMovement();
+        Assertions.assertThrows(RuleViolated.class, () -> {
+            playerRule.verify(b, b.players[0], new Position(10, 6));
+          });
+    }
+
+    @Test
+    public void testVerify10(){
+        Board b = new Board();
+        Player[] p = {new Player("Humain", "Nico", 0, Color.Rouge, new Pawn()), new Player("Ordinateur", "Ordi1", 1, Color.Rouge, new Pawn()), new Player("Humain", "Alex", 2, Color.Rouge, new Pawn()), new Player("Ordinateur", "Ordi2", 3, Color.Rouge, new Pawn())};
+        b.setPlayer(p);
+        b.createBoard();
+        try {
+            b.movePawnOnBoard(b.players[0], new Position(2, 8));
+            b.movePawnOnBoard(b.players[0], new Position(4, 8));
+            b.movePawnOnBoard(b.players[0], new Position(6, 8));
+            b.movePawnOnBoard(b.players[0], new Position(8, 8));
+        } catch (RuleViolated e) {
+            Assertions.fail("rule violated");
+        }
+        PlayerRule playerRule = new IllegalMovement();
+        Assertions.assertThrows(RuleViolated.class, () -> {
+            playerRule.verify(b, b.players[0], new Position(10, 10));
+          });
+    }
+
+    @Test
+    public void testVerify11(){
+        Board b = new Board();
+        Player[] p = {new Player("Humain", "Nico", 0, Color.Rouge, new Pawn()), new Player("Ordinateur", "Ordi1", 1, Color.Rouge, new Pawn()), new Player("Humain", "Alex", 2, Color.Rouge, new Pawn()), new Player("Ordinateur", "Ordi2", 3, Color.Rouge, new Pawn())};
+        b.setPlayer(p);
+        b.createBoard();
+        try {
+            b.movePawnOnBoard(b.players[0], new Position(2, 8));
+            b.movePawnOnBoard(b.players[0], new Position(4, 8));
+            b.movePawnOnBoard(b.players[0], new Position(6, 8));
+            b.movePawnOnBoard(b.players[0], new Position(8, 8));
+        } catch (RuleViolated e) {
+            Assertions.fail("rule violated");
+        }
+        PlayerRule playerRule = new IllegalMovement();
+        Assertions.assertThrows(RuleViolated.class, () -> {
+            playerRule.verify(b, b.players[0], new Position(6, 10));
+          });
+    }
+
+    @Test
+    public void testVerify12(){
+        Board b = new Board();
+        Player[] p = {new Player("Humain", "Nico", 0, Color.Rouge, new Pawn()), new Player("Ordinateur", "Ordi1", 1, Color.Rouge, new Pawn()), new Player("Humain", "Alex", 2, Color.Rouge, new Pawn()), new Player("Ordinateur", "Ordi2", 3, Color.Rouge, new Pawn())};
+        b.setPlayer(p);
+        b.createBoard();
+        try {
+            b.movePawnOnBoard(b.players[0], new Position(2, 8));
+            b.movePawnOnBoard(b.players[0], new Position(4, 8));
+            b.movePawnOnBoard(b.players[0], new Position(6, 8));
+            b.movePawnOnBoard(b.players[0], new Position(8, 8));
+        } catch (RuleViolated e) {
+            Assertions.fail("rule violated");
+        }
+        PlayerRule playerRule = new IllegalMovement();
+        Assertions.assertThrows(RuleViolated.class, () -> {
+            playerRule.verify(b, b.players[0], new Position(6, 6));
           });
     }
 }

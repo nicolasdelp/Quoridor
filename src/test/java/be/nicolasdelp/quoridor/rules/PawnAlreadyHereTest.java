@@ -95,6 +95,7 @@ public class PawnAlreadyHereTest {
             b.movePawnOnBoard(b.players[0], new Position(8, 8));
             b.movePawnOnBoard(b.players[1], new Position(14, 8));
             b.movePawnOnBoard(b.players[1], new Position(12, 8));
+            b.movePawnOnBoard(b.players[1], new Position(10, 8));
             b.movePawnOnBoard(b.players[1], new Position(10, 10));
             b.movePawnOnBoard(b.players[1], new Position(8, 10));
         } catch (RuleViolated e) {
