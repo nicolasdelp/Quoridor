@@ -14,7 +14,7 @@ public class Board {
     private final Position[] startPosition = { new Position(0, 8), new Position(16, 8), new Position(8, 0), new Position(8, 16) }; //les 4 cases de depart possible
     public Player[] players; //la liste des joueurs
     private Box[][] boardBoxes; //stockage dans un tableau des Box
-    private PlayerRule[] playerRules = {new PlayerIsInBounds(), new WallBlocksPawn(), new PawnAlreadyHere(), new OneBoxByStep()};
+    private PlayerRule[] playerRules = {new PlayerIsInBounds(), new WallBlocksPawn(), new PawnAlreadyHere(), new OneBoxByStep(), new IsAWallBox()};
     private WallRule[] wallRules = {};
 
     /**
@@ -115,9 +115,8 @@ public class Board {
             playerRules[i].verify(this, player, position); //Vérifie si il n'y a pas d'exceptions
         }
         // if(Position.getX() >= this.boardBoxes.length) //TO DO
-        //     throw new IllegalArgumentException("Cette case est une case pour mur !");
-        // if(Position.getX() >= this.boardBoxes.length) //TO DO
         //     throw new IllegalArgumentException("Vous ne pouvez avancer que vers le haut, le bas, la droite et la gauche sauf si vous êtes bloqué !");
+
         Position old = player.getPawn().getPosition(); //On recupere l'ancienne position du pion 
         boardBoxes[old.getX()][old.getY()].removeObject(); //On nettoie l'ancienne case
         player.movePawn(position); //On bouge le pion
