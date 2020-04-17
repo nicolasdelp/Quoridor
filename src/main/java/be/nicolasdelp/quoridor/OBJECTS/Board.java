@@ -14,13 +14,12 @@ public class Board {
     private final Position[] startPosition = { new Position(0, 8), new Position(16, 8), new Position(8, 0), new Position(8, 16) }; //les 4 cases de depart possible
     public Player[] players; //la liste des joueurs
     private Box[][] boardBoxes; //stockage dans un tableau des Box
-    private PlayerRule[] playerRules = {new PlayerIsInBounds()};
-    private WallRule[] wallRules = {new WallBlocksPawn()};
+    private PlayerRule[] playerRules = {new PlayerIsInBounds(), new WallBlocksPawn(), new PawnAlreadyHere(), new OneBoxByStep()};
+    private WallRule[] wallRules = {};
 
     /**
      * Constructeur
      *
-     * @param players la liste des joueurs
      */
     public Board() {
 
@@ -58,9 +57,9 @@ public class Board {
      */
     public Player getAPlayer(int ID){
         Player res = null;
-        for(int i=0; i<players.length; i++){
+        for(int i=0; i<this.players.length; i++){
             if(players[i].getID() == ID){
-                res = players[i];
+                res = this.players[i];
             }
         }
         return res;
@@ -90,7 +89,7 @@ public class Board {
     public void createBoard() {
         if(!((this.players.length == 2) || (this.players.length == 4))) 
             throw new IllegalArgumentException("Il ne peux y avoir que 2 ou 4 joueurs !");
-        this.boardBoxes = new Box[(this.boardSize * 2) - 1][(this.boardSize * 2) - 1]; // Cree un tableau 17x17 de Box
+        this.boardBoxes = new Box[(2*this.boardSize) - 1][(2*this.boardSize) - 1]; // Cree un tableau 17x17 de Box
         for (int i = 0; i < this.boardBoxes.length; i++) {
             for (int j = 0; j < this.boardBoxes.length; j++) {
                 this.boardBoxes[i][j] = new Box(new Position(i, j));
@@ -101,7 +100,7 @@ public class Board {
         for (int i = 0; i < this.players.length; i++) {
             this.players[i].setWalls(this.totalWall / this.players.length); // donne a chaque joueur ses murs de depart (20/nmbr de joueurs)
             this.players[i].movePawn(this.startPosition[i]); // mets chaque pion a sa position de depart
-            this.boardBoxes[this.startPosition[i].getX()][this.startPosition[i].getX()].setObject(players[i].getPawn());
+            this.boardBoxes[this.startPosition[i].getX()][this.startPosition[i].getY()].setObject(players[i].getPawn());
         }
     }
 
@@ -112,19 +111,15 @@ public class Board {
      * @param Position la position
      */
     public void movePawnOnBoard(Player player, Position position) throws RuleViolated{
-        for(int i=0; i<playerRules.length; i++){
-            playerRules[i].verify(this, player, position);
-            wallRules[i].verify(this, player, new Wall(), position);
+        for(int i=0; i<this.playerRules.length; i++){
+            playerRules[i].verify(this, player, position); //Vérifie si il n'y a pas d'exceptions
         }
-        // if(Position.getX() >= this.boardBoxes.length) //TO DO
-        //     throw new IllegalArgumentException("Vous ne pouvez avancez que de 1 case à la fois !");
-        // if(Position.getX() >= this.boardBoxes.length) //TO DO
-        //     throw new IllegalArgumentException("Il y a un pion dans cette case !");
         // if(Position.getX() >= this.boardBoxes.length) //TO DO
         //     throw new IllegalArgumentException("Cette case est une case pour mur !");
         // if(Position.getX() >= this.boardBoxes.length) //TO DO
         //     throw new IllegalArgumentException("Vous ne pouvez avancer que vers le haut, le bas, la droite et la gauche sauf si vous êtes bloqué !");
-        
+        Position old = player.getPawn().getPosition(); //On recupere l'ancienne position du pion 
+        boardBoxes[old.getX()][old.getY()].removeObject(); //On nettoie l'ancienne case
         player.movePawn(position); //On bouge le pion
         boardBoxes[position.getX()][position.getY()].setObject(player.getPawn()); //On assigne à la box d'arrivée qu'un objet est dedans
     }
@@ -134,7 +129,7 @@ public class Board {
      *
      * @param newPosition la position
      */
-    public void setWallOnBoard(Player player, Wall wall, WallDirection direction, Position position) {
+    public void setWallOnBoard(Player player, Wall wall, WallDirection direction, Position position) throws RuleViolated{
         // if(!this.boardBoxes[position.getX()][position.getY()].getisWallBox())
         //     throw new IllegalArgumentException("Ce n'est pas une case pour un mur !");
         // if(direction == WallDirection.Horizontal) {

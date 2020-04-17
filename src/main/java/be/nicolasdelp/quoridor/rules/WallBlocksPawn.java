@@ -2,10 +2,10 @@ package be.nicolasdelp.quoridor.rules;
 
 import be.nicolasdelp.quoridor.objects.*;
 
-public class WallBlocksPawn implements WallRule {
+public class WallBlocksPawn implements PlayerRule {
 
     @Override
-    public void verify(Board board, Player player, Wall wall, Position position) throws RuleViolated{
+    public void verify(Board board, Player player, Position position) throws RuleViolated{
         if(player.getPawn().getPosition().getX()-1 > 0){ //Verifie si on est toujours dans le plateau si on bouge à gauche
             if(board.getBoardBox(new Position(player.getPawn().getPosition().getX()-1, player.getPawn().getPosition().getY())).getisOccuped()){ //Verifie si la case à gauche n'est pas occupée
                 if(player.getPawn().getPosition().getX()-2 == position.getX()){ //Si le joueur veut aller à gauche

@@ -90,6 +90,15 @@ public class Box {
     }
 
     /**
+     * Supprime l'objet de la case
+     * 
+     */
+    public void removeObject() {
+        this.object = null;
+        this.isOccuped = false;
+    }
+
+    /**
      * Verifie si le nombre est impair
      * 
      * @param x un entier
