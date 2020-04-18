@@ -289,7 +289,7 @@ public class IllegalMovemenTest {
             b.movePawnOnBoard(b.players[1], new Position(12, 8));
             b.movePawnOnBoard(b.players[1], new Position(10, 8));
             b.movePawnOnBoard(b.players[1], new Position(8, 8));
-            b.setWallOnBoard(b.players[0], b.players[0].getWalls()[0], WallDirection.Vertical, new Position(8, 5));
+            b.setWallOnBoard(b.players[0], b.players[0].getWalls()[0], WallDirection.Horizontal, new Position(8, 5));
         } catch (RuleViolated e) {
             Assertions.fail("rule violated");
         }

@@ -1,5 +1,8 @@
 package be.nicolasdelp.quoridor.gui;
 
+import be.nicolasdelp.quoridor.objects.*;
+import be.nicolasdelp.quoridor.rules.*;
+
 import java.net.URL;
 import java.util.ResourceBundle;
 
