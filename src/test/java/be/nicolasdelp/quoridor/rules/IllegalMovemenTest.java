@@ -258,15 +258,18 @@ public class IllegalMovemenTest {
             b.movePawnOnBoard(b.players[0], new Position(4, 8));
             b.movePawnOnBoard(b.players[0], new Position(6, 8));
             b.movePawnOnBoard(b.players[0], new Position(8, 8));
+            b.movePawnOnBoard(b.players[0], new Position(8, 6));
             b.movePawnOnBoard(b.players[1], new Position(14, 8));
             b.movePawnOnBoard(b.players[1], new Position(12, 8));
             b.movePawnOnBoard(b.players[1], new Position(10, 8));
+            b.movePawnOnBoard(b.players[1], new Position(8, 8));
+            b.setWallOnBoard(b.players[0], b.players[0].getWalls()[0], WallDirection.Vertical, new Position(8, 5));
         } catch (RuleViolated e) {
             Assertions.fail("rule violated");
         }
         PlayerRule playerRule = new IllegalMovement();
         Assertions.assertThrows(RuleViolated.class, () -> {
-            playerRule.verify(b, b.players[0], new Position(12, 8));
+            playerRule.verify(b, b.players[1], new Position(8, 4));
           });
     }
 
@@ -281,15 +284,18 @@ public class IllegalMovemenTest {
             b.movePawnOnBoard(b.players[0], new Position(4, 8));
             b.movePawnOnBoard(b.players[0], new Position(6, 8));
             b.movePawnOnBoard(b.players[0], new Position(8, 8));
+            b.movePawnOnBoard(b.players[0], new Position(8, 6));
             b.movePawnOnBoard(b.players[1], new Position(14, 8));
             b.movePawnOnBoard(b.players[1], new Position(12, 8));
             b.movePawnOnBoard(b.players[1], new Position(10, 8));
+            b.movePawnOnBoard(b.players[1], new Position(8, 8));
+            b.setWallOnBoard(b.players[0], b.players[0].getWalls()[0], WallDirection.Vertical, new Position(8, 5));
         } catch (RuleViolated e) {
             Assertions.fail("rule violated");
         }
         PlayerRule playerRule = new IllegalMovement();
         Assertions.assertThrows(RuleViolated.class, () -> {
-            playerRule.verify(b, b.players[1], new Position(6, 8));
+            playerRule.verify(b, b.players[1], new Position(10, 6));
           });
     }
 
