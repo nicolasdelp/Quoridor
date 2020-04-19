@@ -104,6 +104,7 @@ public class Player {
      */
     public void setWalls(int walls) {
         this.walls = new Wall[walls];
+        this.wallIndex = walls;
         for(int i=0; i<walls; i++){
             this.walls[i] = new Wall();
         }
@@ -146,13 +147,13 @@ public class Player {
     }
 
     /**
-     * Met un mur à une position
+     * Met un mur à une position sur le plateau
      *
      * @param Position la position
      */
-    public void moveWall(Wall wall, WallDirection direction, Position Position) {
-        wall.setWallDirection(direction);
-        wall.setPosition(Position);
-        this.wallIndex++;
+    public void moveWall(WallDirection direction, Position Position) {
+        this.walls[this.wallIndex].setWallDirection(direction);
+        this.walls[this.wallIndex].setPosition(Position);
+        this.wallIndex--;
     }
 }

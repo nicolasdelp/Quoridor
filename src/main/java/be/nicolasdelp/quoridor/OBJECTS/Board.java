@@ -14,8 +14,9 @@ public class Board {
     private final Position[] startPosition = { new Position(0, 8), new Position(16, 8), new Position(8, 0), new Position(8, 16) }; //les 4 cases de depart possible
     public Player[] players; //la liste des joueurs
     private Box[][] boardBoxes; //stockage dans un tableau des Box
-    private PlayerRule[] playerRules = {new PlayerIsInBounds(), new IllegalMovement(), new WallBlocksPawn(), new PawnAlreadyHere(), new IsAWallBox()};
-    private WallRule[] wallRules = {};
+    private PlayerRule[] playerRules = {new PlayerIsInBounds(), new WallBlocksPawn(), new IllegalMovement(), new PawnAlreadyHere(), new IsAWallBox()};
+    private WallRule[] wallRules = {new IsAPawnBox(), new WallAlreadyHere()};
+    private int currentIDPlayer = 0;
 
     /**
      * Constructeur
@@ -31,15 +32,6 @@ public class Board {
      */
     public Box[][] getBoardBoxes(){
         return this.boardBoxes;
-    }
-
-    /**
-     * Accesseur d'une box en position position
-     *
-     * @param position une position
-     */
-    public Box getBoardBox(Position position){
-        return this.boardBoxes[position.getX()][position.getY()];
     }
 
     /**
@@ -82,6 +74,15 @@ public class Board {
         return boardBoxes[0].length;
     }
 
+    public int getcurrentIDPlayer(){
+        return this.currentIDPlayer;
+    }
+
+    public void nextPlayer(){
+        this.currentIDPlayer++;
+        this.currentIDPlayer = this.currentIDPlayer%4;
+    }
+
     /**
      * Création du plateau de jeu
      *
@@ -114,9 +115,6 @@ public class Board {
         for(int i=0; i<this.playerRules.length; i++){
             playerRules[i].verify(this, player, position); //Vérifie si il n'y a pas d'exceptions
         }
-        // if(Position.getX() >= this.boardBoxes.length) //TO DO
-        //     throw new IllegalArgumentException("Vous ne pouvez avancer que vers le haut, le bas, la droite et la gauche sauf si vous êtes bloqué !");
-
         Position old = player.getPawn().getPosition(); //On recupere l'ancienne position du pion 
         boardBoxes[old.getX()][old.getY()].removeObject(); //On nettoie l'ancienne case
         player.movePawn(position); //On bouge le pion
@@ -129,20 +127,24 @@ public class Board {
      * @param newPosition la position
      */
     public void setWallOnBoard(Player player, Wall wall, WallDirection direction, Position position) throws RuleViolated{
-        // if(!this.boardBoxes[position.getX()][position.getY()].getisWallBox())
-        //     throw new IllegalArgumentException("Ce n'est pas une case pour un mur !");
-        // if(direction == WallDirection.Horizontal) {
-        //     if(this.boardBoxes[position.getX()][position.getY()].getisOccuped() || this.boardBoxes[position.getX()-1][position.getY()].getisOccuped() || this.boardBoxes[position.getX()+1][position.getY()].getisOccuped()) 
-        //         throw new IllegalArgumentException("Il y a déjà un mur dans cette case !");
-        // }
-        // if(direction == WallDirection.Vertical) {
-        //     if(this.boardBoxes[position.getX()][position.getY()].getisOccuped() || this.boardBoxes[position.getX()][position.getY()-1].getisOccuped() || this.boardBoxes[position.getX()][position.getY()+1].getisOccuped()) 
-        //         throw new IllegalArgumentException("Il y a déjà un mur dans cette case !");
-        // }
-        // if(direction == WallDirection.Vertical) //////////////////////////////////////////TO DO
+        for(int i=0; i<this.wallRules.length; i++){
+            wallRules[i].verify(this, player, wall, position); //Vérifie si il n'y a pas d'exceptions
+        }
+
+
+        // if(direction == WallDirection.Vertical) //////////////////////////////////////////TO DO     A*
         //     throw new IllegalArgumentException("Vous ne pouvez pas placer ce mur vous bloquer un joueur !"); 
 
-        player.moveWall(wall, direction, position);//Si tout se passe bien
-        boardBoxes[position.getX()][position.getY()].setObject(player.getWalls()[0]);
+        player.moveWall(direction, position); //On change le sens et la position du mur dans l'inventaire du joueur
+        if(direction == WallDirection.Horizontal){ //Si il est horizontal on remplie les case a sa droite et a sa gauche
+            boardBoxes[position.getX()][position.getY()].setObject(wall);
+            boardBoxes[position.getX()+1][position.getY()].setObject(wall);
+            boardBoxes[position.getX()-1][position.getY()].setObject(wall);
+        }
+        if(direction == WallDirection.Vertical){ //Si il est vertical on remplie les case au dessus et en dessous
+            boardBoxes[position.getX()][position.getY()].setObject(wall);
+            boardBoxes[position.getX()][position.getY()+1].setObject(wall);
+            boardBoxes[position.getX()][position.getY()-1].setObject(wall);
+        }
     }
 }

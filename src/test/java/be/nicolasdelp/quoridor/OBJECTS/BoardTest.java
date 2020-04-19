@@ -21,7 +21,7 @@ public class BoardTest {
         Player[] p = {new Player("Humain", "Nico", 0, Color.Rouge, new Pawn()), new Player("Ordinateur", "Ordi", 1, Color.Rouge, new Pawn())};
         b.setPlayer(p);
         b.createBoard();
-        assertEquals(b.getBoardBox(new Position(10, 4)).getisPawnBox(), true);
+        assertEquals(b.getBoardBoxes()[10][4].getisPawnBox(), true);
     }
 
     @Test
@@ -30,7 +30,7 @@ public class BoardTest {
         Player[] p = {new Player("Humain", "Nico", 0, Color.Rouge, new Pawn()), new Player("Ordinateur", "Ordi", 1, Color.Rouge, new Pawn())};
         b.setPlayer(p);
         b.createBoard();
-        assertEquals(b.getBoardBox(new Position(3, 5)).getisPawnBox(), false);
+        assertEquals(b.getBoardBoxes()[3][5].getisPawnBox(), false);
     }
 
     @Test
@@ -39,7 +39,7 @@ public class BoardTest {
         Player[] p = {new Player("Humain", "Nico", 0, Color.Rouge, new Pawn()), new Player("Ordinateur", "Ordi", 1, Color.Rouge, new Pawn())};
         b.setPlayer(p);
         b.createBoard();
-        assertEquals(b.getBoardBox(new Position(16, 16)).getisPawnBox(), true);
+        assertEquals(b.getBoardBoxes()[16][16].getisPawnBox(), true);
     }
 
     @Test
@@ -48,7 +48,7 @@ public class BoardTest {
         Player[] p = {new Player("Humain", "Nico", 0, Color.Rouge, new Pawn()), new Player("Ordinateur", "Ordi", 1, Color.Rouge, new Pawn())};
         b.setPlayer(p);
         b.createBoard();
-        assertEquals(b.getBoardBox(new Position(0, 0)).getisPawnBox(), true);
+        assertEquals(b.getBoardBoxes()[0][0].getisPawnBox(), true);
     }
 
     @Test
