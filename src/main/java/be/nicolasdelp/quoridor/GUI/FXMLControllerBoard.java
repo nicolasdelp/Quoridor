@@ -51,6 +51,15 @@ public class FXMLControllerBoard implements Initializable {
         oldImageView[2] = box0800;
         box0816.setImage(getColor(board.players[3]));
         oldImageView[3] = box0816;
+        try { //TEST AVEC UN MUR
+            board.setWallOnBoard(board.players[0], board.players[0].getWalls()[0], WallDirection.Horizontal, new Position(8, 1));
+        } catch (Exception e) {
+            Alert alert = new Alert(AlertType.ERROR);
+            alert.setTitle("Deplacement impossible");
+            alert.setHeaderText(null);
+            alert.setContentText(e.getMessage());
+            alert.showAndWait();
+        }
     }
 
     @FXML
@@ -1012,47 +1021,146 @@ public class FXMLControllerBoard implements Initializable {
 
     @FXML
     void box1000Clicked(MouseEvent event) {
-
+        try {
+            board.movePawnOnBoard(board.players[this.currentPlayer], new Position(10, 0)); //On vérifie le mouvement est possible
+            oldImageView[this.currentPlayer].setImage(imageCase); //On remet la case vide
+            box1000.setImage(getColor(board.players[this.currentPlayer])); //On met dans la case le pion selon la couleur du player
+            oldImageView[this.currentPlayer] = box1000; //On enregistre la case actuel pour la vider au prochain coup
+        } catch (RuleViolated e) {
+            Alert alert = new Alert(AlertType.ERROR);
+            alert.setTitle("Deplacement impossible");
+            alert.setHeaderText(null);
+            alert.setContentText(e.getMessage());
+            alert.showAndWait();
+        }
     }
 
     @FXML
     void box1002Clicked(MouseEvent event) {
-
+        try {
+            board.movePawnOnBoard(board.players[this.currentPlayer], new Position(10, 2)); //On vérifie le mouvement est possible
+            oldImageView[this.currentPlayer].setImage(imageCase); //On remet la case vide
+            box1002.setImage(getColor(board.players[this.currentPlayer])); //On met dans la case le pion selon la couleur du player
+            oldImageView[this.currentPlayer] = box1002; //On enregistre la case actuel pour la vider au prochain coup
+        } catch (RuleViolated e) {
+            Alert alert = new Alert(AlertType.ERROR);
+            alert.setTitle("Deplacement impossible");
+            alert.setHeaderText(null);
+            alert.setContentText(e.getMessage());
+            alert.showAndWait();
+        }
     }
 
     @FXML
     void box1004Clicked(MouseEvent event) {
-
+        try {
+            board.movePawnOnBoard(board.players[this.currentPlayer], new Position(10, 4)); //On vérifie le mouvement est possible
+            oldImageView[this.currentPlayer].setImage(imageCase); //On remet la case vide
+            box1004.setImage(getColor(board.players[this.currentPlayer])); //On met dans la case le pion selon la couleur du player
+            oldImageView[this.currentPlayer] = box1004; //On enregistre la case actuel pour la vider au prochain coup
+        } catch (RuleViolated e) {
+            Alert alert = new Alert(AlertType.ERROR);
+            alert.setTitle("Deplacement impossible");
+            alert.setHeaderText(null);
+            alert.setContentText(e.getMessage());
+            alert.showAndWait();
+        }
     }
 
     @FXML
     void box1006Clicked(MouseEvent event) {
-
+        try {
+            board.movePawnOnBoard(board.players[this.currentPlayer], new Position(10, 6)); //On vérifie le mouvement est possible
+            oldImageView[this.currentPlayer].setImage(imageCase); //On remet la case vide
+            box1006.setImage(getColor(board.players[this.currentPlayer])); //On met dans la case le pion selon la couleur du player
+            oldImageView[this.currentPlayer] = box1006; //On enregistre la case actuel pour la vider au prochain coup
+        } catch (RuleViolated e) {
+            Alert alert = new Alert(AlertType.ERROR);
+            alert.setTitle("Deplacement impossible");
+            alert.setHeaderText(null);
+            alert.setContentText(e.getMessage());
+            alert.showAndWait();
+        }
     }
 
     @FXML
     void box1008Clicked(MouseEvent event) {
-
+        try {
+            board.movePawnOnBoard(board.players[this.currentPlayer], new Position(10, 8)); //On vérifie le mouvement est possible
+            oldImageView[this.currentPlayer].setImage(imageCase); //On remet la case vide
+            box1008.setImage(getColor(board.players[this.currentPlayer])); //On met dans la case le pion selon la couleur du player
+            oldImageView[this.currentPlayer] = box1008; //On enregistre la case actuel pour la vider au prochain coup
+        } catch (RuleViolated e) {
+            Alert alert = new Alert(AlertType.ERROR);
+            alert.setTitle("Deplacement impossible");
+            alert.setHeaderText(null);
+            alert.setContentText(e.getMessage());
+            alert.showAndWait();
+        }
     }
 
     @FXML
     void box1010Clicked(MouseEvent event) {
-
+        try {
+            board.movePawnOnBoard(board.players[this.currentPlayer], new Position(10, 10)); //On vérifie le mouvement est possible
+            oldImageView[this.currentPlayer].setImage(imageCase); //On remet la case vide
+            box1010.setImage(getColor(board.players[this.currentPlayer])); //On met dans la case le pion selon la couleur du player
+            oldImageView[this.currentPlayer] = box1010; //On enregistre la case actuel pour la vider au prochain coup
+        } catch (RuleViolated e) {
+            Alert alert = new Alert(AlertType.ERROR);
+            alert.setTitle("Deplacement impossible");
+            alert.setHeaderText(null);
+            alert.setContentText(e.getMessage());
+            alert.showAndWait();
+        }
     }
 
     @FXML
     void box1012Clicked(MouseEvent event) {
-
+        try {
+            board.movePawnOnBoard(board.players[this.currentPlayer], new Position(10, 12)); //On vérifie le mouvement est possible
+            oldImageView[this.currentPlayer].setImage(imageCase); //On remet la case vide
+            box1012.setImage(getColor(board.players[this.currentPlayer])); //On met dans la case le pion selon la couleur du player
+            oldImageView[this.currentPlayer] = box1012; //On enregistre la case actuel pour la vider au prochain coup
+        } catch (RuleViolated e) {
+            Alert alert = new Alert(AlertType.ERROR);
+            alert.setTitle("Deplacement impossible");
+            alert.setHeaderText(null);
+            alert.setContentText(e.getMessage());
+            alert.showAndWait();
+        }
     }
 
     @FXML
     void box1014Clicked(MouseEvent event) {
-
+        try {
+            board.movePawnOnBoard(board.players[this.currentPlayer], new Position(10, 14)); //On vérifie le mouvement est possible
+            oldImageView[this.currentPlayer].setImage(imageCase); //On remet la case vide
+            box1014.setImage(getColor(board.players[this.currentPlayer])); //On met dans la case le pion selon la couleur du player
+            oldImageView[this.currentPlayer] = box1014; //On enregistre la case actuel pour la vider au prochain coup
+        } catch (RuleViolated e) {
+            Alert alert = new Alert(AlertType.ERROR);
+            alert.setTitle("Deplacement impossible");
+            alert.setHeaderText(null);
+            alert.setContentText(e.getMessage());
+            alert.showAndWait();
+        }
     }
 
     @FXML
     void box1016Clicked(MouseEvent event) {
-
+        try {
+            board.movePawnOnBoard(board.players[this.currentPlayer], new Position(10, 16)); //On vérifie le mouvement est possible
+            oldImageView[this.currentPlayer].setImage(imageCase); //On remet la case vide
+            box1016.setImage(getColor(board.players[this.currentPlayer])); //On met dans la case le pion selon la couleur du player
+            oldImageView[this.currentPlayer] = box1016; //On enregistre la case actuel pour la vider au prochain coup
+        } catch (RuleViolated e) {
+            Alert alert = new Alert(AlertType.ERROR);
+            alert.setTitle("Deplacement impossible");
+            alert.setHeaderText(null);
+            alert.setContentText(e.getMessage());
+            alert.showAndWait();
+        }
     }
 
     @FXML
@@ -1097,47 +1205,146 @@ public class FXMLControllerBoard implements Initializable {
 
     @FXML
     void box1200Clicked(MouseEvent event) {
-
+        try {
+            board.movePawnOnBoard(board.players[this.currentPlayer], new Position(12, 0)); //On vérifie le mouvement est possible
+            oldImageView[this.currentPlayer].setImage(imageCase); //On remet la case vide
+            box1200.setImage(getColor(board.players[this.currentPlayer])); //On met dans la case le pion selon la couleur du player
+            oldImageView[this.currentPlayer] = box1200; //On enregistre la case actuel pour la vider au prochain coup
+        } catch (RuleViolated e) {
+            Alert alert = new Alert(AlertType.ERROR);
+            alert.setTitle("Deplacement impossible");
+            alert.setHeaderText(null);
+            alert.setContentText(e.getMessage());
+            alert.showAndWait();
+        }
     }
 
     @FXML
     void box1202Clicked(MouseEvent event) {
-
+        try {
+            board.movePawnOnBoard(board.players[this.currentPlayer], new Position(12, 2)); //On vérifie le mouvement est possible
+            oldImageView[this.currentPlayer].setImage(imageCase); //On remet la case vide
+            box1202.setImage(getColor(board.players[this.currentPlayer])); //On met dans la case le pion selon la couleur du player
+            oldImageView[this.currentPlayer] = box1202; //On enregistre la case actuel pour la vider au prochain coup
+        } catch (RuleViolated e) {
+            Alert alert = new Alert(AlertType.ERROR);
+            alert.setTitle("Deplacement impossible");
+            alert.setHeaderText(null);
+            alert.setContentText(e.getMessage());
+            alert.showAndWait();
+        }
     }
 
     @FXML
     void box1204Clicked(MouseEvent event) {
-
+        try {
+            board.movePawnOnBoard(board.players[this.currentPlayer], new Position(12, 4)); //On vérifie le mouvement est possible
+            oldImageView[this.currentPlayer].setImage(imageCase); //On remet la case vide
+            box1204.setImage(getColor(board.players[this.currentPlayer])); //On met dans la case le pion selon la couleur du player
+            oldImageView[this.currentPlayer] = box1204; //On enregistre la case actuel pour la vider au prochain coup
+        } catch (RuleViolated e) {
+            Alert alert = new Alert(AlertType.ERROR);
+            alert.setTitle("Deplacement impossible");
+            alert.setHeaderText(null);
+            alert.setContentText(e.getMessage());
+            alert.showAndWait();
+        }
     }
 
     @FXML
     void box1206Clicked(MouseEvent event) {
-
+        try {
+            board.movePawnOnBoard(board.players[this.currentPlayer], new Position(12, 6)); //On vérifie le mouvement est possible
+            oldImageView[this.currentPlayer].setImage(imageCase); //On remet la case vide
+            box1206.setImage(getColor(board.players[this.currentPlayer])); //On met dans la case le pion selon la couleur du player
+            oldImageView[this.currentPlayer] = box1206; //On enregistre la case actuel pour la vider au prochain coup
+        } catch (RuleViolated e) {
+            Alert alert = new Alert(AlertType.ERROR);
+            alert.setTitle("Deplacement impossible");
+            alert.setHeaderText(null);
+            alert.setContentText(e.getMessage());
+            alert.showAndWait();
+        }
     }
 
     @FXML
     void box1208Clicked(MouseEvent event) {
-
+        try {
+            board.movePawnOnBoard(board.players[this.currentPlayer], new Position(12, 8)); //On vérifie le mouvement est possible
+            oldImageView[this.currentPlayer].setImage(imageCase); //On remet la case vide
+            box1208.setImage(getColor(board.players[this.currentPlayer])); //On met dans la case le pion selon la couleur du player
+            oldImageView[this.currentPlayer] = box1208; //On enregistre la case actuel pour la vider au prochain coup
+        } catch (RuleViolated e) {
+            Alert alert = new Alert(AlertType.ERROR);
+            alert.setTitle("Deplacement impossible");
+            alert.setHeaderText(null);
+            alert.setContentText(e.getMessage());
+            alert.showAndWait();
+        }
     }
 
     @FXML
     void box1210Clicked(MouseEvent event) {
-
+        try {
+            board.movePawnOnBoard(board.players[this.currentPlayer], new Position(12, 10)); //On vérifie le mouvement est possible
+            oldImageView[this.currentPlayer].setImage(imageCase); //On remet la case vide
+            box1210.setImage(getColor(board.players[this.currentPlayer])); //On met dans la case le pion selon la couleur du player
+            oldImageView[this.currentPlayer] = box1210; //On enregistre la case actuel pour la vider au prochain coup
+        } catch (RuleViolated e) {
+            Alert alert = new Alert(AlertType.ERROR);
+            alert.setTitle("Deplacement impossible");
+            alert.setHeaderText(null);
+            alert.setContentText(e.getMessage());
+            alert.showAndWait();
+        }
     }
 
     @FXML
     void box1212Clicked(MouseEvent event) {
-
+        try {
+            board.movePawnOnBoard(board.players[this.currentPlayer], new Position(12, 12)); //On vérifie le mouvement est possible
+            oldImageView[this.currentPlayer].setImage(imageCase); //On remet la case vide
+            box1212.setImage(getColor(board.players[this.currentPlayer])); //On met dans la case le pion selon la couleur du player
+            oldImageView[this.currentPlayer] = box1212; //On enregistre la case actuel pour la vider au prochain coup
+        } catch (RuleViolated e) {
+            Alert alert = new Alert(AlertType.ERROR);
+            alert.setTitle("Deplacement impossible");
+            alert.setHeaderText(null);
+            alert.setContentText(e.getMessage());
+            alert.showAndWait();
+        }
     }
 
     @FXML
     void box1214Clicked(MouseEvent event) {
-
+        try {
+            board.movePawnOnBoard(board.players[this.currentPlayer], new Position(12, 14)); //On vérifie le mouvement est possible
+            oldImageView[this.currentPlayer].setImage(imageCase); //On remet la case vide
+            box1214.setImage(getColor(board.players[this.currentPlayer])); //On met dans la case le pion selon la couleur du player
+            oldImageView[this.currentPlayer] = box1214; //On enregistre la case actuel pour la vider au prochain coup
+        } catch (RuleViolated e) {
+            Alert alert = new Alert(AlertType.ERROR);
+            alert.setTitle("Deplacement impossible");
+            alert.setHeaderText(null);
+            alert.setContentText(e.getMessage());
+            alert.showAndWait();
+        }
     }
 
     @FXML
     void box1216Clicked(MouseEvent event) {
-
+        try {
+            board.movePawnOnBoard(board.players[this.currentPlayer], new Position(12, 16)); //On vérifie le mouvement est possible
+            oldImageView[this.currentPlayer].setImage(imageCase); //On remet la case vide
+            box1216.setImage(getColor(board.players[this.currentPlayer])); //On met dans la case le pion selon la couleur du player
+            oldImageView[this.currentPlayer] = box1216; //On enregistre la case actuel pour la vider au prochain coup
+        } catch (RuleViolated e) {
+            Alert alert = new Alert(AlertType.ERROR);
+            alert.setTitle("Deplacement impossible");
+            alert.setHeaderText(null);
+            alert.setContentText(e.getMessage());
+            alert.showAndWait();
+        }
     }
 
     @FXML
@@ -1182,47 +1389,146 @@ public class FXMLControllerBoard implements Initializable {
 
     @FXML
     void box1400Clicked(MouseEvent event) {
-
+        try {
+            board.movePawnOnBoard(board.players[this.currentPlayer], new Position(14, 0)); //On vérifie le mouvement est possible
+            oldImageView[this.currentPlayer].setImage(imageCase); //On remet la case vide
+            box1400.setImage(getColor(board.players[this.currentPlayer])); //On met dans la case le pion selon la couleur du player
+            oldImageView[this.currentPlayer] = box1400; //On enregistre la case actuel pour la vider au prochain coup
+        } catch (RuleViolated e) {
+            Alert alert = new Alert(AlertType.ERROR);
+            alert.setTitle("Deplacement impossible");
+            alert.setHeaderText(null);
+            alert.setContentText(e.getMessage());
+            alert.showAndWait();
+        }
     }
 
     @FXML
     void box1402Clicked(MouseEvent event) {
-
+        try {
+            board.movePawnOnBoard(board.players[this.currentPlayer], new Position(14, 2)); //On vérifie le mouvement est possible
+            oldImageView[this.currentPlayer].setImage(imageCase); //On remet la case vide
+            box1402.setImage(getColor(board.players[this.currentPlayer])); //On met dans la case le pion selon la couleur du player
+            oldImageView[this.currentPlayer] = box1402; //On enregistre la case actuel pour la vider au prochain coup
+        } catch (RuleViolated e) {
+            Alert alert = new Alert(AlertType.ERROR);
+            alert.setTitle("Deplacement impossible");
+            alert.setHeaderText(null);
+            alert.setContentText(e.getMessage());
+            alert.showAndWait();
+        }
     }
 
     @FXML
     void box1404Clicked(MouseEvent event) {
-
+        try {
+            board.movePawnOnBoard(board.players[this.currentPlayer], new Position(14, 4)); //On vérifie le mouvement est possible
+            oldImageView[this.currentPlayer].setImage(imageCase); //On remet la case vide
+            box1404.setImage(getColor(board.players[this.currentPlayer])); //On met dans la case le pion selon la couleur du player
+            oldImageView[this.currentPlayer] = box1404; //On enregistre la case actuel pour la vider au prochain coup
+        } catch (RuleViolated e) {
+            Alert alert = new Alert(AlertType.ERROR);
+            alert.setTitle("Deplacement impossible");
+            alert.setHeaderText(null);
+            alert.setContentText(e.getMessage());
+            alert.showAndWait();
+        }
     }
 
     @FXML
     void box1406Clicked(MouseEvent event) {
-
+        try {
+            board.movePawnOnBoard(board.players[this.currentPlayer], new Position(14, 6)); //On vérifie le mouvement est possible
+            oldImageView[this.currentPlayer].setImage(imageCase); //On remet la case vide
+            box1406.setImage(getColor(board.players[this.currentPlayer])); //On met dans la case le pion selon la couleur du player
+            oldImageView[this.currentPlayer] = box1406; //On enregistre la case actuel pour la vider au prochain coup
+        } catch (RuleViolated e) {
+            Alert alert = new Alert(AlertType.ERROR);
+            alert.setTitle("Deplacement impossible");
+            alert.setHeaderText(null);
+            alert.setContentText(e.getMessage());
+            alert.showAndWait();
+        }
     }
 
     @FXML
     void box1408Clicked(MouseEvent event) {
-
+        try {
+            board.movePawnOnBoard(board.players[this.currentPlayer], new Position(14, 8)); //On vérifie le mouvement est possible
+            oldImageView[this.currentPlayer].setImage(imageCase); //On remet la case vide
+            box1408.setImage(getColor(board.players[this.currentPlayer])); //On met dans la case le pion selon la couleur du player
+            oldImageView[this.currentPlayer] = box1408; //On enregistre la case actuel pour la vider au prochain coup
+        } catch (RuleViolated e) {
+            Alert alert = new Alert(AlertType.ERROR);
+            alert.setTitle("Deplacement impossible");
+            alert.setHeaderText(null);
+            alert.setContentText(e.getMessage());
+            alert.showAndWait();
+        }
     }
 
     @FXML
     void box1410Clicked(MouseEvent event) {
-
+        try {
+            board.movePawnOnBoard(board.players[this.currentPlayer], new Position(14, 10)); //On vérifie le mouvement est possible
+            oldImageView[this.currentPlayer].setImage(imageCase); //On remet la case vide
+            box1410.setImage(getColor(board.players[this.currentPlayer])); //On met dans la case le pion selon la couleur du player
+            oldImageView[this.currentPlayer] = box1410; //On enregistre la case actuel pour la vider au prochain coup
+        } catch (RuleViolated e) {
+            Alert alert = new Alert(AlertType.ERROR);
+            alert.setTitle("Deplacement impossible");
+            alert.setHeaderText(null);
+            alert.setContentText(e.getMessage());
+            alert.showAndWait();
+        }
     }
 
     @FXML
     void box1412Clicked(MouseEvent event) {
-
+        try {
+            board.movePawnOnBoard(board.players[this.currentPlayer], new Position(14, 12)); //On vérifie le mouvement est possible
+            oldImageView[this.currentPlayer].setImage(imageCase); //On remet la case vide
+            box1412.setImage(getColor(board.players[this.currentPlayer])); //On met dans la case le pion selon la couleur du player
+            oldImageView[this.currentPlayer] = box1412; //On enregistre la case actuel pour la vider au prochain coup
+        } catch (RuleViolated e) {
+            Alert alert = new Alert(AlertType.ERROR);
+            alert.setTitle("Deplacement impossible");
+            alert.setHeaderText(null);
+            alert.setContentText(e.getMessage());
+            alert.showAndWait();
+        }
     }
 
     @FXML
     void box1414Clicked(MouseEvent event) {
-
+        try {
+            board.movePawnOnBoard(board.players[this.currentPlayer], new Position(14, 14)); //On vérifie le mouvement est possible
+            oldImageView[this.currentPlayer].setImage(imageCase); //On remet la case vide
+            box1414.setImage(getColor(board.players[this.currentPlayer])); //On met dans la case le pion selon la couleur du player
+            oldImageView[this.currentPlayer] = box1414; //On enregistre la case actuel pour la vider au prochain coup
+        } catch (RuleViolated e) {
+            Alert alert = new Alert(AlertType.ERROR);
+            alert.setTitle("Deplacement impossible");
+            alert.setHeaderText(null);
+            alert.setContentText(e.getMessage());
+            alert.showAndWait();
+        }
     }
 
     @FXML
     void box1416Clicked(MouseEvent event) {
-
+        try {
+            board.movePawnOnBoard(board.players[this.currentPlayer], new Position(14, 16)); //On vérifie le mouvement est possible
+            oldImageView[this.currentPlayer].setImage(imageCase); //On remet la case vide
+            box1416.setImage(getColor(board.players[this.currentPlayer])); //On met dans la case le pion selon la couleur du player
+            oldImageView[this.currentPlayer] = box1416; //On enregistre la case actuel pour la vider au prochain coup
+        } catch (RuleViolated e) {
+            Alert alert = new Alert(AlertType.ERROR);
+            alert.setTitle("Deplacement impossible");
+            alert.setHeaderText(null);
+            alert.setContentText(e.getMessage());
+            alert.showAndWait();
+        }
     }
 
     @FXML
@@ -1267,46 +1573,145 @@ public class FXMLControllerBoard implements Initializable {
 
     @FXML
     void box1600Clicked(MouseEvent event) {
-
+        try {
+            board.movePawnOnBoard(board.players[this.currentPlayer], new Position(16, 0)); //On vérifie le mouvement est possible
+            oldImageView[this.currentPlayer].setImage(imageCase); //On remet la case vide
+            box1600.setImage(getColor(board.players[this.currentPlayer])); //On met dans la case le pion selon la couleur du player
+            oldImageView[this.currentPlayer] = box1600; //On enregistre la case actuel pour la vider au prochain coup
+        } catch (RuleViolated e) {
+            Alert alert = new Alert(AlertType.ERROR);
+            alert.setTitle("Deplacement impossible");
+            alert.setHeaderText(null);
+            alert.setContentText(e.getMessage());
+            alert.showAndWait();
+        }
     }
 
     @FXML
     void box1602Clicked(MouseEvent event) {
-
+        try {
+            board.movePawnOnBoard(board.players[this.currentPlayer], new Position(16, 2)); //On vérifie le mouvement est possible
+            oldImageView[this.currentPlayer].setImage(imageCase); //On remet la case vide
+            box1602.setImage(getColor(board.players[this.currentPlayer])); //On met dans la case le pion selon la couleur du player
+            oldImageView[this.currentPlayer] = box1602; //On enregistre la case actuel pour la vider au prochain coup
+        } catch (RuleViolated e) {
+            Alert alert = new Alert(AlertType.ERROR);
+            alert.setTitle("Deplacement impossible");
+            alert.setHeaderText(null);
+            alert.setContentText(e.getMessage());
+            alert.showAndWait();
+        }
     }
 
     @FXML
     void box1604Clicked(MouseEvent event) {
-
+        try {
+            board.movePawnOnBoard(board.players[this.currentPlayer], new Position(16, 4)); //On vérifie le mouvement est possible
+            oldImageView[this.currentPlayer].setImage(imageCase); //On remet la case vide
+            box1604.setImage(getColor(board.players[this.currentPlayer])); //On met dans la case le pion selon la couleur du player
+            oldImageView[this.currentPlayer] = box1604; //On enregistre la case actuel pour la vider au prochain coup
+        } catch (RuleViolated e) {
+            Alert alert = new Alert(AlertType.ERROR);
+            alert.setTitle("Deplacement impossible");
+            alert.setHeaderText(null);
+            alert.setContentText(e.getMessage());
+            alert.showAndWait();
+        }
     }
 
     @FXML
     void box1606Clicked(MouseEvent event) {
-
+        try {
+            board.movePawnOnBoard(board.players[this.currentPlayer], new Position(16, 6)); //On vérifie le mouvement est possible
+            oldImageView[this.currentPlayer].setImage(imageCase); //On remet la case vide
+            box1606.setImage(getColor(board.players[this.currentPlayer])); //On met dans la case le pion selon la couleur du player
+            oldImageView[this.currentPlayer] = box1606; //On enregistre la case actuel pour la vider au prochain coup
+        } catch (RuleViolated e) {
+            Alert alert = new Alert(AlertType.ERROR);
+            alert.setTitle("Deplacement impossible");
+            alert.setHeaderText(null);
+            alert.setContentText(e.getMessage());
+            alert.showAndWait();
+        }
     }
 
     @FXML
     void box1608Clicked(MouseEvent event) {
-
+        try {
+            board.movePawnOnBoard(board.players[this.currentPlayer], new Position(16, 8)); //On vérifie le mouvement est possible
+            oldImageView[this.currentPlayer].setImage(imageCase); //On remet la case vide
+            box1608.setImage(getColor(board.players[this.currentPlayer])); //On met dans la case le pion selon la couleur du player
+            oldImageView[this.currentPlayer] = box1608; //On enregistre la case actuel pour la vider au prochain coup
+        } catch (RuleViolated e) {
+            Alert alert = new Alert(AlertType.ERROR);
+            alert.setTitle("Deplacement impossible");
+            alert.setHeaderText(null);
+            alert.setContentText(e.getMessage());
+            alert.showAndWait();
+        }
     }
 
     @FXML
     void box1610Clicked(MouseEvent event) {
-
+        try {
+            board.movePawnOnBoard(board.players[this.currentPlayer], new Position(16, 10)); //On vérifie le mouvement est possible
+            oldImageView[this.currentPlayer].setImage(imageCase); //On remet la case vide
+            box1610.setImage(getColor(board.players[this.currentPlayer])); //On met dans la case le pion selon la couleur du player
+            oldImageView[this.currentPlayer] = box1610; //On enregistre la case actuel pour la vider au prochain coup
+        } catch (RuleViolated e) {
+            Alert alert = new Alert(AlertType.ERROR);
+            alert.setTitle("Deplacement impossible");
+            alert.setHeaderText(null);
+            alert.setContentText(e.getMessage());
+            alert.showAndWait();
+        }
     }
 
     @FXML
     void box1612Clicked(MouseEvent event) {
-
+        try {
+            board.movePawnOnBoard(board.players[this.currentPlayer], new Position(16, 12)); //On vérifie le mouvement est possible
+            oldImageView[this.currentPlayer].setImage(imageCase); //On remet la case vide
+            box1612.setImage(getColor(board.players[this.currentPlayer])); //On met dans la case le pion selon la couleur du player
+            oldImageView[this.currentPlayer] = box1612; //On enregistre la case actuel pour la vider au prochain coup
+        } catch (RuleViolated e) {
+            Alert alert = new Alert(AlertType.ERROR);
+            alert.setTitle("Deplacement impossible");
+            alert.setHeaderText(null);
+            alert.setContentText(e.getMessage());
+            alert.showAndWait();
+        }
     }
 
     @FXML
     void box1614Clicked(MouseEvent event) {
-
+        try {
+            board.movePawnOnBoard(board.players[this.currentPlayer], new Position(16, 14)); //On vérifie le mouvement est possible
+            oldImageView[this.currentPlayer].setImage(imageCase); //On remet la case vide
+            box1614.setImage(getColor(board.players[this.currentPlayer])); //On met dans la case le pion selon la couleur du player
+            oldImageView[this.currentPlayer] = box1614; //On enregistre la case actuel pour la vider au prochain coup
+        } catch (RuleViolated e) {
+            Alert alert = new Alert(AlertType.ERROR);
+            alert.setTitle("Deplacement impossible");
+            alert.setHeaderText(null);
+            alert.setContentText(e.getMessage());
+            alert.showAndWait();
+        }
     }
 
     @FXML
     void box1616Clicked(MouseEvent event) {
-
+        try {
+            board.movePawnOnBoard(board.players[this.currentPlayer], new Position(16, 16)); //On vérifie le mouvement est possible
+            oldImageView[this.currentPlayer].setImage(imageCase); //On remet la case vide
+            box1616.setImage(getColor(board.players[this.currentPlayer])); //On met dans la case le pion selon la couleur du player
+            oldImageView[this.currentPlayer] = box1616; //On enregistre la case actuel pour la vider au prochain coup
+        } catch (RuleViolated e) {
+            Alert alert = new Alert(AlertType.ERROR);
+            alert.setTitle("Deplacement impossible");
+            alert.setHeaderText(null);
+            alert.setContentText(e.getMessage());
+            alert.showAndWait();
+        }
     }
 }
