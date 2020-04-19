@@ -53,6 +53,17 @@ public class FXMLControllerBoard implements Initializable {
         oldImageView[3] = box0816;
         try { //TEST AVEC UN MUR
             board.setWallOnBoard(board.players[0], board.players[0].getWalls()[0], WallDirection.Horizontal, new Position(8, 1));
+            board.setWallOnBoard(board.players[0], board.players[0].getWalls()[0], WallDirection.Horizontal, new Position(9, 1));
+            board.setWallOnBoard(board.players[0], board.players[0].getWalls()[0], WallDirection.Horizontal, new Position(10, 1));
+            final URL URLMurBleu1 = getClass().getResource("../img/mur-vert-1-H.png");  //Image de la partie 1 du mur
+            final Image imageMur1 = new Image(URLMurBleu1.toExternalForm());
+            final URL URLMurBleu2 = getClass().getResource("../img/mur-vert-2-H.png");  //Image de la partie 2 du mur
+            final Image imageMur2 = new Image(URLMurBleu2.toExternalForm());
+            final URL URLMurBleu3 = getClass().getResource("../img/mur-vert-3-H.png");  //Image de la partie 3 du mur
+            final Image imageMur3 = new Image(URLMurBleu3.toExternalForm());
+            box0801.setImage(imageMur1);
+            box0901.setImage(imageMur2);
+            box1001.setImage(imageMur3);
         } catch (Exception e) {
             Alert alert = new Alert(AlertType.ERROR);
             alert.setTitle("Deplacement impossible");
