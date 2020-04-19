@@ -53,24 +53,24 @@ public class IllegalMovement implements PlayerRule {
                     throw new RuleViolated(player, position, board, "Vous ne pouvez avancer que vers le haut, le bas, la droite et la gauche si vous n etes pas bloque !");
                 }
             }
-        } else { ///PROBLEME
-            if(!board.getBoardBoxes()[position.getX()+2][position.getY()].getisOccuped()){
-                if(position.getX() < player.getPawn().getPosition().getX()-2){ //On va en haut a droite
+        } else {
+            if(position.getX() < player.getPawn().getPosition().getX()-2){ //On va en haut a droite
+                if(!board.getBoardBoxes()[position.getX()+2][position.getY()].getisOccuped()){
                     throw new RuleViolated(player, position, board, "Vous ne pouvez avancer que de 1 case a la fois !");
                 }
             }
-            if(!board.getBoardBoxes()[position.getX()-2][position.getY()].getisOccuped()){
-                if(position.getX() > player.getPawn().getPosition().getX()+2){ //On va en haut a droite
+            if(position.getX() > player.getPawn().getPosition().getX()+2){ //On va en haut a droite
+                if(!board.getBoardBoxes()[position.getX()-2][position.getY()].getisOccuped()){
                     throw new RuleViolated(player, position, board, "Vous ne pouvez avancer que de 1 case a la fois !");
                 }
             }
-            if(!board.getBoardBoxes()[position.getX()][position.getY()+2].getisOccuped()){
-                if(position.getY() < player.getPawn().getPosition().getY()-2){ //On va en haut a droite
+            if(position.getY() < player.getPawn().getPosition().getY()-2){ //On va en haut a droite
+                if(!board.getBoardBoxes()[position.getX()][position.getY()+2].getisOccuped()){
                     throw new RuleViolated(player, position, board, "Vous ne pouvez avancer que de 1 case a la fois !");
                 }
             }
-            if(!board.getBoardBoxes()[position.getX()][position.getY()-2].getisOccuped()){
-                if(position.getY() > player.getPawn().getPosition().getY()+2){ //On va en haut a droite
+            if(position.getY() > player.getPawn().getPosition().getY()+2){ //On va en haut a droite
+                if(!board.getBoardBoxes()[position.getX()][position.getY()-2].getisOccuped()){
                     throw new RuleViolated(player, position, board, "Vous ne pouvez avancer que de 1 case a la fois !");
                 }
             }

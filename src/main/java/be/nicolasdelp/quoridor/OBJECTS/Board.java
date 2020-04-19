@@ -17,6 +17,7 @@ public class Board {
     private PlayerRule[] playerRules = {new PlayerIsInBounds(), new WallBlocksPawn(), new IllegalMovement(), new PawnAlreadyHere(), new IsAWallBox()};
     private WallRule[] wallRules = {new IsAPawnBox(), new WallAlreadyHere()};
     private int currentIDPlayer = 0;
+    public PlayerRule win = new PlayerWin();
 
     /**
      * Constructeur

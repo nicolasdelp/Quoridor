@@ -26,9 +26,13 @@ public class WallBlocksPawn implements PlayerRule {
                 }
             }
         }
-        if(x == player.getPawn().getPosition().getX()){ //Pour la première colone
-            if(board.getBoardBoxes()[position.getX()+1][position.getY()].getisOccuped()){
-                throw new RuleViolated(player, position, board, "Vous ne pouvez pas avancez, il y a un mur !");
+        if(position.getX() != player.getPawn().getPosition().getX()){ //Si on est pas deja sur cette ligne
+            if(x == player.getPawn().getPosition().getX()){ //Pour la première colone
+                if(position.getX()+1 < 17){ //Pour ne pas etre en dehors du plateau
+                    if(board.getBoardBoxes()[position.getX()+1][position.getY()].getisOccuped()){
+                        throw new RuleViolated(player, position, board, "Vous ne pouvez pas avancez, il y a un mur !");
+                    }
+                }
             }
         }
         if(position.getY() - player.getPawn().getPosition().getY() > 0){
@@ -49,9 +53,13 @@ public class WallBlocksPawn implements PlayerRule {
                 }
             }
         }
-        if(y == player.getPawn().getPosition().getY()){ //Pour la première ligne
-            if(board.getBoardBoxes()[position.getX()][position.getY()+1].getisOccuped()){
-                throw new RuleViolated(player, position, board, "Vous ne pouvez pas avancez, il y a un mur !");
+        if(position.getY() != player.getPawn().getPosition().getY()){
+            if(y == player.getPawn().getPosition().getY()){ //Pour la première ligne
+                if(position.getY()+1 < 17){ //Pour ne pas etre en dehors du plateau
+                    if(board.getBoardBoxes()[position.getX()][position.getY()+1].getisOccuped()){
+                        throw new RuleViolated(player, position, board, "Vous ne pouvez pas avancez, il y a un mur !");
+                    }
+                }
             }
         }
     }
