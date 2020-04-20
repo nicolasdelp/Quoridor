@@ -35,21 +35,29 @@ public class FXMLControllerBoard implements Initializable {
     final URL URLMurBleuH3 = getClass().getResource("../img/mur-bleu-3-H.png");
     final Image imageMurBleuH3 = new Image(URLMurBleuH3.toExternalForm());
 
-    private Board board; //Le plateau
+    private Board board = FXMLControllerMenuPlayers.getBoard(); //Le plateau
 
     private ImageView[] oldImageView = new ImageView[4];
 
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        this.board = new Board();
-        Player[] p = {new Player("Humain", "Nico", 0, Color.Vert, new Pawn()), new Player("Ordinateur", "Ordi1", 1, Color.Rouge, new Pawn())};
-        board.setPlayer(p);
-        board.createBoard();
-        box0008.setImage(getColor(board.players[0]));
-        oldImageView[0] = box0008;
-        box1608.setImage(getColor(board.players[1]));
-        oldImageView[1] = box1608;
+        if(this.board.getPlayers().length == 2){
+            box0008.setImage(getColor(this.board.players[0]));
+            oldImageView[0] = box0008;
+            box1608.setImage(getColor(this.board.players[1]));
+            oldImageView[1] = box1608;
+        }
+        if(this.board.getPlayers().length == 4){
+            box0008.setImage(getColor(this.board.players[0]));
+            oldImageView[0] = box0008;
+            box1608.setImage(getColor(this.board.players[1]));
+            oldImageView[1] = box1608;
+            box0800.setImage(getColor(this.board.players[2]));
+            oldImageView[2] = box0800;
+            box0816.setImage(getColor(this.board.players[3]));
+            oldImageView[3] = box0816;
+        }
     }
 
     @FXML
@@ -1218,7 +1226,6 @@ public class FXMLControllerBoard implements Initializable {
             oldImageView[board.getcurrentIDPlayer()].setImage(imageCase); //On remet la case vide
             box1016.setImage(getColor(board.players[board.getcurrentIDPlayer()])); //On met dans la case le pion selon la couleur du player
             oldImageView[board.getcurrentIDPlayer()] = box1016; //On enregistre la case actuel pour la vider au prochain coup
-            board.win.verify(board, board.players[board.getcurrentIDPlayer()], new Position(10, 16));//GAGNE
             board.nextPlayer();
         } catch (RuleViolated e) {
             Alert alert = new Alert(AlertType.ERROR);
@@ -1413,7 +1420,7 @@ public class FXMLControllerBoard implements Initializable {
             oldImageView[board.getcurrentIDPlayer()].setImage(imageCase); //On remet la case vide
             box1216.setImage(getColor(board.players[board.getcurrentIDPlayer()])); //On met dans la case le pion selon la couleur du player
             oldImageView[board.getcurrentIDPlayer()] = box1216; //On enregistre la case actuel pour la vider au prochain coup
-            board.win.verify(board, board.players[board.getcurrentIDPlayer()], new Position(12, 16)); //GAGNE
+
             board.nextPlayer();
         } catch (RuleViolated e) {
             Alert alert = new Alert(AlertType.ERROR);
@@ -1608,7 +1615,7 @@ public class FXMLControllerBoard implements Initializable {
             oldImageView[board.getcurrentIDPlayer()].setImage(imageCase); //On remet la case vide
             box1416.setImage(getColor(board.players[board.getcurrentIDPlayer()])); //On met dans la case le pion selon la couleur du player
             oldImageView[board.getcurrentIDPlayer()] = box1416; //On enregistre la case actuel pour la vider au prochain coup
-            board.win.verify(board, board.players[board.getcurrentIDPlayer()], new Position(14, 16)); //GAGNE
+
             board.nextPlayer();
         } catch (RuleViolated e) {
             Alert alert = new Alert(AlertType.ERROR);
@@ -1756,7 +1763,7 @@ public class FXMLControllerBoard implements Initializable {
             oldImageView[board.getcurrentIDPlayer()].setImage(imageCase); //On remet la case vide
             box1610.setImage(getColor(board.players[board.getcurrentIDPlayer()])); //On met dans la case le pion selon la couleur du player
             oldImageView[board.getcurrentIDPlayer()] = box1610; //On enregistre la case actuel pour la vider au prochain coup
-            board.win.verify(board, board.players[board.getcurrentIDPlayer()], new Position(16, 10)); //GAGNE
+
             board.nextPlayer();
         } catch (RuleViolated e) {
             Alert alert = new Alert(AlertType.ERROR);
@@ -1774,7 +1781,7 @@ public class FXMLControllerBoard implements Initializable {
             oldImageView[board.getcurrentIDPlayer()].setImage(imageCase); //On remet la case vide
             box1612.setImage(getColor(board.players[board.getcurrentIDPlayer()])); //On met dans la case le pion selon la couleur du player
             oldImageView[board.getcurrentIDPlayer()] = box1612; //On enregistre la case actuel pour la vider au prochain coup
-            board.win.verify(board, board.players[board.getcurrentIDPlayer()], new Position(16, 12)); //GAGNE
+
             board.nextPlayer();
         } catch (RuleViolated e) {
             Alert alert = new Alert(AlertType.ERROR);
@@ -1792,7 +1799,7 @@ public class FXMLControllerBoard implements Initializable {
             oldImageView[board.getcurrentIDPlayer()].setImage(imageCase); //On remet la case vide
             box1614.setImage(getColor(board.players[board.getcurrentIDPlayer()])); //On met dans la case le pion selon la couleur du player
             oldImageView[board.getcurrentIDPlayer()] = box1614; //On enregistre la case actuel pour la vider au prochain coup
-            board.win.verify(board, board.players[board.getcurrentIDPlayer()], new Position(16, 14)); //GAGNE
+
             board.nextPlayer();
         } catch (RuleViolated e) {
             Alert alert = new Alert(AlertType.ERROR);
@@ -1810,7 +1817,7 @@ public class FXMLControllerBoard implements Initializable {
             oldImageView[board.getcurrentIDPlayer()].setImage(imageCase); //On remet la case vide
             box1616.setImage(getColor(board.players[board.getcurrentIDPlayer()])); //On met dans la case le pion selon la couleur du player
             oldImageView[board.getcurrentIDPlayer()] = box1616; //On enregistre la case actuel pour la vider au prochain coup
-            board.win.verify(board, board.players[board.getcurrentIDPlayer()], new Position(16, 16)); //GAGNE
+
             board.nextPlayer();
         } catch (RuleViolated e) {
             Alert alert = new Alert(AlertType.ERROR);

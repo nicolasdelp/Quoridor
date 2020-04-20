@@ -19,20 +19,21 @@ public class FXMLControllerMenu implements Initializable {
     private VBox menuWindow;
 
     @FXML
-    private Button resumeButton;
-
-    @FXML
-    private Button newPartyButton;
-
-    @FXML
-    private Button optionsButton;
-
-    @FXML
-    private Button creditsButton;
+    private Button resumeButton, newPartyButton, optionsButton, creditsButton;
+    
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+        if(true){ //Si un fichier de sauvegarde existe
+            resumeButton.setVisible(true);
+        }
+        else {
+            resumeButton.setVisible(false);
+        }
+    }
 
     @FXML
     void resumeButtonClicked(MouseEvent event) {
-        //TO DO
+        //Chargement de la partie sauvegardée
     }
     
     @FXML
@@ -47,8 +48,8 @@ public class FXMLControllerMenu implements Initializable {
             secondStage.centerOnScreen();
             menuWindow.getScene().getWindow().hide();
             secondStage.show();
-        } catch(Exception exception){
-            System.out.println(exception);
+        } catch(Exception e){
+            System.out.println(e);
         }
     }
 
@@ -63,8 +64,8 @@ public class FXMLControllerMenu implements Initializable {
             secondStage.setTitle("CREDITS");
             secondStage.centerOnScreen();
             secondStage.show();
-        } catch(Exception exception){
-            System.out.println(exception);
+        } catch(Exception e){
+            System.out.println(e);
         }
     }
 
@@ -79,14 +80,8 @@ public class FXMLControllerMenu implements Initializable {
             secondStage.setTitle("CREDITS");
             secondStage.centerOnScreen();
             secondStage.show();
-        } catch(Exception exception){
-            System.out.println(exception);
+        } catch(Exception e){
+            System.out.println(e);
         }
-    }
-    
-    @Override
-    public void initialize(URL location, ResourceBundle resources) {
-        // TODO Auto-generated method stub
-
     }
 }

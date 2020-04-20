@@ -14,10 +14,9 @@ public class Board {
     private final Position[] startPosition = { new Position(0, 8), new Position(16, 8), new Position(8, 0), new Position(8, 16) }; //les 4 cases de depart possible
     public Player[] players; //la liste des joueurs
     private Box[][] boardBoxes; //stockage dans un tableau des Box
-    private PlayerRule[] playerRules = {new PlayerIsInBounds(), new WallBlocksPawn(), new IllegalMovement(), new PawnAlreadyHere(), new IsAWallBox()};
-    private WallRule[] wallRules = {new IsAPawnBox(), new WallAlreadyHere()};
+    private PlayerRule[] playerRules = {new PlayerIsInBounds(), new IsAWallBox(), new PawnAlreadyHere(), new BlockedByAWall(), new IllegalMovement()};
+    private WallRule[] wallRules = {new WallIsInBounds(), new IsAPawnBox(), new WallAlreadyHere(), new BlockAnotherPlayer()};
     private int currentIDPlayer = 0;
-    public PlayerRule win = new PlayerWin();
 
     /**
      * Constructeur

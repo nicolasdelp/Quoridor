@@ -2,7 +2,7 @@ package be.nicolasdelp.quoridor.rules;
 
 import be.nicolasdelp.quoridor.objects.*;
 
-public class WallBlocksPawn implements PlayerRule {
+public class BlockedByAWall implements PlayerRule {
 
     @Override
     public void verify(Board board, Player player, Position position) throws RuleViolated{

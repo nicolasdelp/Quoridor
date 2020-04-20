@@ -5,7 +5,7 @@ import org.junit.jupiter.api.Test;
 
 import be.nicolasdelp.quoridor.objects.*;
 
-public class WallBlocksPawnTest {
+public class BlockedByAWallTest {
 
     @Test
     public void testVerify1(){
@@ -19,7 +19,7 @@ public class WallBlocksPawnTest {
         } catch (RuleViolated e) {
             System.out.println(e);
         }
-        PlayerRule playerRule = new WallBlocksPawn();
+        PlayerRule playerRule = new BlockedByAWall();
         Assertions.assertThrows(RuleViolated.class, () -> {
             playerRule.verify(b, b.players[0], new Position(0, 8));
           });
@@ -37,7 +37,7 @@ public class WallBlocksPawnTest {
         } catch (RuleViolated e) {
             Assertions.fail(e);
         }
-        PlayerRule playerRule = new WallBlocksPawn();
+        PlayerRule playerRule = new BlockedByAWall();
         Assertions.assertThrows(RuleViolated.class, () -> {
             playerRule.verify(b, b.players[0], new Position(2, 6));
           });
@@ -55,7 +55,7 @@ public class WallBlocksPawnTest {
         } catch (RuleViolated e) {
             Assertions.fail(e);
         }
-        PlayerRule playerRule = new WallBlocksPawn();
+        PlayerRule playerRule = new BlockedByAWall();
         Assertions.assertThrows(RuleViolated.class, () -> {
             playerRule.verify(b, b.players[0], new Position(4, 8));
           });
@@ -73,7 +73,7 @@ public class WallBlocksPawnTest {
         } catch (RuleViolated e) {
             Assertions.fail(e);
         }
-        PlayerRule playerRule = new WallBlocksPawn();
+        PlayerRule playerRule = new BlockedByAWall();
         Assertions.assertThrows(RuleViolated.class, () -> {
             playerRule.verify(b, b.players[0], new Position(2, 10));
           });
