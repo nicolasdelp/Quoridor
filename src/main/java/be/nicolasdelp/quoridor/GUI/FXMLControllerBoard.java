@@ -4,8 +4,6 @@ import be.nicolasdelp.quoridor.objects.*;
 import be.nicolasdelp.quoridor.rules.*;
 
 import java.net.URL;
-import java.util.HashMap;
-import java.util.Map;
 import java.util.ResourceBundle;
 
 import javafx.fxml.FXML;
@@ -30,6 +28,13 @@ public class FXMLControllerBoard implements Initializable {
     final URL URLPionBleu = getClass().getResource("../img/pion-bleu.png");  //Image du pion bleu
     final Image imagePionBleu = new Image(URLPionBleu.toExternalForm());
 
+    final URL URLMurBleuH1 = getClass().getResource("../img/mur-bleu-1-H.png");
+    final Image imageMurBleuH1 = new Image(URLMurBleuH1.toExternalForm());
+    final URL URLMurBleuH2 = getClass().getResource("../img/mur-bleu-2-H.png");
+    final Image imageMurBleuH2 = new Image(URLMurBleuH2.toExternalForm());
+    final URL URLMurBleuH3 = getClass().getResource("../img/mur-bleu-3-H.png");
+    final Image imageMurBleuH3 = new Image(URLMurBleuH3.toExternalForm());
+
     private Board board; //Le plateau
 
     private ImageView[] oldImageView = new ImageView[4];
@@ -38,17 +43,13 @@ public class FXMLControllerBoard implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         this.board = new Board();
-        Player[] p = {new Player("Humain", "Nico", 0, Color.Vert, new Pawn()), new Player("Ordinateur", "Ordi1", 1, Color.Rouge, new Pawn()), new Player("Humain", "Alex", 2, Color.Jaune, new Pawn()), new Player("Ordinateur", "Ordi2", 3, Color.Bleu, new Pawn())};
+        Player[] p = {new Player("Humain", "Nico", 0, Color.Vert, new Pawn()), new Player("Ordinateur", "Ordi1", 1, Color.Rouge, new Pawn())};
         board.setPlayer(p);
         board.createBoard();
         box0008.setImage(getColor(board.players[0]));
         oldImageView[0] = box0008;
         box1608.setImage(getColor(board.players[1]));
         oldImageView[1] = box1608;
-        box0800.setImage(getColor(board.players[2]));
-        oldImageView[2] = box0800;
-        box0816.setImage(getColor(board.players[3]));
-        oldImageView[3] = box0816;
     }
 
     @FXML
@@ -73,7 +74,7 @@ public class FXMLControllerBoard implements Initializable {
                       box0015, box0115, box0215, box0315, box0415, box0515, box0615, box0715, box0815, box0915, box1015, box1115, box1215, box1315, box1415, box1515, box1615, 
                       box0016, box0116, box0216, box0316, box0416, box0516, box0616, box0716, box0816, box0916, box1016, box1116, box1216, box1316, box1416, box1516, box1616;
 
-    private Image getColor(Player player){
+    private Image getColor(Player player){ //Récupérer la couleur du pion du joueur
         if(player.getColor() == Color.Vert){
             return imagePionVert;
         }if(player.getColor() == Color.Rouge){
@@ -94,12 +95,11 @@ public class FXMLControllerBoard implements Initializable {
             board.movePawnOnBoard(board.players[board.getcurrentIDPlayer()], new Position(0, 0)); //On vérifie le mouvement est possible
             oldImageView[board.getcurrentIDPlayer()].setImage(imageCase); //On remet la case vide
             box0000.setImage(getColor(board.players[board.getcurrentIDPlayer()])); //On met dans la case le pion selon la couleur du player
-            oldImageView[board.getcurrentIDPlayer()] = box0000; //On enregistre la case actuel pour la vider au prochain coup
-            board.win.verify(board, board.players[board.getcurrentIDPlayer()], new Position(0, 0));
-  //GAGNE           board.nextPlayer();
+            oldImageView[board.getcurrentIDPlayer()] = box0000; //On enregistre la case actuel pour la vider au prochain coup          
+            board.nextPlayer();
         } catch (RuleViolated e) {
             Alert alert = new Alert(AlertType.ERROR);
-            alert.setTitle("Deplacement impossible");
+            alert.setTitle(null);
             alert.setHeaderText(null);
             alert.setContentText(e.getMessage());
             alert.showAndWait();
@@ -112,12 +112,11 @@ public class FXMLControllerBoard implements Initializable {
             board.movePawnOnBoard(board.players[board.getcurrentIDPlayer()], new Position(0, 2)); //On vérifie le mouvement est possible
             oldImageView[board.getcurrentIDPlayer()].setImage(imageCase); //On remet la case vide
             box0002.setImage(getColor(board.players[board.getcurrentIDPlayer()])); //On met dans la case le pion selon la couleur du player
-            oldImageView[board.getcurrentIDPlayer()] = box0002; //On enregistre la case actuel pour la vider au prochain coup
-            board.win.verify(board, board.players[board.getcurrentIDPlayer()], new Position(0, 2));
-  //GAGNE           board.nextPlayer();
+            oldImageView[board.getcurrentIDPlayer()] = box0002; //On enregistre la case actuel pour la vider au prochain coup          
+            board.nextPlayer();
         } catch (RuleViolated e) {
             Alert alert = new Alert(AlertType.ERROR);
-            alert.setTitle("Deplacement impossible");
+            alert.setTitle(null);
             alert.setHeaderText(null);
             alert.setContentText(e.getMessage());
             alert.showAndWait();
@@ -130,12 +129,11 @@ public class FXMLControllerBoard implements Initializable {
             board.movePawnOnBoard(board.players[board.getcurrentIDPlayer()], new Position(0, 4)); //On vérifie le mouvement est possible
             oldImageView[board.getcurrentIDPlayer()].setImage(imageCase); //On remet la case vide
             box0004.setImage(getColor(board.players[board.getcurrentIDPlayer()])); //On met dans la case le pion selon la couleur du player
-            oldImageView[board.getcurrentIDPlayer()] = box0004; //On enregistre la case actuel pour la vider au prochain coup
-            board.win.verify(board, board.players[board.getcurrentIDPlayer()], new Position(0, 4));
-  //GAGNE           board.nextPlayer();
+            oldImageView[board.getcurrentIDPlayer()] = box0004; //On enregistre la case actuel pour la vider au prochain coup          
+            board.nextPlayer();
         } catch (RuleViolated e) {
             Alert alert = new Alert(AlertType.ERROR);
-            alert.setTitle("Deplacement impossible");
+            alert.setTitle(null);
             alert.setHeaderText(null);
             alert.setContentText(e.getMessage());
             alert.showAndWait();
@@ -148,12 +146,11 @@ public class FXMLControllerBoard implements Initializable {
             board.movePawnOnBoard(board.players[board.getcurrentIDPlayer()], new Position(0, 6)); //On vérifie le mouvement est possible
             oldImageView[board.getcurrentIDPlayer()].setImage(imageCase); //On remet la case vide
             box0006.setImage(getColor(board.players[board.getcurrentIDPlayer()])); //On met dans la case le pion selon la couleur du player
-            oldImageView[board.getcurrentIDPlayer()] = box0006; //On enregistre la case actuel pour la vider au prochain coup
-            board.win.verify(board, board.players[board.getcurrentIDPlayer()], new Position(0, 6));
-  //GAGNE           board.nextPlayer();
+            oldImageView[board.getcurrentIDPlayer()] = box0006; //On enregistre la case actuel pour la vider au prochain coup          
+            board.nextPlayer();
         } catch (RuleViolated e) {
             Alert alert = new Alert(AlertType.ERROR);
-            alert.setTitle("Deplacement impossible");
+            alert.setTitle(null);
             alert.setHeaderText(null);
             alert.setContentText(e.getMessage());
             alert.showAndWait();
@@ -166,12 +163,11 @@ public class FXMLControllerBoard implements Initializable {
             board.movePawnOnBoard(board.players[board.getcurrentIDPlayer()], new Position(0, 8)); //On vérifie le mouvement est possible
             oldImageView[board.getcurrentIDPlayer()].setImage(imageCase); //On remet la case vide
             box0008.setImage(getColor(board.players[board.getcurrentIDPlayer()])); //On met dans la case le pion selon la couleur du player
-            oldImageView[board.getcurrentIDPlayer()] = box0008; //On enregistre la case actuel pour la vider au prochain coup
-            board.win.verify(board, board.players[board.getcurrentIDPlayer()], new Position(0, 8));
-  //GAGNE           board.nextPlayer();
+            oldImageView[board.getcurrentIDPlayer()] = box0008; //On enregistre la case actuel pour la vider au prochain coup          
+            board.nextPlayer();
         } catch (RuleViolated e) {
             Alert alert = new Alert(AlertType.ERROR);
-            alert.setTitle("Deplacement impossible");
+            alert.setTitle(null);
             alert.setHeaderText(null);
             alert.setContentText(e.getMessage());
             alert.showAndWait();
@@ -185,11 +181,11 @@ public class FXMLControllerBoard implements Initializable {
             oldImageView[board.getcurrentIDPlayer()].setImage(imageCase); //On remet la case vide
             box0010.setImage(getColor(board.players[board.getcurrentIDPlayer()])); //On met dans la case le pion selon la couleur du player
             oldImageView[board.getcurrentIDPlayer()] = box0010; //On enregistre la case actuel pour la vider au prochain coup
-            board.win.verify(board, board.players[board.getcurrentIDPlayer()], new Position(0, 10));
- //GAGNE            board.nextPlayer();
+           
+            board.nextPlayer();
         } catch (RuleViolated e) {
             Alert alert = new Alert(AlertType.ERROR);
-            alert.setTitle("Deplacement impossible");
+            alert.setTitle(null);
             alert.setHeaderText(null);
             alert.setContentText(e.getMessage());
             alert.showAndWait();
@@ -203,11 +199,11 @@ public class FXMLControllerBoard implements Initializable {
             oldImageView[board.getcurrentIDPlayer()].setImage(imageCase); //On remet la case vide
             box0012.setImage(getColor(board.players[board.getcurrentIDPlayer()])); //On met dans la case le pion selon la couleur du player
             oldImageView[board.getcurrentIDPlayer()] = box0012; //On enregistre la case actuel pour la vider au prochain coup
-            board.win.verify(board, board.players[board.getcurrentIDPlayer()], new Position(0, 12));
- //GAGNE            board.nextPlayer();
+           
+            board.nextPlayer();
         } catch (RuleViolated e) {
             Alert alert = new Alert(AlertType.ERROR);
-            alert.setTitle("Deplacement impossible");
+            alert.setTitle(null);
             alert.setHeaderText(null);
             alert.setContentText(e.getMessage());
             alert.showAndWait();
@@ -221,11 +217,11 @@ public class FXMLControllerBoard implements Initializable {
             oldImageView[board.getcurrentIDPlayer()].setImage(imageCase); //On remet la case vide
             box0014.setImage(getColor(board.players[board.getcurrentIDPlayer()])); //On met dans la case le pion selon la couleur du player
             oldImageView[board.getcurrentIDPlayer()] = box0014; //On enregistre la case actuel pour la vider au prochain coup
-            board.win.verify(board, board.players[board.getcurrentIDPlayer()], new Position(0, 14));
- //GAGNE            board.nextPlayer();
+           
+            board.nextPlayer();
         } catch (RuleViolated e) {
             Alert alert = new Alert(AlertType.ERROR);
-            alert.setTitle("Deplacement impossible");
+            alert.setTitle(null);
             alert.setHeaderText(null);
             alert.setContentText(e.getMessage());
             alert.showAndWait();
@@ -239,11 +235,11 @@ public class FXMLControllerBoard implements Initializable {
             oldImageView[board.getcurrentIDPlayer()].setImage(imageCase); //On remet la case vide
             box0016.setImage(getColor(board.players[board.getcurrentIDPlayer()])); //On met dans la case le pion selon la couleur du player
             oldImageView[board.getcurrentIDPlayer()] = box0016; //On enregistre la case actuel pour la vider au prochain coup
-            board.win.verify(board, board.players[board.getcurrentIDPlayer()], new Position(0, 16));
- //GAGNE            board.nextPlayer();
+           
+            board.nextPlayer();
         } catch (RuleViolated e) {
             Alert alert = new Alert(AlertType.ERROR);
-            alert.setTitle("Deplacement impossible");
+            alert.setTitle(null);
             alert.setHeaderText(null);
             alert.setContentText(e.getMessage());
             alert.showAndWait();
@@ -252,7 +248,19 @@ public class FXMLControllerBoard implements Initializable {
 
     @FXML
     void box0101Clicked(MouseEvent event) { //Case pour mur
-
+        try {
+            board.setWallOnBoard(board.players[board.getcurrentIDPlayer()], board.players[board.getcurrentIDPlayer()].getWalls()[board.players[board.getcurrentIDPlayer()].getWallIndex()-1], WallDirection.Horizontal, new Position(1, 1)); //On vérifie le mouvement est possible 
+            box0001.setImage(imageMurBleuH1); //Gerer les cas si c'est Horizontal ou vertical
+            box0101.setImage(imageMurBleuH2);   
+            box0201.setImage(imageMurBleuH3);
+            board.nextPlayer();
+        } catch (RuleViolated e) {
+            Alert alert = new Alert(AlertType.ERROR);
+            alert.setTitle(null);
+            alert.setHeaderText(null);
+            alert.setContentText(e.getMessage());
+            alert.showAndWait();
+        }
     }
 
     @FXML
@@ -296,12 +304,11 @@ public class FXMLControllerBoard implements Initializable {
             board.movePawnOnBoard(board.players[board.getcurrentIDPlayer()], new Position(2, 0)); //On vérifie le mouvement est possible
             oldImageView[board.getcurrentIDPlayer()].setImage(imageCase); //On remet la case vide
             box0200.setImage(getColor(board.players[board.getcurrentIDPlayer()])); //On met dans la case le pion selon la couleur du player
-            oldImageView[board.getcurrentIDPlayer()] = box0200; //On enregistre la case actuel pour la vider au prochain coup
-            board.win.verify(board, board.players[board.getcurrentIDPlayer()], new Position(2, 0));
-  //GAGNE           board.nextPlayer();
+            oldImageView[board.getcurrentIDPlayer()] = box0200; //On enregistre la case actuel pour la vider au prochain coup          
+            board.nextPlayer();
         } catch (RuleViolated e) {
             Alert alert = new Alert(AlertType.ERROR);
-            alert.setTitle("Deplacement impossible");
+            alert.setTitle(null);
             alert.setHeaderText(null);
             alert.setContentText(e.getMessage());
             alert.showAndWait();
@@ -318,7 +325,7 @@ public class FXMLControllerBoard implements Initializable {
             board.nextPlayer();
         } catch (RuleViolated e) {
             Alert alert = new Alert(AlertType.ERROR);
-            alert.setTitle("Deplacement impossible");
+            alert.setTitle(null);
             alert.setHeaderText(null);
             alert.setContentText(e.getMessage());
             alert.showAndWait();
@@ -335,7 +342,7 @@ public class FXMLControllerBoard implements Initializable {
             board.nextPlayer();
         } catch (RuleViolated e) {
             Alert alert = new Alert(AlertType.ERROR);
-            alert.setTitle("Deplacement impossible");
+            alert.setTitle(null);
             alert.setHeaderText(null);
             alert.setContentText(e.getMessage());
             alert.showAndWait();
@@ -352,7 +359,7 @@ public class FXMLControllerBoard implements Initializable {
             board.nextPlayer();
         } catch (RuleViolated e) {
             Alert alert = new Alert(AlertType.ERROR);
-            alert.setTitle("Deplacement impossible");
+            alert.setTitle(null);
             alert.setHeaderText(null);
             alert.setContentText(e.getMessage());
             alert.showAndWait();
@@ -369,7 +376,7 @@ public class FXMLControllerBoard implements Initializable {
             board.nextPlayer();
         } catch (RuleViolated e) {
             Alert alert = new Alert(AlertType.ERROR);
-            alert.setTitle("Deplacement impossible");
+            alert.setTitle(null);
             alert.setHeaderText(null);
             alert.setContentText(e.getMessage());
             alert.showAndWait();
@@ -386,7 +393,7 @@ public class FXMLControllerBoard implements Initializable {
             board.nextPlayer();
         } catch (RuleViolated e) {
             Alert alert = new Alert(AlertType.ERROR);
-            alert.setTitle("Deplacement impossible");
+            alert.setTitle(null);
             alert.setHeaderText(null);
             alert.setContentText(e.getMessage());
             alert.showAndWait();
@@ -403,7 +410,7 @@ public class FXMLControllerBoard implements Initializable {
             board.nextPlayer();
         } catch (RuleViolated e) {
             Alert alert = new Alert(AlertType.ERROR);
-            alert.setTitle("Deplacement impossible");
+            alert.setTitle(null);
             alert.setHeaderText(null);
             alert.setContentText(e.getMessage());
             alert.showAndWait();
@@ -420,7 +427,7 @@ public class FXMLControllerBoard implements Initializable {
             board.nextPlayer();
         } catch (RuleViolated e) {
             Alert alert = new Alert(AlertType.ERROR);
-            alert.setTitle("Deplacement impossible");
+            alert.setTitle(null);
             alert.setHeaderText(null);
             alert.setContentText(e.getMessage());
             alert.showAndWait();
@@ -434,11 +441,11 @@ public class FXMLControllerBoard implements Initializable {
             oldImageView[board.getcurrentIDPlayer()].setImage(imageCase); //On remet la case vide
             box0216.setImage(getColor(board.players[board.getcurrentIDPlayer()])); //On met dans la case le pion selon la couleur du player
             oldImageView[board.getcurrentIDPlayer()] = box0216; //On enregistre la case actuel pour la vider au prochain coup
-            board.win.verify(board, board.players[board.getcurrentIDPlayer()], new Position(2, 16));
- //GAGNE            board.nextPlayer();
+           
+            board.nextPlayer();
         } catch (RuleViolated e) {
             Alert alert = new Alert(AlertType.ERROR);
-            alert.setTitle("Deplacement impossible");
+            alert.setTitle(null);
             alert.setHeaderText(null);
             alert.setContentText(e.getMessage());
             alert.showAndWait();
@@ -491,12 +498,11 @@ public class FXMLControllerBoard implements Initializable {
             board.movePawnOnBoard(board.players[board.getcurrentIDPlayer()], new Position(4, 0)); //On vérifie le mouvement est possible
             oldImageView[board.getcurrentIDPlayer()].setImage(imageCase); //On remet la case vide
             box0400.setImage(getColor(board.players[board.getcurrentIDPlayer()])); //On met dans la case le pion selon la couleur du player
-            oldImageView[board.getcurrentIDPlayer()] = box0400; //On enregistre la case actuel pour la vider au prochain coup
-            board.win.verify(board, board.players[board.getcurrentIDPlayer()], new Position(4, 0));
-  //GAGNE           board.nextPlayer();
+            oldImageView[board.getcurrentIDPlayer()] = box0400; //On enregistre la case actuel pour la vider au prochain coup          
+            board.nextPlayer();
         } catch (RuleViolated e) {
             Alert alert = new Alert(AlertType.ERROR);
-            alert.setTitle("Deplacement impossible");
+            alert.setTitle(null);
             alert.setHeaderText(null);
             alert.setContentText(e.getMessage());
             alert.showAndWait();
@@ -513,7 +519,7 @@ public class FXMLControllerBoard implements Initializable {
             board.nextPlayer();
         } catch (RuleViolated e) {
             Alert alert = new Alert(AlertType.ERROR);
-            alert.setTitle("Deplacement impossible");
+            alert.setTitle(null);
             alert.setHeaderText(null);
             alert.setContentText(e.getMessage());
             alert.showAndWait();
@@ -530,7 +536,7 @@ public class FXMLControllerBoard implements Initializable {
             board.nextPlayer();
         } catch (RuleViolated e) {
             Alert alert = new Alert(AlertType.ERROR);
-            alert.setTitle("Deplacement impossible");
+            alert.setTitle(null);
             alert.setHeaderText(null);
             alert.setContentText(e.getMessage());
             alert.showAndWait();
@@ -547,7 +553,7 @@ public class FXMLControllerBoard implements Initializable {
             board.nextPlayer();
         } catch (RuleViolated e) {
             Alert alert = new Alert(AlertType.ERROR);
-            alert.setTitle("Deplacement impossible");
+            alert.setTitle(null);
             alert.setHeaderText(null);
             alert.setContentText(e.getMessage());
             alert.showAndWait();
@@ -564,7 +570,7 @@ public class FXMLControllerBoard implements Initializable {
             board.nextPlayer();
         } catch (RuleViolated e) {
             Alert alert = new Alert(AlertType.ERROR);
-            alert.setTitle("Deplacement impossible");
+            alert.setTitle(null);
             alert.setHeaderText(null);
             alert.setContentText(e.getMessage());
             alert.showAndWait();
@@ -581,7 +587,7 @@ public class FXMLControllerBoard implements Initializable {
             board.nextPlayer();
         } catch (RuleViolated e) {
             Alert alert = new Alert(AlertType.ERROR);
-            alert.setTitle("Deplacement impossible");
+            alert.setTitle(null);
             alert.setHeaderText(null);
             alert.setContentText(e.getMessage());
             alert.showAndWait();
@@ -598,7 +604,7 @@ public class FXMLControllerBoard implements Initializable {
             board.nextPlayer();
         } catch (RuleViolated e) {
             Alert alert = new Alert(AlertType.ERROR);
-            alert.setTitle("Deplacement impossible");
+            alert.setTitle(null);
             alert.setHeaderText(null);
             alert.setContentText(e.getMessage());
             alert.showAndWait();
@@ -615,7 +621,7 @@ public class FXMLControllerBoard implements Initializable {
             board.nextPlayer();
         } catch (RuleViolated e) {
             Alert alert = new Alert(AlertType.ERROR);
-            alert.setTitle("Deplacement impossible");
+            alert.setTitle(null);
             alert.setHeaderText(null);
             alert.setContentText(e.getMessage());
             alert.showAndWait();
@@ -629,11 +635,11 @@ public class FXMLControllerBoard implements Initializable {
             oldImageView[board.getcurrentIDPlayer()].setImage(imageCase); //On remet la case vide
             box0416.setImage(getColor(board.players[board.getcurrentIDPlayer()])); //On met dans la case le pion selon la couleur du player
             oldImageView[board.getcurrentIDPlayer()] = box0416; //On enregistre la case actuel pour la vider au prochain coup
-            board.win.verify(board, board.players[board.getcurrentIDPlayer()], new Position(4, 16));
- //GAGNE            board.nextPlayer();
+           
+            board.nextPlayer();
         } catch (RuleViolated e) {
             Alert alert = new Alert(AlertType.ERROR);
-            alert.setTitle("Deplacement impossible");
+            alert.setTitle(null);
             alert.setHeaderText(null);
             alert.setContentText(e.getMessage());
             alert.showAndWait();
@@ -686,12 +692,11 @@ public class FXMLControllerBoard implements Initializable {
             board.movePawnOnBoard(board.players[board.getcurrentIDPlayer()], new Position(6, 0)); //On vérifie le mouvement est possible
             oldImageView[board.getcurrentIDPlayer()].setImage(imageCase); //On remet la case vide
             box0600.setImage(getColor(board.players[board.getcurrentIDPlayer()])); //On met dans la case le pion selon la couleur du player
-            oldImageView[board.getcurrentIDPlayer()] = box0600; //On enregistre la case actuel pour la vider au prochain coup
-            board.win.verify(board, board.players[board.getcurrentIDPlayer()], new Position(6, 0));
-  //GAGNE           board.nextPlayer();
+            oldImageView[board.getcurrentIDPlayer()] = box0600; //On enregistre la case actuel pour la vider au prochain coup          
+            board.nextPlayer();
         } catch (RuleViolated e) {
             Alert alert = new Alert(AlertType.ERROR);
-            alert.setTitle("Deplacement impossible");
+            alert.setTitle(null);
             alert.setHeaderText(null);
             alert.setContentText(e.getMessage());
             alert.showAndWait();
@@ -708,7 +713,7 @@ public class FXMLControllerBoard implements Initializable {
             board.nextPlayer();
         } catch (RuleViolated e) {
             Alert alert = new Alert(AlertType.ERROR);
-            alert.setTitle("Deplacement impossible");
+            alert.setTitle(null);
             alert.setHeaderText(null);
             alert.setContentText(e.getMessage());
             alert.showAndWait();
@@ -725,7 +730,7 @@ public class FXMLControllerBoard implements Initializable {
             board.nextPlayer();
         } catch (RuleViolated e) {
             Alert alert = new Alert(AlertType.ERROR);
-            alert.setTitle("Deplacement impossible");
+            alert.setTitle(null);
             alert.setHeaderText(null);
             alert.setContentText(e.getMessage());
             alert.showAndWait();
@@ -742,7 +747,7 @@ public class FXMLControllerBoard implements Initializable {
             board.nextPlayer();
         } catch (RuleViolated e) {
             Alert alert = new Alert(AlertType.ERROR);
-            alert.setTitle("Deplacement impossible");
+            alert.setTitle(null);
             alert.setHeaderText(null);
             alert.setContentText(e.getMessage());
             alert.showAndWait();
@@ -759,7 +764,7 @@ public class FXMLControllerBoard implements Initializable {
             board.nextPlayer();
         } catch (RuleViolated e) {
             Alert alert = new Alert(AlertType.ERROR);
-            alert.setTitle("Deplacement impossible");
+            alert.setTitle(null);
             alert.setHeaderText(null);
             alert.setContentText(e.getMessage());
             alert.showAndWait();
@@ -776,7 +781,7 @@ public class FXMLControllerBoard implements Initializable {
             board.nextPlayer();
         } catch (RuleViolated e) {
             Alert alert = new Alert(AlertType.ERROR);
-            alert.setTitle("Deplacement impossible");
+            alert.setTitle(null);
             alert.setHeaderText(null);
             alert.setContentText(e.getMessage());
             alert.showAndWait();
@@ -793,7 +798,7 @@ public class FXMLControllerBoard implements Initializable {
             board.nextPlayer();
         } catch (RuleViolated e) {
             Alert alert = new Alert(AlertType.ERROR);
-            alert.setTitle("Deplacement impossible");
+            alert.setTitle(null);
             alert.setHeaderText(null);
             alert.setContentText(e.getMessage());
             alert.showAndWait();
@@ -810,7 +815,7 @@ public class FXMLControllerBoard implements Initializable {
             board.nextPlayer();
         } catch (RuleViolated e) {
             Alert alert = new Alert(AlertType.ERROR);
-            alert.setTitle("Deplacement impossible");
+            alert.setTitle(null);
             alert.setHeaderText(null);
             alert.setContentText(e.getMessage());
             alert.showAndWait();
@@ -824,11 +829,11 @@ public class FXMLControllerBoard implements Initializable {
             oldImageView[board.getcurrentIDPlayer()].setImage(imageCase); //On remet la case vide
             box0616.setImage(getColor(board.players[board.getcurrentIDPlayer()])); //On met dans la case le pion selon la couleur du player
             oldImageView[board.getcurrentIDPlayer()] = box0616; //On enregistre la case actuel pour la vider au prochain coup
-            board.win.verify(board, board.players[board.getcurrentIDPlayer()], new Position(6, 16));
- //GAGNE            board.nextPlayer();
+           
+            board.nextPlayer();
         } catch (RuleViolated e) {
             Alert alert = new Alert(AlertType.ERROR);
-            alert.setTitle("Deplacement impossible");
+            alert.setTitle(null);
             alert.setHeaderText(null);
             alert.setContentText(e.getMessage());
             alert.showAndWait();
@@ -881,12 +886,11 @@ public class FXMLControllerBoard implements Initializable {
             board.movePawnOnBoard(board.players[board.getcurrentIDPlayer()], new Position(8, 0)); //On vérifie le mouvement est possible
             oldImageView[board.getcurrentIDPlayer()].setImage(imageCase); //On remet la case vide
             box0800.setImage(getColor(board.players[board.getcurrentIDPlayer()])); //On met dans la case le pion selon la couleur du player
-            oldImageView[board.getcurrentIDPlayer()] = box0800; //On enregistre la case actuel pour la vider au prochain coup
-            board.win.verify(board, board.players[board.getcurrentIDPlayer()], new Position(8, 0));
-  //GAGNE           board.nextPlayer();
+            oldImageView[board.getcurrentIDPlayer()] = box0800; //On enregistre la case actuel pour la vider au prochain coup          
+            board.nextPlayer();
         } catch (RuleViolated e) {
             Alert alert = new Alert(AlertType.ERROR);
-            alert.setTitle("Deplacement impossible");
+            alert.setTitle(null);
             alert.setHeaderText(null);
             alert.setContentText(e.getMessage());
             alert.showAndWait();
@@ -903,7 +907,7 @@ public class FXMLControllerBoard implements Initializable {
             board.nextPlayer();
         } catch (RuleViolated e) {
             Alert alert = new Alert(AlertType.ERROR);
-            alert.setTitle("Deplacement impossible");
+            alert.setTitle(null);
             alert.setHeaderText(null);
             alert.setContentText(e.getMessage());
             alert.showAndWait();
@@ -920,7 +924,7 @@ public class FXMLControllerBoard implements Initializable {
             board.nextPlayer();
         } catch (RuleViolated e) {
             Alert alert = new Alert(AlertType.ERROR);
-            alert.setTitle("Deplacement impossible");
+            alert.setTitle(null);
             alert.setHeaderText(null);
             alert.setContentText(e.getMessage());
             alert.showAndWait();
@@ -937,7 +941,7 @@ public class FXMLControllerBoard implements Initializable {
             board.nextPlayer();
         } catch (RuleViolated e) {
             Alert alert = new Alert(AlertType.ERROR);
-            alert.setTitle("Deplacement impossible");
+            alert.setTitle(null);
             alert.setHeaderText(null);
             alert.setContentText(e.getMessage());
             alert.showAndWait();
@@ -954,7 +958,7 @@ public class FXMLControllerBoard implements Initializable {
             board.nextPlayer();
         } catch (RuleViolated e) {
             Alert alert = new Alert(AlertType.ERROR);
-            alert.setTitle("Deplacement impossible");
+            alert.setTitle(null);
             alert.setHeaderText(null);
             alert.setContentText(e.getMessage());
             alert.showAndWait();
@@ -971,7 +975,7 @@ public class FXMLControllerBoard implements Initializable {
             board.nextPlayer();
         } catch (RuleViolated e) {
             Alert alert = new Alert(AlertType.ERROR);
-            alert.setTitle("Deplacement impossible");
+            alert.setTitle(null);
             alert.setHeaderText(null);
             alert.setContentText(e.getMessage());
             alert.showAndWait();
@@ -988,7 +992,7 @@ public class FXMLControllerBoard implements Initializable {
             board.nextPlayer();
         } catch (RuleViolated e) {
             Alert alert = new Alert(AlertType.ERROR);
-            alert.setTitle("Deplacement impossible");
+            alert.setTitle(null);
             alert.setHeaderText(null);
             alert.setContentText(e.getMessage());
             alert.showAndWait();
@@ -1005,7 +1009,7 @@ public class FXMLControllerBoard implements Initializable {
             board.nextPlayer();
         } catch (RuleViolated e) {
             Alert alert = new Alert(AlertType.ERROR);
-            alert.setTitle("Deplacement impossible");
+            alert.setTitle(null);
             alert.setHeaderText(null);
             alert.setContentText(e.getMessage());
             alert.showAndWait();
@@ -1019,11 +1023,11 @@ public class FXMLControllerBoard implements Initializable {
             oldImageView[board.getcurrentIDPlayer()].setImage(imageCase); //On remet la case vide
             box0816.setImage(getColor(board.players[board.getcurrentIDPlayer()])); //On met dans la case le pion selon la couleur du player
             oldImageView[board.getcurrentIDPlayer()] = box0816; //On enregistre la case actuel pour la vider au prochain coup
-            board.win.verify(board, board.players[board.getcurrentIDPlayer()], new Position(8, 16));
- //GAGNE            board.nextPlayer();
+           
+            board.nextPlayer();
         } catch (RuleViolated e) {
             Alert alert = new Alert(AlertType.ERROR);
-            alert.setTitle("Deplacement impossible");
+            alert.setTitle(null);
             alert.setHeaderText(null);
             alert.setContentText(e.getMessage());
             alert.showAndWait();
@@ -1077,11 +1081,11 @@ public class FXMLControllerBoard implements Initializable {
             oldImageView[board.getcurrentIDPlayer()].setImage(imageCase); //On remet la case vide
             box1000.setImage(getColor(board.players[board.getcurrentIDPlayer()])); //On met dans la case le pion selon la couleur du player
             oldImageView[board.getcurrentIDPlayer()] = box1000; //On enregistre la case actuel pour la vider au prochain coup
-            board.win.verify(board, board.players[board.getcurrentIDPlayer()], new Position(10, 0));
- //GAGNE            board.nextPlayer();
+           
+            board.nextPlayer();
         } catch (RuleViolated e) {
             Alert alert = new Alert(AlertType.ERROR);
-            alert.setTitle("Deplacement impossible");
+            alert.setTitle(null);
             alert.setHeaderText(null);
             alert.setContentText(e.getMessage());
             alert.showAndWait();
@@ -1098,7 +1102,7 @@ public class FXMLControllerBoard implements Initializable {
             board.nextPlayer();
         } catch (RuleViolated e) {
             Alert alert = new Alert(AlertType.ERROR);
-            alert.setTitle("Deplacement impossible");
+            alert.setTitle(null);
             alert.setHeaderText(null);
             alert.setContentText(e.getMessage());
             alert.showAndWait();
@@ -1115,7 +1119,7 @@ public class FXMLControllerBoard implements Initializable {
             board.nextPlayer();
         } catch (RuleViolated e) {
             Alert alert = new Alert(AlertType.ERROR);
-            alert.setTitle("Deplacement impossible");
+            alert.setTitle(null);
             alert.setHeaderText(null);
             alert.setContentText(e.getMessage());
             alert.showAndWait();
@@ -1132,7 +1136,7 @@ public class FXMLControllerBoard implements Initializable {
             board.nextPlayer();
         } catch (RuleViolated e) {
             Alert alert = new Alert(AlertType.ERROR);
-            alert.setTitle("Deplacement impossible");
+            alert.setTitle(null);
             alert.setHeaderText(null);
             alert.setContentText(e.getMessage());
             alert.showAndWait();
@@ -1149,7 +1153,7 @@ public class FXMLControllerBoard implements Initializable {
             board.nextPlayer();
         } catch (RuleViolated e) {
             Alert alert = new Alert(AlertType.ERROR);
-            alert.setTitle("Deplacement impossible");
+            alert.setTitle(null);
             alert.setHeaderText(null);
             alert.setContentText(e.getMessage());
             alert.showAndWait();
@@ -1166,7 +1170,7 @@ public class FXMLControllerBoard implements Initializable {
             board.nextPlayer();
         } catch (RuleViolated e) {
             Alert alert = new Alert(AlertType.ERROR);
-            alert.setTitle("Deplacement impossible");
+            alert.setTitle(null);
             alert.setHeaderText(null);
             alert.setContentText(e.getMessage());
             alert.showAndWait();
@@ -1183,7 +1187,7 @@ public class FXMLControllerBoard implements Initializable {
             board.nextPlayer();
         } catch (RuleViolated e) {
             Alert alert = new Alert(AlertType.ERROR);
-            alert.setTitle("Deplacement impossible");
+            alert.setTitle(null);
             alert.setHeaderText(null);
             alert.setContentText(e.getMessage());
             alert.showAndWait();
@@ -1200,7 +1204,7 @@ public class FXMLControllerBoard implements Initializable {
             board.nextPlayer();
         } catch (RuleViolated e) {
             Alert alert = new Alert(AlertType.ERROR);
-            alert.setTitle("Deplacement impossible");
+            alert.setTitle(null);
             alert.setHeaderText(null);
             alert.setContentText(e.getMessage());
             alert.showAndWait();
@@ -1214,11 +1218,11 @@ public class FXMLControllerBoard implements Initializable {
             oldImageView[board.getcurrentIDPlayer()].setImage(imageCase); //On remet la case vide
             box1016.setImage(getColor(board.players[board.getcurrentIDPlayer()])); //On met dans la case le pion selon la couleur du player
             oldImageView[board.getcurrentIDPlayer()] = box1016; //On enregistre la case actuel pour la vider au prochain coup
-            board.win.verify(board, board.players[board.getcurrentIDPlayer()], new Position(10, 16)); //GAGNE
+            board.win.verify(board, board.players[board.getcurrentIDPlayer()], new Position(10, 16));//GAGNE
             board.nextPlayer();
         } catch (RuleViolated e) {
             Alert alert = new Alert(AlertType.ERROR);
-            alert.setTitle("Deplacement impossible");
+            alert.setTitle(null);
             alert.setHeaderText(null);
             alert.setContentText(e.getMessage());
             alert.showAndWait();
@@ -1272,11 +1276,11 @@ public class FXMLControllerBoard implements Initializable {
             oldImageView[board.getcurrentIDPlayer()].setImage(imageCase); //On remet la case vide
             box1200.setImage(getColor(board.players[board.getcurrentIDPlayer()])); //On met dans la case le pion selon la couleur du player
             oldImageView[board.getcurrentIDPlayer()] = box1200; //On enregistre la case actuel pour la vider au prochain coup
-            board.win.verify(board, board.players[board.getcurrentIDPlayer()], new Position(12, 0));
- //GAGNE            board.nextPlayer();
+           
+            board.nextPlayer();
         } catch (RuleViolated e) {
             Alert alert = new Alert(AlertType.ERROR);
-            alert.setTitle("Deplacement impossible");
+            alert.setTitle(null);
             alert.setHeaderText(null);
             alert.setContentText(e.getMessage());
             alert.showAndWait();
@@ -1293,7 +1297,7 @@ public class FXMLControllerBoard implements Initializable {
             board.nextPlayer();
         } catch (RuleViolated e) {
             Alert alert = new Alert(AlertType.ERROR);
-            alert.setTitle("Deplacement impossible");
+            alert.setTitle(null);
             alert.setHeaderText(null);
             alert.setContentText(e.getMessage());
             alert.showAndWait();
@@ -1310,7 +1314,7 @@ public class FXMLControllerBoard implements Initializable {
             board.nextPlayer();
         } catch (RuleViolated e) {
             Alert alert = new Alert(AlertType.ERROR);
-            alert.setTitle("Deplacement impossible");
+            alert.setTitle(null);
             alert.setHeaderText(null);
             alert.setContentText(e.getMessage());
             alert.showAndWait();
@@ -1327,7 +1331,7 @@ public class FXMLControllerBoard implements Initializable {
             board.nextPlayer();
         } catch (RuleViolated e) {
             Alert alert = new Alert(AlertType.ERROR);
-            alert.setTitle("Deplacement impossible");
+            alert.setTitle(null);
             alert.setHeaderText(null);
             alert.setContentText(e.getMessage());
             alert.showAndWait();
@@ -1344,7 +1348,7 @@ public class FXMLControllerBoard implements Initializable {
             board.nextPlayer();
         } catch (RuleViolated e) {
             Alert alert = new Alert(AlertType.ERROR);
-            alert.setTitle("Deplacement impossible");
+            alert.setTitle(null);
             alert.setHeaderText(null);
             alert.setContentText(e.getMessage());
             alert.showAndWait();
@@ -1361,7 +1365,7 @@ public class FXMLControllerBoard implements Initializable {
             board.nextPlayer();
         } catch (RuleViolated e) {
             Alert alert = new Alert(AlertType.ERROR);
-            alert.setTitle("Deplacement impossible");
+            alert.setTitle(null);
             alert.setHeaderText(null);
             alert.setContentText(e.getMessage());
             alert.showAndWait();
@@ -1378,7 +1382,7 @@ public class FXMLControllerBoard implements Initializable {
             board.nextPlayer();
         } catch (RuleViolated e) {
             Alert alert = new Alert(AlertType.ERROR);
-            alert.setTitle("Deplacement impossible");
+            alert.setTitle(null);
             alert.setHeaderText(null);
             alert.setContentText(e.getMessage());
             alert.showAndWait();
@@ -1395,7 +1399,7 @@ public class FXMLControllerBoard implements Initializable {
             board.nextPlayer();
         } catch (RuleViolated e) {
             Alert alert = new Alert(AlertType.ERROR);
-            alert.setTitle("Deplacement impossible");
+            alert.setTitle(null);
             alert.setHeaderText(null);
             alert.setContentText(e.getMessage());
             alert.showAndWait();
@@ -1413,7 +1417,7 @@ public class FXMLControllerBoard implements Initializable {
             board.nextPlayer();
         } catch (RuleViolated e) {
             Alert alert = new Alert(AlertType.ERROR);
-            alert.setTitle("Deplacement impossible");
+            alert.setTitle(null);
             alert.setHeaderText(null);
             alert.setContentText(e.getMessage());
             alert.showAndWait();
@@ -1467,11 +1471,11 @@ public class FXMLControllerBoard implements Initializable {
             oldImageView[board.getcurrentIDPlayer()].setImage(imageCase); //On remet la case vide
             box1400.setImage(getColor(board.players[board.getcurrentIDPlayer()])); //On met dans la case le pion selon la couleur du player
             oldImageView[board.getcurrentIDPlayer()] = box1400; //On enregistre la case actuel pour la vider au prochain coup
-            board.win.verify(board, board.players[board.getcurrentIDPlayer()], new Position(14, 0));
- //GAGNE            board.nextPlayer();
+           
+            board.nextPlayer();
         } catch (RuleViolated e) {
             Alert alert = new Alert(AlertType.ERROR);
-            alert.setTitle("Deplacement impossible");
+            alert.setTitle(null);
             alert.setHeaderText(null);
             alert.setContentText(e.getMessage());
             alert.showAndWait();
@@ -1488,7 +1492,7 @@ public class FXMLControllerBoard implements Initializable {
             board.nextPlayer();
         } catch (RuleViolated e) {
             Alert alert = new Alert(AlertType.ERROR);
-            alert.setTitle("Deplacement impossible");
+            alert.setTitle(null);
             alert.setHeaderText(null);
             alert.setContentText(e.getMessage());
             alert.showAndWait();
@@ -1505,7 +1509,7 @@ public class FXMLControllerBoard implements Initializable {
             board.nextPlayer();
         } catch (RuleViolated e) {
             Alert alert = new Alert(AlertType.ERROR);
-            alert.setTitle("Deplacement impossible");
+            alert.setTitle(null);
             alert.setHeaderText(null);
             alert.setContentText(e.getMessage());
             alert.showAndWait();
@@ -1522,7 +1526,7 @@ public class FXMLControllerBoard implements Initializable {
             board.nextPlayer();
         } catch (RuleViolated e) {
             Alert alert = new Alert(AlertType.ERROR);
-            alert.setTitle("Deplacement impossible");
+            alert.setTitle(null);
             alert.setHeaderText(null);
             alert.setContentText(e.getMessage());
             alert.showAndWait();
@@ -1539,7 +1543,7 @@ public class FXMLControllerBoard implements Initializable {
             board.nextPlayer();
         } catch (RuleViolated e) {
             Alert alert = new Alert(AlertType.ERROR);
-            alert.setTitle("Deplacement impossible");
+            alert.setTitle(null);
             alert.setHeaderText(null);
             alert.setContentText(e.getMessage());
             alert.showAndWait();
@@ -1556,7 +1560,7 @@ public class FXMLControllerBoard implements Initializable {
             board.nextPlayer();
         } catch (RuleViolated e) {
             Alert alert = new Alert(AlertType.ERROR);
-            alert.setTitle("Deplacement impossible");
+            alert.setTitle(null);
             alert.setHeaderText(null);
             alert.setContentText(e.getMessage());
             alert.showAndWait();
@@ -1573,7 +1577,7 @@ public class FXMLControllerBoard implements Initializable {
             board.nextPlayer();
         } catch (RuleViolated e) {
             Alert alert = new Alert(AlertType.ERROR);
-            alert.setTitle("Deplacement impossible");
+            alert.setTitle(null);
             alert.setHeaderText(null);
             alert.setContentText(e.getMessage());
             alert.showAndWait();
@@ -1590,7 +1594,7 @@ public class FXMLControllerBoard implements Initializable {
             board.nextPlayer();
         } catch (RuleViolated e) {
             Alert alert = new Alert(AlertType.ERROR);
-            alert.setTitle("Deplacement impossible");
+            alert.setTitle(null);
             alert.setHeaderText(null);
             alert.setContentText(e.getMessage());
             alert.showAndWait();
@@ -1608,7 +1612,7 @@ public class FXMLControllerBoard implements Initializable {
             board.nextPlayer();
         } catch (RuleViolated e) {
             Alert alert = new Alert(AlertType.ERROR);
-            alert.setTitle("Deplacement impossible");
+            alert.setTitle(null);
             alert.setHeaderText(null);
             alert.setContentText(e.getMessage());
             alert.showAndWait();
@@ -1662,11 +1666,11 @@ public class FXMLControllerBoard implements Initializable {
             oldImageView[board.getcurrentIDPlayer()].setImage(imageCase); //On remet la case vide
             box1600.setImage(getColor(board.players[board.getcurrentIDPlayer()])); //On met dans la case le pion selon la couleur du player
             oldImageView[board.getcurrentIDPlayer()] = box1600; //On enregistre la case actuel pour la vider au prochain coup
-            board.win.verify(board, board.players[board.getcurrentIDPlayer()], new Position(16, 0));
- //GAGNE            board.nextPlayer();
+           
+            board.nextPlayer();
         } catch (RuleViolated e) {
             Alert alert = new Alert(AlertType.ERROR);
-            alert.setTitle("Deplacement impossible");
+            alert.setTitle(null);
             alert.setHeaderText(null);
             alert.setContentText(e.getMessage());
             alert.showAndWait();
@@ -1680,11 +1684,11 @@ public class FXMLControllerBoard implements Initializable {
             oldImageView[board.getcurrentIDPlayer()].setImage(imageCase); //On remet la case vide
             box1602.setImage(getColor(board.players[board.getcurrentIDPlayer()])); //On met dans la case le pion selon la couleur du player
             oldImageView[board.getcurrentIDPlayer()] = box1602; //On enregistre la case actuel pour la vider au prochain coup
-            board.win.verify(board, board.players[board.getcurrentIDPlayer()], new Position(16, 2));
- //GAGNE            board.nextPlayer();
+           
+            board.nextPlayer();
         } catch (RuleViolated e) {
             Alert alert = new Alert(AlertType.ERROR);
-            alert.setTitle("Deplacement impossible");
+            alert.setTitle(null);
             alert.setHeaderText(null);
             alert.setContentText(e.getMessage());
             alert.showAndWait();
@@ -1698,11 +1702,11 @@ public class FXMLControllerBoard implements Initializable {
             oldImageView[board.getcurrentIDPlayer()].setImage(imageCase); //On remet la case vide
             box1604.setImage(getColor(board.players[board.getcurrentIDPlayer()])); //On met dans la case le pion selon la couleur du player
             oldImageView[board.getcurrentIDPlayer()] = box1604; //On enregistre la case actuel pour la vider au prochain coup
-            board.win.verify(board, board.players[board.getcurrentIDPlayer()], new Position(16, 4));
- //GAGNE            board.nextPlayer();
+           
+            board.nextPlayer();
         } catch (RuleViolated e) {
             Alert alert = new Alert(AlertType.ERROR);
-            alert.setTitle("Deplacement impossible");
+            alert.setTitle(null);
             alert.setHeaderText(null);
             alert.setContentText(e.getMessage());
             alert.showAndWait();
@@ -1716,11 +1720,11 @@ public class FXMLControllerBoard implements Initializable {
             oldImageView[board.getcurrentIDPlayer()].setImage(imageCase); //On remet la case vide
             box1606.setImage(getColor(board.players[board.getcurrentIDPlayer()])); //On met dans la case le pion selon la couleur du player
             oldImageView[board.getcurrentIDPlayer()] = box1606; //On enregistre la case actuel pour la vider au prochain coup
-            board.win.verify(board, board.players[board.getcurrentIDPlayer()], new Position(16, 6));
- //GAGNE            board.nextPlayer();
+           
+            board.nextPlayer();
         } catch (RuleViolated e) {
             Alert alert = new Alert(AlertType.ERROR);
-            alert.setTitle("Deplacement impossible");
+            alert.setTitle(null);
             alert.setHeaderText(null);
             alert.setContentText(e.getMessage());
             alert.showAndWait();
@@ -1734,11 +1738,11 @@ public class FXMLControllerBoard implements Initializable {
             oldImageView[board.getcurrentIDPlayer()].setImage(imageCase); //On remet la case vide
             box1608.setImage(getColor(board.players[board.getcurrentIDPlayer()])); //On met dans la case le pion selon la couleur du player
             oldImageView[board.getcurrentIDPlayer()] = box1608; //On enregistre la case actuel pour la vider au prochain coup
-            board.win.verify(board, board.players[board.getcurrentIDPlayer()], new Position(16, 8));
- //GAGNE            board.nextPlayer();
+               
+            board.nextPlayer();
         } catch (RuleViolated e) {
             Alert alert = new Alert(AlertType.ERROR);
-            alert.setTitle("Deplacement impossible");
+            alert.setTitle(null);
             alert.setHeaderText(null);
             alert.setContentText(e.getMessage());
             alert.showAndWait();
@@ -1756,7 +1760,7 @@ public class FXMLControllerBoard implements Initializable {
             board.nextPlayer();
         } catch (RuleViolated e) {
             Alert alert = new Alert(AlertType.ERROR);
-            alert.setTitle("Deplacement impossible");
+            alert.setTitle(null);
             alert.setHeaderText(null);
             alert.setContentText(e.getMessage());
             alert.showAndWait();
@@ -1774,7 +1778,7 @@ public class FXMLControllerBoard implements Initializable {
             board.nextPlayer();
         } catch (RuleViolated e) {
             Alert alert = new Alert(AlertType.ERROR);
-            alert.setTitle("Deplacement impossible");
+            alert.setTitle(null);
             alert.setHeaderText(null);
             alert.setContentText(e.getMessage());
             alert.showAndWait();
@@ -1792,7 +1796,7 @@ public class FXMLControllerBoard implements Initializable {
             board.nextPlayer();
         } catch (RuleViolated e) {
             Alert alert = new Alert(AlertType.ERROR);
-            alert.setTitle("Deplacement impossible");
+            alert.setTitle(null);
             alert.setHeaderText(null);
             alert.setContentText(e.getMessage());
             alert.showAndWait();
@@ -1810,7 +1814,7 @@ public class FXMLControllerBoard implements Initializable {
             board.nextPlayer();
         } catch (RuleViolated e) {
             Alert alert = new Alert(AlertType.ERROR);
-            alert.setTitle("Deplacement impossible");
+            alert.setTitle(null);
             alert.setHeaderText(null);
             alert.setContentText(e.getMessage());
             alert.showAndWait();

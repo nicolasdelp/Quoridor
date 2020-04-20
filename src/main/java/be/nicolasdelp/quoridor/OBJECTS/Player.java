@@ -152,8 +152,8 @@ public class Player {
      * @param Position la position
      */
     public void moveWall(WallDirection direction, Position Position) {
-        this.walls[this.wallIndex].setWallDirection(direction);
-        this.walls[this.wallIndex].setPosition(Position);
+        this.walls[this.wallIndex-1].setWallDirection(direction);
+        this.walls[this.wallIndex-1].setPosition(Position);
         this.wallIndex--;
     }
 }

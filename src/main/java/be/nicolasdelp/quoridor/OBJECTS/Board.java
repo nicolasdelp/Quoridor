@@ -81,7 +81,7 @@ public class Board {
 
     public void nextPlayer(){
         this.currentIDPlayer++;
-        this.currentIDPlayer = this.currentIDPlayer%4;
+        this.currentIDPlayer = this.currentIDPlayer%2;
     }
 
     /**
