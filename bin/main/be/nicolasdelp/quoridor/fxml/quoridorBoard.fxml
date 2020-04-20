@@ -1179,7 +1179,7 @@
                         <ImageView fx:id="box1516" fitHeight="55.0" fitWidth="11.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="15" GridPane.halignment="CENTER" GridPane.rowIndex="16" GridPane.valignment="CENTER" />
                      </children>
                   </GridPane>
-                  <GridPane layoutX="173.0" layoutY="423.0">
+                  <GridPane layoutX="174.0" layoutY="350.0">
                     <columnConstraints>
                       <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="120.0" />
                     </columnConstraints>
@@ -1187,38 +1187,68 @@
                         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                         <RowConstraints maxHeight="30.0" minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                         <RowConstraints maxHeight="30.0" minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                     </rowConstraints>
                      <children>
-                        <ImageView fitHeight="34.0" fitWidth="119.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="stack01Player1" fitHeight="34.0" fitWidth="119.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@../img/mur-vert-stockage.png" />
                            </image>
                         </ImageView>
-                        <ImageView fitHeight="34.0" fitWidth="119.0" pickOnBounds="true" preserveRatio="true" GridPane.rowIndex="4">
+                        <ImageView fx:id="stack02Player1" fitHeight="34.0" fitWidth="119.0" pickOnBounds="true" preserveRatio="true" GridPane.rowIndex="1">
                            <image>
                               <Image url="@../img/mur-vert-stockage.png" />
                            </image>
                         </ImageView>
-                        <ImageView fitHeight="34.0" fitWidth="119.0" pickOnBounds="true" preserveRatio="true" GridPane.rowIndex="3">
+                        <ImageView fx:id="stack03Player1" fitHeight="34.0" fitWidth="119.0" pickOnBounds="true" preserveRatio="true" GridPane.rowIndex="2">
                            <image>
                               <Image url="@../img/mur-vert-stockage.png" />
                            </image>
                         </ImageView>
-                        <ImageView fitHeight="34.0" fitWidth="119.0" pickOnBounds="true" preserveRatio="true" GridPane.rowIndex="2">
+                        <ImageView fx:id="stack04Player1" fitHeight="34.0" fitWidth="119.0" pickOnBounds="true" preserveRatio="true" GridPane.rowIndex="3">
                            <image>
                               <Image url="@../img/mur-vert-stockage.png" />
                            </image>
                         </ImageView>
-                        <ImageView fitHeight="34.0" fitWidth="119.0" pickOnBounds="true" preserveRatio="true" GridPane.rowIndex="1">
+                        <ImageView fx:id="stack05Player1" fitHeight="34.0" fitWidth="119.0" pickOnBounds="true" preserveRatio="true" GridPane.rowIndex="4">
+                           <image>
+                              <Image url="@../img/mur-vert-stockage.png" />
+                           </image>
+                        </ImageView>
+                        <ImageView fx:id="stack06Player1" fitHeight="34.0" fitWidth="119.0" pickOnBounds="true" preserveRatio="true" GridPane.rowIndex="5">
+                           <image>
+                              <Image url="@../img/mur-vert-stockage.png" />
+                           </image>
+                        </ImageView>
+                        <ImageView fx:id="stack07Player1" fitHeight="34.0" fitWidth="119.0" pickOnBounds="true" preserveRatio="true" GridPane.rowIndex="6">
+                           <image>
+                              <Image url="@../img/mur-vert-stockage.png" />
+                           </image>
+                        </ImageView>
+                        <ImageView fx:id="stack08Player1" fitHeight="34.0" fitWidth="119.0" pickOnBounds="true" preserveRatio="true" GridPane.rowIndex="7">
+                           <image>
+                              <Image url="@../img/mur-vert-stockage.png" />
+                           </image>
+                        </ImageView>
+                        <ImageView fx:id="stack09Player1" fitHeight="34.0" fitWidth="119.0" pickOnBounds="true" preserveRatio="true" GridPane.rowIndex="8">
+                           <image>
+                              <Image url="@../img/mur-vert-stockage.png" />
+                           </image>
+                        </ImageView>
+                        <ImageView fx:id="stack10Player1" fitHeight="34.0" fitWidth="119.0" pickOnBounds="true" preserveRatio="true" GridPane.rowIndex="9">
                            <image>
                               <Image url="@../img/mur-vert-stockage.png" />
                            </image>
                         </ImageView>
                      </children>
                   </GridPane>
-                  <GridPane layoutX="959.0" layoutY="423.0" rotate="180.0">
+                  <GridPane layoutX="958.0" layoutY="350.0">
                      <columnConstraints>
                         <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="120.0" />
                      </columnConstraints>
@@ -1228,41 +1258,71 @@
                         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="30.0" minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="30.0" minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                      </rowConstraints>
                      <children>
-                        <ImageView fitHeight="34.0" fitWidth="119.0" pickOnBounds="true" preserveRatio="true" GridPane.rowIndex="2">
+                        <ImageView fx:id="stack01Player2" fitHeight="34.0" fitWidth="119.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@../img/mur-bleu-stockage.png" />
+                              <Image url="@../img/mur-vert-stockage.png" />
                            </image>
                         </ImageView>
-                        <ImageView fitHeight="34.0" fitWidth="119.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="stack02Player2" fitHeight="34.0" fitWidth="119.0" pickOnBounds="true" preserveRatio="true" GridPane.rowIndex="1">
                            <image>
-                              <Image url="@../img/mur-bleu-stockage.png" />
+                              <Image url="@../img/mur-vert-stockage.png" />
                            </image>
                         </ImageView>
-                        <ImageView fitHeight="34.0" fitWidth="119.0" pickOnBounds="true" preserveRatio="true" GridPane.rowIndex="4">
+                        <ImageView fx:id="stack03Player2" fitHeight="34.0" fitWidth="119.0" pickOnBounds="true" preserveRatio="true" GridPane.rowIndex="2">
                            <image>
-                              <Image url="@../img/mur-bleu-stockage.png" />
+                              <Image url="@../img/mur-vert-stockage.png" />
                            </image>
                         </ImageView>
-                        <ImageView fitHeight="34.0" fitWidth="119.0" pickOnBounds="true" preserveRatio="true" GridPane.rowIndex="3">
+                        <ImageView fx:id="stack04Player2" fitHeight="34.0" fitWidth="119.0" pickOnBounds="true" preserveRatio="true" GridPane.rowIndex="3">
                            <image>
-                              <Image url="@../img/mur-bleu-stockage.png" />
+                              <Image url="@../img/mur-vert-stockage.png" />
                            </image>
                         </ImageView>
-                        <ImageView fitHeight="34.0" fitWidth="119.0" pickOnBounds="true" preserveRatio="true" GridPane.rowIndex="1">
+                        <ImageView fx:id="stack05Player2" fitHeight="34.0" fitWidth="119.0" pickOnBounds="true" preserveRatio="true" GridPane.rowIndex="4">
                            <image>
-                              <Image url="@../img/mur-bleu-stockage.png" />
+                              <Image url="@../img/mur-vert-stockage.png" />
+                           </image>
+                        </ImageView>
+                        <ImageView fx:id="stack06Player2" fitHeight="34.0" fitWidth="119.0" pickOnBounds="true" preserveRatio="true" GridPane.rowIndex="5">
+                           <image>
+                              <Image url="@../img/mur-vert-stockage.png" />
+                           </image>
+                        </ImageView>
+                        <ImageView fx:id="stack07Player2" fitHeight="34.0" fitWidth="119.0" pickOnBounds="true" preserveRatio="true" GridPane.rowIndex="6">
+                           <image>
+                              <Image url="@../img/mur-vert-stockage.png" />
+                           </image>
+                        </ImageView>
+                        <ImageView fx:id="stack08Player2" fitHeight="34.0" fitWidth="119.0" pickOnBounds="true" preserveRatio="true" GridPane.rowIndex="7">
+                           <image>
+                              <Image url="@../img/mur-vert-stockage.png" />
+                           </image>
+                        </ImageView>
+                        <ImageView fx:id="stack09Player2" fitHeight="34.0" fitWidth="119.0" pickOnBounds="true" preserveRatio="true" GridPane.rowIndex="8">
+                           <image>
+                              <Image url="@../img/mur-vert-stockage.png" />
+                           </image>
+                        </ImageView>
+                        <ImageView fx:id="stack10Player2" fitHeight="34.0" fitWidth="119.0" pickOnBounds="true" preserveRatio="true" GridPane.rowIndex="9">
+                           <image>
+                              <Image url="@../img/mur-vert-stockage.png" />
                            </image>
                         </ImageView>
                      </children>
                   </GridPane>
-                  <Label layoutX="182.0" layoutY="300.0" text="Pseudo 1">
+                  <Label fx:id="joueur1" layoutX="164.0" layoutY="301.0" text="Pseudo 1">
                      <font>
                         <Font size="25.0" />
                      </font>
                   </Label>
-                  <Label layoutX="965.0" layoutY="300.0" text="Pseudo 2">
+                  <Label fx:id="joueur2" layoutX="950.0" layoutY="300.0" text="Pseudo 2">
                      <font>
                         <Font size="25.0" />
                      </font>

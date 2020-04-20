@@ -17,7 +17,7 @@
       <AnchorPane onMouseMoved="#visibleIAChoice" prefHeight="454.0" prefWidth="836.0">
          <children>
             <CheckBox fx:id="twoPlayersCheckbox" layoutX="326.0" layoutY="61.0" mnemonicParsing="false" onAction="#twoPlayersCheckboxCheck" selected="true" styleClass="font" text="2 Joueurs" />
-            <CheckBox fx:id="fourPlayersCheckbox" layoutX="438.0" layoutY="61.0" mnemonicParsing="false" onAction="#fourPlayersCheckboxCheck" styleClass="font" text="4 Joueurs" />
+            <CheckBox fx:id="fourPlayersCheckbox" disable="true" layoutX="438.0" layoutY="61.0" mnemonicParsing="false" onAction="#fourPlayersCheckboxCheck" styleClass="font" text="4 Joueurs" />
             <Label layoutX="292.0" layoutY="17.0" styleClass="font" text="Choissez le nombre de joueurs :">
                <font>
                   <Font size="18.0" />

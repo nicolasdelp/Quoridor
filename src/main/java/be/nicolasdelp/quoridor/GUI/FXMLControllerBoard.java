@@ -9,6 +9,7 @@ import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
+import javafx.scene.control.Label;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -28,6 +29,15 @@ public class FXMLControllerBoard implements Initializable {
     final URL URLPionBleu = getClass().getResource("../img/pion-bleu.png");  //Image du pion bleu
     final Image imagePionBleu = new Image(URLPionBleu.toExternalForm());
 
+    final URL URLMurVert = getClass().getResource("../img/mur-vert-stockage.png");  //Image du mur vert
+    final Image imageMurVert = new Image(URLMurVert.toExternalForm());
+    final URL URLMurRouge = getClass().getResource("../img/mur-rouge-stockage.png");  //Image du mur rouge
+    final Image imageMurRouge = new Image(URLMurRouge.toExternalForm());
+    final URL URLMurJaune = getClass().getResource("../img/mur-jaune-stockage.png");  //Image du mur jaune
+    final Image imageMurJaune = new Image(URLMurJaune.toExternalForm());
+    final URL URLMurBleu = getClass().getResource("../img/mur-bleu-stockage.png");  //Image du mur bleu
+    final Image imageMurBleu = new Image(URLMurBleu.toExternalForm());
+
     final URL URLMurBleuH1 = getClass().getResource("../img/mur-bleu-1-H.png");
     final Image imageMurBleuH1 = new Image(URLMurBleuH1.toExternalForm());
     final URL URLMurBleuH2 = getClass().getResource("../img/mur-bleu-2-H.png");
@@ -43,25 +53,50 @@ public class FXMLControllerBoard implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         if(this.board.getPlayers().length == 2){
-            box0008.setImage(getColor(this.board.players[0]));
+            box0008.setImage(getColorPawn(this.board.players[0]));
             oldImageView[0] = box0008;
-            box1608.setImage(getColor(this.board.players[1]));
+            joueur1.setText(this.board.players[0].getUsername());
+            stack01Player1.setImage(getColorWall(this.board.players[0]));
+            stack02Player1.setImage(getColorWall(this.board.players[0]));
+            stack03Player1.setImage(getColorWall(this.board.players[0]));
+            stack04Player1.setImage(getColorWall(this.board.players[0]));
+            stack05Player1.setImage(getColorWall(this.board.players[0]));
+            stack06Player1.setImage(getColorWall(this.board.players[0]));
+            stack07Player1.setImage(getColorWall(this.board.players[0]));
+            stack08Player1.setImage(getColorWall(this.board.players[0]));
+            stack09Player1.setImage(getColorWall(this.board.players[0]));
+            stack10Player1.setImage(getColorWall(this.board.players[0]));
+            box1608.setImage(getColorPawn(this.board.players[1]));
             oldImageView[1] = box1608;
+            joueur2.setText(this.board.players[1].getUsername());
+            stack01Player2.setImage(getColorWall(this.board.players[1]));
+            stack02Player2.setImage(getColorWall(this.board.players[1]));
+            stack03Player2.setImage(getColorWall(this.board.players[1]));
+            stack04Player2.setImage(getColorWall(this.board.players[1]));
+            stack05Player2.setImage(getColorWall(this.board.players[1]));
+            stack06Player2.setImage(getColorWall(this.board.players[1]));
+            stack07Player2.setImage(getColorWall(this.board.players[1]));
+            stack08Player2.setImage(getColorWall(this.board.players[1]));
+            stack09Player2.setImage(getColorWall(this.board.players[1]));
+            stack10Player2.setImage(getColorWall(this.board.players[1]));
         }
         if(this.board.getPlayers().length == 4){
-            box0008.setImage(getColor(this.board.players[0]));
+            box0008.setImage(getColorPawn(this.board.players[0]));
             oldImageView[0] = box0008;
-            box1608.setImage(getColor(this.board.players[1]));
+            box1608.setImage(getColorPawn(this.board.players[1]));
             oldImageView[1] = box1608;
-            box0800.setImage(getColor(this.board.players[2]));
+            box0800.setImage(getColorPawn(this.board.players[2]));
             oldImageView[2] = box0800;
-            box0816.setImage(getColor(this.board.players[3]));
+            box0816.setImage(getColorPawn(this.board.players[3]));
             oldImageView[3] = box0816;
         }
     }
 
     @FXML
     private GridPane grid;
+
+    @FXML
+    private Label joueur1, joueur2;
 
     @FXML
     private ImageView box0000, box0100, box0200, box0300, box0400, box0500, box0600, box0700, box0800, box0900, box1000, box1100, box1200, box1300, box1400, box1500, box1600, 
@@ -80,9 +115,11 @@ public class FXMLControllerBoard implements Initializable {
                       box0013, box0113, box0213, box0313, box0413, box0513, box0613, box0713, box0813, box0913, box1013, box1113, box1213, box1313, box1413, box1513, box1613, 
                       box0014, box0114, box0214, box0314, box0414, box0514, box0614, box0714, box0814, box0914, box1014, box1114, box1214, box1314, box1414, box1514, box1614,
                       box0015, box0115, box0215, box0315, box0415, box0515, box0615, box0715, box0815, box0915, box1015, box1115, box1215, box1315, box1415, box1515, box1615, 
-                      box0016, box0116, box0216, box0316, box0416, box0516, box0616, box0716, box0816, box0916, box1016, box1116, box1216, box1316, box1416, box1516, box1616;
+                      box0016, box0116, box0216, box0316, box0416, box0516, box0616, box0716, box0816, box0916, box1016, box1116, box1216, box1316, box1416, box1516, box1616,
+                      stack01Player1, stack02Player1, stack03Player1, stack04Player1, stack05Player1, stack06Player1, stack07Player1, stack08Player1, stack09Player1, stack10Player1,
+                      stack01Player2, stack02Player2, stack03Player2, stack04Player2, stack05Player2, stack06Player2, stack07Player2, stack08Player2, stack09Player2, stack10Player2;
 
-    private Image getColor(Player player){ //Récupérer la couleur du pion du joueur
+    private Image getColorPawn(Player player){ //Récupérer la couleur du pion du joueur
         if(player.getColor() == Color.Vert){
             return imagePionVert;
         }if(player.getColor() == Color.Rouge){
@@ -97,12 +134,27 @@ public class FXMLControllerBoard implements Initializable {
         }
     }
 
+    private Image getColorWall(Player player){ //Récupérer la couleur du pion du joueur
+        if(player.getColor() == Color.Vert){
+            return imageMurVert;
+        }if(player.getColor() == Color.Rouge){
+            return imageMurRouge;
+        }if(player.getColor() == Color.Bleu){
+            return imageMurBleu;
+        }if(player.getColor() == Color.Jaune){
+            return imageMurJaune;
+        }
+        else{
+            return null;
+        }
+    }
+
     @FXML
     void box0000Clicked(MouseEvent event) {
         try {
             board.movePawnOnBoard(board.players[board.getcurrentIDPlayer()], new Position(0, 0)); //On vérifie le mouvement est possible
             oldImageView[board.getcurrentIDPlayer()].setImage(imageCase); //On remet la case vide
-            box0000.setImage(getColor(board.players[board.getcurrentIDPlayer()])); //On met dans la case le pion selon la couleur du player
+            box0000.setImage(getColorPawn(board.players[board.getcurrentIDPlayer()])); //On met dans la case le pion selon la couleur du player
             oldImageView[board.getcurrentIDPlayer()] = box0000; //On enregistre la case actuel pour la vider au prochain coup          
             board.nextPlayer();
         } catch (RuleViolated e) {
@@ -119,7 +171,7 @@ public class FXMLControllerBoard implements Initializable {
         try {
             board.movePawnOnBoard(board.players[board.getcurrentIDPlayer()], new Position(0, 2)); //On vérifie le mouvement est possible
             oldImageView[board.getcurrentIDPlayer()].setImage(imageCase); //On remet la case vide
-            box0002.setImage(getColor(board.players[board.getcurrentIDPlayer()])); //On met dans la case le pion selon la couleur du player
+            box0002.setImage(getColorPawn(board.players[board.getcurrentIDPlayer()])); //On met dans la case le pion selon la couleur du player
             oldImageView[board.getcurrentIDPlayer()] = box0002; //On enregistre la case actuel pour la vider au prochain coup          
             board.nextPlayer();
         } catch (RuleViolated e) {
@@ -136,7 +188,7 @@ public class FXMLControllerBoard implements Initializable {
         try {
             board.movePawnOnBoard(board.players[board.getcurrentIDPlayer()], new Position(0, 4)); //On vérifie le mouvement est possible
             oldImageView[board.getcurrentIDPlayer()].setImage(imageCase); //On remet la case vide
-            box0004.setImage(getColor(board.players[board.getcurrentIDPlayer()])); //On met dans la case le pion selon la couleur du player
+            box0004.setImage(getColorPawn(board.players[board.getcurrentIDPlayer()])); //On met dans la case le pion selon la couleur du player
             oldImageView[board.getcurrentIDPlayer()] = box0004; //On enregistre la case actuel pour la vider au prochain coup          
             board.nextPlayer();
         } catch (RuleViolated e) {
@@ -153,7 +205,7 @@ public class FXMLControllerBoard implements Initializable {
         try {
             board.movePawnOnBoard(board.players[board.getcurrentIDPlayer()], new Position(0, 6)); //On vérifie le mouvement est possible
             oldImageView[board.getcurrentIDPlayer()].setImage(imageCase); //On remet la case vide
-            box0006.setImage(getColor(board.players[board.getcurrentIDPlayer()])); //On met dans la case le pion selon la couleur du player
+            box0006.setImage(getColorPawn(board.players[board.getcurrentIDPlayer()])); //On met dans la case le pion selon la couleur du player
             oldImageView[board.getcurrentIDPlayer()] = box0006; //On enregistre la case actuel pour la vider au prochain coup          
             board.nextPlayer();
         } catch (RuleViolated e) {
@@ -170,7 +222,7 @@ public class FXMLControllerBoard implements Initializable {
         try {
             board.movePawnOnBoard(board.players[board.getcurrentIDPlayer()], new Position(0, 8)); //On vérifie le mouvement est possible
             oldImageView[board.getcurrentIDPlayer()].setImage(imageCase); //On remet la case vide
-            box0008.setImage(getColor(board.players[board.getcurrentIDPlayer()])); //On met dans la case le pion selon la couleur du player
+            box0008.setImage(getColorPawn(board.players[board.getcurrentIDPlayer()])); //On met dans la case le pion selon la couleur du player
             oldImageView[board.getcurrentIDPlayer()] = box0008; //On enregistre la case actuel pour la vider au prochain coup          
             board.nextPlayer();
         } catch (RuleViolated e) {
@@ -187,7 +239,7 @@ public class FXMLControllerBoard implements Initializable {
         try {
             board.movePawnOnBoard(board.players[board.getcurrentIDPlayer()], new Position(0, 10)); //On vérifie le mouvement est possible
             oldImageView[board.getcurrentIDPlayer()].setImage(imageCase); //On remet la case vide
-            box0010.setImage(getColor(board.players[board.getcurrentIDPlayer()])); //On met dans la case le pion selon la couleur du player
+            box0010.setImage(getColorPawn(board.players[board.getcurrentIDPlayer()])); //On met dans la case le pion selon la couleur du player
             oldImageView[board.getcurrentIDPlayer()] = box0010; //On enregistre la case actuel pour la vider au prochain coup
            
             board.nextPlayer();
@@ -205,7 +257,7 @@ public class FXMLControllerBoard implements Initializable {
         try {
             board.movePawnOnBoard(board.players[board.getcurrentIDPlayer()], new Position(0, 12)); //On vérifie le mouvement est possible
             oldImageView[board.getcurrentIDPlayer()].setImage(imageCase); //On remet la case vide
-            box0012.setImage(getColor(board.players[board.getcurrentIDPlayer()])); //On met dans la case le pion selon la couleur du player
+            box0012.setImage(getColorPawn(board.players[board.getcurrentIDPlayer()])); //On met dans la case le pion selon la couleur du player
             oldImageView[board.getcurrentIDPlayer()] = box0012; //On enregistre la case actuel pour la vider au prochain coup
            
             board.nextPlayer();
@@ -223,7 +275,7 @@ public class FXMLControllerBoard implements Initializable {
         try {
             board.movePawnOnBoard(board.players[board.getcurrentIDPlayer()], new Position(0, 14)); //On vérifie le mouvement est possible
             oldImageView[board.getcurrentIDPlayer()].setImage(imageCase); //On remet la case vide
-            box0014.setImage(getColor(board.players[board.getcurrentIDPlayer()])); //On met dans la case le pion selon la couleur du player
+            box0014.setImage(getColorPawn(board.players[board.getcurrentIDPlayer()])); //On met dans la case le pion selon la couleur du player
             oldImageView[board.getcurrentIDPlayer()] = box0014; //On enregistre la case actuel pour la vider au prochain coup
            
             board.nextPlayer();
@@ -241,7 +293,7 @@ public class FXMLControllerBoard implements Initializable {
         try {
             board.movePawnOnBoard(board.players[board.getcurrentIDPlayer()], new Position(0, 16)); //On vérifie le mouvement est possible
             oldImageView[board.getcurrentIDPlayer()].setImage(imageCase); //On remet la case vide
-            box0016.setImage(getColor(board.players[board.getcurrentIDPlayer()])); //On met dans la case le pion selon la couleur du player
+            box0016.setImage(getColorPawn(board.players[board.getcurrentIDPlayer()])); //On met dans la case le pion selon la couleur du player
             oldImageView[board.getcurrentIDPlayer()] = box0016; //On enregistre la case actuel pour la vider au prochain coup
            
             board.nextPlayer();
@@ -311,7 +363,7 @@ public class FXMLControllerBoard implements Initializable {
         try {
             board.movePawnOnBoard(board.players[board.getcurrentIDPlayer()], new Position(2, 0)); //On vérifie le mouvement est possible
             oldImageView[board.getcurrentIDPlayer()].setImage(imageCase); //On remet la case vide
-            box0200.setImage(getColor(board.players[board.getcurrentIDPlayer()])); //On met dans la case le pion selon la couleur du player
+            box0200.setImage(getColorPawn(board.players[board.getcurrentIDPlayer()])); //On met dans la case le pion selon la couleur du player
             oldImageView[board.getcurrentIDPlayer()] = box0200; //On enregistre la case actuel pour la vider au prochain coup          
             board.nextPlayer();
         } catch (RuleViolated e) {
@@ -328,7 +380,7 @@ public class FXMLControllerBoard implements Initializable {
         try {
             board.movePawnOnBoard(board.players[board.getcurrentIDPlayer()], new Position(2, 2)); //On vérifie le mouvement est possible
             oldImageView[board.getcurrentIDPlayer()].setImage(imageCase); //On remet la case vide
-            box0202.setImage(getColor(board.players[board.getcurrentIDPlayer()])); //On met dans la case le pion selon la couleur du player
+            box0202.setImage(getColorPawn(board.players[board.getcurrentIDPlayer()])); //On met dans la case le pion selon la couleur du player
             oldImageView[board.getcurrentIDPlayer()] = box0202; //On enregistre la case actuel pour la vider au prochain coup
             board.nextPlayer();
         } catch (RuleViolated e) {
@@ -345,7 +397,7 @@ public class FXMLControllerBoard implements Initializable {
         try {
             board.movePawnOnBoard(board.players[board.getcurrentIDPlayer()], new Position(2, 4)); //On vérifie le mouvement est possible
             oldImageView[board.getcurrentIDPlayer()].setImage(imageCase); //On remet la case vide
-            box0204.setImage(getColor(board.players[board.getcurrentIDPlayer()])); //On met dans la case le pion selon la couleur du player
+            box0204.setImage(getColorPawn(board.players[board.getcurrentIDPlayer()])); //On met dans la case le pion selon la couleur du player
             oldImageView[board.getcurrentIDPlayer()] = box0204; //On enregistre la case actuel pour la vider au prochain coup
             board.nextPlayer();
         } catch (RuleViolated e) {
@@ -362,7 +414,7 @@ public class FXMLControllerBoard implements Initializable {
         try {
             board.movePawnOnBoard(board.players[board.getcurrentIDPlayer()], new Position(2, 6)); //On vérifie le mouvement est possible
             oldImageView[board.getcurrentIDPlayer()].setImage(imageCase); //On remet la case vide
-            box0206.setImage(getColor(board.players[board.getcurrentIDPlayer()])); //On met dans la case le pion selon la couleur du player
+            box0206.setImage(getColorPawn(board.players[board.getcurrentIDPlayer()])); //On met dans la case le pion selon la couleur du player
             oldImageView[board.getcurrentIDPlayer()] = box0206; //On enregistre la case actuel pour la vider au prochain coup
             board.nextPlayer();
         } catch (RuleViolated e) {
@@ -379,7 +431,7 @@ public class FXMLControllerBoard implements Initializable {
         try {
             board.movePawnOnBoard(board.players[board.getcurrentIDPlayer()], new Position(2, 8)); //On vérifie le mouvement est possible
             oldImageView[board.getcurrentIDPlayer()].setImage(imageCase); //On remet la case vide
-            box0208.setImage(getColor(board.players[board.getcurrentIDPlayer()])); //On met dans la case le pion selon la couleur du player
+            box0208.setImage(getColorPawn(board.players[board.getcurrentIDPlayer()])); //On met dans la case le pion selon la couleur du player
             oldImageView[board.getcurrentIDPlayer()] = box0208; //On enregistre la case actuel pour la vider au prochain coup
             board.nextPlayer();
         } catch (RuleViolated e) {
@@ -396,7 +448,7 @@ public class FXMLControllerBoard implements Initializable {
         try {
             board.movePawnOnBoard(board.players[board.getcurrentIDPlayer()], new Position(2, 10)); //On vérifie le mouvement est possible
             oldImageView[board.getcurrentIDPlayer()].setImage(imageCase); //On remet la case vide
-            box0210.setImage(getColor(board.players[board.getcurrentIDPlayer()])); //On met dans la case le pion selon la couleur du player
+            box0210.setImage(getColorPawn(board.players[board.getcurrentIDPlayer()])); //On met dans la case le pion selon la couleur du player
             oldImageView[board.getcurrentIDPlayer()] = box0210; //On enregistre la case actuel pour la vider au prochain coup
             board.nextPlayer();
         } catch (RuleViolated e) {
@@ -413,7 +465,7 @@ public class FXMLControllerBoard implements Initializable {
         try {
             board.movePawnOnBoard(board.players[board.getcurrentIDPlayer()], new Position(2, 12)); //On vérifie le mouvement est possible
             oldImageView[board.getcurrentIDPlayer()].setImage(imageCase); //On remet la case vide
-            box0212.setImage(getColor(board.players[board.getcurrentIDPlayer()])); //On met dans la case le pion selon la couleur du player
+            box0212.setImage(getColorPawn(board.players[board.getcurrentIDPlayer()])); //On met dans la case le pion selon la couleur du player
             oldImageView[board.getcurrentIDPlayer()] = box0212; //On enregistre la case actuel pour la vider au prochain coup
             board.nextPlayer();
         } catch (RuleViolated e) {
@@ -430,7 +482,7 @@ public class FXMLControllerBoard implements Initializable {
         try {
             board.movePawnOnBoard(board.players[board.getcurrentIDPlayer()], new Position(2, 14)); //On vérifie le mouvement est possible
             oldImageView[board.getcurrentIDPlayer()].setImage(imageCase); //On remet la case vide
-            box0214.setImage(getColor(board.players[board.getcurrentIDPlayer()])); //On met dans la case le pion selon la couleur du player
+            box0214.setImage(getColorPawn(board.players[board.getcurrentIDPlayer()])); //On met dans la case le pion selon la couleur du player
             oldImageView[board.getcurrentIDPlayer()] = box0214; //On enregistre la case actuel pour la vider au prochain coup
             board.nextPlayer();
         } catch (RuleViolated e) {
@@ -447,7 +499,7 @@ public class FXMLControllerBoard implements Initializable {
         try {
             board.movePawnOnBoard(board.players[board.getcurrentIDPlayer()], new Position(2, 16)); //On vérifie le mouvement est possible
             oldImageView[board.getcurrentIDPlayer()].setImage(imageCase); //On remet la case vide
-            box0216.setImage(getColor(board.players[board.getcurrentIDPlayer()])); //On met dans la case le pion selon la couleur du player
+            box0216.setImage(getColorPawn(board.players[board.getcurrentIDPlayer()])); //On met dans la case le pion selon la couleur du player
             oldImageView[board.getcurrentIDPlayer()] = box0216; //On enregistre la case actuel pour la vider au prochain coup
            
             board.nextPlayer();
@@ -505,7 +557,7 @@ public class FXMLControllerBoard implements Initializable {
         try {
             board.movePawnOnBoard(board.players[board.getcurrentIDPlayer()], new Position(4, 0)); //On vérifie le mouvement est possible
             oldImageView[board.getcurrentIDPlayer()].setImage(imageCase); //On remet la case vide
-            box0400.setImage(getColor(board.players[board.getcurrentIDPlayer()])); //On met dans la case le pion selon la couleur du player
+            box0400.setImage(getColorPawn(board.players[board.getcurrentIDPlayer()])); //On met dans la case le pion selon la couleur du player
             oldImageView[board.getcurrentIDPlayer()] = box0400; //On enregistre la case actuel pour la vider au prochain coup          
             board.nextPlayer();
         } catch (RuleViolated e) {
@@ -522,7 +574,7 @@ public class FXMLControllerBoard implements Initializable {
         try {
             board.movePawnOnBoard(board.players[board.getcurrentIDPlayer()], new Position(4, 2)); //On vérifie le mouvement est possible
             oldImageView[board.getcurrentIDPlayer()].setImage(imageCase); //On remet la case vide
-            box0402.setImage(getColor(board.players[board.getcurrentIDPlayer()])); //On met dans la case le pion selon la couleur du player
+            box0402.setImage(getColorPawn(board.players[board.getcurrentIDPlayer()])); //On met dans la case le pion selon la couleur du player
             oldImageView[board.getcurrentIDPlayer()] = box0402; //On enregistre la case actuel pour la vider au prochain coup
             board.nextPlayer();
         } catch (RuleViolated e) {
@@ -539,7 +591,7 @@ public class FXMLControllerBoard implements Initializable {
         try {
             board.movePawnOnBoard(board.players[board.getcurrentIDPlayer()], new Position(4, 4)); //On vérifie le mouvement est possible
             oldImageView[board.getcurrentIDPlayer()].setImage(imageCase); //On remet la case vide
-            box0404.setImage(getColor(board.players[board.getcurrentIDPlayer()])); //On met dans la case le pion selon la couleur du player
+            box0404.setImage(getColorPawn(board.players[board.getcurrentIDPlayer()])); //On met dans la case le pion selon la couleur du player
             oldImageView[board.getcurrentIDPlayer()] = box0404; //On enregistre la case actuel pour la vider au prochain coup
             board.nextPlayer();
         } catch (RuleViolated e) {
@@ -556,7 +608,7 @@ public class FXMLControllerBoard implements Initializable {
         try {
             board.movePawnOnBoard(board.players[board.getcurrentIDPlayer()], new Position(4, 6)); //On vérifie le mouvement est possible
             oldImageView[board.getcurrentIDPlayer()].setImage(imageCase); //On remet la case vide
-            box0406.setImage(getColor(board.players[board.getcurrentIDPlayer()])); //On met dans la case le pion selon la couleur du player
+            box0406.setImage(getColorPawn(board.players[board.getcurrentIDPlayer()])); //On met dans la case le pion selon la couleur du player
             oldImageView[board.getcurrentIDPlayer()] = box0406; //On enregistre la case actuel pour la vider au prochain coup
             board.nextPlayer();
         } catch (RuleViolated e) {
@@ -573,7 +625,7 @@ public class FXMLControllerBoard implements Initializable {
         try {
             board.movePawnOnBoard(board.players[board.getcurrentIDPlayer()], new Position(4, 8)); //On vérifie le mouvement est possible
             oldImageView[board.getcurrentIDPlayer()].setImage(imageCase); //On remet la case vide
-            box0408.setImage(getColor(board.players[board.getcurrentIDPlayer()])); //On met dans la case le pion selon la couleur du player
+            box0408.setImage(getColorPawn(board.players[board.getcurrentIDPlayer()])); //On met dans la case le pion selon la couleur du player
             oldImageView[board.getcurrentIDPlayer()] = box0408; //On enregistre la case actuel pour la vider au prochain coup
             board.nextPlayer();
         } catch (RuleViolated e) {
@@ -590,7 +642,7 @@ public class FXMLControllerBoard implements Initializable {
         try {
             board.movePawnOnBoard(board.players[board.getcurrentIDPlayer()], new Position(4, 10)); //On vérifie le mouvement est possible
             oldImageView[board.getcurrentIDPlayer()].setImage(imageCase); //On remet la case vide
-            box0410.setImage(getColor(board.players[board.getcurrentIDPlayer()])); //On met dans la case le pion selon la couleur du player
+            box0410.setImage(getColorPawn(board.players[board.getcurrentIDPlayer()])); //On met dans la case le pion selon la couleur du player
             oldImageView[board.getcurrentIDPlayer()] = box0410; //On enregistre la case actuel pour la vider au prochain coup
             board.nextPlayer();
         } catch (RuleViolated e) {
@@ -607,7 +659,7 @@ public class FXMLControllerBoard implements Initializable {
         try {
             board.movePawnOnBoard(board.players[board.getcurrentIDPlayer()], new Position(4, 12)); //On vérifie le mouvement est possible
             oldImageView[board.getcurrentIDPlayer()].setImage(imageCase); //On remet la case vide
-            box0412.setImage(getColor(board.players[board.getcurrentIDPlayer()])); //On met dans la case le pion selon la couleur du player
+            box0412.setImage(getColorPawn(board.players[board.getcurrentIDPlayer()])); //On met dans la case le pion selon la couleur du player
             oldImageView[board.getcurrentIDPlayer()] = box0412; //On enregistre la case actuel pour la vider au prochain coup
             board.nextPlayer();
         } catch (RuleViolated e) {
@@ -624,7 +676,7 @@ public class FXMLControllerBoard implements Initializable {
         try {
             board.movePawnOnBoard(board.players[board.getcurrentIDPlayer()], new Position(4, 14)); //On vérifie le mouvement est possible
             oldImageView[board.getcurrentIDPlayer()].setImage(imageCase); //On remet la case vide
-            box0414.setImage(getColor(board.players[board.getcurrentIDPlayer()])); //On met dans la case le pion selon la couleur du player
+            box0414.setImage(getColorPawn(board.players[board.getcurrentIDPlayer()])); //On met dans la case le pion selon la couleur du player
             oldImageView[board.getcurrentIDPlayer()] = box0414; //On enregistre la case actuel pour la vider au prochain coup
             board.nextPlayer();
         } catch (RuleViolated e) {
@@ -641,7 +693,7 @@ public class FXMLControllerBoard implements Initializable {
         try {
             board.movePawnOnBoard(board.players[board.getcurrentIDPlayer()], new Position(4, 16)); //On vérifie le mouvement est possible
             oldImageView[board.getcurrentIDPlayer()].setImage(imageCase); //On remet la case vide
-            box0416.setImage(getColor(board.players[board.getcurrentIDPlayer()])); //On met dans la case le pion selon la couleur du player
+            box0416.setImage(getColorPawn(board.players[board.getcurrentIDPlayer()])); //On met dans la case le pion selon la couleur du player
             oldImageView[board.getcurrentIDPlayer()] = box0416; //On enregistre la case actuel pour la vider au prochain coup
            
             board.nextPlayer();
@@ -699,7 +751,7 @@ public class FXMLControllerBoard implements Initializable {
         try {
             board.movePawnOnBoard(board.players[board.getcurrentIDPlayer()], new Position(6, 0)); //On vérifie le mouvement est possible
             oldImageView[board.getcurrentIDPlayer()].setImage(imageCase); //On remet la case vide
-            box0600.setImage(getColor(board.players[board.getcurrentIDPlayer()])); //On met dans la case le pion selon la couleur du player
+            box0600.setImage(getColorPawn(board.players[board.getcurrentIDPlayer()])); //On met dans la case le pion selon la couleur du player
             oldImageView[board.getcurrentIDPlayer()] = box0600; //On enregistre la case actuel pour la vider au prochain coup          
             board.nextPlayer();
         } catch (RuleViolated e) {
@@ -716,7 +768,7 @@ public class FXMLControllerBoard implements Initializable {
         try {
             board.movePawnOnBoard(board.players[board.getcurrentIDPlayer()], new Position(6, 2)); //On vérifie le mouvement est possible
             oldImageView[board.getcurrentIDPlayer()].setImage(imageCase); //On remet la case vide
-            box0602.setImage(getColor(board.players[board.getcurrentIDPlayer()])); //On met dans la case le pion selon la couleur du player
+            box0602.setImage(getColorPawn(board.players[board.getcurrentIDPlayer()])); //On met dans la case le pion selon la couleur du player
             oldImageView[board.getcurrentIDPlayer()] = box0602; //On enregistre la case actuel pour la vider au prochain coup
             board.nextPlayer();
         } catch (RuleViolated e) {
@@ -733,7 +785,7 @@ public class FXMLControllerBoard implements Initializable {
         try {
             board.movePawnOnBoard(board.players[board.getcurrentIDPlayer()], new Position(6, 4)); //On vérifie le mouvement est possible
             oldImageView[board.getcurrentIDPlayer()].setImage(imageCase); //On remet la case vide
-            box0604.setImage(getColor(board.players[board.getcurrentIDPlayer()])); //On met dans la case le pion selon la couleur du player
+            box0604.setImage(getColorPawn(board.players[board.getcurrentIDPlayer()])); //On met dans la case le pion selon la couleur du player
             oldImageView[board.getcurrentIDPlayer()] = box0604; //On enregistre la case actuel pour la vider au prochain coup
             board.nextPlayer();
         } catch (RuleViolated e) {
@@ -750,7 +802,7 @@ public class FXMLControllerBoard implements Initializable {
         try {
             board.movePawnOnBoard(board.players[board.getcurrentIDPlayer()], new Position(6, 6)); //On vérifie le mouvement est possible
             oldImageView[board.getcurrentIDPlayer()].setImage(imageCase); //On remet la case vide
-            box0606.setImage(getColor(board.players[board.getcurrentIDPlayer()])); //On met dans la case le pion selon la couleur du player
+            box0606.setImage(getColorPawn(board.players[board.getcurrentIDPlayer()])); //On met dans la case le pion selon la couleur du player
             oldImageView[board.getcurrentIDPlayer()] = box0606; //On enregistre la case actuel pour la vider au prochain coup
             board.nextPlayer();
         } catch (RuleViolated e) {
@@ -767,7 +819,7 @@ public class FXMLControllerBoard implements Initializable {
         try {
             board.movePawnOnBoard(board.players[board.getcurrentIDPlayer()], new Position(6, 8)); //On vérifie le mouvement est possible
             oldImageView[board.getcurrentIDPlayer()].setImage(imageCase); //On remet la case vide
-            box0608.setImage(getColor(board.players[board.getcurrentIDPlayer()])); //On met dans la case le pion selon la couleur du player
+            box0608.setImage(getColorPawn(board.players[board.getcurrentIDPlayer()])); //On met dans la case le pion selon la couleur du player
             oldImageView[board.getcurrentIDPlayer()] = box0608; //On enregistre la case actuel pour la vider au prochain coup
             board.nextPlayer();
         } catch (RuleViolated e) {
@@ -784,7 +836,7 @@ public class FXMLControllerBoard implements Initializable {
         try {
             board.movePawnOnBoard(board.players[board.getcurrentIDPlayer()], new Position(6, 10)); //On vérifie le mouvement est possible
             oldImageView[board.getcurrentIDPlayer()].setImage(imageCase); //On remet la case vide
-            box0610.setImage(getColor(board.players[board.getcurrentIDPlayer()])); //On met dans la case le pion selon la couleur du player
+            box0610.setImage(getColorPawn(board.players[board.getcurrentIDPlayer()])); //On met dans la case le pion selon la couleur du player
             oldImageView[board.getcurrentIDPlayer()] = box0610; //On enregistre la case actuel pour la vider au prochain coup
             board.nextPlayer();
         } catch (RuleViolated e) {
@@ -801,7 +853,7 @@ public class FXMLControllerBoard implements Initializable {
         try {
             board.movePawnOnBoard(board.players[board.getcurrentIDPlayer()], new Position(6, 12)); //On vérifie le mouvement est possible
             oldImageView[board.getcurrentIDPlayer()].setImage(imageCase); //On remet la case vide
-            box0612.setImage(getColor(board.players[board.getcurrentIDPlayer()])); //On met dans la case le pion selon la couleur du player
+            box0612.setImage(getColorPawn(board.players[board.getcurrentIDPlayer()])); //On met dans la case le pion selon la couleur du player
             oldImageView[board.getcurrentIDPlayer()] = box0612; //On enregistre la case actuel pour la vider au prochain coup
             board.nextPlayer();
         } catch (RuleViolated e) {
@@ -818,7 +870,7 @@ public class FXMLControllerBoard implements Initializable {
         try {
             board.movePawnOnBoard(board.players[board.getcurrentIDPlayer()], new Position(6, 14)); //On vérifie le mouvement est possible
             oldImageView[board.getcurrentIDPlayer()].setImage(imageCase); //On remet la case vide
-            box0614.setImage(getColor(board.players[board.getcurrentIDPlayer()])); //On met dans la case le pion selon la couleur du player
+            box0614.setImage(getColorPawn(board.players[board.getcurrentIDPlayer()])); //On met dans la case le pion selon la couleur du player
             oldImageView[board.getcurrentIDPlayer()] = box0614; //On enregistre la case actuel pour la vider au prochain coup
             board.nextPlayer();
         } catch (RuleViolated e) {
@@ -835,7 +887,7 @@ public class FXMLControllerBoard implements Initializable {
         try {
             board.movePawnOnBoard(board.players[board.getcurrentIDPlayer()], new Position(6, 16)); //On vérifie le mouvement est possible
             oldImageView[board.getcurrentIDPlayer()].setImage(imageCase); //On remet la case vide
-            box0616.setImage(getColor(board.players[board.getcurrentIDPlayer()])); //On met dans la case le pion selon la couleur du player
+            box0616.setImage(getColorPawn(board.players[board.getcurrentIDPlayer()])); //On met dans la case le pion selon la couleur du player
             oldImageView[board.getcurrentIDPlayer()] = box0616; //On enregistre la case actuel pour la vider au prochain coup
            
             board.nextPlayer();
@@ -893,7 +945,7 @@ public class FXMLControllerBoard implements Initializable {
         try {
             board.movePawnOnBoard(board.players[board.getcurrentIDPlayer()], new Position(8, 0)); //On vérifie le mouvement est possible
             oldImageView[board.getcurrentIDPlayer()].setImage(imageCase); //On remet la case vide
-            box0800.setImage(getColor(board.players[board.getcurrentIDPlayer()])); //On met dans la case le pion selon la couleur du player
+            box0800.setImage(getColorPawn(board.players[board.getcurrentIDPlayer()])); //On met dans la case le pion selon la couleur du player
             oldImageView[board.getcurrentIDPlayer()] = box0800; //On enregistre la case actuel pour la vider au prochain coup          
             board.nextPlayer();
         } catch (RuleViolated e) {
@@ -910,7 +962,7 @@ public class FXMLControllerBoard implements Initializable {
         try {
             board.movePawnOnBoard(board.players[board.getcurrentIDPlayer()], new Position(8, 2)); //On vérifie le mouvement est possible
             oldImageView[board.getcurrentIDPlayer()].setImage(imageCase); //On remet la case vide
-            box0802.setImage(getColor(board.players[board.getcurrentIDPlayer()])); //On met dans la case le pion selon la couleur du player
+            box0802.setImage(getColorPawn(board.players[board.getcurrentIDPlayer()])); //On met dans la case le pion selon la couleur du player
             oldImageView[board.getcurrentIDPlayer()] = box0802; //On enregistre la case actuel pour la vider au prochain coup
             board.nextPlayer();
         } catch (RuleViolated e) {
@@ -927,7 +979,7 @@ public class FXMLControllerBoard implements Initializable {
         try {
             board.movePawnOnBoard(board.players[board.getcurrentIDPlayer()], new Position(8, 4)); //On vérifie le mouvement est possible
             oldImageView[board.getcurrentIDPlayer()].setImage(imageCase); //On remet la case vide
-            box0804.setImage(getColor(board.players[board.getcurrentIDPlayer()])); //On met dans la case le pion selon la couleur du player
+            box0804.setImage(getColorPawn(board.players[board.getcurrentIDPlayer()])); //On met dans la case le pion selon la couleur du player
             oldImageView[board.getcurrentIDPlayer()] = box0804; //On enregistre la case actuel pour la vider au prochain coup
             board.nextPlayer();
         } catch (RuleViolated e) {
@@ -944,7 +996,7 @@ public class FXMLControllerBoard implements Initializable {
         try {
             board.movePawnOnBoard(board.players[board.getcurrentIDPlayer()], new Position(8, 6)); //On vérifie le mouvement est possible
             oldImageView[board.getcurrentIDPlayer()].setImage(imageCase); //On remet la case vide
-            box0806.setImage(getColor(board.players[board.getcurrentIDPlayer()])); //On met dans la case le pion selon la couleur du player
+            box0806.setImage(getColorPawn(board.players[board.getcurrentIDPlayer()])); //On met dans la case le pion selon la couleur du player
             oldImageView[board.getcurrentIDPlayer()] = box0806; //On enregistre la case actuel pour la vider au prochain coup
             board.nextPlayer();
         } catch (RuleViolated e) {
@@ -961,7 +1013,7 @@ public class FXMLControllerBoard implements Initializable {
         try {
             board.movePawnOnBoard(board.players[board.getcurrentIDPlayer()], new Position(8, 8)); //On vérifie le mouvement est possible
             oldImageView[board.getcurrentIDPlayer()].setImage(imageCase); //On remet la case vide
-            box0808.setImage(getColor(board.players[board.getcurrentIDPlayer()])); //On met dans la case le pion selon la couleur du player
+            box0808.setImage(getColorPawn(board.players[board.getcurrentIDPlayer()])); //On met dans la case le pion selon la couleur du player
             oldImageView[board.getcurrentIDPlayer()] = box0808; //On enregistre la case actuel pour la vider au prochain coup
             board.nextPlayer();
         } catch (RuleViolated e) {
@@ -978,7 +1030,7 @@ public class FXMLControllerBoard implements Initializable {
         try {
             board.movePawnOnBoard(board.players[board.getcurrentIDPlayer()], new Position(8, 10)); //On vérifie le mouvement est possible
             oldImageView[board.getcurrentIDPlayer()].setImage(imageCase); //On remet la case vide
-            box0810.setImage(getColor(board.players[board.getcurrentIDPlayer()])); //On met dans la case le pion selon la couleur du player
+            box0810.setImage(getColorPawn(board.players[board.getcurrentIDPlayer()])); //On met dans la case le pion selon la couleur du player
             oldImageView[board.getcurrentIDPlayer()] = box0810; //On enregistre la case actuel pour la vider au prochain coup
             board.nextPlayer();
         } catch (RuleViolated e) {
@@ -995,7 +1047,7 @@ public class FXMLControllerBoard implements Initializable {
         try {
             board.movePawnOnBoard(board.players[board.getcurrentIDPlayer()], new Position(8, 12)); //On vérifie le mouvement est possible
             oldImageView[board.getcurrentIDPlayer()].setImage(imageCase); //On remet la case vide
-            box0812.setImage(getColor(board.players[board.getcurrentIDPlayer()])); //On met dans la case le pion selon la couleur du player
+            box0812.setImage(getColorPawn(board.players[board.getcurrentIDPlayer()])); //On met dans la case le pion selon la couleur du player
             oldImageView[board.getcurrentIDPlayer()] = box0812; //On enregistre la case actuel pour la vider au prochain coup
             board.nextPlayer();
         } catch (RuleViolated e) {
@@ -1012,7 +1064,7 @@ public class FXMLControllerBoard implements Initializable {
         try {
             board.movePawnOnBoard(board.players[board.getcurrentIDPlayer()], new Position(8, 14)); //On vérifie le mouvement est possible
             oldImageView[board.getcurrentIDPlayer()].setImage(imageCase); //On remet la case vide
-            box0814.setImage(getColor(board.players[board.getcurrentIDPlayer()])); //On met dans la case le pion selon la couleur du player
+            box0814.setImage(getColorPawn(board.players[board.getcurrentIDPlayer()])); //On met dans la case le pion selon la couleur du player
             oldImageView[board.getcurrentIDPlayer()] = box0814; //On enregistre la case actuel pour la vider au prochain coup
             board.nextPlayer();
         } catch (RuleViolated e) {
@@ -1029,7 +1081,7 @@ public class FXMLControllerBoard implements Initializable {
         try {
             board.movePawnOnBoard(board.players[board.getcurrentIDPlayer()], new Position(8, 16)); //On vérifie le mouvement est possible
             oldImageView[board.getcurrentIDPlayer()].setImage(imageCase); //On remet la case vide
-            box0816.setImage(getColor(board.players[board.getcurrentIDPlayer()])); //On met dans la case le pion selon la couleur du player
+            box0816.setImage(getColorPawn(board.players[board.getcurrentIDPlayer()])); //On met dans la case le pion selon la couleur du player
             oldImageView[board.getcurrentIDPlayer()] = box0816; //On enregistre la case actuel pour la vider au prochain coup
            
             board.nextPlayer();
@@ -1087,7 +1139,7 @@ public class FXMLControllerBoard implements Initializable {
         try {
             board.movePawnOnBoard(board.players[board.getcurrentIDPlayer()], new Position(10, 0)); //On vérifie le mouvement est possible
             oldImageView[board.getcurrentIDPlayer()].setImage(imageCase); //On remet la case vide
-            box1000.setImage(getColor(board.players[board.getcurrentIDPlayer()])); //On met dans la case le pion selon la couleur du player
+            box1000.setImage(getColorPawn(board.players[board.getcurrentIDPlayer()])); //On met dans la case le pion selon la couleur du player
             oldImageView[board.getcurrentIDPlayer()] = box1000; //On enregistre la case actuel pour la vider au prochain coup
            
             board.nextPlayer();
@@ -1105,7 +1157,7 @@ public class FXMLControllerBoard implements Initializable {
         try {
             board.movePawnOnBoard(board.players[board.getcurrentIDPlayer()], new Position(10, 2)); //On vérifie le mouvement est possible
             oldImageView[board.getcurrentIDPlayer()].setImage(imageCase); //On remet la case vide
-            box1002.setImage(getColor(board.players[board.getcurrentIDPlayer()])); //On met dans la case le pion selon la couleur du player
+            box1002.setImage(getColorPawn(board.players[board.getcurrentIDPlayer()])); //On met dans la case le pion selon la couleur du player
             oldImageView[board.getcurrentIDPlayer()] = box1002; //On enregistre la case actuel pour la vider au prochain coup
             board.nextPlayer();
         } catch (RuleViolated e) {
@@ -1122,7 +1174,7 @@ public class FXMLControllerBoard implements Initializable {
         try {
             board.movePawnOnBoard(board.players[board.getcurrentIDPlayer()], new Position(10, 4)); //On vérifie le mouvement est possible
             oldImageView[board.getcurrentIDPlayer()].setImage(imageCase); //On remet la case vide
-            box1004.setImage(getColor(board.players[board.getcurrentIDPlayer()])); //On met dans la case le pion selon la couleur du player
+            box1004.setImage(getColorPawn(board.players[board.getcurrentIDPlayer()])); //On met dans la case le pion selon la couleur du player
             oldImageView[board.getcurrentIDPlayer()] = box1004; //On enregistre la case actuel pour la vider au prochain coup
             board.nextPlayer();
         } catch (RuleViolated e) {
@@ -1139,7 +1191,7 @@ public class FXMLControllerBoard implements Initializable {
         try {
             board.movePawnOnBoard(board.players[board.getcurrentIDPlayer()], new Position(10, 6)); //On vérifie le mouvement est possible
             oldImageView[board.getcurrentIDPlayer()].setImage(imageCase); //On remet la case vide
-            box1006.setImage(getColor(board.players[board.getcurrentIDPlayer()])); //On met dans la case le pion selon la couleur du player
+            box1006.setImage(getColorPawn(board.players[board.getcurrentIDPlayer()])); //On met dans la case le pion selon la couleur du player
             oldImageView[board.getcurrentIDPlayer()] = box1006; //On enregistre la case actuel pour la vider au prochain coup
             board.nextPlayer();
         } catch (RuleViolated e) {
@@ -1156,7 +1208,7 @@ public class FXMLControllerBoard implements Initializable {
         try {
             board.movePawnOnBoard(board.players[board.getcurrentIDPlayer()], new Position(10, 8)); //On vérifie le mouvement est possible
             oldImageView[board.getcurrentIDPlayer()].setImage(imageCase); //On remet la case vide
-            box1008.setImage(getColor(board.players[board.getcurrentIDPlayer()])); //On met dans la case le pion selon la couleur du player
+            box1008.setImage(getColorPawn(board.players[board.getcurrentIDPlayer()])); //On met dans la case le pion selon la couleur du player
             oldImageView[board.getcurrentIDPlayer()] = box1008; //On enregistre la case actuel pour la vider au prochain coup
             board.nextPlayer();
         } catch (RuleViolated e) {
@@ -1173,7 +1225,7 @@ public class FXMLControllerBoard implements Initializable {
         try {
             board.movePawnOnBoard(board.players[board.getcurrentIDPlayer()], new Position(10, 10)); //On vérifie le mouvement est possible
             oldImageView[board.getcurrentIDPlayer()].setImage(imageCase); //On remet la case vide
-            box1010.setImage(getColor(board.players[board.getcurrentIDPlayer()])); //On met dans la case le pion selon la couleur du player
+            box1010.setImage(getColorPawn(board.players[board.getcurrentIDPlayer()])); //On met dans la case le pion selon la couleur du player
             oldImageView[board.getcurrentIDPlayer()] = box1010; //On enregistre la case actuel pour la vider au prochain coup
             board.nextPlayer();
         } catch (RuleViolated e) {
@@ -1190,7 +1242,7 @@ public class FXMLControllerBoard implements Initializable {
         try {
             board.movePawnOnBoard(board.players[board.getcurrentIDPlayer()], new Position(10, 12)); //On vérifie le mouvement est possible
             oldImageView[board.getcurrentIDPlayer()].setImage(imageCase); //On remet la case vide
-            box1012.setImage(getColor(board.players[board.getcurrentIDPlayer()])); //On met dans la case le pion selon la couleur du player
+            box1012.setImage(getColorPawn(board.players[board.getcurrentIDPlayer()])); //On met dans la case le pion selon la couleur du player
             oldImageView[board.getcurrentIDPlayer()] = box1012; //On enregistre la case actuel pour la vider au prochain coup
             board.nextPlayer();
         } catch (RuleViolated e) {
@@ -1207,7 +1259,7 @@ public class FXMLControllerBoard implements Initializable {
         try {
             board.movePawnOnBoard(board.players[board.getcurrentIDPlayer()], new Position(10, 14)); //On vérifie le mouvement est possible
             oldImageView[board.getcurrentIDPlayer()].setImage(imageCase); //On remet la case vide
-            box1014.setImage(getColor(board.players[board.getcurrentIDPlayer()])); //On met dans la case le pion selon la couleur du player
+            box1014.setImage(getColorPawn(board.players[board.getcurrentIDPlayer()])); //On met dans la case le pion selon la couleur du player
             oldImageView[board.getcurrentIDPlayer()] = box1014; //On enregistre la case actuel pour la vider au prochain coup
             board.nextPlayer();
         } catch (RuleViolated e) {
@@ -1224,7 +1276,7 @@ public class FXMLControllerBoard implements Initializable {
         try {
             board.movePawnOnBoard(board.players[board.getcurrentIDPlayer()], new Position(10, 16)); //On vérifie le mouvement est possible
             oldImageView[board.getcurrentIDPlayer()].setImage(imageCase); //On remet la case vide
-            box1016.setImage(getColor(board.players[board.getcurrentIDPlayer()])); //On met dans la case le pion selon la couleur du player
+            box1016.setImage(getColorPawn(board.players[board.getcurrentIDPlayer()])); //On met dans la case le pion selon la couleur du player
             oldImageView[board.getcurrentIDPlayer()] = box1016; //On enregistre la case actuel pour la vider au prochain coup
             board.nextPlayer();
         } catch (RuleViolated e) {
@@ -1281,7 +1333,7 @@ public class FXMLControllerBoard implements Initializable {
         try {
             board.movePawnOnBoard(board.players[board.getcurrentIDPlayer()], new Position(12, 0)); //On vérifie le mouvement est possible
             oldImageView[board.getcurrentIDPlayer()].setImage(imageCase); //On remet la case vide
-            box1200.setImage(getColor(board.players[board.getcurrentIDPlayer()])); //On met dans la case le pion selon la couleur du player
+            box1200.setImage(getColorPawn(board.players[board.getcurrentIDPlayer()])); //On met dans la case le pion selon la couleur du player
             oldImageView[board.getcurrentIDPlayer()] = box1200; //On enregistre la case actuel pour la vider au prochain coup
            
             board.nextPlayer();
@@ -1299,7 +1351,7 @@ public class FXMLControllerBoard implements Initializable {
         try {
             board.movePawnOnBoard(board.players[board.getcurrentIDPlayer()], new Position(12, 2)); //On vérifie le mouvement est possible
             oldImageView[board.getcurrentIDPlayer()].setImage(imageCase); //On remet la case vide
-            box1202.setImage(getColor(board.players[board.getcurrentIDPlayer()])); //On met dans la case le pion selon la couleur du player
+            box1202.setImage(getColorPawn(board.players[board.getcurrentIDPlayer()])); //On met dans la case le pion selon la couleur du player
             oldImageView[board.getcurrentIDPlayer()] = box1202; //On enregistre la case actuel pour la vider au prochain coup
             board.nextPlayer();
         } catch (RuleViolated e) {
@@ -1316,7 +1368,7 @@ public class FXMLControllerBoard implements Initializable {
         try {
             board.movePawnOnBoard(board.players[board.getcurrentIDPlayer()], new Position(12, 4)); //On vérifie le mouvement est possible
             oldImageView[board.getcurrentIDPlayer()].setImage(imageCase); //On remet la case vide
-            box1204.setImage(getColor(board.players[board.getcurrentIDPlayer()])); //On met dans la case le pion selon la couleur du player
+            box1204.setImage(getColorPawn(board.players[board.getcurrentIDPlayer()])); //On met dans la case le pion selon la couleur du player
             oldImageView[board.getcurrentIDPlayer()] = box1204; //On enregistre la case actuel pour la vider au prochain coup
             board.nextPlayer();
         } catch (RuleViolated e) {
@@ -1333,7 +1385,7 @@ public class FXMLControllerBoard implements Initializable {
         try {
             board.movePawnOnBoard(board.players[board.getcurrentIDPlayer()], new Position(12, 6)); //On vérifie le mouvement est possible
             oldImageView[board.getcurrentIDPlayer()].setImage(imageCase); //On remet la case vide
-            box1206.setImage(getColor(board.players[board.getcurrentIDPlayer()])); //On met dans la case le pion selon la couleur du player
+            box1206.setImage(getColorPawn(board.players[board.getcurrentIDPlayer()])); //On met dans la case le pion selon la couleur du player
             oldImageView[board.getcurrentIDPlayer()] = box1206; //On enregistre la case actuel pour la vider au prochain coup
             board.nextPlayer();
         } catch (RuleViolated e) {
@@ -1350,7 +1402,7 @@ public class FXMLControllerBoard implements Initializable {
         try {
             board.movePawnOnBoard(board.players[board.getcurrentIDPlayer()], new Position(12, 8)); //On vérifie le mouvement est possible
             oldImageView[board.getcurrentIDPlayer()].setImage(imageCase); //On remet la case vide
-            box1208.setImage(getColor(board.players[board.getcurrentIDPlayer()])); //On met dans la case le pion selon la couleur du player
+            box1208.setImage(getColorPawn(board.players[board.getcurrentIDPlayer()])); //On met dans la case le pion selon la couleur du player
             oldImageView[board.getcurrentIDPlayer()] = box1208; //On enregistre la case actuel pour la vider au prochain coup
             board.nextPlayer();
         } catch (RuleViolated e) {
@@ -1367,7 +1419,7 @@ public class FXMLControllerBoard implements Initializable {
         try {
             board.movePawnOnBoard(board.players[board.getcurrentIDPlayer()], new Position(12, 10)); //On vérifie le mouvement est possible
             oldImageView[board.getcurrentIDPlayer()].setImage(imageCase); //On remet la case vide
-            box1210.setImage(getColor(board.players[board.getcurrentIDPlayer()])); //On met dans la case le pion selon la couleur du player
+            box1210.setImage(getColorPawn(board.players[board.getcurrentIDPlayer()])); //On met dans la case le pion selon la couleur du player
             oldImageView[board.getcurrentIDPlayer()] = box1210; //On enregistre la case actuel pour la vider au prochain coup
             board.nextPlayer();
         } catch (RuleViolated e) {
@@ -1384,7 +1436,7 @@ public class FXMLControllerBoard implements Initializable {
         try {
             board.movePawnOnBoard(board.players[board.getcurrentIDPlayer()], new Position(12, 12)); //On vérifie le mouvement est possible
             oldImageView[board.getcurrentIDPlayer()].setImage(imageCase); //On remet la case vide
-            box1212.setImage(getColor(board.players[board.getcurrentIDPlayer()])); //On met dans la case le pion selon la couleur du player
+            box1212.setImage(getColorPawn(board.players[board.getcurrentIDPlayer()])); //On met dans la case le pion selon la couleur du player
             oldImageView[board.getcurrentIDPlayer()] = box1212; //On enregistre la case actuel pour la vider au prochain coup
             board.nextPlayer();
         } catch (RuleViolated e) {
@@ -1401,7 +1453,7 @@ public class FXMLControllerBoard implements Initializable {
         try {
             board.movePawnOnBoard(board.players[board.getcurrentIDPlayer()], new Position(12, 14)); //On vérifie le mouvement est possible
             oldImageView[board.getcurrentIDPlayer()].setImage(imageCase); //On remet la case vide
-            box1214.setImage(getColor(board.players[board.getcurrentIDPlayer()])); //On met dans la case le pion selon la couleur du player
+            box1214.setImage(getColorPawn(board.players[board.getcurrentIDPlayer()])); //On met dans la case le pion selon la couleur du player
             oldImageView[board.getcurrentIDPlayer()] = box1214; //On enregistre la case actuel pour la vider au prochain coup
             board.nextPlayer();
         } catch (RuleViolated e) {
@@ -1418,7 +1470,7 @@ public class FXMLControllerBoard implements Initializable {
         try {
             board.movePawnOnBoard(board.players[board.getcurrentIDPlayer()], new Position(12, 16)); //On vérifie le mouvement est possible
             oldImageView[board.getcurrentIDPlayer()].setImage(imageCase); //On remet la case vide
-            box1216.setImage(getColor(board.players[board.getcurrentIDPlayer()])); //On met dans la case le pion selon la couleur du player
+            box1216.setImage(getColorPawn(board.players[board.getcurrentIDPlayer()])); //On met dans la case le pion selon la couleur du player
             oldImageView[board.getcurrentIDPlayer()] = box1216; //On enregistre la case actuel pour la vider au prochain coup
 
             board.nextPlayer();
@@ -1476,7 +1528,7 @@ public class FXMLControllerBoard implements Initializable {
         try {
             board.movePawnOnBoard(board.players[board.getcurrentIDPlayer()], new Position(14, 0)); //On vérifie le mouvement est possible
             oldImageView[board.getcurrentIDPlayer()].setImage(imageCase); //On remet la case vide
-            box1400.setImage(getColor(board.players[board.getcurrentIDPlayer()])); //On met dans la case le pion selon la couleur du player
+            box1400.setImage(getColorPawn(board.players[board.getcurrentIDPlayer()])); //On met dans la case le pion selon la couleur du player
             oldImageView[board.getcurrentIDPlayer()] = box1400; //On enregistre la case actuel pour la vider au prochain coup
            
             board.nextPlayer();
@@ -1494,7 +1546,7 @@ public class FXMLControllerBoard implements Initializable {
         try {
             board.movePawnOnBoard(board.players[board.getcurrentIDPlayer()], new Position(14, 2)); //On vérifie le mouvement est possible
             oldImageView[board.getcurrentIDPlayer()].setImage(imageCase); //On remet la case vide
-            box1402.setImage(getColor(board.players[board.getcurrentIDPlayer()])); //On met dans la case le pion selon la couleur du player
+            box1402.setImage(getColorPawn(board.players[board.getcurrentIDPlayer()])); //On met dans la case le pion selon la couleur du player
             oldImageView[board.getcurrentIDPlayer()] = box1402; //On enregistre la case actuel pour la vider au prochain coup
             board.nextPlayer();
         } catch (RuleViolated e) {
@@ -1511,7 +1563,7 @@ public class FXMLControllerBoard implements Initializable {
         try {
             board.movePawnOnBoard(board.players[board.getcurrentIDPlayer()], new Position(14, 4)); //On vérifie le mouvement est possible
             oldImageView[board.getcurrentIDPlayer()].setImage(imageCase); //On remet la case vide
-            box1404.setImage(getColor(board.players[board.getcurrentIDPlayer()])); //On met dans la case le pion selon la couleur du player
+            box1404.setImage(getColorPawn(board.players[board.getcurrentIDPlayer()])); //On met dans la case le pion selon la couleur du player
             oldImageView[board.getcurrentIDPlayer()] = box1404; //On enregistre la case actuel pour la vider au prochain coup
             board.nextPlayer();
         } catch (RuleViolated e) {
@@ -1528,7 +1580,7 @@ public class FXMLControllerBoard implements Initializable {
         try {
             board.movePawnOnBoard(board.players[board.getcurrentIDPlayer()], new Position(14, 6)); //On vérifie le mouvement est possible
             oldImageView[board.getcurrentIDPlayer()].setImage(imageCase); //On remet la case vide
-            box1406.setImage(getColor(board.players[board.getcurrentIDPlayer()])); //On met dans la case le pion selon la couleur du player
+            box1406.setImage(getColorPawn(board.players[board.getcurrentIDPlayer()])); //On met dans la case le pion selon la couleur du player
             oldImageView[board.getcurrentIDPlayer()] = box1406; //On enregistre la case actuel pour la vider au prochain coup
             board.nextPlayer();
         } catch (RuleViolated e) {
@@ -1545,7 +1597,7 @@ public class FXMLControllerBoard implements Initializable {
         try {
             board.movePawnOnBoard(board.players[board.getcurrentIDPlayer()], new Position(14, 8)); //On vérifie le mouvement est possible
             oldImageView[board.getcurrentIDPlayer()].setImage(imageCase); //On remet la case vide
-            box1408.setImage(getColor(board.players[board.getcurrentIDPlayer()])); //On met dans la case le pion selon la couleur du player
+            box1408.setImage(getColorPawn(board.players[board.getcurrentIDPlayer()])); //On met dans la case le pion selon la couleur du player
             oldImageView[board.getcurrentIDPlayer()] = box1408; //On enregistre la case actuel pour la vider au prochain coup
             board.nextPlayer();
         } catch (RuleViolated e) {
@@ -1562,7 +1614,7 @@ public class FXMLControllerBoard implements Initializable {
         try {
             board.movePawnOnBoard(board.players[board.getcurrentIDPlayer()], new Position(14, 10)); //On vérifie le mouvement est possible
             oldImageView[board.getcurrentIDPlayer()].setImage(imageCase); //On remet la case vide
-            box1410.setImage(getColor(board.players[board.getcurrentIDPlayer()])); //On met dans la case le pion selon la couleur du player
+            box1410.setImage(getColorPawn(board.players[board.getcurrentIDPlayer()])); //On met dans la case le pion selon la couleur du player
             oldImageView[board.getcurrentIDPlayer()] = box1410; //On enregistre la case actuel pour la vider au prochain coup
             board.nextPlayer();
         } catch (RuleViolated e) {
@@ -1579,7 +1631,7 @@ public class FXMLControllerBoard implements Initializable {
         try {
             board.movePawnOnBoard(board.players[board.getcurrentIDPlayer()], new Position(14, 12)); //On vérifie le mouvement est possible
             oldImageView[board.getcurrentIDPlayer()].setImage(imageCase); //On remet la case vide
-            box1412.setImage(getColor(board.players[board.getcurrentIDPlayer()])); //On met dans la case le pion selon la couleur du player
+            box1412.setImage(getColorPawn(board.players[board.getcurrentIDPlayer()])); //On met dans la case le pion selon la couleur du player
             oldImageView[board.getcurrentIDPlayer()] = box1412; //On enregistre la case actuel pour la vider au prochain coup
             board.nextPlayer();
         } catch (RuleViolated e) {
@@ -1596,7 +1648,7 @@ public class FXMLControllerBoard implements Initializable {
         try {
             board.movePawnOnBoard(board.players[board.getcurrentIDPlayer()], new Position(14, 14)); //On vérifie le mouvement est possible
             oldImageView[board.getcurrentIDPlayer()].setImage(imageCase); //On remet la case vide
-            box1414.setImage(getColor(board.players[board.getcurrentIDPlayer()])); //On met dans la case le pion selon la couleur du player
+            box1414.setImage(getColorPawn(board.players[board.getcurrentIDPlayer()])); //On met dans la case le pion selon la couleur du player
             oldImageView[board.getcurrentIDPlayer()] = box1414; //On enregistre la case actuel pour la vider au prochain coup
             board.nextPlayer();
         } catch (RuleViolated e) {
@@ -1613,7 +1665,7 @@ public class FXMLControllerBoard implements Initializable {
         try {
             board.movePawnOnBoard(board.players[board.getcurrentIDPlayer()], new Position(14, 16)); //On vérifie le mouvement est possible
             oldImageView[board.getcurrentIDPlayer()].setImage(imageCase); //On remet la case vide
-            box1416.setImage(getColor(board.players[board.getcurrentIDPlayer()])); //On met dans la case le pion selon la couleur du player
+            box1416.setImage(getColorPawn(board.players[board.getcurrentIDPlayer()])); //On met dans la case le pion selon la couleur du player
             oldImageView[board.getcurrentIDPlayer()] = box1416; //On enregistre la case actuel pour la vider au prochain coup
 
             board.nextPlayer();
@@ -1671,7 +1723,7 @@ public class FXMLControllerBoard implements Initializable {
         try {
             board.movePawnOnBoard(board.players[board.getcurrentIDPlayer()], new Position(16, 0)); //On vérifie le mouvement est possible
             oldImageView[board.getcurrentIDPlayer()].setImage(imageCase); //On remet la case vide
-            box1600.setImage(getColor(board.players[board.getcurrentIDPlayer()])); //On met dans la case le pion selon la couleur du player
+            box1600.setImage(getColorPawn(board.players[board.getcurrentIDPlayer()])); //On met dans la case le pion selon la couleur du player
             oldImageView[board.getcurrentIDPlayer()] = box1600; //On enregistre la case actuel pour la vider au prochain coup
            
             board.nextPlayer();
@@ -1689,7 +1741,7 @@ public class FXMLControllerBoard implements Initializable {
         try {
             board.movePawnOnBoard(board.players[board.getcurrentIDPlayer()], new Position(16, 2)); //On vérifie le mouvement est possible
             oldImageView[board.getcurrentIDPlayer()].setImage(imageCase); //On remet la case vide
-            box1602.setImage(getColor(board.players[board.getcurrentIDPlayer()])); //On met dans la case le pion selon la couleur du player
+            box1602.setImage(getColorPawn(board.players[board.getcurrentIDPlayer()])); //On met dans la case le pion selon la couleur du player
             oldImageView[board.getcurrentIDPlayer()] = box1602; //On enregistre la case actuel pour la vider au prochain coup
            
             board.nextPlayer();
@@ -1707,7 +1759,7 @@ public class FXMLControllerBoard implements Initializable {
         try {
             board.movePawnOnBoard(board.players[board.getcurrentIDPlayer()], new Position(16, 4)); //On vérifie le mouvement est possible
             oldImageView[board.getcurrentIDPlayer()].setImage(imageCase); //On remet la case vide
-            box1604.setImage(getColor(board.players[board.getcurrentIDPlayer()])); //On met dans la case le pion selon la couleur du player
+            box1604.setImage(getColorPawn(board.players[board.getcurrentIDPlayer()])); //On met dans la case le pion selon la couleur du player
             oldImageView[board.getcurrentIDPlayer()] = box1604; //On enregistre la case actuel pour la vider au prochain coup
            
             board.nextPlayer();
@@ -1725,7 +1777,7 @@ public class FXMLControllerBoard implements Initializable {
         try {
             board.movePawnOnBoard(board.players[board.getcurrentIDPlayer()], new Position(16, 6)); //On vérifie le mouvement est possible
             oldImageView[board.getcurrentIDPlayer()].setImage(imageCase); //On remet la case vide
-            box1606.setImage(getColor(board.players[board.getcurrentIDPlayer()])); //On met dans la case le pion selon la couleur du player
+            box1606.setImage(getColorPawn(board.players[board.getcurrentIDPlayer()])); //On met dans la case le pion selon la couleur du player
             oldImageView[board.getcurrentIDPlayer()] = box1606; //On enregistre la case actuel pour la vider au prochain coup
            
             board.nextPlayer();
@@ -1743,7 +1795,7 @@ public class FXMLControllerBoard implements Initializable {
         try {
             board.movePawnOnBoard(board.players[board.getcurrentIDPlayer()], new Position(16, 8)); //On vérifie le mouvement est possible
             oldImageView[board.getcurrentIDPlayer()].setImage(imageCase); //On remet la case vide
-            box1608.setImage(getColor(board.players[board.getcurrentIDPlayer()])); //On met dans la case le pion selon la couleur du player
+            box1608.setImage(getColorPawn(board.players[board.getcurrentIDPlayer()])); //On met dans la case le pion selon la couleur du player
             oldImageView[board.getcurrentIDPlayer()] = box1608; //On enregistre la case actuel pour la vider au prochain coup
                
             board.nextPlayer();
@@ -1761,7 +1813,7 @@ public class FXMLControllerBoard implements Initializable {
         try {
             board.movePawnOnBoard(board.players[board.getcurrentIDPlayer()], new Position(16, 10)); //On vérifie le mouvement est possible
             oldImageView[board.getcurrentIDPlayer()].setImage(imageCase); //On remet la case vide
-            box1610.setImage(getColor(board.players[board.getcurrentIDPlayer()])); //On met dans la case le pion selon la couleur du player
+            box1610.setImage(getColorPawn(board.players[board.getcurrentIDPlayer()])); //On met dans la case le pion selon la couleur du player
             oldImageView[board.getcurrentIDPlayer()] = box1610; //On enregistre la case actuel pour la vider au prochain coup
 
             board.nextPlayer();
@@ -1779,7 +1831,7 @@ public class FXMLControllerBoard implements Initializable {
         try {
             board.movePawnOnBoard(board.players[board.getcurrentIDPlayer()], new Position(16, 12)); //On vérifie le mouvement est possible
             oldImageView[board.getcurrentIDPlayer()].setImage(imageCase); //On remet la case vide
-            box1612.setImage(getColor(board.players[board.getcurrentIDPlayer()])); //On met dans la case le pion selon la couleur du player
+            box1612.setImage(getColorPawn(board.players[board.getcurrentIDPlayer()])); //On met dans la case le pion selon la couleur du player
             oldImageView[board.getcurrentIDPlayer()] = box1612; //On enregistre la case actuel pour la vider au prochain coup
 
             board.nextPlayer();
@@ -1797,7 +1849,7 @@ public class FXMLControllerBoard implements Initializable {
         try {
             board.movePawnOnBoard(board.players[board.getcurrentIDPlayer()], new Position(16, 14)); //On vérifie le mouvement est possible
             oldImageView[board.getcurrentIDPlayer()].setImage(imageCase); //On remet la case vide
-            box1614.setImage(getColor(board.players[board.getcurrentIDPlayer()])); //On met dans la case le pion selon la couleur du player
+            box1614.setImage(getColorPawn(board.players[board.getcurrentIDPlayer()])); //On met dans la case le pion selon la couleur du player
             oldImageView[board.getcurrentIDPlayer()] = box1614; //On enregistre la case actuel pour la vider au prochain coup
 
             board.nextPlayer();
@@ -1815,7 +1867,7 @@ public class FXMLControllerBoard implements Initializable {
         try {
             board.movePawnOnBoard(board.players[board.getcurrentIDPlayer()], new Position(16, 16)); //On vérifie le mouvement est possible
             oldImageView[board.getcurrentIDPlayer()].setImage(imageCase); //On remet la case vide
-            box1616.setImage(getColor(board.players[board.getcurrentIDPlayer()])); //On met dans la case le pion selon la couleur du player
+            box1616.setImage(getColorPawn(board.players[board.getcurrentIDPlayer()])); //On met dans la case le pion selon la couleur du player
             oldImageView[board.getcurrentIDPlayer()] = box1616; //On enregistre la case actuel pour la vider au prochain coup
 
             board.nextPlayer();
