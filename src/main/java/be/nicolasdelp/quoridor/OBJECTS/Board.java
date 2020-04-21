@@ -15,7 +15,7 @@ public class Board {
     public Player[] players; //la liste des joueurs
     private Box[][] boardBoxes; //stockage dans un tableau des Box
     private PlayerRule[] playerRules = {new PlayerIsInBounds(), new IsAWallBox(), new PawnAlreadyHere(), new BlockedByAWall(), new IllegalMovement()};
-    private WallRule[] wallRules = {new WallIsInBounds(), new IsAPawnBox(), new WallAlreadyHere(), new BlockAnotherPlayer()};
+    private WallRule[] wallRules = {new WallIsInBounds(), new IsAPawnBox(), new WallAlreadyHere(), new NoMoreWalls(), new BlockAnotherPlayer()};
     private int currentIDPlayer = 0;
 
     /**
@@ -135,6 +135,8 @@ public class Board {
         // if(direction == WallDirection.Vertical) //////////////////////////////////////////TO DO     A*
         //     throw new IllegalArgumentException("Vous ne pouvez pas placer ce mur vous bloquer un joueur !"); 
 
+
+        
         player.moveWall(direction, position); //On change le sens et la position du mur dans l'inventaire du joueur
         if(direction == WallDirection.Horizontal){ //Si il est horizontal on remplie les case a sa droite et a sa gauche
             boardBoxes[position.getX()][position.getY()].setObject(wall);

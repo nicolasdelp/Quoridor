@@ -34,7 +34,7 @@
                   <ChoiceBox fx:id="typePlayer12" layoutX="154.0" layoutY="72.0" prefWidth="150.0" />
                   <Label layoutX="174.0" layoutY="102.0" styleClass="font" text="Choisissez la couleur" />
                   <ChoiceBox fx:id="colorPlayer12" layoutX="154.0" layoutY="127.0" prefWidth="150.0" />
-                  <Label layoutX="185.0" layoutY="157.0" styleClass="font" text="Entrez le pseudo" />
+                  <Label layoutX="175.0" layoutY="157.0" styleClass="font" text="Entrez votre pseudo" />
                   <TextField fx:id="pseudoOfPlayer12" alignment="CENTER" layoutX="155.0" layoutY="182.0" />
                   <Label fx:id="labelIALevel12" layoutX="159.0" layoutY="212.0" styleClass="font" text="Choisissez le niveau de l'IA" visible="false" />
                   <ChoiceBox fx:id="levelIAPlayer12" layoutX="154.0" layoutY="237.0" prefWidth="150.0" visible="false" />
@@ -47,7 +47,7 @@
                   <ChoiceBox fx:id="typePlayer22" layoutX="409.0" layoutY="71.0" prefWidth="150.0" />
                   <Label layoutX="429.0" layoutY="101.0" styleClass="font" text="Choisissez la couleur" />
                   <ChoiceBox fx:id="colorPlayer22" layoutX="409.0" layoutY="126.0" prefWidth="150.0" />
-                  <Label layoutX="440.0" layoutY="156.0" styleClass="font" text="Entrez le pseudo" />
+                  <Label layoutX="432.0" layoutY="156.0" styleClass="font" text="Entrez votre pseudo" />
                   <TextField fx:id="pseudoOfPlayer22" alignment="CENTER" layoutX="410.0" layoutY="181.0" />
                   <Label fx:id="labelIALevel22" layoutX="414.0" layoutY="211.0" styleClass="font" text="Choisissez le niveau de l'IA" visible="false" />
                   <ChoiceBox fx:id="levelIAPlayer22" layoutX="409.0" layoutY="236.0" prefWidth="150.0" visible="false" />

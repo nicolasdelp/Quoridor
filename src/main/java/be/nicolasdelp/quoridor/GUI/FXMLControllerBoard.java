@@ -38,25 +38,75 @@ public class FXMLControllerBoard implements Initializable {
     final URL URLMurBleu = getClass().getResource("../img/mur-bleu-stockage.png");  //Image du mur bleu
     final Image imageMurBleu = new Image(URLMurBleu.toExternalForm());
 
-    final URL URLMurBleuH1 = getClass().getResource("../img/mur-bleu-1-H.png");
+
+    final URL URLMurBleuH1 = getClass().getResource("../img/mur-bleu-1-H.png");  //Image du mur bleu Horizontal 1
     final Image imageMurBleuH1 = new Image(URLMurBleuH1.toExternalForm());
-    final URL URLMurBleuH2 = getClass().getResource("../img/mur-bleu-2-H.png");
+    final URL URLMurBleuH2 = getClass().getResource("../img/mur-bleu-2-H.png");  //Image du mur bleu Horizontal 2
     final Image imageMurBleuH2 = new Image(URLMurBleuH2.toExternalForm());
-    final URL URLMurBleuH3 = getClass().getResource("../img/mur-bleu-3-H.png");
+    final URL URLMurBleuH3 = getClass().getResource("../img/mur-bleu-3-H.png");  //Image du mur bleu Horizontal 3
     final Image imageMurBleuH3 = new Image(URLMurBleuH3.toExternalForm());
+
+    final URL URLMurRougeH1 = getClass().getResource("../img/mur-rouge-1-H.png");  //Image du mur rouge Horizontal 1
+    final Image imageMurRougeH1 = new Image(URLMurRougeH1.toExternalForm());
+    final URL URLMurRougeH2 = getClass().getResource("../img/mur-rouge-2-H.png");  //Image du mur rouge Horizontal 2
+    final Image imageMurRougeH2 = new Image(URLMurRougeH2.toExternalForm());
+    final URL URLMurRougeH3 = getClass().getResource("../img/mur-rouge-3-H.png");  //Image du mur rouge Horizontal 3
+    final Image imageMurRougeH3 = new Image(URLMurRougeH3.toExternalForm());
+
+    final URL URLMurJauneH1 = getClass().getResource("../img/mur-jaune-1-H.png");  //Image du mur jaune Horizontal 1
+    final Image imageMurJauneH1 = new Image(URLMurJauneH1.toExternalForm());
+    final URL URLMurJauneH2 = getClass().getResource("../img/mur-jaune-2-H.png");  //Image du mur jaune Horizontal 2
+    final Image imageMurJauneH2 = new Image(URLMurJauneH2.toExternalForm());
+    final URL URLMurJauneH3 = getClass().getResource("../img/mur-jaune-3-H.png");  //Image du mur jaune Horizontal 3
+    final Image imageMurJauneH3 = new Image(URLMurJauneH3.toExternalForm());
+
+    final URL URLMurVertH1 = getClass().getResource("../img/mur-vert-1-H.png");  //Image du mur vert Horizontal 1
+    final Image imageMurVertH1 = new Image(URLMurVertH1.toExternalForm());
+    final URL URLMurVertH2 = getClass().getResource("../img/mur-vert-2-H.png");  //Image du mur vert Horizontal 2
+    final Image imageMurVertH2 = new Image(URLMurVertH2.toExternalForm());
+    final URL URLMurVertH3 = getClass().getResource("../img/mur-vert-3-H.png");  //Image du mur vert Horizontal 3
+    final Image imageMurVertH3 = new Image(URLMurVertH3.toExternalForm());
+
+    final URL URLMurBleuV1 = getClass().getResource("../img/mur-bleu-1-V.png");  //Image du mur bleu Vertical 1
+    final Image imageMurBleuV1 = new Image(URLMurBleuV1.toExternalForm());
+    final URL URLMurBleuV2 = getClass().getResource("../img/mur-bleu-2-V.png");  //Image du mur bleu Vertical 2
+    final Image imageMurBleuV2 = new Image(URLMurBleuV2.toExternalForm());
+    final URL URLMurBleuV3 = getClass().getResource("../img/mur-bleu-3-V.png");  //Image du mur bleu Vertical 3
+    final Image imageMurBleuV3 = new Image(URLMurBleuV3.toExternalForm());
+
+    final URL URLMurRougeV1 = getClass().getResource("../img/mur-rouge-1-V.png");  //Image du mur rouge Vertical 1
+    final Image imageMurRougeV1 = new Image(URLMurRougeV1.toExternalForm());
+    final URL URLMurRougeV2 = getClass().getResource("../img/mur-rouge-2-V.png");  //Image du mur rouge Vertical 2
+    final Image imageMurRougeV2 = new Image(URLMurRougeV2.toExternalForm());
+    final URL URLMurRougeV3 = getClass().getResource("../img/mur-rouge-3-V.png");  //Image du mur rouge Vertical 3
+    final Image imageMurRougeV3 = new Image(URLMurRougeH3.toExternalForm());
+
+    final URL URLMurJauneV1 = getClass().getResource("../img/mur-jaune-1-V.png");  //Image du mur jaune Vertical 1
+    final Image imageMurJauneV1 = new Image(URLMurJauneV1.toExternalForm());
+    final URL URLMurJauneV2 = getClass().getResource("../img/mur-jaune-2-V.png");  //Image du mur jaune Vertical 2
+    final Image imageMurJauneV2 = new Image(URLMurJauneV2.toExternalForm());
+    final URL URLMurJauneV3 = getClass().getResource("../img/mur-jaune-3-V.png");  //Image du mur jaune Vertical 3
+    final Image imageMurJauneV3 = new Image(URLMurJauneV3.toExternalForm());
+
+    final URL URLMurVertV1 = getClass().getResource("../img/mur-vert-1-V.png");  //Image du mur vert Vertical 1
+    final Image imageMurVertV1 = new Image(URLMurVertV1.toExternalForm());
+    final URL URLMurVertV2 = getClass().getResource("../img/mur-vert-2-V.png");  //Image du mur vert Vertical 2
+    final Image imageMurVertV2 = new Image(URLMurVertV2.toExternalForm());
+    final URL URLMurVertV3 = getClass().getResource("../img/mur-vert-3-V.png");  //Image du mur vert Vertical 3
+    final Image imageMurVertV3 = new Image(URLMurVertH3.toExternalForm());
 
     private Board board = FXMLControllerMenuPlayers.getBoard(); //Le plateau
 
-    private ImageView[] oldImageView = new ImageView[4];
+    private ImageView[] oldImageView = new ImageView[4]; //Liste des dernières position de chaque pion
 
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        if(this.board.getPlayers().length == 2){
+        if(this.board.getPlayers().length == 2){ //Si on est à 2 joueurs
             box0008.setImage(getColorPawn(this.board.players[0]));
             oldImageView[0] = box0008;
             joueur1.setText(this.board.players[0].getUsername());
-            stack01Player1.setImage(getColorWall(this.board.players[0]));
+            stack01Player1.setImage(getColorWall(this.board.players[0])); //Les stocks de murs
             stack02Player1.setImage(getColorWall(this.board.players[0]));
             stack03Player1.setImage(getColorWall(this.board.players[0]));
             stack04Player1.setImage(getColorWall(this.board.players[0]));
@@ -80,7 +130,7 @@ public class FXMLControllerBoard implements Initializable {
             stack09Player2.setImage(getColorWall(this.board.players[1]));
             stack10Player2.setImage(getColorWall(this.board.players[1]));
         }
-        if(this.board.getPlayers().length == 4){
+        if(this.board.getPlayers().length == 4){ //Si on est à 4 joueurs
             box0008.setImage(getColorPawn(this.board.players[0]));
             oldImageView[0] = box0008;
             box1608.setImage(getColorPawn(this.board.players[1]));
@@ -143,6 +193,61 @@ public class FXMLControllerBoard implements Initializable {
             return imageMurBleu;
         }if(player.getColor() == Color.Jaune){
             return imageMurJaune;
+        }
+        else{
+            return null;
+        }
+    }
+
+    private Image[] getWall(Player player, WallDirection wall){ //Récupérer la couleur du pion du joueur
+        Image[] res = new Image[3];
+        if(player.getColor() == Color.Bleu && wall == WallDirection.Horizontal){
+            res[0] = imageMurBleuH1;
+            res[1] = imageMurBleuH2;
+            res[2] = imageMurBleuH3;
+            return res;
+        }
+        if(player.getColor() == Color.Bleu && wall == WallDirection.Vertical){
+            res[0] = imageMurBleuV1;
+            res[1] = imageMurBleuV2;
+            res[2] = imageMurBleuV3;
+            return res;
+        }
+        if(player.getColor() == Color.Rouge && wall == WallDirection.Horizontal){
+            res[0] = imageMurRougeH1;
+            res[1] = imageMurRougeH2;
+            res[2] = imageMurRougeH3;
+            return res;
+        }
+        if(player.getColor() == Color.Rouge && wall == WallDirection.Vertical){
+            res[0] = imageMurRougeV1;
+            res[1] = imageMurRougeV2;
+            res[2] = imageMurRougeV3;
+            return res;
+        }
+        if(player.getColor() == Color.Vert && wall == WallDirection.Horizontal){
+            res[0] = imageMurVertH1;
+            res[1] = imageMurVertH2;
+            res[2] = imageMurVertH3;
+            return res;
+        }
+        if(player.getColor() == Color.Vert && wall == WallDirection.Vertical){
+            res[0] = imageMurVertV1;
+            res[1] = imageMurVertV2;
+            res[2] = imageMurVertV3;
+            return res;
+        }
+        if(player.getColor() == Color.Jaune && wall == WallDirection.Horizontal){
+            res[0] = imageMurJauneH1;
+            res[1] = imageMurJauneH2;
+            res[2] = imageMurJauneH3;
+            return res;
+        }
+        if(player.getColor() == Color.Jaune && wall == WallDirection.Vertical){
+            res[0] = imageMurJauneV1;
+            res[1] = imageMurJauneV2;
+            res[2] = imageMurJauneV3;
+            return res;
         }
         else{
             return null;
@@ -309,10 +414,17 @@ public class FXMLControllerBoard implements Initializable {
     @FXML
     void box0101Clicked(MouseEvent event) { //Case pour mur
         try {
-            board.setWallOnBoard(board.players[board.getcurrentIDPlayer()], board.players[board.getcurrentIDPlayer()].getWalls()[board.players[board.getcurrentIDPlayer()].getWallIndex()-1], WallDirection.Horizontal, new Position(1, 1)); //On vérifie le mouvement est possible 
-            box0001.setImage(imageMurBleuH1); //Gerer les cas si c'est Horizontal ou vertical
-            box0101.setImage(imageMurBleuH2);   
-            box0201.setImage(imageMurBleuH3);
+            board.setWallOnBoard(board.players[board.getcurrentIDPlayer()], board.players[board.getcurrentIDPlayer()].getWalls()[board.players[board.getcurrentIDPlayer()].getWallIndex()-1], WallDirection.Vertical, new Position(1, 1)); //On vérifie le mouvement est possible 
+            if(board.players[board.getcurrentIDPlayer()].getWalls()[board.players[board.getcurrentIDPlayer()].getWallIndex()-1].getWallDirection() == WallDirection.Horizontal){
+                box0001.setImage(getWall(board.players[board.getcurrentIDPlayer()], board.players[board.getcurrentIDPlayer()].getWalls()[board.players[board.getcurrentIDPlayer()].getWallIndex()-1].getWallDirection())[0]);
+                box0101.setImage(getWall(board.players[board.getcurrentIDPlayer()], board.players[board.getcurrentIDPlayer()].getWalls()[board.players[board.getcurrentIDPlayer()].getWallIndex()-1].getWallDirection())[1]);   
+                box0201.setImage(getWall(board.players[board.getcurrentIDPlayer()], board.players[board.getcurrentIDPlayer()].getWalls()[board.players[board.getcurrentIDPlayer()].getWallIndex()-1].getWallDirection())[2]);
+            }
+            if(board.players[board.getcurrentIDPlayer()].getWalls()[board.players[board.getcurrentIDPlayer()].getWallIndex()-1].getWallDirection() == WallDirection.Vertical){
+                box0100.setImage(getWall(board.players[board.getcurrentIDPlayer()], board.players[board.getcurrentIDPlayer()].getWalls()[board.players[board.getcurrentIDPlayer()].getWallIndex()-1].getWallDirection())[0]);
+                box0101.setImage(getWall(board.players[board.getcurrentIDPlayer()], board.players[board.getcurrentIDPlayer()].getWalls()[board.players[board.getcurrentIDPlayer()].getWallIndex()-1].getWallDirection())[1]);   
+                box0102.setImage(getWall(board.players[board.getcurrentIDPlayer()], board.players[board.getcurrentIDPlayer()].getWalls()[board.players[board.getcurrentIDPlayer()].getWallIndex()-1].getWallDirection())[2]);
+            }
             board.nextPlayer();
         } catch (RuleViolated e) {
             Alert alert = new Alert(AlertType.ERROR);

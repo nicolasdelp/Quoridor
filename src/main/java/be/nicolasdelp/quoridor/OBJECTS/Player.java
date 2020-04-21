@@ -142,8 +142,8 @@ public class Player {
      *
      * @param Position la position
      */
-    public void movePawn(Position Position) {
-        this.pawnPlayer.setPosition(Position);
+    public void movePawn(Position position) {
+        this.pawnPlayer.setPosition(position);
     }
 
     /**
@@ -151,9 +151,9 @@ public class Player {
      *
      * @param Position la position
      */
-    public void moveWall(WallDirection direction, Position Position) {
+    public void moveWall(WallDirection direction, Position position) {
         this.walls[this.wallIndex-1].setWallDirection(direction);
-        this.walls[this.wallIndex-1].setPosition(Position);
+        this.walls[this.wallIndex-1].setPosition(position);
         this.wallIndex--;
     }
 }

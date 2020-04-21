@@ -74,5 +74,8 @@ public class IllegalMovement implements PlayerRule {
                 }
             }
         }
+        if(position.getX() == player.getPawn().getPosition().getX() && position.getY() == player.getPawn().getPosition().getY()){ //Si on se déplace dans la case où l'on est déjà
+            throw new RuleViolated(player, position, board, "Vous devez soit changer de case, soit poser un mur !");
+        }
     }
 }
