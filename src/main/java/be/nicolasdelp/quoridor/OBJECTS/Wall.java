@@ -8,7 +8,7 @@ package be.nicolasdelp.quoridor.objects;
 public class Wall extends GamePieces {
 
     private Position position;
-    private WallDirection direction = WallDirection.Horizontal;
+    private WallDirection direction;
 
     /**
      * Constructeur de Wall
@@ -18,6 +18,7 @@ public class Wall extends GamePieces {
      */
     public Wall() {
         this.position = null;
+        this.direction = null;
     }
     
     /**

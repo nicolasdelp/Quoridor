@@ -2,7 +2,7 @@
 
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.CheckBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -1105,7 +1105,6 @@
                         <ImageView fx:id="box1613" fitHeight="11.0" fitWidth="55.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="16" GridPane.halignment="CENTER" GridPane.rowIndex="13" GridPane.valignment="CENTER" />
                         <ImageView fx:id="box1615" fitHeight="11.0" fitWidth="55.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="16" GridPane.halignment="CENTER" GridPane.rowIndex="15" GridPane.valignment="CENTER" />
                         <ImageView fx:id="box0100" fitHeight="55.0" fitWidth="11.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
-                        <ImageView fitHeight="55.0" fitWidth="11.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER" />
                         <ImageView fx:id="box0300" fitHeight="55.0" fitWidth="11.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
                         <ImageView fx:id="box0500" fitHeight="55.0" fitWidth="11.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="5" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
                         <ImageView fx:id="box0700" fitHeight="55.0" fitWidth="11.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="7" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
@@ -1113,7 +1112,6 @@
                         <ImageView fx:id="box1100" fitHeight="55.0" fitWidth="11.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="11" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
                         <ImageView fx:id="box1300" fitHeight="55.0" fitWidth="11.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="13" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
                         <ImageView fx:id="box1500" fitHeight="55.0" fitWidth="11.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="15" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
-                        <ImageView fx:id="box0102" fitHeight="55.0" fitWidth="11.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER" />
                         <ImageView fx:id="box0302" fitHeight="55.0" fitWidth="11.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER" />
                         <ImageView fx:id="box0502" fitHeight="55.0" fitWidth="11.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="5" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER" />
                         <ImageView fx:id="box0702" fitHeight="55.0" fitWidth="11.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="7" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER" />
@@ -1177,6 +1175,7 @@
                         <ImageView fx:id="box1316" fitHeight="55.0" fitWidth="11.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="13" GridPane.halignment="CENTER" GridPane.rowIndex="16" GridPane.valignment="CENTER" />
                         <ImageView fx:id="box1514" fitHeight="55.0" fitWidth="11.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="15" GridPane.halignment="CENTER" GridPane.rowIndex="14" GridPane.valignment="CENTER" />
                         <ImageView fx:id="box1516" fitHeight="55.0" fitWidth="11.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="15" GridPane.halignment="CENTER" GridPane.rowIndex="16" GridPane.valignment="CENTER" />
+                        <ImageView fx:id="box0102" fitHeight="55.0" fitWidth="11.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER" />
                      </children>
                   </GridPane>
                   <GridPane layoutX="174.0" layoutY="350.0">
@@ -1328,8 +1327,8 @@
                      </font>
                   </Label>
                   <Button layoutX="6.0" layoutY="7.0" mnemonicParsing="false" prefHeight="41.0" prefWidth="145.0" styleClass="buttonMenu" stylesheets="@../css/quoridorMenu.css" text="Sauvegarder la partie" />
-                  <ChoiceBox layoutX="956.0" layoutY="686.0" prefHeight="25.0" prefWidth="124.0" />
-                  <ChoiceBox layoutX="171.0" layoutY="686.0" prefHeight="25.0" prefWidth="124.0" />
+                  <CheckBox fx:id="Horizontal" layoutX="532.0" layoutY="878.0" mnemonicParsing="false" onAction="#HorizontalCheckboxCheck" selected="true" text="Horizontal" />
+                  <CheckBox fx:id="Vertical" layoutX="635.0" layoutY="878.0" mnemonicParsing="false" onAction="#VerticalCheckboxCheck" text="Vertical" />
                </children>
             </AnchorPane>
          </children>

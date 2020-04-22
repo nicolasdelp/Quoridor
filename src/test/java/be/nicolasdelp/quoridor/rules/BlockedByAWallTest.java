@@ -15,14 +15,14 @@ public class BlockedByAWallTest {
         b.createBoard();
         try {
             b.movePawnOnBoard(b.players[0], new Position(2, 8));
-            b.setWallOnBoard(b.players[0], b.players[0].getWalls()[0], WallDirection.Vertical, new Position(1, 8));
+            b.setWallOnBoard(b.players[0], new Wall(), WallDirection.Vertical, new Position(1, 7));
+            b.setWallOnBoard(b.players[0], new Wall(), WallDirection.Vertical, new Position(3, 7));
         } catch (RuleViolated e) {
             System.out.println(e);
         }
         PlayerRule playerRule = new BlockedByAWall();
-        Assertions.assertThrows(RuleViolated.class, () -> {
-            playerRule.verify(b, b.players[0], new Position(0, 8));
-          });
+        Assertions.assertThrows(RuleViolated.class, () -> {playerRule.verify(b, b.players[0], new Position(0, 8));});
+        Assertions.assertThrows(RuleViolated.class, () -> {playerRule.verify(b, b.players[0], new Position(4, 8));});
     }
 
     @Test
@@ -32,50 +32,13 @@ public class BlockedByAWallTest {
         b.setPlayer(p);
         b.createBoard();
         try {
-            b.movePawnOnBoard(b.players[0], new Position(2, 8));
-            b.setWallOnBoard(b.players[0], b.players[0].getWalls()[1], WallDirection.Vertical, new Position(2, 7));
+            b.setWallOnBoard(b.players[0], new Wall(), WallDirection.Horizontal, new Position(1, 7));
+            b.setWallOnBoard(b.players[0], new Wall(), WallDirection.Horizontal, new Position(1, 9));
         } catch (RuleViolated e) {
-            Assertions.fail(e);
+            System.out.println(e);
         }
         PlayerRule playerRule = new BlockedByAWall();
-        Assertions.assertThrows(RuleViolated.class, () -> {
-            playerRule.verify(b, b.players[0], new Position(2, 6));
-          });
-    }
-
-    @Test
-    public void testVerify3(){
-        Board b = new Board();
-        Player[] p = {new Player("Humain", "Nico", 0, Color.Rouge, new Pawn()), new Player("Ordinateur", "Ordi1", 1, Color.Rouge, new Pawn()), new Player("Humain", "Alex", 2, Color.Rouge, new Pawn()), new Player("Ordinateur", "Ordi2", 3, Color.Rouge, new Pawn())};
-        b.setPlayer(p);
-        b.createBoard();
-        try {
-            b.movePawnOnBoard(b.players[0], new Position(2, 8));
-            b.setWallOnBoard(b.players[0], b.players[0].getWalls()[2], WallDirection.Vertical, new Position(3, 8));
-        } catch (RuleViolated e) {
-            Assertions.fail(e);
-        }
-        PlayerRule playerRule = new BlockedByAWall();
-        Assertions.assertThrows(RuleViolated.class, () -> {
-            playerRule.verify(b, b.players[0], new Position(4, 8));
-          });
-    }
-
-    @Test
-    public void testVerify4(){
-        Board b = new Board();
-        Player[] p = {new Player("Humain", "Nico", 0, Color.Rouge, new Pawn()), new Player("Ordinateur", "Ordi1", 1, Color.Rouge, new Pawn()), new Player("Humain", "Alex", 2, Color.Rouge, new Pawn()), new Player("Ordinateur", "Ordi2", 3, Color.Rouge, new Pawn())};
-        b.setPlayer(p);
-        b.createBoard();
-        try {
-            b.movePawnOnBoard(b.players[0], new Position(2, 8));
-            b.setWallOnBoard(b.players[0], b.players[0].getWalls()[3], WallDirection.Vertical, new Position(2, 9));
-        } catch (RuleViolated e) {
-            Assertions.fail(e);
-        }
-        PlayerRule playerRule = new BlockedByAWall();
-        Assertions.assertThrows(RuleViolated.class, () -> {
-            playerRule.verify(b, b.players[0], new Position(2, 10));
-          });
+        Assertions.assertThrows(RuleViolated.class, () -> {playerRule.verify(b, b.players[0], new Position(0, 6));});
+        Assertions.assertThrows(RuleViolated.class, () -> {playerRule.verify(b, b.players[0], new Position(0, 10));});
     }
 }

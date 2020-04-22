@@ -21,7 +21,7 @@ public enum Color {
     }
 
     /**
-     * Accesseur de la couleur
+     * Accesseur de l'index de la couleur
      *
      * @return 0 ou 1 ou 2 ou 3
      */

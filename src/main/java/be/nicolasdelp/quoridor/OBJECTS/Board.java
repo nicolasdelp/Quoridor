@@ -66,18 +66,34 @@ public class Board {
         this.players = players;
     }
 
+    /**
+     * Accesseur la largueur du plateau
+     *
+     */
     public int getLength(){
         return boardBoxes.length;
     }
 
+    /**
+     * Accesseur la longueur du plateau
+     *
+     */
     public int getWidth(){
         return boardBoxes[0].length;
     }
 
+    /**
+     * Récupère l'ID du joueur qui joue actuellement
+     *
+     */
     public int getcurrentIDPlayer(){
         return this.currentIDPlayer;
     }
 
+    /**
+     * Passe au joueur suivant
+     *
+     */
     public void nextPlayer(){
         this.currentIDPlayer++;
         this.currentIDPlayer = this.currentIDPlayer%2;
@@ -132,7 +148,7 @@ public class Board {
         }
 
 
-        // if(direction == WallDirection.Vertical) //////////////////////////////////////////TO DO     A*
+        //     Algo A*
         //     throw new IllegalArgumentException("Vous ne pouvez pas placer ce mur vous bloquer un joueur !"); 
 
 
