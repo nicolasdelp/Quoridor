@@ -2,8 +2,6 @@ package be.nicolasdelp.quoridor.objects;
 
 import org.junit.jupiter.api.Test;
 
-import javafx.scene.control.skin.TextInputControlSkin.Direction;
-
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class BoardTest {

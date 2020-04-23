@@ -54,7 +54,7 @@ public class IllegalMovement implements PlayerRule {
             }
         }
 
-        if(position.getX() == 0){ //Gauche du plateau
+        if(position.getX() == 0){ //Gauche
             if((position.getX() == player.getPawn().getPosition().getX()-2) && (position.getY() == player.getPawn().getPosition().getY()-2)){ //Haut gauche
                 if(position.getY() == 0){ //(0,0)
                     if(board.getBoardBoxes()[position.getX()][position.getY()+2].getisOccuped() == false && board.getBoardBoxes()[position.getX()+2][position.getY()].getisOccuped() == false){

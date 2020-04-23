@@ -1,5 +1,7 @@
 package be.nicolasdelp.quoridor.objects;
 
+import java.util.ArrayList;
+
 import be.nicolasdelp.quoridor.rules.*;
 
 /**
@@ -121,20 +123,201 @@ public class Board {
         }
     }
 
+    /**
+     * Retourne les cases vides voisines d'une position
+     *
+     */
+    public ArrayList<Position> surroundingsAnalysis(Position position){
+        ArrayList<Position> neighbours = new ArrayList<Position>();
+        if(position.getX() == 0){ //Gauche
+            if(position.getY() == 0){ //(0,0)
+                if(this.boardBoxes[position.getX()+2][position.getY()].getisOccuped() == false){ //Droite
+                    neighbours.add(new Position(position.getX()+2, position.getY()));
+                }
+                if(this.boardBoxes[position.getX()+2][position.getY()+2].getisOccuped() == false){ //Bas droit
+                    neighbours.add(new Position(position.getX()+2, position.getY()+2));
+                }
+                if(this.boardBoxes[position.getX()][position.getY()+2].getisOccuped() == false){ //Bas
+                    neighbours.add(new Position(position.getX(), position.getY()+2));
+                }
+            }
+            if(position.getY() == 16){ //(0,16)
+                if(this.boardBoxes[position.getX()][position.getY()-2].getisOccuped() == false){ //Haut
+                    neighbours.add(new Position(position.getX(), position.getY()-2));
+                }
+                if(this.boardBoxes[position.getX()+2][position.getY()-2].getisOccuped() == false){ //Haut droit
+                    neighbours.add(new Position(position.getX()+2, position.getY()-2));
+                }
+                if(this.boardBoxes[position.getX()+2][position.getY()].getisOccuped() == false){ //Droite
+                    neighbours.add(new Position(position.getX()+2, position.getY()));
+                }
+            }
+            else { //(0,..)
+                if(this.boardBoxes[position.getX()][position.getY()-2].getisOccuped() == false){ //Haut
+                    neighbours.add(new Position(position.getX(), position.getY()-2));
+                }
+                if(this.boardBoxes[position.getX()+2][position.getY()-2].getisOccuped() == false){ //Haut droit
+                    neighbours.add(new Position(position.getX()+2, position.getY()-2));
+                }
+                if(this.boardBoxes[position.getX()+2][position.getY()].getisOccuped() == false){ //Droite
+                    neighbours.add(new Position(position.getX()+2, position.getY()));
+                }
+                if(this.boardBoxes[position.getX()+2][position.getY()+2].getisOccuped() == false){ //Bas droit
+                    neighbours.add(new Position(position.getX()+2, position.getY()+2));
+                }
+                if(this.boardBoxes[position.getX()][position.getY()+2].getisOccuped() == false){ //Bas
+                    neighbours.add(new Position(position.getX(), position.getY()+2));
+                }
+            }
+        }else if(position.getX() == 16){ //Droite
+            if(position.getY() == 0){ //(16,0)
+                if(this.boardBoxes[position.getX()][position.getY()+2].getisOccuped() == false){ //Bas
+                    neighbours.add(new Position(position.getX(), position.getY()+2));
+                }
+                if(this.boardBoxes[position.getX()-2][position.getY()+2].getisOccuped() == false){ //Bas gauche
+                    neighbours.add(new Position(position.getX()-2, position.getY()+2));
+                }
+                if(this.boardBoxes[position.getX()-2][position.getY()].getisOccuped() == false){ //Gauche
+                    neighbours.add(new Position(position.getX()-2, position.getY()));
+                }
+            }
+            if(position.getY() == 16){ //(16,16)
+                if(this.boardBoxes[position.getX()][position.getY()-2].getisOccuped() == false){ //Haut
+                    neighbours.add(new Position(position.getX(), position.getY()-2));
+                }
+                if(this.boardBoxes[position.getX()-2][position.getY()].getisOccuped() == false){ //Gauche
+                    neighbours.add(new Position(position.getX()-2, position.getY()));
+                }
+                if(this.boardBoxes[position.getX()-2][position.getY()-2].getisOccuped() == false){ //Haut gauche
+                    neighbours.add(new Position(position.getX()-2, position.getY()-2));
+                }
+            } 
+            else { //(16,..)
+                if(this.boardBoxes[position.getX()][position.getY()-2].getisOccuped() == false){ //Haut
+                    neighbours.add(new Position(position.getX(), position.getY()-2));
+                }
+                if(this.boardBoxes[position.getX()][position.getY()+2].getisOccuped() == false){ //Bas
+                    neighbours.add(new Position(position.getX(), position.getY()+2));
+                }
+                if(this.boardBoxes[position.getX()-2][position.getY()+2].getisOccuped() == false){ //Bas gauche
+                    neighbours.add(new Position(position.getX()-2, position.getY()+2));
+                }
+                if(this.boardBoxes[position.getX()-2][position.getY()].getisOccuped() == false){ //Gauche
+                    neighbours.add(new Position(position.getX()-2, position.getY()));
+                }
+                if(this.boardBoxes[position.getX()-2][position.getY()-2].getisOccuped() == false){ //Haut gauche
+                    neighbours.add(new Position(position.getX()-2, position.getY()-2));
+                }
+            }
+        }else if(position.getY() == 0){ //Haut
+            if(position.getX() == 16){ //(16,0)
+                if(this.boardBoxes[position.getX()][position.getY()+2].getisOccuped() == false){ //Bas
+                    neighbours.add(new Position(position.getX(), position.getY()+2));
+                }
+                if(this.boardBoxes[position.getX()-2][position.getY()+2].getisOccuped() == false){ //Bas gauche
+                    neighbours.add(new Position(position.getX()-2, position.getY()+2));
+                }
+                if(this.boardBoxes[position.getX()-2][position.getY()].getisOccuped() == false){ //Gauche
+                    neighbours.add(new Position(position.getX()-2, position.getY()));
+                }
+            }
+            if(position.getX() == 0){ //(0,0)
+                if(this.boardBoxes[position.getX()+2][position.getY()].getisOccuped() == false){ //Droite
+                    neighbours.add(new Position(position.getX()+2, position.getY()));
+                }
+                if(this.boardBoxes[position.getX()+2][position.getY()+2].getisOccuped() == false){ //Bas droit
+                    neighbours.add(new Position(position.getX()+2, position.getY()+2));
+                }
+                if(this.boardBoxes[position.getX()][position.getY()+2].getisOccuped() == false){ //Bas
+                    neighbours.add(new Position(position.getX(), position.getY()+2));
+                }
+            } else { //(..,0)
+                if(this.boardBoxes[position.getX()+2][position.getY()+2].getisOccuped() == false){ //Bas droit
+                    neighbours.add(new Position(position.getX()+2, position.getY()+2));
+                }
+                if(this.boardBoxes[position.getX()][position.getY()+2].getisOccuped() == false){ //Bas
+                    neighbours.add(new Position(position.getX(), position.getY()+2));
+                }
+                if(this.boardBoxes[position.getX()-2][position.getY()+2].getisOccuped() == false){ //Bas gauche
+                    neighbours.add(new Position(position.getX()-2, position.getY()+2));
+                }
+            }
+        }else if(position.getY() == 16){ //Bas
+            if(position.getX() == 16){ //(16,16)
+                if(this.boardBoxes[position.getX()][position.getY()-2].getisOccuped() == false){ //Haut
+                    neighbours.add(new Position(position.getX(), position.getY()-2));
+                }
+                if(this.boardBoxes[position.getX()-2][position.getY()].getisOccuped() == false){ //Gauche
+                    neighbours.add(new Position(position.getX()-2, position.getY()));
+                }
+                if(this.boardBoxes[position.getX()-2][position.getY()-2].getisOccuped() == false){ //Haut gauche
+                    neighbours.add(new Position(position.getX()-2, position.getY()-2));
+                }
+            }
+            if(position.getX() == 0){ //(0,16)
+                if(this.boardBoxes[position.getX()][position.getY()-2].getisOccuped() == false){ //Haut
+                    neighbours.add(new Position(position.getX(), position.getY()-2));
+                }
+                if(this.boardBoxes[position.getX()+2][position.getY()-2].getisOccuped() == false){ //Haut droit
+                    neighbours.add(new Position(position.getX()+2, position.getY()-2));
+                }
+                if(this.boardBoxes[position.getX()+2][position.getY()].getisOccuped() == false){ //Droite
+                    neighbours.add(new Position(position.getX()+2, position.getY()));
+                }
+            } else { //(..,16)
+                if(this.boardBoxes[position.getX()][position.getY()-2].getisOccuped() == false){ //Haut
+                    neighbours.add(new Position(position.getX(), position.getY()-2));
+                }
+                if(this.boardBoxes[position.getX()+2][position.getY()-2].getisOccuped() == false){ //Haut droit
+                    neighbours.add(new Position(position.getX()+2, position.getY()-2));
+                }
+                if(this.boardBoxes[position.getX()-2][position.getY()-2].getisOccuped() == false){ //Haut gauche
+                    neighbours.add(new Position(position.getX()-2, position.getY()-2));
+                }
+            }   
+        }else { //Le reste du plateau
+            if(this.boardBoxes[position.getX()][position.getY()-2].getisOccuped() == false){ //Haut
+                neighbours.add(new Position(position.getX(), position.getY()-2));
+            }
+            if(this.boardBoxes[position.getX()+2][position.getY()-2].getisOccuped() == false){ //Haut droit
+                neighbours.add(new Position(position.getX()+2, position.getY()-2));
+            }
+            if(this.boardBoxes[position.getX()+2][position.getY()].getisOccuped() == false){ //Droite
+                neighbours.add(new Position(position.getX()+2, position.getY()));
+            }
+            if(this.boardBoxes[position.getX()+2][position.getY()+2].getisOccuped() == false){ //Bas droit
+                neighbours.add(new Position(position.getX()+2, position.getY()+2));
+            }
+            if(this.boardBoxes[position.getX()][position.getY()+2].getisOccuped() == false){ //Bas
+                neighbours.add(new Position(position.getX(), position.getY()+2));
+            }
+            if(this.boardBoxes[position.getX()-2][position.getY()+2].getisOccuped() == false){ //Bas gauche
+                neighbours.add(new Position(position.getX()-2, position.getY()+2));
+            }
+            if(this.boardBoxes[position.getX()-2][position.getY()].getisOccuped() == false){ //Gauche
+                neighbours.add(new Position(position.getX()-2, position.getY()));
+            }
+            if(this.boardBoxes[position.getX()-2][position.getY()-2].getisOccuped() == false){ //Haut gauche
+                neighbours.add(new Position(position.getX()-2, position.getY()-2));
+            }
+        }
+        return neighbours;
+    }
+
 
     /**
      * Bouge le pion à une position sur le plateau
      *
-     * @param Position la position
+     * @param newPosition la position
      */
-    public void movePawnOnBoard(Player player, Position position) throws RuleViolated{
+    public void movePawnOnBoard(Player player, Position newPosition) throws RuleViolated{
         for(int i=0; i<this.playerRules.length; i++){
-            playerRules[i].verify(this, player, position); //Vérifie si il n'y a pas d'exceptions
+            playerRules[i].verify(this, player, newPosition); //Vérifie si il n'y a pas d'exceptions
         }
         Position old = player.getPawn().getPosition(); //On recupere l'ancienne position du pion 
         boardBoxes[old.getX()][old.getY()].removeObject(); //On nettoie l'ancienne case
-        player.movePawn(position); //On bouge le pion
-        boardBoxes[position.getX()][position.getY()].setObject(player.getPawn()); //On assigne à la box d'arrivée qu'un objet est dedans
+        player.movePawn(newPosition); //On bouge le pion
+        boardBoxes[newPosition.getX()][newPosition.getY()].setObject(player.getPawn()); //On assigne à la box d'arrivée qu'un objet est dedans
     }
 
     /**
@@ -149,7 +332,7 @@ public class Board {
         }
 
 
-        //     Algo A*
+        //     Algo
         //     throw new IllegalArgumentException("Vous ne pouvez pas placer ce mur vous bloquer un joueur !"); 
 
 
