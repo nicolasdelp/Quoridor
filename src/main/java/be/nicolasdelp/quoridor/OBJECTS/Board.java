@@ -143,6 +143,7 @@ public class Board {
      * @param newPosition la position
      */
     public void setWallOnBoard(Player player, Wall wall, WallDirection direction, Position position) throws RuleViolated{
+        player.turnWall(player.getWallIndex(), direction);
         for(int i=0; i<this.wallRules.length; i++){
             wallRules[i].verify(this, player, wall, position); //Vérifie si il n'y a pas d'exceptions
         }
@@ -153,7 +154,7 @@ public class Board {
 
 
         
-        player.moveWall(direction, position); //On change le sens et la position du mur dans l'inventaire du joueur
+        player.moveWall(position); //On change le sens et la position du mur dans l'inventaire du joueur
         if(direction == WallDirection.Horizontal){ //Si il est horizontal on remplie les case a sa droite et a sa gauche
             boardBoxes[position.getX()][position.getY()].setObject(wall);
             boardBoxes[position.getX()+1][position.getY()].setObject(wall);

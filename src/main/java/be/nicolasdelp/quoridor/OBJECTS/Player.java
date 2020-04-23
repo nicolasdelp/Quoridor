@@ -116,7 +116,7 @@ public class Player {
      * @return l'index
      */
     public int getWallIndex() {
-        return this.wallIndex;
+        return this.wallIndex-1;
     }
 
     /**
@@ -147,13 +147,21 @@ public class Player {
     }
 
     /**
+     * Change de sens un mur
+     *
+     * @param Position la position
+     */
+    public void turnWall(int indexWall, WallDirection direction) {
+        this.walls[indexWall].setWallDirection(direction);
+    }
+
+    /**
      * Met un mur à une position sur le plateau
      *
      * @param Position la position
      */
-    public void moveWall(WallDirection direction, Position position) {
-        this.walls[this.wallIndex-1].setWallDirection(direction);
-        this.walls[this.wallIndex-1].setPosition(position);
+    public void moveWall(Position position) {
+        this.walls[getWallIndex()].setPosition(position);
         this.wallIndex--;
     }
 }

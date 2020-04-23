@@ -5,7 +5,7 @@ import org.junit.jupiter.api.Test;
 
 import be.nicolasdelp.quoridor.objects.*;
 
-public class IsAWallBoxTest {
+public class WallIsInBoundsTest {
 
     @Test
     public void testVerify1(){
@@ -13,8 +13,8 @@ public class IsAWallBoxTest {
         Player[] p = {new Player("Humain", "Nico", 0, Color.Rouge, new Pawn()), new Player("Ordinateur", "Ordi1", 1, Color.Rouge, new Pawn()), new Player("Humain", "Alex", 2, Color.Rouge, new Pawn()), new Player("Ordinateur", "Ordi2", 3, Color.Rouge, new Pawn())};
         b.setPlayer(p);
         b.createBoard();
-        PlayerRule playerRule = new IsAWallBox();
-        Assertions.assertThrows(RuleViolated.class, () -> {playerRule.verify(b, b.players[0], new Position(1, 8));});
+        WallRule wallRule = new WallIsInBounds();
+        Assertions.assertThrows(RuleViolated.class, () -> {wallRule.verify(b, b.players[0], new Wall(), new Position(1, 17));});
     }
 
     @Test
@@ -23,8 +23,8 @@ public class IsAWallBoxTest {
         Player[] p = {new Player("Humain", "Nico", 0, Color.Rouge, new Pawn()), new Player("Ordinateur", "Ordi1", 1, Color.Rouge, new Pawn()), new Player("Humain", "Alex", 2, Color.Rouge, new Pawn()), new Player("Ordinateur", "Ordi2", 3, Color.Rouge, new Pawn())};
         b.setPlayer(p);
         b.createBoard();
-        PlayerRule playerRule = new IsAWallBox();
-        Assertions.assertThrows(RuleViolated.class, () -> {playerRule.verify(b, b.players[0], new Position(0, 7));});
+        WallRule wallRule = new WallIsInBounds();
+        Assertions.assertThrows(RuleViolated.class, () -> {wallRule.verify(b, b.players[0], new Wall(), new Position(17, 1));});
     }
 
     @Test
@@ -33,8 +33,8 @@ public class IsAWallBoxTest {
         Player[] p = {new Player("Humain", "Nico", 0, Color.Rouge, new Pawn()), new Player("Ordinateur", "Ordi1", 1, Color.Rouge, new Pawn()), new Player("Humain", "Alex", 2, Color.Rouge, new Pawn()), new Player("Ordinateur", "Ordi2", 3, Color.Rouge, new Pawn())};
         b.setPlayer(p);
         b.createBoard();
-        PlayerRule playerRule = new IsAWallBox();
-        Assertions.assertThrows(RuleViolated.class, () -> {playerRule.verify(b, b.players[0], new Position(0, 9));});
+        WallRule wallRule = new WallIsInBounds();
+        Assertions.assertThrows(RuleViolated.class, () -> {wallRule.verify(b, b.players[0], new Wall(), new Position(-1, -1));});
     }
 
     @Test
@@ -43,7 +43,7 @@ public class IsAWallBoxTest {
         Player[] p = {new Player("Humain", "Nico", 0, Color.Rouge, new Pawn()), new Player("Ordinateur", "Ordi1", 1, Color.Rouge, new Pawn()), new Player("Humain", "Alex", 2, Color.Rouge, new Pawn()), new Player("Ordinateur", "Ordi2", 3, Color.Rouge, new Pawn())};
         b.setPlayer(p);
         b.createBoard();
-        PlayerRule playerRule = new IsAWallBox();
-        Assertions.assertThrows(RuleViolated.class, () -> {playerRule.verify(b, b.players[1], new Position(15, 8));});
+        WallRule wallRule = new WallIsInBounds();
+        Assertions.assertThrows(RuleViolated.class, () -> {wallRule.verify(b, b.players[0], new Wall(), new Position(17, 17));});
     }
 }
