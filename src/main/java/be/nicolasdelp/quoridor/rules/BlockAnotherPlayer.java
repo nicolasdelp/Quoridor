@@ -12,7 +12,10 @@ public class BlockAnotherPlayer implements WallRule {
             if(newBoard.players[i] == newBoard.players[0]){
                 Position source = newBoard.players[0].getPawn().getPosition();
                 int xDestination = 16;
-                Position[] aExplorer = new Position[4];
+                Position[] aExplorer = {new Position(player.getPawn().getPosition().getX()+2, player.getPawn().getPosition().getY()),
+                                        new Position(player.getPawn().getPosition().getX()-2, player.getPawn().getPosition().getY()),
+                                        new Position(player.getPawn().getPosition().getX(), player.getPawn().getPosition().getY()+2),
+                                        new Position(player.getPawn().getPosition().getX(), player.getPawn().getPosition().getY()-2),};
                 Position[] dejaExplorer = new Position[81]; //81 = 9*9
                 dejaExplorer[0] = newBoard.players[0].getPawn().getPosition();
                 for(int x = 0; x < aExplorer.length; x++){
@@ -23,7 +26,7 @@ public class BlockAnotherPlayer implements WallRule {
                     }
                 }
                 while(!Stop){
-                    
+
                 }
             }
         }
