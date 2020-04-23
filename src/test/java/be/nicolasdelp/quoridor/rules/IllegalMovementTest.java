@@ -5,7 +5,7 @@ import org.junit.jupiter.api.Test;
 
 import be.nicolasdelp.quoridor.objects.*;
 
-public class IllegalMovemenTest {
+public class IllegalMovementTest {
 
     @Test
     public void testVerify1(){ //Haut bas gauche droite trop loin

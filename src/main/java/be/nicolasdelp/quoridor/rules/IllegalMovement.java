@@ -54,26 +54,26 @@ public class IllegalMovement implements PlayerRule {
             }
         }
 
-        if(position.getX() == 0){ //Gauche
+        if(position.getX() == 0){ //Gauche du plateau
             if((position.getX() == player.getPawn().getPosition().getX()-2) && (position.getY() == player.getPawn().getPosition().getY()-2)){ //Haut gauche
                 if(position.getY() == 0){ //(0,0)
                     if(board.getBoardBoxes()[position.getX()][position.getY()+2].getisOccuped() == false && board.getBoardBoxes()[position.getX()+2][position.getY()].getisOccuped() == false){
-                        throw new RuleViolated(player, position, board, "Vous ne pouvez avancer que vers le haut, le bas, la droite et la gauche si vous n etes pas bloque !");
+                        throw new RuleViolated(player, position, board, "Vous ne pouvez avancer que vers le haut, le bas, la droite et la gauche si vous n'etes pas bloque !");
                     }
                 } else { //(0,..)
                     if(board.getBoardBoxes()[position.getX()][position.getY()+2].getisOccuped() == false && (board.getBoardBoxes()[position.getX()+2][position.getY()].getisOccuped() == false || board.getBoardBoxes()[position.getX()+2][position.getY()-1].getisOccuped() == false)){
-                        throw new RuleViolated(player, position, board, "Vous ne pouvez avancer que vers le haut, le bas, la droite et la gauche si vous n etes pas bloque !");
+                        throw new RuleViolated(player, position, board, "Vous ne pouvez avancer que vers le haut, le bas, la droite et la gauche si vous n'etes pas bloque !");
                     }
                 }
             }
             if((position.getX() == player.getPawn().getPosition().getX()-2) && (position.getY() == player.getPawn().getPosition().getY()+2)){ //Bas gauche
                 if(position.getY() == 16){ //(0,16)
                     if(board.getBoardBoxes()[position.getX()+2][position.getY()].getisOccuped() == false && board.getBoardBoxes()[position.getX()][position.getY()-2].getisOccuped() == false){
-                        throw new RuleViolated(player, position, board, "Vous ne pouvez avancer que vers le haut, le bas, la droite et la gauche si vous n etes pas bloque !");
+                        throw new RuleViolated(player, position, board, "Vous ne pouvez avancer que vers le haut, le bas, la droite et la gauche si vous n'etes pas bloque !");
                     }
                 } else { //(0,..)
                     if((board.getBoardBoxes()[position.getX()+2][position.getY()].getisOccuped() == false || board.getBoardBoxes()[position.getX()+2][position.getY()+1].getisOccuped() == false) && board.getBoardBoxes()[position.getX()][position.getY()-2].getisOccuped() == false){
-                        throw new RuleViolated(player, position, board, "Vous ne pouvez avancer que vers le haut, le bas, la droite et la gauche si vous n etes pas bloque !");
+                        throw new RuleViolated(player, position, board, "Vous ne pouvez avancer que vers le haut, le bas, la droite et la gauche si vous n'etes pas bloque !");
                     }
                 }
             }
@@ -81,24 +81,24 @@ public class IllegalMovement implements PlayerRule {
             if((position.getX() == player.getPawn().getPosition().getX()+2) && (position.getY() == player.getPawn().getPosition().getY()-2)){ //Haut droite
                 if(position.getY() == 0){ //(16,0)
                     if(board.getBoardBoxes()[position.getX()-2][position.getY()].getisOccuped() == false && board.getBoardBoxes()[position.getX()][position.getY()+2].getisOccuped() == false){
-                        throw new RuleViolated(player, position, board, "Vous ne pouvez avancer que vers le haut, le bas, la droite et la gauche si vous n etes pas bloque !");
+                        throw new RuleViolated(player, position, board, "Vous ne pouvez avancer que vers le haut, le bas, la droite et la gauche si vous n'etes pas bloque !");
                     }
                 } else { //(16,..)
-                    if(board.getBoardBoxes()[position.getX()-2][position.getY()].getisOccuped() == false && (board.getBoardBoxes()[position.getX()][position.getY()+2].getisOccuped() == false || board.getBoardBoxes()[position.getX()+1][position.getY()+2].getisOccuped() == false)){
-                        throw new RuleViolated(player, position, board, "Vous ne pouvez avancer que vers le haut, le bas, la droite et la gauche si vous n etes pas bloque !");
+                    if(board.getBoardBoxes()[position.getX()][position.getY()+2].getisOccuped() == false && (board.getBoardBoxes()[position.getX()-2][position.getY()].getisOccuped() == false || board.getBoardBoxes()[position.getX()-2][position.getY()-1].getisOccuped() == false)){
+                        throw new RuleViolated(player, position, board, "Vous ne pouvez avancer que vers le haut, le bas, la droite et la gauche si vous n'etes pas bloque !");
                     }
                 }
             }
             if(position.getY() == 16){ //(16,16)
                 if((position.getX() == player.getPawn().getPosition().getX()+2) && (position.getY() == player.getPawn().getPosition().getY()+2)){ //Bas droite
                     if(board.getBoardBoxes()[position.getX()][position.getY()-2].getisOccuped() == false  && board.getBoardBoxes()[position.getX()-2][position.getY()].getisOccuped() == false){
-                        throw new RuleViolated(player, position, board, "Vous ne pouvez avancer que vers le haut, le bas, la droite et la gauche si vous n etes pas bloque !");
+                        throw new RuleViolated(player, position, board, "Vous ne pouvez avancer que vers le haut, le bas, la droite et la gauche si vous n'etes pas bloque !");
                     }
                 }
             } else { //(16,..)
                 if((position.getX() == player.getPawn().getPosition().getX()+2) && (position.getY() == player.getPawn().getPosition().getY()+2)){ //Bas droite
                     if(board.getBoardBoxes()[position.getX()][position.getY()-2].getisOccuped() == false && (board.getBoardBoxes()[position.getX()-2][position.getY()].getisOccuped() == false || board.getBoardBoxes()[position.getX()-2][position.getY()+1].getisOccuped() == false)){
-                        throw new RuleViolated(player, position, board, "Vous ne pouvez avancer que vers le haut, le bas, la droite et la gauche si vous n etes pas bloque !");
+                        throw new RuleViolated(player, position, board, "Vous ne pouvez avancer que vers le haut, le bas, la droite et la gauche si vous n'etes pas bloque !");
                     }
                 }
             }
@@ -106,75 +106,75 @@ public class IllegalMovement implements PlayerRule {
             if((position.getX() == player.getPawn().getPosition().getX()+2) && (position.getY() == player.getPawn().getPosition().getY()-2)){ //Haut droite
                 if(position.getX() == 16){ //(16,0)
                     if(board.getBoardBoxes()[position.getX()-2][position.getY()].getisOccuped() == false && board.getBoardBoxes()[position.getX()][position.getY()+2].getisOccuped() == false){
-                        throw new RuleViolated(player, position, board, "Vous ne pouvez avancer que vers le haut, le bas, la droite et la gauche si vous n etes pas bloque !");
+                        throw new RuleViolated(player, position, board, "Vous ne pouvez avancer que vers le haut, le bas, la droite et la gauche si vous n'etes pas bloque !");
                     }
                 } else { //(..,0)
                     if(board.getBoardBoxes()[position.getX()-2][position.getY()].getisOccuped() == false && (board.getBoardBoxes()[position.getX()][position.getY()+2].getisOccuped() == false || board.getBoardBoxes()[position.getX()+1][position.getY()+2].getisOccuped() == false)){
-                        throw new RuleViolated(player, position, board, "Vous ne pouvez avancer que vers le haut, le bas, la droite et la gauche si vous n etes pas bloque !");
+                        throw new RuleViolated(player, position, board, "Vous ne pouvez avancer que vers le haut, le bas, la droite et la gauche si vous n'etes pas bloque !");
                     }
                 }
             }
             if((position.getX() == player.getPawn().getPosition().getX()-2) && (position.getY() == player.getPawn().getPosition().getY()-2)){ //Haut gauche
                 if(position.getX() == 0){ //(0,0)
-                    if(board.getBoardBoxes()[position.getX()][position.getY()+2].getisOccuped() == false && board.getBoardBoxes()[position.getX()+2][position.getY()].getisOccuped() == false){
-                        throw new RuleViolated(player, position, board, "Vous ne pouvez avancer que vers le haut, le bas, la droite et la gauche si vous n etes pas bloque !");
+                    if(board.getBoardBoxes()[position.getX()+2][position.getY()].getisOccuped() == false && board.getBoardBoxes()[position.getX()][position.getY()+2].getisOccuped() == false){
+                        throw new RuleViolated(player, position, board, "Vous ne pouvez avancer que vers le haut, le bas, la droite et la gauche si vous n'etes pas bloque !");
                     }
                 } else { //(..,0)
                     if(board.getBoardBoxes()[position.getX()+2][position.getY()].getisOccuped() == false && (board.getBoardBoxes()[position.getX()][position.getY()+2].getisOccuped() == false || board.getBoardBoxes()[position.getX()-1][position.getY()+2].getisOccuped() == false)){
-                        throw new RuleViolated(player, position, board, "Vous ne pouvez avancer que vers le haut, le bas, la droite et la gauche si vous n etes pas bloque !");
+                        throw new RuleViolated(player, position, board, "Vous ne pouvez avancer que vers le haut, le bas, la droite et la gauche si vous n'etes pas bloque !");
                     }
                 }
             }
         }else if(position.getY() == 16){ //Bas
             if(position.getX() == 16){ //(16,16)
                 if((position.getX() == player.getPawn().getPosition().getX()+2) && (position.getY() == player.getPawn().getPosition().getY()+2)){ //Bas droite
-                    if(board.getBoardBoxes()[position.getX()][position.getY()-2].getisOccuped() == false  && board.getBoardBoxes()[position.getX()-2][position.getY()].getisOccuped() == false){
-                        throw new RuleViolated(player, position, board, "Vous ne pouvez avancer que vers le haut, le bas, la droite et la gauche si vous n etes pas bloque !");
+                    if(board.getBoardBoxes()[position.getX()-2][position.getY()].getisOccuped() == false && board.getBoardBoxes()[position.getX()][position.getY()-2].getisOccuped() == false){
+                        throw new RuleViolated(player, position, board, "Vous ne pouvez avancer que vers le haut, le bas, la droite et la gauche si vous n'etes pas bloque !");
                     }
                 }
             } else { //(..,16)
                 if((position.getX() == player.getPawn().getPosition().getX()+2) && (position.getY() == player.getPawn().getPosition().getY()+2)){ //Bas droite
                     if(board.getBoardBoxes()[position.getX()-2][position.getY()].getisOccuped() == false && (board.getBoardBoxes()[position.getX()][position.getY()-2].getisOccuped() == false || board.getBoardBoxes()[position.getX()+1][position.getY()-2].getisOccuped() == false)){
-                        throw new RuleViolated(player, position, board, "Vous ne pouvez avancer que vers le haut, le bas, la droite et la gauche si vous n etes pas bloque !");
+                        throw new RuleViolated(player, position, board, "Vous ne pouvez avancer que vers le haut, le bas, la droite et la gauche si vous n'etes pas bloque !");
                     }
                 }
             }
             if(position.getX() == 0){ //(0,16)
                 if((position.getX() == player.getPawn().getPosition().getX()-2) && (position.getY() == player.getPawn().getPosition().getY()+2)){ //Bas gauche
-                    if(board.getBoardBoxes()[position.getX()][position.getY()-2].getisOccuped() == false && board.getBoardBoxes()[position.getX()+2][position.getY()].getisOccuped() == false){
-                        throw new RuleViolated(player, position, board, "Vous ne pouvez avancer que vers le haut, le bas, la droite et la gauche si vous n etes pas bloque !");
+                    if(board.getBoardBoxes()[position.getX()+2][position.getY()].getisOccuped() == false && board.getBoardBoxes()[position.getX()][position.getY()-2].getisOccuped() == false){
+                        throw new RuleViolated(player, position, board, "Vous ne pouvez avancer que vers le haut, le bas, la droite et la gauche si vous n'etes pas bloque !");
                     }
                 }
             } else { //(..,16)
                 if((position.getX() == player.getPawn().getPosition().getX()-2) && (position.getY() == player.getPawn().getPosition().getY()+2)){ //Bas gauche
                     if(board.getBoardBoxes()[position.getX()+2][position.getY()].getisOccuped() == false && (board.getBoardBoxes()[position.getX()][position.getY()-2].getisOccuped() == false || board.getBoardBoxes()[position.getX()-1][position.getY()-2].getisOccuped() == false)){
-                        throw new RuleViolated(player, position, board, "Vous ne pouvez avancer que vers le haut, le bas, la droite et la gauche si vous n etes pas bloque !");
+                        throw new RuleViolated(player, position, board, "Vous ne pouvez avancer que vers le haut, le bas, la droite et la gauche si vous n'etes pas bloque !");
                     }
                 }
             }   
         }else {
             if((position.getX() == player.getPawn().getPosition().getX()+2) && (position.getY() == player.getPawn().getPosition().getY()-2)){ //Haut droite
                 if((board.getBoardBoxes()[position.getX()][position.getY()-2].getisOccuped() == false || board.getBoardBoxes()[position.getX()+1][position.getY()-2].getisOccuped() == false) //Mur ou pion = false
-                    && (board.getBoardBoxes()[position.getX()-2][position.getY()].getisOccuped() == false || board.getBoardBoxes()[position.getX()-2][position.getY()+1].getisOccuped() == false)){ //Mur ou pion = false
-                    throw new RuleViolated(player, position, board, "Vous ne pouvez avancer que vers le haut, le bas, la droite et la gauche si vous n etes pas bloque !");
+                    && (board.getBoardBoxes()[position.getX()-2][position.getY()].getisOccuped() == false || board.getBoardBoxes()[position.getX()-2][position.getY()-1].getisOccuped() == false)){ //Mur ou pion = false
+                    throw new RuleViolated(player, position, board, "Vous ne pouvez avancer que vers le haut, le bas, la droite et la gauche si vous n'etes pas bloque !");
                 }
             }
             if((position.getX() == player.getPawn().getPosition().getX()-2) && (position.getY() == player.getPawn().getPosition().getY()-2)){ //Haut gauche
                 if((board.getBoardBoxes()[position.getX()][position.getY()+2].getisOccuped() == false ||  board.getBoardBoxes()[position.getX()-1][position.getY()+2].getisOccuped() == false) //Mur ou pion = false
                     && (board.getBoardBoxes()[position.getX()+2][position.getY()].getisOccuped() == false || board.getBoardBoxes()[position.getX()+2][position.getY()-1].getisOccuped() == false)){ //Mur ou pion = false
-                    throw new RuleViolated(player, position, board, "Vous ne pouvez avancer que vers le haut, le bas, la droite et la gauche si vous n etes pas bloque !");
+                    throw new RuleViolated(player, position, board, "Vous ne pouvez avancer que vers le haut, le bas, la droite et la gauche si vous n'etes pas bloque !");
                 }
             }
             if((position.getX() == player.getPawn().getPosition().getX()+2) && (position.getY() == player.getPawn().getPosition().getY()+2)){ //Bas droite
                 if((board.getBoardBoxes()[position.getX()][position.getY()-2].getisOccuped() == false || board.getBoardBoxes()[position.getX()+1][position.getY()-2].getisOccuped() == false) //Mur ou pion = false
                     && (board.getBoardBoxes()[position.getX()-2][position.getY()].getisOccuped() == false || board.getBoardBoxes()[position.getX()-2][position.getY()+1].getisOccuped() == false)){ //Mur ou pion = false
-                    throw new RuleViolated(player, position, board, "Vous ne pouvez avancer que vers le haut, le bas, la droite et la gauche si vous n etes pas bloque !");
+                    throw new RuleViolated(player, position, board, "Vous ne pouvez avancer que vers le haut, le bas, la droite et la gauche si vous n'etes pas bloque !");
                 }
             }
             if((position.getX() == player.getPawn().getPosition().getX()-2) && (position.getY() == player.getPawn().getPosition().getY()+2)){ //Bas gauche
                 if((board.getBoardBoxes()[position.getX()][position.getY()-2].getisOccuped() == false || board.getBoardBoxes()[position.getX()-1][position.getY()-2].getisOccuped() == false) //Mur ou pion = false
                     && (board.getBoardBoxes()[position.getX()+2][position.getY()].getisOccuped() == false || board.getBoardBoxes()[position.getX()+2][position.getY()+1].getisOccuped() == false)){ //Mur ou pion = false
-                    throw new RuleViolated(player, position, board, "Vous ne pouvez avancer que vers le haut, le bas, la droite et la gauche si vous n etes pas bloque !");
+                    throw new RuleViolated(player, position, board, "Vous ne pouvez avancer que vers le haut, le bas, la droite et la gauche si vous n'etes pas bloque !");
                 }
             }
         }
