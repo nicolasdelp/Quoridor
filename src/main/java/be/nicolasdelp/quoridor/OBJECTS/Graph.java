@@ -2,6 +2,8 @@ package be.nicolasdelp.quoridor.objects;
 
 import java.util.ArrayList;
 
+import be.nicolasdelp.quoridor.rules.RuleViolated;
+
 public class Graph {
 
     private Board board;
@@ -45,15 +47,31 @@ public class Graph {
         }
     }
 
+    public ArrayList<Link> getListOfLinks(){
+        return this.listOfLinks;
+    }
+
     public static void main(String[] args){
         Board b = new Board();
         Player[] p = {new Player("Humain", "Nico", 0, Color.Rouge, new Pawn()), new Player("Ordinateur", "Ordi1", 1, Color.Rouge, new Pawn()), new Player("Humain", "Alex", 2, Color.Rouge, new Pawn()), new Player("Ordinateur", "Ordi2", 3, Color.Rouge, new Pawn())};
         b.setPlayer(p);
         b.createBoard();
+        try {
+            b.setWallOnBoard(b.players[0], new Wall(), WallDirection.Horizontal, new Position(1,1));
+            b.setWallOnBoard(b.players[0], new Wall(), WallDirection.Horizontal, new Position(1,3));
+            b.setWallOnBoard(b.players[0], new Wall(), WallDirection.Horizontal, new Position(1,5));
+            b.setWallOnBoard(b.players[0], new Wall(), WallDirection.Horizontal, new Position(1,7));
+            b.setWallOnBoard(b.players[0], new Wall(), WallDirection.Horizontal, new Position(1,9));
+            b.setWallOnBoard(b.players[1], new Wall(), WallDirection.Horizontal, new Position(1,11));
+            b.setWallOnBoard(b.players[1], new Wall(), WallDirection.Horizontal, new Position(1,13));
+            b.setWallOnBoard(b.players[1], new Wall(), WallDirection.Horizontal, new Position(1,15));
+        } catch (RuleViolated e) {
+            System.out.println(e);
+        }
         Graph g = new Graph(b);
-        System.out.println(g.listOfLinks.get(g.listOfLinks.size()-2).getFromNode().getNodePosition().getX());
-        System.out.println(g.listOfLinks.get(g.listOfLinks.size()-2).getFromNode().getNodePosition().getY());
-        System.out.println(g.listOfLinks.get(g.listOfLinks.size()-2).getToNode().getNodePosition().getX());
-        System.out.println(g.listOfLinks.get(g.listOfLinks.size()-2).getToNode().getNodePosition().getY());
+        System.out.println(g.listOfLinks.get(0).getFromNode().getNodePosition().getX());
+        System.out.println(g.listOfLinks.get(0).getFromNode().getNodePosition().getY());
+        System.out.println(g.listOfLinks.get(0).getToNode().getNodePosition().getX());
+        System.out.println(g.listOfLinks.get(0).getToNode().getNodePosition().getY());
     }
 }

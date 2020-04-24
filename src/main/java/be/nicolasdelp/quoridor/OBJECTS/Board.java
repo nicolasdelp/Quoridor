@@ -119,7 +119,7 @@ public class Board {
         for (int i = 0; i < this.players.length; i++) {
             this.players[i].setWalls(this.totalWall / this.players.length); // donne a chaque joueur ses murs de depart (20/nmbr de joueurs)
             this.players[i].movePawn(this.startPosition[i]); // mets chaque pion a sa position de depart
-            this.players[i].setFinishPosition(this.startPosition[i]);
+            this.players[i].setFinishPosition(this.startPosition[i]); //Position d'arrivée
             this.boardBoxes[this.startPosition[i].getX()][this.startPosition[i].getY()].setObject(players[i].getPawn());
         }
     }
