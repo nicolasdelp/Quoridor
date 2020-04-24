@@ -17,6 +17,7 @@ public class Player {
     private Pawn pawnPlayer;
     private Wall[] walls;
     private int wallIndex = 0;
+    private Position[] finishPosition = new Position[9];
     private List<String> historique = new ArrayList<String>();
 
     /**
@@ -117,6 +118,41 @@ public class Player {
      */
     public int getWallIndex() {
         return this.wallIndex-1;
+    }
+
+    /**
+     * Mutateur de la valeur x ou y pour qu'un joueur gagne
+     *
+     */
+    public void setFinishPosition(Position startPosition){
+        if(startPosition.getX() == 0 && startPosition.getY() == 8){
+            for(int i=0; i< this.finishPosition.length; i++){
+                this.finishPosition[i] = new Position(16, 0+i);
+            }
+        }
+        if(startPosition.getX() == 16 && startPosition.getY() == 8){
+            for(int i=0; i< this.finishPosition.length; i++){
+                this.finishPosition[i] = new Position(0, 0+i);
+            }
+        }
+        if(startPosition.getX() == 8 && startPosition.getY() == 0){
+            for(int i=0; i< this.finishPosition.length; i++){
+                this.finishPosition[i] = new Position(0+i, 16);
+            }
+        }
+        if(startPosition.getX() == 8 && startPosition.getY() == 16){
+            for(int i=0; i< this.finishPosition.length; i++){
+                this.finishPosition[i] = new Position(0+i, 0);
+            }
+        }
+    }
+
+    /**
+     * Accesseur des positions pour gagner
+     *
+     */
+    public Position[] getFinishPosition(){
+        return this.finishPosition;
     }
 
     /**

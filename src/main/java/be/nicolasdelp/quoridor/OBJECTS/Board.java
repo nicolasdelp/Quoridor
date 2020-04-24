@@ -111,7 +111,7 @@ public class Board {
         this.boardBoxes = new Box[(2*this.boardSize) - 1][(2*this.boardSize) - 1]; // Cree un tableau 17x17 de Box
         for (int i = 0; i < this.boardBoxes.length; i++) {
             for (int j = 0; j < this.boardBoxes.length; j++) {
-                this.boardBoxes[i][j] = new Box(new Position(i, j));
+                this.boardBoxes[i][j] = new Box(new Position(i, j)); //Donne à chaque box une Position(x,y)
                 this.boardBoxes[i][j].isPawnBox(); // Si la case est une case a pion isPawnBox sera egal a True sinon False
                 this.boardBoxes[i][j].isWallBox(); // Si la case est une case a mur isWallBox sera egal a True sinon False
             }
@@ -119,6 +119,7 @@ public class Board {
         for (int i = 0; i < this.players.length; i++) {
             this.players[i].setWalls(this.totalWall / this.players.length); // donne a chaque joueur ses murs de depart (20/nmbr de joueurs)
             this.players[i].movePawn(this.startPosition[i]); // mets chaque pion a sa position de depart
+            this.players[i].setFinishPosition(this.startPosition[i]);
             this.boardBoxes[this.startPosition[i].getX()][this.startPosition[i].getY()].setObject(players[i].getPawn());
         }
     }
@@ -318,6 +319,11 @@ public class Board {
         boardBoxes[old.getX()][old.getY()].removeObject(); //On nettoie l'ancienne case
         player.movePawn(newPosition); //On bouge le pion
         boardBoxes[newPosition.getX()][newPosition.getY()].setObject(player.getPawn()); //On assigne à la box d'arrivée qu'un objet est dedans
+        for(int i=0; i<player.getFinishPosition().length; i++){ //Si on a gagné
+            if(newPosition.getX() == player.getFinishPosition()[i].getX() && newPosition.getY() == player.getFinishPosition()[i].getY()){
+                System.out.println("Vous avez gagne");
+            }
+        }
     }
 
     /**
