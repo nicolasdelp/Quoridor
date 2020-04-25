@@ -76,7 +76,7 @@ public class Graph {
                                     Nodes[i][j].setH(getNodeDistance(Nodes[i][j].getNodePosition(), target)); //On lui donne sa distance par rapport à l'arrivée
                                     Nodes[i][j].setParent(this.currentNode); //On lui assigne son parent
                                     openList.add(Nodes[i][j]);
-                                    System.out.println("Droite");
+                                    //System.out.println("Droite");
                                 }
                             }
                         }
@@ -89,7 +89,7 @@ public class Graph {
                                     Nodes[i][j].setH(getNodeDistance(Nodes[i][j].getNodePosition(), target)); //On lui donne sa distance par rapport à l'arrivée
                                     Nodes[i][j].setParent(this.currentNode); //On lui assigne son parent
                                     openList.add(Nodes[i][j]);
-                                    System.out.println("Gauche");
+                                    //System.out.println("Gauche");
                                 }
                             }
                         }
@@ -102,7 +102,7 @@ public class Graph {
                                     Nodes[i][j].setH(getNodeDistance(Nodes[i][j].getNodePosition(), target)); //On lui donne sa distance par rapport à l'arrivée
                                     Nodes[i][j].setParent(this.currentNode); //On lui assigne son parent
                                     openList.add(Nodes[i][j]);
-                                    System.out.println("Haut");
+                                    //System.out.println("Haut");
                                 }
                             }
                         }
@@ -115,7 +115,7 @@ public class Graph {
                                     Nodes[i][j].setH(getNodeDistance(Nodes[i][j].getNodePosition(), target)); //On lui donne sa distance par rapport à l'arrivée
                                     Nodes[i][j].setParent(this.currentNode); //On lui assigne son parent
                                     openList.add(Nodes[i][j]);
-                                    System.out.println("Bas");
+                                    //System.out.println("Bas");
                                 }
                             }
                         }
@@ -129,7 +129,7 @@ public class Graph {
                 }
             }
             for(int i=0; i<openList.size(); i++){
-                if(minimum == openList.get(i)){ //On récupère le F minimum
+                if(minimum == openList.get(i)){
                     openList.remove(i);
                 }
             }
@@ -137,6 +137,9 @@ public class Graph {
             this.currentNode = closeList.get(closeList.size()-1);
             if(currentNode.getNodePosition().getX() ==  target.getX() && currentNode.getNodePosition().getY() == target.getY()){
                 go = false;
+                for(int i=1; i<closeList.size(); i++){
+                    System.out.println("(" + closeList.get(i).getNodePosition().getX() + "," + closeList.get(i).getNodePosition().getY() + ")");
+                }
                 return true;
             }
             z++;
@@ -158,15 +161,15 @@ public class Graph {
 
     public static void main(String[] args){
         Board b = new Board();
-        Player[] p = {new Player("Humain", "Nico", 0, Color.Rouge, new Pawn()), new Player("Ordinateur", "Ordi1", 1, Color.Rouge, new Pawn()), new Player("Humain", "Alex", 2, Color.Rouge, new Pawn()), new Player("Ordinateur", "Ordi2", 3, Color.Rouge, new Pawn())};
+        Player[] p = {new Player("Humain", "Nico", 0, Color.Rouge, new Pawn()), new Player("Ordinateur", "Ordi1", 1, Color.Rouge, new Pawn())};
         b.setPlayer(p);
         b.createBoard();
         try {
-            b.setWallOnBoard(b.players[0], new Wall(), WallDirection.Vertical, new Position(1,9));
+            b.setWallOnBoard(b.players[0], new Wall(), WallDirection.Vertical, new Position(9,7));
         } catch (RuleViolated e) {
             System.out.println(e);
         }
         Graph g = new Graph(b, b.players[1]);
-        System.out.println(g.dijkstra(b.players[0].getPawn().getPosition(), new Position(16,4)));
+        System.out.println(g.dijkstra(b.players[0].getPawn().getPosition(), new Position(16,6)));
     }
 }

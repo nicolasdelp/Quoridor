@@ -24,6 +24,6 @@ public class GraphTest {
             System.out.println(e);
         }
         Graph g = new Graph(b, b.players[1]);
-        assertEquals(g.dijkstra(b.players[0].getPawn().getPosition(), new Position(16,4)), false);
+        assertEquals(g.dijkstra(b.players[0].getPawn().getPosition(), new Position(16,4)), true);
     }
 }

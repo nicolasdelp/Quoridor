@@ -53,4 +53,8 @@ public class Node {
     public void setParent(Node parent) {
         this.parent = parent;
     }
+
+    public Node getParent() {
+        return this.parent;
+    }
 }
