@@ -6,10 +6,10 @@ public class Link {
     private Node toNode;
     private int cost;
 
-    public Link(Node fromNode, Node toNode){
+    public Link(Node fromNode, Node toNode, int cost){
         this.fromNode = fromNode;
         this.toNode = toNode;
-        this.cost = 1;
+        this.cost = cost;
     }
 
     public Node getFromNode(){
@@ -21,6 +21,10 @@ public class Link {
     }
 
     public int getCost(){
+        return this.cost;
+    }
+
+    public int setCost(){
         return this.cost;
     }
 }
