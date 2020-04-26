@@ -84,7 +84,7 @@ public class Graph {
 
         openList.add(this.currentNode); //On ajoute à l'openList le noeud actuel
         closeList.add(this.currentNode); //On ajoute à la closeList le noeud de départ
-        this.Nodes[source.getX()][source.getY()].setVisited(true); 
+        this.currentNode.setVisited(true); 
 
         while(go){
             for(int i=0; i<this.Nodes.length; i++){

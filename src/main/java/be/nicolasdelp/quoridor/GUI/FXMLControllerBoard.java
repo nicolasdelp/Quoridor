@@ -508,7 +508,36 @@ public class FXMLControllerBoard implements Initializable {
 
     @FXML
     void box0105Clicked(MouseEvent event) { //Case pour mur
-
+        if(Horizontal.isSelected()){
+            try {
+                board.setWallOnBoard(board.players[board.getcurrentIDPlayer()], board.players[board.getcurrentIDPlayer()].getWalls()[board.players[board.getcurrentIDPlayer()].getWallIndex()-1], WallDirection.Horizontal, new Position(1, 5)); //On vérifie le mouvement est possible 
+                box0005.setImage(getWall(board.players[board.getcurrentIDPlayer()], WallDirection.Horizontal)[0]);
+                box0105.setImage(getWall(board.players[board.getcurrentIDPlayer()] ,WallDirection.Horizontal)[1]);   
+                box0205.setImage(getWall(board.players[board.getcurrentIDPlayer()], WallDirection.Horizontal)[2]);
+                board.nextPlayer();
+            } catch (RuleViolated e) {
+                Alert alert = new Alert(AlertType.ERROR);
+                alert.setTitle(null);
+                alert.setHeaderText(null);
+                alert.setContentText(e.getMessage());
+                alert.showAndWait();
+            }
+        }
+        if(Vertical.isSelected()){
+            try {
+                board.setWallOnBoard(board.players[board.getcurrentIDPlayer()], board.players[board.getcurrentIDPlayer()].getWalls()[board.players[board.getcurrentIDPlayer()].getWallIndex()-1], WallDirection.Vertical, new Position(1, 5)); //On vérifie le mouvement est possible 
+                box0104.setImage(getWall(board.players[board.getcurrentIDPlayer()], WallDirection.Vertical)[0]);
+                box0105.setImage(getWall(board.players[board.getcurrentIDPlayer()] ,WallDirection.Vertical)[1]);   
+                box0106.setImage(getWall(board.players[board.getcurrentIDPlayer()], WallDirection.Vertical)[2]);
+                board.nextPlayer();
+            } catch (RuleViolated e) {
+                Alert alert = new Alert(AlertType.ERROR);
+                alert.setTitle(null);
+                alert.setHeaderText(null);
+                alert.setContentText(e.getMessage());
+                alert.showAndWait();
+            }
+        }
     }
 
     @FXML
