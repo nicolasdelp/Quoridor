@@ -1,30 +1,39 @@
 package be.nicolasdelp.quoridor.objects;
 
+/**
+ * La class Link représente un lien entre deux noeuds
+ *
+ * @author Delplanque Nicolas
+ */
 public class Link {
 
     private Node fromNode;
     private Node toNode;
-    private int cost;
 
-    public Link(Node fromNode, Node toNode, int cost){
+    /**
+     * Constructeur
+     * 
+     */
+    public Link(Node fromNode, Node toNode){
         this.fromNode = fromNode;
         this.toNode = toNode;
-        this.cost = cost;
     }
 
+    /**
+     * Accesseur du noeud de départ du lien
+     * 
+     * @return le noeud de départ
+     */
     public Node getFromNode(){
         return this.fromNode;
     }
 
+    /**
+     * Accesseur du noeud de d'arrivée du lien
+     * 
+     * @return le noeud d'arrivé
+     */
     public Node getToNode(){
         return this.toNode;
-    }
-
-    public int getCost(){
-        return this.cost;
-    }
-
-    public int setCost(){
-        return this.cost;
     }
 }

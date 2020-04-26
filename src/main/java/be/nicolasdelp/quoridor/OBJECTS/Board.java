@@ -1,6 +1,5 @@
 package be.nicolasdelp.quoridor.objects;
 
-import java.util.ArrayList;
 
 import be.nicolasdelp.quoridor.rules.*;
 

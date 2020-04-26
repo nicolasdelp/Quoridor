@@ -90,6 +90,15 @@ public class Box {
     }
 
     /**
+     * Accesseur de la valeur object
+     * 
+     * @return un objet
+     */
+    public GamePieces getObject() {
+        return this.object;
+    }
+
+    /**
      * Supprime l'objet de la case
      * 
      */
