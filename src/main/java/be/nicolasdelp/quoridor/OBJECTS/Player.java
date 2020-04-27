@@ -135,16 +135,6 @@ public class Player {
                 this.finishPosition[i] = new Position(0, 0+i);
             }
         }
-        if(startPosition.getX() == 8 && startPosition.getY() == 0){
-            for(int i=0; i< this.finishPosition.length; i++){
-                this.finishPosition[i] = new Position(0+i, 16);
-            }
-        }
-        if(startPosition.getX() == 8 && startPosition.getY() == 16){
-            for(int i=0; i< this.finishPosition.length; i++){
-                this.finishPosition[i] = new Position(0+i, 0);
-            }
-        }
     }
 
     /**

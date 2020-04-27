@@ -16,8 +16,6 @@ public class BlockAnotherPlayerTest {
         try {
             b.movePawnOnBoard(b.players[0], new Position(2, 8));
             b.movePawnOnBoard(b.players[0], new Position(4, 8));
-            b.movePawnOnBoard(b.players[0], new Position(2, 8));
-            b.movePawnOnBoard(b.players[0], new Position(4, 8));
             b.setWallOnBoard(b.players[0], new Wall(), WallDirection.Vertical, new Position(5,1));
             b.setWallOnBoard(b.players[0], new Wall(), WallDirection.Vertical, new Position(5,5));
             b.setWallOnBoard(b.players[0], new Wall(), WallDirection.Vertical, new Position(5,9));

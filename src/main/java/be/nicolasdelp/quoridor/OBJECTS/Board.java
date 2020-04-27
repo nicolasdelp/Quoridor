@@ -12,7 +12,7 @@ public class Board {
 
     private final int totalWall = 20; //nombre de murs au total
     private final int boardSize = 9; //nombre de cases pour pions par cote
-    private final Position[] startPosition = { new Position(0, 8), new Position(16, 8), new Position(8, 0), new Position(8, 16) }; //les 4 cases de depart possible
+    private final Position[] startPosition = { new Position(0, 8), new Position(16, 8)}; //les 2 cases de depart possible
     public Player[] players; //la liste des joueurs
     private Box[][] boardBoxes; //stockage dans un tableau des Box
     private PlayerRule[] playerRules = {new PlayerIsInBounds(), new IsAWallBox(), new PawnAlreadyHere(), new BlockedByAWall(), new IllegalMovement()};
@@ -105,8 +105,9 @@ public class Board {
      *
      */
     public void createBoard() {
-        if(!((this.players.length == 2) || (this.players.length == 4))) 
+        if(this.players.length != 2){
             throw new IllegalArgumentException("Il ne peux y avoir que 2 ou 4 joueurs !");
+        }
         this.boardBoxes = new Box[(2*this.boardSize) - 1][(2*this.boardSize) - 1]; // Cree un tableau 17x17 de Box
         for (int i = 0; i < this.boardBoxes.length; i++) {
             for (int j = 0; j < this.boardBoxes.length; j++) {
@@ -119,7 +120,7 @@ public class Board {
             this.players[i].setWalls(this.totalWall / this.players.length); // donne a chaque joueur ses murs de depart (20/nmbr de joueurs)
             this.players[i].movePawn(this.startPosition[i]); // mets chaque pion a sa position de depart
             this.players[i].setFinishPosition(this.startPosition[i]); //Position d'arrivée
-            this.boardBoxes[this.startPosition[i].getX()][this.startPosition[i].getY()].setObject(players[i].getPawn());
+            this.boardBoxes[this.startPosition[i].getX()][this.startPosition[i].getY()].setObject(players[i].getPawn());//Met un objet pion dans leur casde de départ
         }
     }
 
@@ -138,7 +139,7 @@ public class Board {
         boardBoxes[newPosition.getX()][newPosition.getY()].setObject(player.getPawn()); //On assigne à la box d'arrivée qu'un objet est dedans
         for(int i=0; i<player.getFinishPosition().length; i++){ //Si on a gagné
             if(newPosition.getX() == player.getFinishPosition()[i].getX() && newPosition.getY() == player.getFinishPosition()[i].getY()){
-                System.out.println("Vous avez gagne");
+                System.out.println(player.getUsername() + " a gagne");
             }
         }
     }
@@ -153,7 +154,7 @@ public class Board {
         for(int i=0; i<this.wallRules.length; i++){
             wallRules[i].verify(this, player, wall, position); //Vérifie si il n'y a pas d'exceptions
         }
-        player.moveWall(position); //On change le sens et la position du mur dans l'inventaire du joueur
+        player.moveWall(position); //On donne au mur sa position
         if(direction == WallDirection.Horizontal){ //Si il est horizontal on remplie les case a sa droite et a sa gauche
             boardBoxes[position.getX()][position.getY()].setObject(wall);
             boardBoxes[position.getX()+1][position.getY()].setObject(wall);

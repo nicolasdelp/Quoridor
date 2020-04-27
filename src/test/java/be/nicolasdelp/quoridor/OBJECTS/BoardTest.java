@@ -48,47 +48,9 @@ public class BoardTest {
     }
 
     @Test
-    public void testCreateBoard5(){
-        Board b = new Board();
-        Player[] p = {new Player("Humain", "Nico", 0, Color.Rouge, new Pawn()), new Player("Ordinateur", "Ordi1", 1, Color.Rouge, new Pawn()), new Player("Humain", "Alex", 2, Color.Rouge, new Pawn()), new Player("Ordinateur", "Ordi2", 3, Color.Rouge, new Pawn())};
-        b.setPlayer(p);
-        b.createBoard();
-        assertEquals(b.players[2].getWalls().length, 5);
-    }
-
-    @Test
-    public void testCreateBoard6(){
-        Board b = new Board();
-        Player[] p = {new Player("Humain", "Nico", 0, Color.Rouge, new Pawn()), new Player("Ordinateur", "Ordi1", 1, Color.Rouge, new Pawn()), new Player("Humain", "Alex", 2, Color.Rouge, new Pawn()), new Player("Ordinateur", "Ordi2", 3, Color.Rouge, new Pawn())};
-        b.setPlayer(p);
-        b.createBoard();
-        assertEquals(b.players[3].getPawn().getPosition().getX(), 8);
-        assertEquals(b.players[3].getPawn().getPosition().getY(), 16);
-    }
-
-    @Test
-    public void testCreateBoard7(){
-        Board b = new Board();
-        Player[] p = {new Player("Humain", "Nico", 0, Color.Rouge, new Pawn()), new Player("Ordinateur", "Ordi1", 1, Color.Rouge, new Pawn()), new Player("Humain", "Alex", 2, Color.Rouge, new Pawn()), new Player("Ordinateur", "Ordi2", 3, Color.Rouge, new Pawn())};
-        b.setPlayer(p);
-        b.createBoard();
-        assertEquals(b.players[2].getPawn().getPosition().getX(), 8);
-        assertEquals(b.players[2].getPawn().getPosition().getY(), 0);
-    }
-
-    @Test
-    public void testGetAPlayer(){
-        Board b = new Board();
-        Player[] p = {new Player("Humain", "Nico", 0, Color.Rouge, new Pawn()), new Player("Ordinateur", "Ordi1", 1, Color.Rouge, new Pawn()), new Player("Humain", "Alex", 2, Color.Rouge, new Pawn()), new Player("Ordinateur", "Ordi2", 3, Color.Rouge, new Pawn())};
-        b.setPlayer(p);
-        b.createBoard();
-        assertEquals(b.getAPlayer(2), b.players[2]);
-    }
-
-    @Test
     public void testMovePawnOnBoard1(){
         Board b = new Board();
-        Player[] p = {new Player("Humain", "Nico", 0, Color.Rouge, new Pawn()), new Player("Ordinateur", "Ordi1", 1, Color.Rouge, new Pawn()), new Player("Humain", "Alex", 2, Color.Rouge, new Pawn()), new Player("Ordinateur", "Ordi2", 3, Color.Rouge, new Pawn())};
+        Player[] p = {new Player("Humain", "Nico", 0, Color.Rouge, new Pawn()), new Player("Ordinateur", "Ordi1", 1, Color.Rouge, new Pawn())};
         b.setPlayer(p);
         b.createBoard();
         try {
@@ -103,7 +65,7 @@ public class BoardTest {
     @Test
     public void testMovePawnOnBoard2(){
         Board b = new Board();
-        Player[] p = {new Player("Humain", "Nico", 0, Color.Rouge, new Pawn()), new Player("Ordinateur", "Ordi1", 1, Color.Rouge, new Pawn()), new Player("Humain", "Alex", 2, Color.Rouge, new Pawn()), new Player("Ordinateur", "Ordi2", 3, Color.Rouge, new Pawn())};
+        Player[] p = {new Player("Humain", "Nico", 0, Color.Rouge, new Pawn()), new Player("Ordinateur", "Ordi1", 1, Color.Rouge, new Pawn())};
         b.setPlayer(p);
         b.createBoard();
         try {
@@ -126,7 +88,7 @@ public class BoardTest {
     @Test
     public void testSetWallOnBoard1(){
         Board b = new Board();
-        Player[] p = {new Player("Humain", "Nico", 0, Color.Rouge, new Pawn()), new Player("Ordinateur", "Ordi1", 1, Color.Rouge, new Pawn()), new Player("Humain", "Alex", 2, Color.Rouge, new Pawn()), new Player("Ordinateur", "Ordi2", 3, Color.Rouge, new Pawn())};
+        Player[] p = {new Player("Humain", "Nico", 0, Color.Rouge, new Pawn()), new Player("Ordinateur", "Ordi1", 1, Color.Rouge, new Pawn())};
         b.setPlayer(p);
         b.createBoard();
         try {
@@ -145,7 +107,7 @@ public class BoardTest {
     @Test
     public void testSetWallOnBoard2(){
         Board b = new Board();
-        Player[] p = {new Player("Humain", "Nico", 0, Color.Rouge, new Pawn()), new Player("Ordinateur", "Ordi1", 1, Color.Rouge, new Pawn()), new Player("Humain", "Alex", 2, Color.Rouge, new Pawn()), new Player("Ordinateur", "Ordi2", 3, Color.Rouge, new Pawn())};
+        Player[] p = {new Player("Humain", "Nico", 0, Color.Rouge, new Pawn()), new Player("Ordinateur", "Ordi1", 1, Color.Rouge, new Pawn())};
         b.setPlayer(p);
         b.createBoard();
         try {
