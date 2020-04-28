@@ -1,8 +1,5 @@
 package be.nicolasdelp.quoridor.objects;
 
-import java.util.ArrayList;
-import java.util.List;
-
 /**
 * La class Player représente un objet Joueur
 *
@@ -18,7 +15,7 @@ public class Player {
     private int wallIndex;
     private boolean outOfWall = false;
     private Position[] finishPosition = new Position[9];
-    private List<String> historique = new ArrayList<String>();
+    private String levelIA = null;
 
     /**
      * Constructeur de Player
@@ -153,21 +150,11 @@ public class Player {
     }
 
     /**
-     * Accesseur de l'historique du joueur
+     * Mutateur du niveau de l'IA
      *
-     * @return l'historique du joueur sous forme de List<String>
      */
-    public List<String> getHistorique(){
-        return this.historique;
-    }
-
-    /**
-     * Rajoute une étape dans l'historique du joueur
-     *
-     * @param event un evenement
-     */
-    public void addEvent(String event){
-        this.historique.add(event);
+    public void setIALevel(String level){
+        this.levelIA = level;
     }
 
     /**

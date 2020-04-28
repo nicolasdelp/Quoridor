@@ -178,13 +178,18 @@ public class FXMLControllerMenuPlayers implements Initializable {
         FXMLControllerMenuPlayers.board = new Board();
         Player[] p = {new Player(typePlayer12.getValue(), pseudoOfPlayer12.getText(), 0, getColor(colorPlayer12), new Pawn()), 
                         new Player(typePlayer22.getValue(), pseudoOfPlayer22.getText(), 1, getColor(colorPlayer22), new Pawn())};
+        if(typePlayer12.getValue() == "Ordinateur"){
+            p[0].setIALevel(levelIAPlayer12.getValue());
+        }else if(typePlayer22.getValue() == "Ordinateur"){
+            p[1].setIALevel(levelIAPlayer22.getValue());
+        }
         FXMLControllerMenuPlayers.board.setPlayer(p);
         FXMLControllerMenuPlayers.board.createBoard();
         try{
             FXMLLoader fxmloader = new FXMLLoader(getClass().getResource("../fxml/quoridorBoard.fxml"));
             Parent root = (Parent) fxmloader.load();
             Stage secondStage = new Stage();
-            secondStage.setScene(new Scene(root, 1250, 1000));
+            secondStage.setScene(new Scene(root, 1075, 1000));
             secondStage.setResizable(false);
             secondStage.setTitle("QUORIDOR");
             secondStage.centerOnScreen();

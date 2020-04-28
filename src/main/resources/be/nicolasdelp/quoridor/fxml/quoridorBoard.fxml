@@ -12,17 +12,17 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1000.0" prefWidth="1250.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="be.nicolasdelp.quoridor.gui.FXMLControllerBoard">
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1000.0" prefWidth="1075.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="be.nicolasdelp.quoridor.gui.FXMLControllerBoard">
    <children>
-      <AnchorPane prefHeight="1000.0" prefWidth="1250.0">
+      <AnchorPane prefHeight="1000.0" prefWidth="1151.0">
          <children>
-            <Button layoutX="7.0" layoutY="10.0" mnemonicParsing="false" prefHeight="41.0" prefWidth="145.0" styleClass="buttonMenu" stylesheets="@../css/quoridorMenu.css" text="Sauvegarder la partie" />
-            <ImageView fitHeight="977.0" fitWidth="967.0" layoutX="140.0" layoutY="15.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="977.0" fitWidth="967.0" layoutX="55.0" layoutY="17.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../img/fondPlateau-2J.png" />
                </image>
             </ImageView>
-            <GridPane fx:id="grid" layoutX="333.0" layoutY="207.0">
+            <Button fx:id="saveTheGame" layoutX="466.0" layoutY="44.0" mnemonicParsing="false" onAction="#saveTheGameClicked" prefHeight="41.0" prefWidth="145.0" styleClass="buttonMenu" stylesheets="@../css/quoridorMenu.css" text="Sauvegarder la partie" />
+            <GridPane fx:id="grid" layoutX="248.0" layoutY="209.0">
               <columnConstraints>
                 <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="-Infinity" minWidth="55.0" prefWidth="55.0" />
                 <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="-Infinity" minWidth="11.0" prefWidth="11.0" />
@@ -62,7 +62,7 @@
                 <RowConstraints maxHeight="-Infinity" minHeight="55.0" prefHeight="55.0" valignment="CENTER" vgrow="SOMETIMES" />
               </rowConstraints>
             </GridPane>
-            <GridPane fx:id="stackPlayer2" layoutX="967.0" layoutY="349.0">
+            <GridPane fx:id="stackPlayer2" layoutX="882.0" layoutY="351.0">
                <columnConstraints>
                   <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                </columnConstraints>
@@ -79,7 +79,7 @@
                   <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                </rowConstraints>
             </GridPane>
-            <GridPane fx:id="stackPlayer1" layoutX="159.0" layoutY="349.0">
+            <GridPane fx:id="stackPlayer1" layoutX="74.0" layoutY="351.0">
               <columnConstraints>
                 <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
               </columnConstraints>
@@ -96,18 +96,19 @@
                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
               </rowConstraints>
             </GridPane>
-            <Label fx:id="joueur1" layoutX="148.0" layoutY="293.0" text="Pseudo">
+            <Label fx:id="joueur1" layoutX="63.0" layoutY="295.0" text="Pseudo">
                <font>
                   <Font size="20.0" />
                </font>
             </Label>
-            <Label fx:id="joueur2" layoutX="956.0" layoutY="292.0" text="Pseudo">
+            <Label fx:id="joueur2" layoutX="871.0" layoutY="294.0" text="Pseudo">
                <font>
                   <Font size="20.0" />
                </font>
             </Label>
-            <CheckBox fx:id="Horizontal" layoutX="542.0" layoutY="888.0" mnemonicParsing="false" onAction="#HorizontalCheckboxCheck" selected="true" text="Horizontal" />
-            <CheckBox fx:id="Vertical" layoutX="645.0" layoutY="888.0" mnemonicParsing="false" onAction="#VerticalCheckboxCheck" text="Vertical" />
+            <CheckBox fx:id="Horizontal" layoutX="457.0" layoutY="890.0" mnemonicParsing="false" onAction="#HorizontalCheckboxCheck" selected="true" text="Horizontal" />
+            <CheckBox fx:id="Vertical" layoutX="560.0" layoutY="890.0" mnemonicParsing="false" onAction="#VerticalCheckboxCheck" text="Vertical" />
+            <Button fx:id="backToMenu" layoutX="466.0" layoutY="109.0" mnemonicParsing="false" onAction="#backToMenuClicked" prefHeight="41.0" prefWidth="145.0" styleClass="buttonMenu" stylesheets="@../css/quoridorMenu.css" text="Retour au menu" />
          </children>
       </AnchorPane>
    </children>

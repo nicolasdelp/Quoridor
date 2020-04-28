@@ -1,9 +1,5 @@
 package be.nicolasdelp.quoridor;
 
-import be.nicolasdelp.quoridor.gui.*;
-import be.nicolasdelp.quoridor.objects.*;
-import be.nicolasdelp.quoridor.saveload.*;
-
 import java.io.IOException;
 
 import javafx.application.Application;

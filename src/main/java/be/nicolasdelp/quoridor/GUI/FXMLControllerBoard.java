@@ -8,15 +8,20 @@ import java.util.ResourceBundle;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Cursor;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Alert;
+import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
+import javafx.stage.Stage;
 
 public class FXMLControllerBoard implements Initializable{
 
@@ -28,6 +33,9 @@ public class FXMLControllerBoard implements Initializable{
 
     @FXML
     private CheckBox Horizontal, Vertical;
+
+    @FXML
+    private Button saveTheGame, backToMenu;
 
     final URL URLCase = getClass().getResource("../img/case.png");  //Image d'une case vide
     final Image imageCase = new Image(URLCase.toExternalForm(), 55, 56, true, false);
@@ -132,6 +140,28 @@ public class FXMLControllerBoard implements Initializable{
             stackPlayer1.add(new ImageView(getColorWall(board.getPlayers()[0])), 0, i);
             stackPlayer2.add(new ImageView(getColorWall(board.getPlayers()[1])), 0, i);
         }
+    }
+
+    @FXML
+    void backToMenuClicked(ActionEvent event) {
+        try{
+            FXMLLoader fxmloader = new FXMLLoader(getClass().getResource("../fxml/quoridorMenu.fxml"));
+            Parent root = (Parent) fxmloader.load();
+            Stage secondStage = new Stage();
+            secondStage.setScene(new Scene(root, 650, 400));
+            secondStage.setResizable(false);
+            secondStage.setTitle("QUORIDOR");
+            secondStage.centerOnScreen();
+            grid.getScene().getWindow().hide();
+            secondStage.show();
+        } catch(Exception exception){
+            System.out.println(exception);
+        }
+    }
+
+    @FXML
+    void saveTheGameClicked(ActionEvent event) {
+        //TO DO
     }
 
     @FXML
@@ -270,7 +300,7 @@ public class FXMLControllerBoard implements Initializable{
                 Alert alert = new Alert(AlertType.ERROR);
                 alert.setTitle(null);
                 alert.setHeaderText(null);
-                alert.setContentText("BRAVO " + this.board.getWinner() + ", VOUS AVEZ GAGNE LA PARTIE !");
+                alert.setContentText("BRAVO " + this.board.getWinner().toUpperCase() + ", VOUS AVEZ GAGNE LA PARTIE !");
                 alert.showAndWait();
             }
             board.nextPlayer();
@@ -293,6 +323,12 @@ public class FXMLControllerBoard implements Initializable{
                 grid.add(wall1, i-1, j);
                 grid.add(wall2, i, j);
                 grid.add(wall3, i+1, j);
+                if(board.getcurrentIDPlayer() == 0){
+                    stackPlayer1.getChildren().remove(0);
+                }
+                if(board.getcurrentIDPlayer() == 1){
+                    stackPlayer2.getChildren().remove(0);
+                }
                 board.nextPlayer();
             } catch (RuleViolated e) {
                 Alert alert = new Alert(AlertType.ERROR);
@@ -320,5 +356,13 @@ public class FXMLControllerBoard implements Initializable{
                 alert.showAndWait();
             }
         }
+    }
+
+    public void IAEasy(Player player){
+        //TO DO
+    }
+
+    public void IAHard(Player player){
+        //TO DO
     }
 }
