@@ -12,7 +12,7 @@ public class BoardTest {
         Player[] p = {new Player("Humain", "Nico", 0, Color.Rouge, new Pawn()), new Player("Ordinateur", "Ordi", 1, Color.Rouge, new Pawn())};
         b.setPlayer(p);
         b.createBoard();
-        assertEquals(b.players[0].getWalls().length, 10);
+        assertEquals(b.players[0].getWallIndex(), 9);
     }
 
     @Test

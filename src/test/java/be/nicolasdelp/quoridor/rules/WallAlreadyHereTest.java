@@ -14,14 +14,14 @@ public class WallAlreadyHereTest {
         b.setPlayer(p);
         b.createBoard();
         try {
-            b.players[0].getWalls()[b.players[0].getWallIndex()].setWallDirection(WallDirection.Horizontal);
-            b.setWallOnBoard(b.players[0], b.players[0].getWalls()[b.players[0].getWallIndex()], b.players[0].getWalls()[b.players[0].getWallIndex()].getWallDirection(), new Position(7,3));
-            b.players[1].getWalls()[b.players[1].getWallIndex()].setWallDirection(WallDirection.Horizontal);
+            b.setWallOnBoard(b.players[0], new Wall(), WallDirection.Horizontal, new Position(7,3));
         } catch (RuleViolated e) {
             Assertions.fail(e);
         }
+        Wall x = new Wall();
+        x.setWallDirection(WallDirection.Horizontal);
         WallRule wallRule = new WallAlreadyHere();
-        Assertions.assertThrows(RuleViolated.class, () -> {wallRule.verify(b, b.players[1], b.players[0].getWalls()[b.players[0].getWallIndex()], new Position(7, 3));});
+        Assertions.assertThrows(RuleViolated.class, () -> {wallRule.verify(b, b.players[1], x, new Position(7, 3));});
     }
 
     @Test
@@ -31,14 +31,14 @@ public class WallAlreadyHereTest {
         b.setPlayer(p);
         b.createBoard();
         try {
-            b.players[0].getWalls()[b.players[0].getWallIndex()].setWallDirection(WallDirection.Horizontal);
-            b.setWallOnBoard(b.players[0], b.players[0].getWalls()[b.players[0].getWallIndex()], b.players[0].getWalls()[b.players[0].getWallIndex()].getWallDirection(), new Position(7,3));
-            b.players[1].getWalls()[b.players[1].getWallIndex()].setWallDirection(WallDirection.Vertical);
+            b.setWallOnBoard(b.players[0], new Wall(), WallDirection.Horizontal, new Position(7,3));
         } catch (RuleViolated e) {
             Assertions.fail(e);
         }
+        Wall x = new Wall();
+        x.setWallDirection(WallDirection.Vertical);
         WallRule wallRule = new WallAlreadyHere();
-        Assertions.assertThrows(RuleViolated.class, () -> {wallRule.verify(b, b.players[1], b.players[0].getWalls()[b.players[0].getWallIndex()], new Position(7, 3));});
+        Assertions.assertThrows(RuleViolated.class, () -> {wallRule.verify(b, b.players[1], x, new Position(7, 3));});
     }
 
     @Test
@@ -48,14 +48,14 @@ public class WallAlreadyHereTest {
         b.setPlayer(p);
         b.createBoard();
         try {
-            b.players[0].getWalls()[b.players[0].getWallIndex()].setWallDirection(WallDirection.Horizontal);
-            b.setWallOnBoard(b.players[0], b.players[0].getWalls()[b.players[0].getWallIndex()], b.players[0].getWalls()[b.players[0].getWallIndex()].getWallDirection(), new Position(7,3));
-            b.players[1].getWalls()[b.players[1].getWallIndex()].setWallDirection(WallDirection.Horizontal);
+            b.setWallOnBoard(b.players[0], new Wall(), WallDirection.Horizontal, new Position(7,3));
         } catch (RuleViolated e) {
             Assertions.fail(e);
         }
+        Wall x = new Wall();
+        x.setWallDirection(WallDirection.Horizontal);
         WallRule wallRule = new WallAlreadyHere();
-        Assertions.assertThrows(RuleViolated.class, () -> {wallRule.verify(b, b.players[1], b.players[0].getWalls()[b.players[0].getWallIndex()], new Position(9, 3));});
+        Assertions.assertThrows(RuleViolated.class, () -> {wallRule.verify(b, b.players[1], x, new Position(9, 3));});
     }
 
     @Test
@@ -65,14 +65,14 @@ public class WallAlreadyHereTest {
         b.setPlayer(p);
         b.createBoard();
         try {
-            b.players[0].getWalls()[b.players[0].getWallIndex()].setWallDirection(WallDirection.Horizontal);
-            b.setWallOnBoard(b.players[0], b.players[0].getWalls()[b.players[0].getWallIndex()], b.players[0].getWalls()[b.players[0].getWallIndex()].getWallDirection(), new Position(7,3));
-            b.players[1].getWalls()[b.players[1].getWallIndex()].setWallDirection(WallDirection.Horizontal);
+            b.setWallOnBoard(b.players[0], new Wall(), WallDirection.Horizontal, new Position(7,3));
         } catch (RuleViolated e) {
             Assertions.fail(e);
         }
+        Wall x = new Wall();
+        x.setWallDirection(WallDirection.Horizontal);
         WallRule wallRule = new WallAlreadyHere();
-        Assertions.assertThrows(RuleViolated.class, () -> {wallRule.verify(b, b.players[1], b.players[0].getWalls()[b.players[0].getWallIndex()], new Position(5, 3));});
+        Assertions.assertThrows(RuleViolated.class, () -> {wallRule.verify(b, b.players[1], x, new Position(5, 3));});
     }
 
     @Test
@@ -82,14 +82,14 @@ public class WallAlreadyHereTest {
         b.setPlayer(p);
         b.createBoard();
         try {
-            b.players[0].getWalls()[b.players[0].getWallIndex()].setWallDirection(WallDirection.Vertical);
-            b.setWallOnBoard(b.players[0], b.players[0].getWalls()[b.players[0].getWallIndex()], b.players[0].getWalls()[b.players[0].getWallIndex()].getWallDirection(), new Position(7,3));
-            b.players[1].getWalls()[b.players[1].getWallIndex()].setWallDirection(WallDirection.Vertical);
+            b.setWallOnBoard(b.players[0], new Wall(), WallDirection.Vertical, new Position(7,3));
         } catch (RuleViolated e) {
             Assertions.fail(e);
         }
+        Wall x = new Wall();
+        x.setWallDirection(WallDirection.Vertical);
         WallRule wallRule = new WallAlreadyHere();
-        Assertions.assertThrows(RuleViolated.class, () -> {wallRule.verify(b, b.players[1], b.players[0].getWalls()[b.players[0].getWallIndex()], new Position(7, 5));});
+        Assertions.assertThrows(RuleViolated.class, () -> {wallRule.verify(b, b.players[1], x, new Position(7, 5));});
     }
 
     @Test
@@ -99,13 +99,13 @@ public class WallAlreadyHereTest {
         b.setPlayer(p);
         b.createBoard();
         try {
-            b.players[0].getWalls()[b.players[0].getWallIndex()].setWallDirection(WallDirection.Vertical);
-            b.setWallOnBoard(b.players[0], b.players[0].getWalls()[b.players[0].getWallIndex()], b.players[0].getWalls()[b.players[0].getWallIndex()].getWallDirection(), new Position(7,5));
-            b.players[1].getWalls()[b.players[1].getWallIndex()].setWallDirection(WallDirection.Vertical);
+            b.setWallOnBoard(b.players[0], new Wall(), WallDirection.Vertical, new Position(7,5));
         } catch (RuleViolated e) {
             Assertions.fail(e);
         }
+        Wall x = new Wall();
+        x.setWallDirection(WallDirection.Vertical);
         WallRule wallRule = new WallAlreadyHere();
-        Assertions.assertThrows(RuleViolated.class, () -> {wallRule.verify(b, b.players[1], b.players[0].getWalls()[b.players[0].getWallIndex()], new Position(7, 3));});
+        Assertions.assertThrows(RuleViolated.class, () -> {wallRule.verify(b, b.players[1], x, new Position(7, 3));});
     }
 }

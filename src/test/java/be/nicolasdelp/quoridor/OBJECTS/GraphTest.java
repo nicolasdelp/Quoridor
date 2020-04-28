@@ -19,11 +19,10 @@ public class GraphTest {
             b.setWallOnBoard(b.players[0], new Wall(), WallDirection.Vertical, new Position(1,5));
             b.setWallOnBoard(b.players[0], new Wall(), WallDirection.Vertical, new Position(1,9));
             b.setWallOnBoard(b.players[0], new Wall(), WallDirection.Vertical, new Position(1,13));
-            b.setWallOnBoard(b.players[0], new Wall(), WallDirection.Vertical, new Position(3,15));
         } catch (RuleViolated e) {
             System.out.println(e);
         }
-        Graph g = new Graph(b, b.players[1]);
+        Graph g = new Graph(b, b.players[1], new Position(3,15), WallDirection.Vertical);
         assertEquals(g.pathFinding(b.players[0].getPawn().getPosition(), new Position(16,6)), true);
     }
 
@@ -39,11 +38,10 @@ public class GraphTest {
             b.setWallOnBoard(b.players[0], new Wall(), WallDirection.Vertical, new Position(5,7));
             b.setWallOnBoard(b.players[0], new Wall(), WallDirection.Vertical, new Position(1,7));
             b.setWallOnBoard(b.players[0], new Wall(), WallDirection.Horizontal, new Position(3,5));
-            b.setWallOnBoard(b.players[0], new Wall(), WallDirection.Horizontal, new Position(3,9));
         } catch (RuleViolated e) {
             System.out.println(e);
         }
-        Graph g = new Graph(b, b.players[1]);
+        Graph g = new Graph(b, b.players[1], new Position(3,9), WallDirection.Horizontal);
         assertEquals(g.pathFinding(b.players[0].getPawn().getPosition(), new Position(16,6)), false);
     }
 
@@ -64,11 +62,10 @@ public class GraphTest {
             b.setWallOnBoard(b.players[0], new Wall(), WallDirection.Vertical, new Position(7,11));
             b.setWallOnBoard(b.players[0], new Wall(), WallDirection.Vertical, new Position(7,7));
             b.setWallOnBoard(b.players[0], new Wall(), WallDirection.Vertical, new Position(7,3));
-            b.setWallOnBoard(b.players[0], new Wall(), WallDirection.Vertical, new Position(9,1));
         } catch (RuleViolated e) {
             System.out.println(e);
         }
-        Graph g = new Graph(b, b.players[1]);
+        Graph g = new Graph(b, b.players[1], new Position(9,1), WallDirection.Vertical);
         assertEquals(g.pathFinding(b.players[0].getPawn().getPosition(), new Position(16,6)), true);
     }
 
@@ -90,11 +87,10 @@ public class GraphTest {
             b.setWallOnBoard(b.players[0], new Wall(), WallDirection.Vertical, new Position(7,7));
             b.setWallOnBoard(b.players[0], new Wall(), WallDirection.Vertical, new Position(7,3));
             b.setWallOnBoard(b.players[0], new Wall(), WallDirection.Vertical, new Position(9,1));
-            b.setWallOnBoard(b.players[0], new Wall(), WallDirection.Horizontal, new Position(9,3));
         } catch (RuleViolated e) {
             System.out.println(e);
         }
-        Graph g = new Graph(b, b.players[1]);
+        Graph g = new Graph(b, b.players[1], new Position(9,3), WallDirection.Horizontal);
         assertEquals(g.pathFinding(b.players[0].getPawn().getPosition(), new Position(16,6)), false);
     }
 }

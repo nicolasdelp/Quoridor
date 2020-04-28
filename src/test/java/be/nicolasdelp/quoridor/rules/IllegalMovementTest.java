@@ -8,7 +8,7 @@ import be.nicolasdelp.quoridor.objects.*;
 public class IllegalMovementTest {
 
     @Test
-    public void testVerify1(){ //Haut bas gauche droite trop loin
+    public void testVerify1(){
         Board b = new Board();
         Player[] p = {new Player("Humain", "Nico", 0, Color.Rouge, new Pawn()), new Player("Ordinateur", "Ordi1", 1, Color.Rouge, new Pawn())};
         b.setPlayer(p);
@@ -29,7 +29,7 @@ public class IllegalMovementTest {
     }
 
     @Test
-    public void testVerify2(){ //Diagonal au centre du plateau
+    public void testVerify2(){
         Board b = new Board();
         Player[] p = {new Player("Humain", "Nico", 0, Color.Rouge, new Pawn()), new Player("Ordinateur", "Ordi1", 1, Color.Rouge, new Pawn())};
         b.setPlayer(p);
@@ -50,7 +50,7 @@ public class IllegalMovementTest {
     }
 
     @Test
-    public void testVerify3(){ //Diagonal a gauche du plateau
+    public void testVerify3(){
         Board b = new Board();
         Player[] p = {new Player("Humain", "Nico", 0, Color.Rouge, new Pawn()), new Player("Ordinateur", "Ordi1", 1, Color.Rouge, new Pawn())};
         b.setPlayer(p);
@@ -68,7 +68,7 @@ public class IllegalMovementTest {
     }
 
     @Test
-    public void testVerify4(){ //Diagonal a droite du plateau
+    public void testVerify4(){
         Board b = new Board();
         Player[] p = {new Player("Humain", "Nico", 0, Color.Rouge, new Pawn()), new Player("Ordinateur", "Ordi1", 1, Color.Rouge, new Pawn())};
         b.setPlayer(p);
@@ -94,7 +94,7 @@ public class IllegalMovementTest {
     }
 
     @Test
-    public void testVerify5(){ //Diagonal en haut du plateau
+    public void testVerify5(){
         Board b = new Board();
         Player[] p = {new Player("Humain", "Nico", 0, Color.Rouge, new Pawn()), new Player("Ordinateur", "Ordi1", 1, Color.Rouge, new Pawn())};
         b.setPlayer(p);
@@ -120,7 +120,7 @@ public class IllegalMovementTest {
     }
 
     @Test
-    public void testVerify6(){ //Diagonal en bas du plateau
+    public void testVerify6(){
         Board b = new Board();
         Player[] p = {new Player("Humain", "Nico", 0, Color.Rouge, new Pawn()), new Player("Ordinateur", "Ordi1", 1, Color.Rouge, new Pawn())};
         b.setPlayer(p);
@@ -146,7 +146,7 @@ public class IllegalMovementTest {
     }
 
     @Test
-    public void testVerify7(){ //Diagonal dans le coin bas gauche
+    public void testVerify7(){
         Board b = new Board();
         Player[] p = {new Player("Humain", "Nico", 0, Color.Rouge, new Pawn()), new Player("Ordinateur", "Ordi1", 1, Color.Rouge, new Pawn())};
         b.setPlayer(p);
@@ -167,7 +167,7 @@ public class IllegalMovementTest {
     }
 
     @Test
-    public void testVerify8(){ //Diagonal dans le coin haut gauche
+    public void testVerify8(){
         Board b = new Board();
         Player[] p = {new Player("Humain", "Nico", 0, Color.Rouge, new Pawn()), new Player("Ordinateur", "Ordi1", 1, Color.Rouge, new Pawn())};
         b.setPlayer(p);
@@ -188,7 +188,7 @@ public class IllegalMovementTest {
     }
 
     @Test
-    public void testVerify9(){ //Diagonal dans le coin bas droit
+    public void testVerify9(){
         Board b = new Board();
         Player[] p = {new Player("Humain", "Nico", 0, Color.Rouge, new Pawn()), new Player("Ordinateur", "Ordi1", 1, Color.Rouge, new Pawn())};
         b.setPlayer(p);
@@ -209,7 +209,7 @@ public class IllegalMovementTest {
     }
 
     @Test
-    public void testVerify10(){ //Diagonal dans le coin haut droit
+    public void testVerify10(){
         Board b = new Board();
         Player[] p = {new Player("Humain", "Nico", 0, Color.Rouge, new Pawn()), new Player("Ordinateur", "Ordi1", 1, Color.Rouge, new Pawn())};
         b.setPlayer(p);

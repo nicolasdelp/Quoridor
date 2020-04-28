@@ -10,6 +10,8 @@ import java.util.ArrayList;
 public class Graph {
 
     private Board board;
+    private Position wallPosition;
+    private WallDirection wallDirection;
     private Node[][] Nodes = new Node[17][17]; //plateau quoridor
     private ArrayList<Link> Links = new ArrayList<Link>();
     private Node currentNode = new Node(new Position(0, 0));
@@ -18,8 +20,10 @@ public class Graph {
      * Constructeur
      * 
      */
-    public Graph(Board board, Player otherPlayer){
+    public Graph(Board board, Player otherPlayer, Position position, WallDirection direction){
         this.board = board;
+        this.wallPosition = position;
+        this.wallDirection = direction;
         setNodes(otherPlayer);
         makeLinks();
     }
@@ -63,6 +67,48 @@ public class Graph {
                         this.Links.add(new Link(this.Nodes[i-1][j], this.Nodes[i+1][j])); //Lie 2 noeuds
                         this.Links.add(new Link(this.Nodes[i+1][j], this.Nodes[i-1][j])); //Lie 2 noeuds
                     }
+                }
+            }
+        }
+        if(this.wallDirection == WallDirection.Horizontal){ //On supprime les lien entre les noeuds de part et d'autre du mur
+            for(int i=0; i<this.Links.size(); i++){
+                if(this.Links.get(i).getFromNode() == this.Nodes[this.wallPosition.getX()+1][this.wallPosition.getY()-1] 
+                    && this.Links.get(i).getToNode() == this.Nodes[this.wallPosition.getX()+1][this.wallPosition.getY()+1]){
+                        this.Links.remove(i);
+                }
+                if(this.Links.get(i).getFromNode() == this.Nodes[this.wallPosition.getX()+1][this.wallPosition.getY()+1] 
+                    && this.Links.get(i).getToNode() == this.Nodes[this.wallPosition.getX()+1][this.wallPosition.getY()-1]){
+                        this.Links.remove(i);
+                }
+
+                if(this.Links.get(i).getFromNode() == this.Nodes[this.wallPosition.getX()-1][this.wallPosition.getY()-1] 
+                    && this.Links.get(i).getToNode() == this.Nodes[this.wallPosition.getX()-1][this.wallPosition.getY()+1]){
+                        this.Links.remove(i);
+                }
+                if(this.Links.get(i).getFromNode() == this.Nodes[this.wallPosition.getX()-1][this.wallPosition.getY()+1] 
+                    && this.Links.get(i).getToNode() == this.Nodes[this.wallPosition.getX()-1][this.wallPosition.getY()-1]){
+                        this.Links.remove(i);
+                }
+            }
+        }
+        if(this.wallDirection == WallDirection.Vertical){
+            for(int i=0; i<this.Links.size(); i++){
+                if(this.Links.get(i).getFromNode() == this.Nodes[this.wallPosition.getX()-1][this.wallPosition.getY()+1] 
+                    && this.Links.get(i).getToNode() == this.Nodes[this.wallPosition.getX()+1][this.wallPosition.getY()+1]){
+                        this.Links.remove(i);
+                }
+                if(this.Links.get(i).getFromNode() == this.Nodes[this.wallPosition.getX()+1][this.wallPosition.getY()+1] 
+                    && this.Links.get(i).getToNode() == this.Nodes[this.wallPosition.getX()-1][this.wallPosition.getY()+1]){
+                        this.Links.remove(i);
+                }
+
+                if(this.Links.get(i).getFromNode() == this.Nodes[this.wallPosition.getX()-1][this.wallPosition.getY()-1] 
+                    && this.Links.get(i).getToNode() == this.Nodes[this.wallPosition.getX()+1][this.wallPosition.getY()-1]){
+                        this.Links.remove(i);
+                }
+                if(this.Links.get(i).getFromNode() == this.Nodes[this.wallPosition.getX()+1][this.wallPosition.getY()-1] 
+                    && this.Links.get(i).getToNode() == this.Nodes[this.wallPosition.getX()-1][this.wallPosition.getY()-1]){
+                        this.Links.remove(i);
                 }
             }
         }

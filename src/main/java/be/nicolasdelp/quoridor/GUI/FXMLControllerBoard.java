@@ -31,13 +31,13 @@ public class FXMLControllerBoard implements Initializable {
     final URL URLPionBleu = getClass().getResource("../img/pion-bleu.png");  //Image du pion bleu
     final Image imagePionBleu = new Image(URLPionBleu.toExternalForm());
 
-    final URL URLMurVert = getClass().getResource("../img/mur-vert-stockage.png");  //Image du mur vert
+    final URL URLMurVert = getClass().getResource("../img/mur-vert-stockage.png");  //Image du mur vert stockage
     final Image imageMurVert = new Image(URLMurVert.toExternalForm());
-    final URL URLMurRouge = getClass().getResource("../img/mur-rouge-stockage.png");  //Image du mur rouge
+    final URL URLMurRouge = getClass().getResource("../img/mur-rouge-stockage.png");  //Image du mur rouge stockage
     final Image imageMurRouge = new Image(URLMurRouge.toExternalForm());
-    final URL URLMurJaune = getClass().getResource("../img/mur-jaune-stockage.png");  //Image du mur jaune
+    final URL URLMurJaune = getClass().getResource("../img/mur-jaune-stockage.png");  //Image du mur jaune stockage
     final Image imageMurJaune = new Image(URLMurJaune.toExternalForm());
-    final URL URLMurBleu = getClass().getResource("../img/mur-bleu-stockage.png");  //Image du mur bleu
+    final URL URLMurBleu = getClass().getResource("../img/mur-bleu-stockage.png");  //Image du mur bleu stockage
     final Image imageMurBleu = new Image(URLMurBleu.toExternalForm());
 
 
@@ -105,44 +105,32 @@ public class FXMLControllerBoard implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         this.board = FXMLControllerMenuPlayers.getBoard();
-        if(this.board.getPlayers().length == 2){ //Si on est à 2 joueurs
-            box0008.setImage(getColorPawn(this.board.players[0]));
-            oldImageView[0] = box0008;
-            joueur1.setText(this.board.players[0].getUsername());
-            stack01Player1.setImage(getColorWall(this.board.players[0])); //Les stocks de murs
-            stack02Player1.setImage(getColorWall(this.board.players[0]));
-            stack03Player1.setImage(getColorWall(this.board.players[0]));
-            stack04Player1.setImage(getColorWall(this.board.players[0]));
-            stack05Player1.setImage(getColorWall(this.board.players[0]));
-            stack06Player1.setImage(getColorWall(this.board.players[0]));
-            stack07Player1.setImage(getColorWall(this.board.players[0]));
-            stack08Player1.setImage(getColorWall(this.board.players[0]));
-            stack09Player1.setImage(getColorWall(this.board.players[0]));
-            stack10Player1.setImage(getColorWall(this.board.players[0]));
-            box1608.setImage(getColorPawn(this.board.players[1]));
-            oldImageView[1] = box1608;
-            joueur2.setText(this.board.players[1].getUsername());
-            stack01Player2.setImage(getColorWall(this.board.players[1]));
-            stack02Player2.setImage(getColorWall(this.board.players[1]));
-            stack03Player2.setImage(getColorWall(this.board.players[1]));
-            stack04Player2.setImage(getColorWall(this.board.players[1]));
-            stack05Player2.setImage(getColorWall(this.board.players[1]));
-            stack06Player2.setImage(getColorWall(this.board.players[1]));
-            stack07Player2.setImage(getColorWall(this.board.players[1]));
-            stack08Player2.setImage(getColorWall(this.board.players[1]));
-            stack09Player2.setImage(getColorWall(this.board.players[1]));
-            stack10Player2.setImage(getColorWall(this.board.players[1]));
-        }
-        if(this.board.getPlayers().length == 4){ //Si on est à 4 joueurs
-            box0008.setImage(getColorPawn(this.board.players[0]));
-            oldImageView[0] = box0008;
-            box1608.setImage(getColorPawn(this.board.players[1]));
-            oldImageView[1] = box1608;
-            box0800.setImage(getColorPawn(this.board.players[2]));
-            oldImageView[2] = box0800;
-            box0816.setImage(getColorPawn(this.board.players[3]));
-            oldImageView[3] = box0816;
-        }
+        box0008.setImage(getColorPawn(this.board.players[0]));
+        oldImageView[0] = box0008; //On stocke l'imageView
+        joueur1.setText(this.board.players[0].getUsername());
+        stack01Player1.setImage(getColorWall(this.board.players[0])); //Les stocks de murs du premier joueur
+        stack02Player1.setImage(getColorWall(this.board.players[0]));
+        stack03Player1.setImage(getColorWall(this.board.players[0]));
+        stack04Player1.setImage(getColorWall(this.board.players[0]));
+        stack05Player1.setImage(getColorWall(this.board.players[0]));
+        stack06Player1.setImage(getColorWall(this.board.players[0]));
+        stack07Player1.setImage(getColorWall(this.board.players[0]));
+        stack08Player1.setImage(getColorWall(this.board.players[0]));
+        stack09Player1.setImage(getColorWall(this.board.players[0]));
+        stack10Player1.setImage(getColorWall(this.board.players[0]));
+        box1608.setImage(getColorPawn(this.board.players[1]));
+        oldImageView[1] = box1608; //On stocke l'imageView
+        joueur2.setText(this.board.players[1].getUsername());
+        stack01Player2.setImage(getColorWall(this.board.players[1])); //Les stocks de murs du premier joueur
+        stack02Player2.setImage(getColorWall(this.board.players[1]));
+        stack03Player2.setImage(getColorWall(this.board.players[1]));
+        stack04Player2.setImage(getColorWall(this.board.players[1]));
+        stack05Player2.setImage(getColorWall(this.board.players[1]));
+        stack06Player2.setImage(getColorWall(this.board.players[1]));
+        stack07Player2.setImage(getColorWall(this.board.players[1]));
+        stack08Player2.setImage(getColorWall(this.board.players[1]));
+        stack09Player2.setImage(getColorWall(this.board.players[1]));
+        stack10Player2.setImage(getColorWall(this.board.players[1]));
     }
 
     @FXML
@@ -442,7 +430,7 @@ public class FXMLControllerBoard implements Initializable {
     void box0101Clicked(MouseEvent event) { //Case pour mur
         if(Horizontal.isSelected()){
             try {
-                board.setWallOnBoard(board.players[board.getcurrentIDPlayer()], board.players[board.getcurrentIDPlayer()].getWalls()[board.players[board.getcurrentIDPlayer()].getWallIndex()-1], WallDirection.Horizontal, new Position(1, 1)); //On vérifie le mouvement est possible 
+                board.setWallOnBoard(board.players[board.getcurrentIDPlayer()], new Wall(), WallDirection.Horizontal, new Position(1, 1)); //On vérifie le mouvement est possible 
                 box0001.setImage(getWall(board.players[board.getcurrentIDPlayer()], WallDirection.Horizontal)[0]);
                 box0101.setImage(getWall(board.players[board.getcurrentIDPlayer()] ,WallDirection.Horizontal)[1]);   
                 box0201.setImage(getWall(board.players[board.getcurrentIDPlayer()], WallDirection.Horizontal)[2]);
@@ -457,10 +445,10 @@ public class FXMLControllerBoard implements Initializable {
         }
         if(Vertical.isSelected()){
             try {
-                board.setWallOnBoard(board.players[board.getcurrentIDPlayer()], board.players[board.getcurrentIDPlayer()].getWalls()[board.players[board.getcurrentIDPlayer()].getWallIndex()-1], WallDirection.Vertical, new Position(1, 1)); //On vérifie le mouvement est possible 
-            box0100.setImage(getWall(board.players[board.getcurrentIDPlayer()], WallDirection.Vertical)[0]);
-            box0101.setImage(getWall(board.players[board.getcurrentIDPlayer()] ,WallDirection.Vertical)[1]);   
-            box0102.setImage(getWall(board.players[board.getcurrentIDPlayer()], WallDirection.Vertical)[2]);
+                board.setWallOnBoard(board.players[board.getcurrentIDPlayer()], new Wall(), WallDirection.Vertical, new Position(1, 1)); //On vérifie le mouvement est possible 
+                box0100.setImage(getWall(board.players[board.getcurrentIDPlayer()], WallDirection.Vertical)[0]);
+                box0101.setImage(getWall(board.players[board.getcurrentIDPlayer()] ,WallDirection.Vertical)[1]);   
+                box0102.setImage(getWall(board.players[board.getcurrentIDPlayer()], WallDirection.Vertical)[2]);
                 board.nextPlayer();
             } catch (RuleViolated e) {
                 Alert alert = new Alert(AlertType.ERROR);
@@ -476,7 +464,7 @@ public class FXMLControllerBoard implements Initializable {
     void box0103Clicked(MouseEvent event) { //Case pour mur
         if(Horizontal.isSelected()){
             try {
-                board.setWallOnBoard(board.players[board.getcurrentIDPlayer()], board.players[board.getcurrentIDPlayer()].getWalls()[board.players[board.getcurrentIDPlayer()].getWallIndex()-1], WallDirection.Horizontal, new Position(1, 3)); //On vérifie le mouvement est possible 
+                board.setWallOnBoard(board.players[board.getcurrentIDPlayer()], new Wall(), WallDirection.Horizontal, new Position(1, 3)); //On vérifie le mouvement est possible 
                 box0003.setImage(getWall(board.players[board.getcurrentIDPlayer()], WallDirection.Horizontal)[0]);
                 box0103.setImage(getWall(board.players[board.getcurrentIDPlayer()] ,WallDirection.Horizontal)[1]);   
                 box0203.setImage(getWall(board.players[board.getcurrentIDPlayer()], WallDirection.Horizontal)[2]);
@@ -491,7 +479,7 @@ public class FXMLControllerBoard implements Initializable {
         }
         if(Vertical.isSelected()){
             try {
-                board.setWallOnBoard(board.players[board.getcurrentIDPlayer()], board.players[board.getcurrentIDPlayer()].getWalls()[board.players[board.getcurrentIDPlayer()].getWallIndex()-1], WallDirection.Vertical, new Position(1, 3)); //On vérifie le mouvement est possible 
+                board.setWallOnBoard(board.players[board.getcurrentIDPlayer()], new Wall(), WallDirection.Vertical, new Position(1, 3)); //On vérifie le mouvement est possible 
                 box0102.setImage(getWall(board.players[board.getcurrentIDPlayer()], WallDirection.Vertical)[0]);
                 box0103.setImage(getWall(board.players[board.getcurrentIDPlayer()] ,WallDirection.Vertical)[1]);   
                 box0104.setImage(getWall(board.players[board.getcurrentIDPlayer()], WallDirection.Vertical)[2]);
@@ -510,7 +498,7 @@ public class FXMLControllerBoard implements Initializable {
     void box0105Clicked(MouseEvent event) { //Case pour mur
         if(Horizontal.isSelected()){
             try {
-                board.setWallOnBoard(board.players[board.getcurrentIDPlayer()], board.players[board.getcurrentIDPlayer()].getWalls()[board.players[board.getcurrentIDPlayer()].getWallIndex()-1], WallDirection.Horizontal, new Position(1, 5)); //On vérifie le mouvement est possible 
+                board.setWallOnBoard(board.players[board.getcurrentIDPlayer()], new Wall(), WallDirection.Horizontal, new Position(1, 5)); //On vérifie le mouvement est possible 
                 box0005.setImage(getWall(board.players[board.getcurrentIDPlayer()], WallDirection.Horizontal)[0]);
                 box0105.setImage(getWall(board.players[board.getcurrentIDPlayer()] ,WallDirection.Horizontal)[1]);   
                 box0205.setImage(getWall(board.players[board.getcurrentIDPlayer()], WallDirection.Horizontal)[2]);
@@ -525,7 +513,7 @@ public class FXMLControllerBoard implements Initializable {
         }
         if(Vertical.isSelected()){
             try {
-                board.setWallOnBoard(board.players[board.getcurrentIDPlayer()], board.players[board.getcurrentIDPlayer()].getWalls()[board.players[board.getcurrentIDPlayer()].getWallIndex()-1], WallDirection.Vertical, new Position(1, 5)); //On vérifie le mouvement est possible 
+                board.setWallOnBoard(board.players[board.getcurrentIDPlayer()], new Wall(), WallDirection.Vertical, new Position(1, 5)); //On vérifie le mouvement est possible 
                 box0104.setImage(getWall(board.players[board.getcurrentIDPlayer()], WallDirection.Vertical)[0]);
                 box0105.setImage(getWall(board.players[board.getcurrentIDPlayer()] ,WallDirection.Vertical)[1]);   
                 box0106.setImage(getWall(board.players[board.getcurrentIDPlayer()], WallDirection.Vertical)[2]);
@@ -542,27 +530,172 @@ public class FXMLControllerBoard implements Initializable {
 
     @FXML
     void box0107Clicked(MouseEvent event) { //Case pour mur
-
+        if(Horizontal.isSelected()){
+            try {
+                board.setWallOnBoard(board.players[board.getcurrentIDPlayer()], new Wall(), WallDirection.Horizontal, new Position(1, 7)); //On vérifie le mouvement est possible 
+                box0007.setImage(getWall(board.players[board.getcurrentIDPlayer()], WallDirection.Horizontal)[0]);
+                box0107.setImage(getWall(board.players[board.getcurrentIDPlayer()] ,WallDirection.Horizontal)[1]);   
+                box0207.setImage(getWall(board.players[board.getcurrentIDPlayer()], WallDirection.Horizontal)[2]);
+                board.nextPlayer();
+            } catch (RuleViolated e) {
+                Alert alert = new Alert(AlertType.ERROR);
+                alert.setTitle(null);
+                alert.setHeaderText(null);
+                alert.setContentText(e.getMessage());
+                alert.showAndWait();
+            }
+        }
+        if(Vertical.isSelected()){
+            try {
+                board.setWallOnBoard(board.players[board.getcurrentIDPlayer()], new Wall(), WallDirection.Vertical, new Position(1, 7)); //On vérifie le mouvement est possible 
+                box0106.setImage(getWall(board.players[board.getcurrentIDPlayer()], WallDirection.Vertical)[0]);
+                box0107.setImage(getWall(board.players[board.getcurrentIDPlayer()] ,WallDirection.Vertical)[1]);   
+                box0108.setImage(getWall(board.players[board.getcurrentIDPlayer()], WallDirection.Vertical)[2]);
+                board.nextPlayer();
+            } catch (RuleViolated e) {
+                Alert alert = new Alert(AlertType.ERROR);
+                alert.setTitle(null);
+                alert.setHeaderText(null);
+                alert.setContentText(e.getMessage());
+                alert.showAndWait();
+            }
+        }
     }
 
     @FXML
     void box0109Clicked(MouseEvent event) { //Case pour mur
-
+        if(Horizontal.isSelected()){
+            try {
+                board.setWallOnBoard(board.players[board.getcurrentIDPlayer()], new Wall(), WallDirection.Horizontal, new Position(1, 9)); //On vérifie le mouvement est possible 
+                box0009.setImage(getWall(board.players[board.getcurrentIDPlayer()], WallDirection.Horizontal)[0]);
+                box0109.setImage(getWall(board.players[board.getcurrentIDPlayer()] ,WallDirection.Horizontal)[1]);   
+                box0209.setImage(getWall(board.players[board.getcurrentIDPlayer()], WallDirection.Horizontal)[2]);
+                board.nextPlayer();
+            } catch (RuleViolated e) {
+                Alert alert = new Alert(AlertType.ERROR);
+                alert.setTitle(null);
+                alert.setHeaderText(null);
+                alert.setContentText(e.getMessage());
+                alert.showAndWait();
+            }
+        }
+        if(Vertical.isSelected()){
+            try {
+                board.setWallOnBoard(board.players[board.getcurrentIDPlayer()], new Wall(), WallDirection.Vertical, new Position(1, 9)); //On vérifie le mouvement est possible 
+                box0108.setImage(getWall(board.players[board.getcurrentIDPlayer()], WallDirection.Vertical)[0]);
+                box0109.setImage(getWall(board.players[board.getcurrentIDPlayer()] ,WallDirection.Vertical)[1]);   
+                box0110.setImage(getWall(board.players[board.getcurrentIDPlayer()], WallDirection.Vertical)[2]);
+                board.nextPlayer();
+            } catch (RuleViolated e) {
+                Alert alert = new Alert(AlertType.ERROR);
+                alert.setTitle(null);
+                alert.setHeaderText(null);
+                alert.setContentText(e.getMessage());
+                alert.showAndWait();
+            }
+        }
     }
 
     @FXML
     void box0111Clicked(MouseEvent event) { //Case pour mur
-
+        if(Horizontal.isSelected()){
+            try {
+                board.setWallOnBoard(board.players[board.getcurrentIDPlayer()], new Wall(), WallDirection.Horizontal, new Position(1, 11)); //On vérifie le mouvement est possible 
+                box0011.setImage(getWall(board.players[board.getcurrentIDPlayer()], WallDirection.Horizontal)[0]);
+                box0111.setImage(getWall(board.players[board.getcurrentIDPlayer()] ,WallDirection.Horizontal)[1]);   
+                box0211.setImage(getWall(board.players[board.getcurrentIDPlayer()], WallDirection.Horizontal)[2]);
+                board.nextPlayer();
+            } catch (RuleViolated e) {
+                Alert alert = new Alert(AlertType.ERROR);
+                alert.setTitle(null);
+                alert.setHeaderText(null);
+                alert.setContentText(e.getMessage());
+                alert.showAndWait();
+            }
+        }
+        if(Vertical.isSelected()){
+            try {
+                board.setWallOnBoard(board.players[board.getcurrentIDPlayer()], new Wall(), WallDirection.Vertical, new Position(1, 11)); //On vérifie le mouvement est possible 
+                box0110.setImage(getWall(board.players[board.getcurrentIDPlayer()], WallDirection.Vertical)[0]);
+                box0111.setImage(getWall(board.players[board.getcurrentIDPlayer()] ,WallDirection.Vertical)[1]);   
+                box0112.setImage(getWall(board.players[board.getcurrentIDPlayer()], WallDirection.Vertical)[2]);
+                board.nextPlayer();
+            } catch (RuleViolated e) {
+                Alert alert = new Alert(AlertType.ERROR);
+                alert.setTitle(null);
+                alert.setHeaderText(null);
+                alert.setContentText(e.getMessage());
+                alert.showAndWait();
+            }
+        }
     }
 
     @FXML
     void box0113Clicked(MouseEvent event) { //Case pour mur
-
+        if(Horizontal.isSelected()){
+            try {
+                board.setWallOnBoard(board.players[board.getcurrentIDPlayer()], new Wall(), WallDirection.Horizontal, new Position(1, 13)); //On vérifie le mouvement est possible 
+                box0013.setImage(getWall(board.players[board.getcurrentIDPlayer()], WallDirection.Horizontal)[0]);
+                box0113.setImage(getWall(board.players[board.getcurrentIDPlayer()] ,WallDirection.Horizontal)[1]);   
+                box0213.setImage(getWall(board.players[board.getcurrentIDPlayer()], WallDirection.Horizontal)[2]);
+                board.nextPlayer();
+            } catch (RuleViolated e) {
+                Alert alert = new Alert(AlertType.ERROR);
+                alert.setTitle(null);
+                alert.setHeaderText(null);
+                alert.setContentText(e.getMessage());
+                alert.showAndWait();
+            }
+        }
+        if(Vertical.isSelected()){
+            try {
+                board.setWallOnBoard(board.players[board.getcurrentIDPlayer()], new Wall(), WallDirection.Vertical, new Position(1, 13)); //On vérifie le mouvement est possible 
+                box0112.setImage(getWall(board.players[board.getcurrentIDPlayer()], WallDirection.Vertical)[0]);
+                box0113.setImage(getWall(board.players[board.getcurrentIDPlayer()] ,WallDirection.Vertical)[1]);   
+                box0113.setImage(getWall(board.players[board.getcurrentIDPlayer()], WallDirection.Vertical)[2]);
+                board.nextPlayer();
+            } catch (RuleViolated e) {
+                Alert alert = new Alert(AlertType.ERROR);
+                alert.setTitle(null);
+                alert.setHeaderText(null);
+                alert.setContentText(e.getMessage());
+                alert.showAndWait();
+            }
+        }
     }
 
     @FXML
     void box0115Clicked(MouseEvent event) {  //Case pour mur
-
+        if(Horizontal.isSelected()){
+            try {
+                board.setWallOnBoard(board.players[board.getcurrentIDPlayer()], new Wall(), WallDirection.Horizontal, new Position(1, 15)); //On vérifie le mouvement est possible 
+                box0015.setImage(getWall(board.players[board.getcurrentIDPlayer()], WallDirection.Horizontal)[0]);
+                box0115.setImage(getWall(board.players[board.getcurrentIDPlayer()] ,WallDirection.Horizontal)[1]);   
+                box0215.setImage(getWall(board.players[board.getcurrentIDPlayer()], WallDirection.Horizontal)[2]);
+                board.nextPlayer();
+            } catch (RuleViolated e) {
+                Alert alert = new Alert(AlertType.ERROR);
+                alert.setTitle(null);
+                alert.setHeaderText(null);
+                alert.setContentText(e.getMessage());
+                alert.showAndWait();
+            }
+        }
+        if(Vertical.isSelected()){
+            try {
+                board.setWallOnBoard(board.players[board.getcurrentIDPlayer()], new Wall(), WallDirection.Vertical, new Position(1, 15)); //On vérifie le mouvement est possible 
+                box0114.setImage(getWall(board.players[board.getcurrentIDPlayer()], WallDirection.Vertical)[0]);
+                box0115.setImage(getWall(board.players[board.getcurrentIDPlayer()] ,WallDirection.Vertical)[1]);   
+                box0116.setImage(getWall(board.players[board.getcurrentIDPlayer()], WallDirection.Vertical)[2]);
+                board.nextPlayer();
+            } catch (RuleViolated e) {
+                Alert alert = new Alert(AlertType.ERROR);
+                alert.setTitle(null);
+                alert.setHeaderText(null);
+                alert.setContentText(e.getMessage());
+                alert.showAndWait();
+            }
+        }
     }
 
     @FXML
@@ -721,42 +854,274 @@ public class FXMLControllerBoard implements Initializable {
 
     @FXML
     void box0301Clicked(MouseEvent event) { //Case pour mur
-
+        if(Horizontal.isSelected()){
+            try {
+                board.setWallOnBoard(board.players[board.getcurrentIDPlayer()], new Wall(), WallDirection.Horizontal, new Position(3, 1)); //On vérifie le mouvement est possible 
+                box0201.setImage(getWall(board.players[board.getcurrentIDPlayer()], WallDirection.Horizontal)[0]);
+                box0301.setImage(getWall(board.players[board.getcurrentIDPlayer()] ,WallDirection.Horizontal)[1]);   
+                box0401.setImage(getWall(board.players[board.getcurrentIDPlayer()], WallDirection.Horizontal)[2]);
+                board.nextPlayer();
+            } catch (RuleViolated e) {
+                Alert alert = new Alert(AlertType.ERROR);
+                alert.setTitle(null);
+                alert.setHeaderText(null);
+                alert.setContentText(e.getMessage());
+                alert.showAndWait();
+            }
+        }
+        if(Vertical.isSelected()){
+            try {
+                board.setWallOnBoard(board.players[board.getcurrentIDPlayer()], new Wall(), WallDirection.Vertical, new Position(3, 1)); //On vérifie le mouvement est possible 
+                box0300.setImage(getWall(board.players[board.getcurrentIDPlayer()], WallDirection.Vertical)[0]);
+                box0301.setImage(getWall(board.players[board.getcurrentIDPlayer()] ,WallDirection.Vertical)[1]);   
+                box0302.setImage(getWall(board.players[board.getcurrentIDPlayer()], WallDirection.Vertical)[2]);
+                board.nextPlayer();
+            } catch (RuleViolated e) {
+                Alert alert = new Alert(AlertType.ERROR);
+                alert.setTitle(null);
+                alert.setHeaderText(null);
+                alert.setContentText(e.getMessage());
+                alert.showAndWait();
+            }
+        }
     }
 
     @FXML
     void box0303Clicked(MouseEvent event) { //Case pour mur
-
+        if(Horizontal.isSelected()){
+            try {
+                board.setWallOnBoard(board.players[board.getcurrentIDPlayer()], new Wall(), WallDirection.Horizontal, new Position(3, 3)); //On vérifie le mouvement est possible 
+                box0203.setImage(getWall(board.players[board.getcurrentIDPlayer()], WallDirection.Horizontal)[0]);
+                box0303.setImage(getWall(board.players[board.getcurrentIDPlayer()] ,WallDirection.Horizontal)[1]);   
+                box0403.setImage(getWall(board.players[board.getcurrentIDPlayer()], WallDirection.Horizontal)[2]);
+                board.nextPlayer();
+            } catch (RuleViolated e) {
+                Alert alert = new Alert(AlertType.ERROR);
+                alert.setTitle(null);
+                alert.setHeaderText(null);
+                alert.setContentText(e.getMessage());
+                alert.showAndWait();
+            }
+        }
+        if(Vertical.isSelected()){
+            try {
+                board.setWallOnBoard(board.players[board.getcurrentIDPlayer()], new Wall(), WallDirection.Vertical, new Position(3, 3)); //On vérifie le mouvement est possible 
+                box0302.setImage(getWall(board.players[board.getcurrentIDPlayer()], WallDirection.Vertical)[0]);
+                box0303.setImage(getWall(board.players[board.getcurrentIDPlayer()] ,WallDirection.Vertical)[1]);   
+                box0304.setImage(getWall(board.players[board.getcurrentIDPlayer()], WallDirection.Vertical)[2]);
+                board.nextPlayer();
+            } catch (RuleViolated e) {
+                Alert alert = new Alert(AlertType.ERROR);
+                alert.setTitle(null);
+                alert.setHeaderText(null);
+                alert.setContentText(e.getMessage());
+                alert.showAndWait();
+            }
+        }
     }
 
     @FXML
     void box0305Clicked(MouseEvent event) { //Case pour mur
-
+        if(Horizontal.isSelected()){
+            try {
+                board.setWallOnBoard(board.players[board.getcurrentIDPlayer()], new Wall(), WallDirection.Horizontal, new Position(3, 5)); //On vérifie le mouvement est possible 
+                box0205.setImage(getWall(board.players[board.getcurrentIDPlayer()], WallDirection.Horizontal)[0]);
+                box0305.setImage(getWall(board.players[board.getcurrentIDPlayer()] ,WallDirection.Horizontal)[1]);   
+                box0405.setImage(getWall(board.players[board.getcurrentIDPlayer()], WallDirection.Horizontal)[2]);
+                board.nextPlayer();
+            } catch (RuleViolated e) {
+                Alert alert = new Alert(AlertType.ERROR);
+                alert.setTitle(null);
+                alert.setHeaderText(null);
+                alert.setContentText(e.getMessage());
+                alert.showAndWait();
+            }
+        }
+        if(Vertical.isSelected()){
+            try {
+                board.setWallOnBoard(board.players[board.getcurrentIDPlayer()], new Wall(), WallDirection.Vertical, new Position(3, 5)); //On vérifie le mouvement est possible 
+                box0304.setImage(getWall(board.players[board.getcurrentIDPlayer()], WallDirection.Vertical)[0]);
+                box0305.setImage(getWall(board.players[board.getcurrentIDPlayer()] ,WallDirection.Vertical)[1]);   
+                box0306.setImage(getWall(board.players[board.getcurrentIDPlayer()], WallDirection.Vertical)[2]);
+                board.nextPlayer();
+            } catch (RuleViolated e) {
+                Alert alert = new Alert(AlertType.ERROR);
+                alert.setTitle(null);
+                alert.setHeaderText(null);
+                alert.setContentText(e.getMessage());
+                alert.showAndWait();
+            }
+        }
     }
 
     @FXML
     void box0307Clicked(MouseEvent event) { //Case pour mur
-
+        if(Horizontal.isSelected()){
+            try {
+                board.setWallOnBoard(board.players[board.getcurrentIDPlayer()], new Wall(), WallDirection.Horizontal, new Position(3, 7)); //On vérifie le mouvement est possible 
+                box0207.setImage(getWall(board.players[board.getcurrentIDPlayer()], WallDirection.Horizontal)[0]);
+                box0307.setImage(getWall(board.players[board.getcurrentIDPlayer()] ,WallDirection.Horizontal)[1]);   
+                box0407.setImage(getWall(board.players[board.getcurrentIDPlayer()], WallDirection.Horizontal)[2]);
+                board.nextPlayer();
+            } catch (RuleViolated e) {
+                Alert alert = new Alert(AlertType.ERROR);
+                alert.setTitle(null);
+                alert.setHeaderText(null);
+                alert.setContentText(e.getMessage());
+                alert.showAndWait();
+            }
+        }
+        if(Vertical.isSelected()){
+            try {
+                board.setWallOnBoard(board.players[board.getcurrentIDPlayer()], new Wall(), WallDirection.Vertical, new Position(3, 7)); //On vérifie le mouvement est possible 
+                box0306.setImage(getWall(board.players[board.getcurrentIDPlayer()], WallDirection.Vertical)[0]);
+                box0307.setImage(getWall(board.players[board.getcurrentIDPlayer()] ,WallDirection.Vertical)[1]);   
+                box0308.setImage(getWall(board.players[board.getcurrentIDPlayer()], WallDirection.Vertical)[2]);
+                board.nextPlayer();
+            } catch (RuleViolated e) {
+                Alert alert = new Alert(AlertType.ERROR);
+                alert.setTitle(null);
+                alert.setHeaderText(null);
+                alert.setContentText(e.getMessage());
+                alert.showAndWait();
+            }
+        }
     }
 
     @FXML
     void box0309Clicked(MouseEvent event) { //Case pour mur
-
+        if(Horizontal.isSelected()){
+            try {
+                board.setWallOnBoard(board.players[board.getcurrentIDPlayer()], new Wall(), WallDirection.Horizontal, new Position(3, 9)); //On vérifie le mouvement est possible 
+                box0209.setImage(getWall(board.players[board.getcurrentIDPlayer()], WallDirection.Horizontal)[0]);
+                box0309.setImage(getWall(board.players[board.getcurrentIDPlayer()] ,WallDirection.Horizontal)[1]);   
+                box0409.setImage(getWall(board.players[board.getcurrentIDPlayer()], WallDirection.Horizontal)[2]);
+                board.nextPlayer();
+            } catch (RuleViolated e) {
+                Alert alert = new Alert(AlertType.ERROR);
+                alert.setTitle(null);
+                alert.setHeaderText(null);
+                alert.setContentText(e.getMessage());
+                alert.showAndWait();
+            }
+        }
+        if(Vertical.isSelected()){
+            try {
+                board.setWallOnBoard(board.players[board.getcurrentIDPlayer()], new Wall(), WallDirection.Vertical, new Position(3, 9)); //On vérifie le mouvement est possible 
+                box0308.setImage(getWall(board.players[board.getcurrentIDPlayer()], WallDirection.Vertical)[0]);
+                box0309.setImage(getWall(board.players[board.getcurrentIDPlayer()] ,WallDirection.Vertical)[1]);   
+                box0310.setImage(getWall(board.players[board.getcurrentIDPlayer()], WallDirection.Vertical)[2]);
+                board.nextPlayer();
+            } catch (RuleViolated e) {
+                Alert alert = new Alert(AlertType.ERROR);
+                alert.setTitle(null);
+                alert.setHeaderText(null);
+                alert.setContentText(e.getMessage());
+                alert.showAndWait();
+            }
+        }
     }
 
     @FXML
     void box0311Clicked(MouseEvent event) { //Case pour mur
-
+        if(Horizontal.isSelected()){
+            try {
+                board.setWallOnBoard(board.players[board.getcurrentIDPlayer()], new Wall(), WallDirection.Horizontal, new Position(3, 11)); //On vérifie le mouvement est possible 
+                box0211.setImage(getWall(board.players[board.getcurrentIDPlayer()], WallDirection.Horizontal)[0]);
+                box0311.setImage(getWall(board.players[board.getcurrentIDPlayer()] ,WallDirection.Horizontal)[1]);   
+                box0411.setImage(getWall(board.players[board.getcurrentIDPlayer()], WallDirection.Horizontal)[2]);
+                board.nextPlayer();
+            } catch (RuleViolated e) {
+                Alert alert = new Alert(AlertType.ERROR);
+                alert.setTitle(null);
+                alert.setHeaderText(null);
+                alert.setContentText(e.getMessage());
+                alert.showAndWait();
+            }
+        }
+        if(Vertical.isSelected()){
+            try {
+                board.setWallOnBoard(board.players[board.getcurrentIDPlayer()], new Wall(), WallDirection.Vertical, new Position(3, 11)); //On vérifie le mouvement est possible 
+                box0310.setImage(getWall(board.players[board.getcurrentIDPlayer()], WallDirection.Vertical)[0]);
+                box0311.setImage(getWall(board.players[board.getcurrentIDPlayer()] ,WallDirection.Vertical)[1]);   
+                box0312.setImage(getWall(board.players[board.getcurrentIDPlayer()], WallDirection.Vertical)[2]);
+                board.nextPlayer();
+            } catch (RuleViolated e) {
+                Alert alert = new Alert(AlertType.ERROR);
+                alert.setTitle(null);
+                alert.setHeaderText(null);
+                alert.setContentText(e.getMessage());
+                alert.showAndWait();
+            }
+        }
     }
 
     @FXML
     void box0313Clicked(MouseEvent event) { //Case pour mur
-
+        if(Horizontal.isSelected()){
+            try {
+                board.setWallOnBoard(board.players[board.getcurrentIDPlayer()], new Wall(), WallDirection.Horizontal, new Position(3, 13)); //On vérifie le mouvement est possible 
+                box0213.setImage(getWall(board.players[board.getcurrentIDPlayer()], WallDirection.Horizontal)[0]);
+                box0313.setImage(getWall(board.players[board.getcurrentIDPlayer()] ,WallDirection.Horizontal)[1]);   
+                box0413.setImage(getWall(board.players[board.getcurrentIDPlayer()], WallDirection.Horizontal)[2]);
+                board.nextPlayer();
+            } catch (RuleViolated e) {
+                Alert alert = new Alert(AlertType.ERROR);
+                alert.setTitle(null);
+                alert.setHeaderText(null);
+                alert.setContentText(e.getMessage());
+                alert.showAndWait();
+            }
+        }
+        if(Vertical.isSelected()){
+            try {
+                board.setWallOnBoard(board.players[board.getcurrentIDPlayer()], new Wall(), WallDirection.Vertical, new Position(3, 13)); //On vérifie le mouvement est possible 
+                box0312.setImage(getWall(board.players[board.getcurrentIDPlayer()], WallDirection.Vertical)[0]);
+                box0313.setImage(getWall(board.players[board.getcurrentIDPlayer()] ,WallDirection.Vertical)[1]);   
+                box0314.setImage(getWall(board.players[board.getcurrentIDPlayer()], WallDirection.Vertical)[2]);
+                board.nextPlayer();
+            } catch (RuleViolated e) {
+                Alert alert = new Alert(AlertType.ERROR);
+                alert.setTitle(null);
+                alert.setHeaderText(null);
+                alert.setContentText(e.getMessage());
+                alert.showAndWait();
+            }
+        }
     }
 
     @FXML
     void box0315Clicked(MouseEvent event) { //Case pour mur
-
+        if(Horizontal.isSelected()){
+            try {
+                board.setWallOnBoard(board.players[board.getcurrentIDPlayer()], new Wall(), WallDirection.Horizontal, new Position(3, 15)); //On vérifie le mouvement est possible 
+                box0215.setImage(getWall(board.players[board.getcurrentIDPlayer()], WallDirection.Horizontal)[0]);
+                box0315.setImage(getWall(board.players[board.getcurrentIDPlayer()] ,WallDirection.Horizontal)[1]);   
+                box0415.setImage(getWall(board.players[board.getcurrentIDPlayer()], WallDirection.Horizontal)[2]);
+                board.nextPlayer();
+            } catch (RuleViolated e) {
+                Alert alert = new Alert(AlertType.ERROR);
+                alert.setTitle(null);
+                alert.setHeaderText(null);
+                alert.setContentText(e.getMessage());
+                alert.showAndWait();
+            }
+        }
+        if(Vertical.isSelected()){
+            try {
+                board.setWallOnBoard(board.players[board.getcurrentIDPlayer()], new Wall(), WallDirection.Vertical, new Position(3, 15)); //On vérifie le mouvement est possible 
+                box0314.setImage(getWall(board.players[board.getcurrentIDPlayer()], WallDirection.Vertical)[0]);
+                box0315.setImage(getWall(board.players[board.getcurrentIDPlayer()] ,WallDirection.Vertical)[1]);   
+                box0316.setImage(getWall(board.players[board.getcurrentIDPlayer()], WallDirection.Vertical)[2]);
+                board.nextPlayer();
+            } catch (RuleViolated e) {
+                Alert alert = new Alert(AlertType.ERROR);
+                alert.setTitle(null);
+                alert.setHeaderText(null);
+                alert.setContentText(e.getMessage());
+                alert.showAndWait();
+            }
+        }
     }
 
     @FXML
@@ -915,42 +1280,274 @@ public class FXMLControllerBoard implements Initializable {
 
     @FXML
     void box0501Clicked(MouseEvent event) { //Case pour mur
-
+        if(Horizontal.isSelected()){
+            try {
+                board.setWallOnBoard(board.players[board.getcurrentIDPlayer()], new Wall(), WallDirection.Horizontal, new Position(5, 1)); //On vérifie le mouvement est possible 
+                box0401.setImage(getWall(board.players[board.getcurrentIDPlayer()], WallDirection.Horizontal)[0]);
+                box0501.setImage(getWall(board.players[board.getcurrentIDPlayer()] ,WallDirection.Horizontal)[1]);   
+                box0601.setImage(getWall(board.players[board.getcurrentIDPlayer()], WallDirection.Horizontal)[2]);
+                board.nextPlayer();
+            } catch (RuleViolated e) {
+                Alert alert = new Alert(AlertType.ERROR);
+                alert.setTitle(null);
+                alert.setHeaderText(null);
+                alert.setContentText(e.getMessage());
+                alert.showAndWait();
+            }
+        }
+        if(Vertical.isSelected()){
+            try {
+                board.setWallOnBoard(board.players[board.getcurrentIDPlayer()], new Wall(), WallDirection.Vertical, new Position(5, 1)); //On vérifie le mouvement est possible 
+                box0500.setImage(getWall(board.players[board.getcurrentIDPlayer()], WallDirection.Vertical)[0]);
+                box0501.setImage(getWall(board.players[board.getcurrentIDPlayer()] ,WallDirection.Vertical)[1]);   
+                box0502.setImage(getWall(board.players[board.getcurrentIDPlayer()], WallDirection.Vertical)[2]);
+                board.nextPlayer();
+            } catch (RuleViolated e) {
+                Alert alert = new Alert(AlertType.ERROR);
+                alert.setTitle(null);
+                alert.setHeaderText(null);
+                alert.setContentText(e.getMessage());
+                alert.showAndWait();
+            }
+        }
     }
 
     @FXML
     void box0503Clicked(MouseEvent event) { //Case pour mur
-
+        if(Horizontal.isSelected()){
+            try {
+                board.setWallOnBoard(board.players[board.getcurrentIDPlayer()], new Wall(), WallDirection.Horizontal, new Position(5, 3)); //On vérifie le mouvement est possible 
+                box0403.setImage(getWall(board.players[board.getcurrentIDPlayer()], WallDirection.Horizontal)[0]);
+                box0503.setImage(getWall(board.players[board.getcurrentIDPlayer()] ,WallDirection.Horizontal)[1]);   
+                box0603.setImage(getWall(board.players[board.getcurrentIDPlayer()], WallDirection.Horizontal)[2]);
+                board.nextPlayer();
+            } catch (RuleViolated e) {
+                Alert alert = new Alert(AlertType.ERROR);
+                alert.setTitle(null);
+                alert.setHeaderText(null);
+                alert.setContentText(e.getMessage());
+                alert.showAndWait();
+            }
+        }
+        if(Vertical.isSelected()){
+            try {
+                board.setWallOnBoard(board.players[board.getcurrentIDPlayer()], new Wall(), WallDirection.Vertical, new Position(5, 3)); //On vérifie le mouvement est possible 
+                box0502.setImage(getWall(board.players[board.getcurrentIDPlayer()], WallDirection.Vertical)[0]);
+                box0503.setImage(getWall(board.players[board.getcurrentIDPlayer()] ,WallDirection.Vertical)[1]);   
+                box0504.setImage(getWall(board.players[board.getcurrentIDPlayer()], WallDirection.Vertical)[2]);
+                board.nextPlayer();
+            } catch (RuleViolated e) {
+                Alert alert = new Alert(AlertType.ERROR);
+                alert.setTitle(null);
+                alert.setHeaderText(null);
+                alert.setContentText(e.getMessage());
+                alert.showAndWait();
+            }
+        }
     }
 
     @FXML
     void box0505Clicked(MouseEvent event) { //Case pour mur
-
+        if(Horizontal.isSelected()){
+            try {
+                board.setWallOnBoard(board.players[board.getcurrentIDPlayer()], new Wall(), WallDirection.Horizontal, new Position(5, 5)); //On vérifie le mouvement est possible 
+                box0405.setImage(getWall(board.players[board.getcurrentIDPlayer()], WallDirection.Horizontal)[0]);
+                box0505.setImage(getWall(board.players[board.getcurrentIDPlayer()] ,WallDirection.Horizontal)[1]);   
+                box0605.setImage(getWall(board.players[board.getcurrentIDPlayer()], WallDirection.Horizontal)[2]);
+                board.nextPlayer();
+            } catch (RuleViolated e) {
+                Alert alert = new Alert(AlertType.ERROR);
+                alert.setTitle(null);
+                alert.setHeaderText(null);
+                alert.setContentText(e.getMessage());
+                alert.showAndWait();
+            }
+        }
+        if(Vertical.isSelected()){
+            try {
+                board.setWallOnBoard(board.players[board.getcurrentIDPlayer()], new Wall(), WallDirection.Vertical, new Position(5, 5)); //On vérifie le mouvement est possible 
+                box0504.setImage(getWall(board.players[board.getcurrentIDPlayer()], WallDirection.Vertical)[0]);
+                box0505.setImage(getWall(board.players[board.getcurrentIDPlayer()] ,WallDirection.Vertical)[1]);   
+                box0506.setImage(getWall(board.players[board.getcurrentIDPlayer()], WallDirection.Vertical)[2]);
+                board.nextPlayer();
+            } catch (RuleViolated e) {
+                Alert alert = new Alert(AlertType.ERROR);
+                alert.setTitle(null);
+                alert.setHeaderText(null);
+                alert.setContentText(e.getMessage());
+                alert.showAndWait();
+            }
+        }
     }
 
     @FXML
     void box0507Clicked(MouseEvent event) { //Case pour mur
-
+        if(Horizontal.isSelected()){
+            try {
+                board.setWallOnBoard(board.players[board.getcurrentIDPlayer()], new Wall(), WallDirection.Horizontal, new Position(5, 7)); //On vérifie le mouvement est possible 
+                box0407.setImage(getWall(board.players[board.getcurrentIDPlayer()], WallDirection.Horizontal)[0]);
+                box0507.setImage(getWall(board.players[board.getcurrentIDPlayer()] ,WallDirection.Horizontal)[1]);   
+                box0607.setImage(getWall(board.players[board.getcurrentIDPlayer()], WallDirection.Horizontal)[2]);
+                board.nextPlayer();
+            } catch (RuleViolated e) {
+                Alert alert = new Alert(AlertType.ERROR);
+                alert.setTitle(null);
+                alert.setHeaderText(null);
+                alert.setContentText(e.getMessage());
+                alert.showAndWait();
+            }
+        }
+        if(Vertical.isSelected()){
+            try {
+                board.setWallOnBoard(board.players[board.getcurrentIDPlayer()], new Wall(), WallDirection.Vertical, new Position(5, 7)); //On vérifie le mouvement est possible 
+                box0506.setImage(getWall(board.players[board.getcurrentIDPlayer()], WallDirection.Vertical)[0]);
+                box0507.setImage(getWall(board.players[board.getcurrentIDPlayer()] ,WallDirection.Vertical)[1]);   
+                box0508.setImage(getWall(board.players[board.getcurrentIDPlayer()], WallDirection.Vertical)[2]);
+                board.nextPlayer();
+            } catch (RuleViolated e) {
+                Alert alert = new Alert(AlertType.ERROR);
+                alert.setTitle(null);
+                alert.setHeaderText(null);
+                alert.setContentText(e.getMessage());
+                alert.showAndWait();
+            }
+        }
     }
 
     @FXML
     void box0509Clicked(MouseEvent event) { //Case pour mur
-
+        if(Horizontal.isSelected()){
+            try {
+                board.setWallOnBoard(board.players[board.getcurrentIDPlayer()], new Wall(), WallDirection.Horizontal, new Position(5, 9)); //On vérifie le mouvement est possible 
+                box0409.setImage(getWall(board.players[board.getcurrentIDPlayer()], WallDirection.Horizontal)[0]);
+                box0509.setImage(getWall(board.players[board.getcurrentIDPlayer()] ,WallDirection.Horizontal)[1]);   
+                box0609.setImage(getWall(board.players[board.getcurrentIDPlayer()], WallDirection.Horizontal)[2]);
+                board.nextPlayer();
+            } catch (RuleViolated e) {
+                Alert alert = new Alert(AlertType.ERROR);
+                alert.setTitle(null);
+                alert.setHeaderText(null);
+                alert.setContentText(e.getMessage());
+                alert.showAndWait();
+            }
+        }
+        if(Vertical.isSelected()){
+            try {
+                board.setWallOnBoard(board.players[board.getcurrentIDPlayer()], new Wall(), WallDirection.Vertical, new Position(5, 9)); //On vérifie le mouvement est possible 
+                box0508.setImage(getWall(board.players[board.getcurrentIDPlayer()], WallDirection.Vertical)[0]);
+                box0509.setImage(getWall(board.players[board.getcurrentIDPlayer()] ,WallDirection.Vertical)[1]);   
+                box0510.setImage(getWall(board.players[board.getcurrentIDPlayer()], WallDirection.Vertical)[2]);
+                board.nextPlayer();
+            } catch (RuleViolated e) {
+                Alert alert = new Alert(AlertType.ERROR);
+                alert.setTitle(null);
+                alert.setHeaderText(null);
+                alert.setContentText(e.getMessage());
+                alert.showAndWait();
+            }
+        }
     }
 
     @FXML
     void box0511Clicked(MouseEvent event) { //Case pour mur
-
+        if(Horizontal.isSelected()){
+            try {
+                board.setWallOnBoard(board.players[board.getcurrentIDPlayer()], new Wall(), WallDirection.Horizontal, new Position(5, 11)); //On vérifie le mouvement est possible 
+                box0411.setImage(getWall(board.players[board.getcurrentIDPlayer()], WallDirection.Horizontal)[0]);
+                box0511.setImage(getWall(board.players[board.getcurrentIDPlayer()] ,WallDirection.Horizontal)[1]);   
+                box0611.setImage(getWall(board.players[board.getcurrentIDPlayer()], WallDirection.Horizontal)[2]);
+                board.nextPlayer();
+            } catch (RuleViolated e) {
+                Alert alert = new Alert(AlertType.ERROR);
+                alert.setTitle(null);
+                alert.setHeaderText(null);
+                alert.setContentText(e.getMessage());
+                alert.showAndWait();
+            }
+        }
+        if(Vertical.isSelected()){
+            try {
+                board.setWallOnBoard(board.players[board.getcurrentIDPlayer()], new Wall(), WallDirection.Vertical, new Position(5, 11)); //On vérifie le mouvement est possible 
+                box0510.setImage(getWall(board.players[board.getcurrentIDPlayer()], WallDirection.Vertical)[0]);
+                box0511.setImage(getWall(board.players[board.getcurrentIDPlayer()] ,WallDirection.Vertical)[1]);   
+                box0512.setImage(getWall(board.players[board.getcurrentIDPlayer()], WallDirection.Vertical)[2]);
+                board.nextPlayer();
+            } catch (RuleViolated e) {
+                Alert alert = new Alert(AlertType.ERROR);
+                alert.setTitle(null);
+                alert.setHeaderText(null);
+                alert.setContentText(e.getMessage());
+                alert.showAndWait();
+            }
+        }
     }
 
     @FXML
     void box0513Clicked(MouseEvent event) { //Case pour mur
-
+        if(Horizontal.isSelected()){
+            try {
+                board.setWallOnBoard(board.players[board.getcurrentIDPlayer()], new Wall(), WallDirection.Horizontal, new Position(5, 13)); //On vérifie le mouvement est possible 
+                box0413.setImage(getWall(board.players[board.getcurrentIDPlayer()], WallDirection.Horizontal)[0]);
+                box0513.setImage(getWall(board.players[board.getcurrentIDPlayer()] ,WallDirection.Horizontal)[1]);   
+                box0613.setImage(getWall(board.players[board.getcurrentIDPlayer()], WallDirection.Horizontal)[2]);
+                board.nextPlayer();
+            } catch (RuleViolated e) {
+                Alert alert = new Alert(AlertType.ERROR);
+                alert.setTitle(null);
+                alert.setHeaderText(null);
+                alert.setContentText(e.getMessage());
+                alert.showAndWait();
+            }
+        }
+        if(Vertical.isSelected()){
+            try {
+                board.setWallOnBoard(board.players[board.getcurrentIDPlayer()], new Wall(), WallDirection.Vertical, new Position(5, 13)); //On vérifie le mouvement est possible 
+                box0512.setImage(getWall(board.players[board.getcurrentIDPlayer()], WallDirection.Vertical)[0]);
+                box0513.setImage(getWall(board.players[board.getcurrentIDPlayer()] ,WallDirection.Vertical)[1]);   
+                box0514.setImage(getWall(board.players[board.getcurrentIDPlayer()], WallDirection.Vertical)[2]);
+                board.nextPlayer();
+            } catch (RuleViolated e) {
+                Alert alert = new Alert(AlertType.ERROR);
+                alert.setTitle(null);
+                alert.setHeaderText(null);
+                alert.setContentText(e.getMessage());
+                alert.showAndWait();
+            }
+        }
     }
 
     @FXML
     void box0515Clicked(MouseEvent event) { //Case pour mur
-
+        if(Horizontal.isSelected()){
+            try {
+                board.setWallOnBoard(board.players[board.getcurrentIDPlayer()], new Wall(), WallDirection.Horizontal, new Position(5, 15)); //On vérifie le mouvement est possible 
+                box0415.setImage(getWall(board.players[board.getcurrentIDPlayer()], WallDirection.Horizontal)[0]);
+                box0515.setImage(getWall(board.players[board.getcurrentIDPlayer()] ,WallDirection.Horizontal)[1]);   
+                box0615.setImage(getWall(board.players[board.getcurrentIDPlayer()], WallDirection.Horizontal)[2]);
+                board.nextPlayer();
+            } catch (RuleViolated e) {
+                Alert alert = new Alert(AlertType.ERROR);
+                alert.setTitle(null);
+                alert.setHeaderText(null);
+                alert.setContentText(e.getMessage());
+                alert.showAndWait();
+            }
+        }
+        if(Vertical.isSelected()){
+            try {
+                board.setWallOnBoard(board.players[board.getcurrentIDPlayer()], new Wall(), WallDirection.Vertical, new Position(5, 15)); //On vérifie le mouvement est possible 
+                box0514.setImage(getWall(board.players[board.getcurrentIDPlayer()], WallDirection.Vertical)[0]);
+                box0515.setImage(getWall(board.players[board.getcurrentIDPlayer()] ,WallDirection.Vertical)[1]);   
+                box0516.setImage(getWall(board.players[board.getcurrentIDPlayer()], WallDirection.Vertical)[2]);
+                board.nextPlayer();
+            } catch (RuleViolated e) {
+                Alert alert = new Alert(AlertType.ERROR);
+                alert.setTitle(null);
+                alert.setHeaderText(null);
+                alert.setContentText(e.getMessage());
+                alert.showAndWait();
+            }
+        }
     }
 
     @FXML

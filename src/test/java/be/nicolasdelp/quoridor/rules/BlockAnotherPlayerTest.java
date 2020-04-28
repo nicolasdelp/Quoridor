@@ -32,6 +32,5 @@ public class BlockAnotherPlayerTest {
         Wall wall = new Wall();
         wall.setWallDirection(WallDirection.Horizontal);
         Assertions.assertThrows(RuleViolated.class, () -> {wallRule.verify(b, b.getPlayers()[1], wall, new Position(9,3));});
-        Assertions.assertThrows(RuleViolated.class, () -> {wallRule.verify(b, b.getPlayers()[0], wall, new Position(9,3));});
     }
 }

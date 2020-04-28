@@ -15,8 +15,8 @@ public class Player {
     private final int ID;
     private final Color color;
     private Pawn pawnPlayer;
-    private Wall[] walls;
-    private int wallIndex = 0;
+    private int wallIndex;
+    private boolean outOfWall = false;
     private Position[] finishPosition = new Position[9];
     private List<String> historique = new ArrayList<String>();
 
@@ -90,25 +90,12 @@ public class Player {
     }
 
     /**
-     * Accesseur des murs du joueur
-     *
-     * @return la liste de murs
-     */
-    public Wall[] getWalls() {
-        return this.walls;
-    }
-
-    /**
      * Mutateur des murs du joueur
      *
      * @param walls un nombre de murs
      */
     public void setWalls(int walls) {
-        this.walls = new Wall[walls];
-        this.wallIndex = walls;
-        for(int i=0; i<walls; i++){
-            this.walls[i] = new Wall();
-        }
+        this.wallIndex = walls-1;
     }
 
     /**
@@ -117,7 +104,27 @@ public class Player {
      * @return l'index
      */
     public int getWallIndex() {
-        return this.wallIndex-1;
+        return this.wallIndex;
+    }
+
+    /**
+     * Mutateur de l'index du prochain mur
+     *
+     */
+    public void setWallIndex() {
+        this.wallIndex = this.wallIndex-1;
+        if(this.wallIndex < 0){
+            this.outOfWall = true;
+        }
+    }
+
+    /**
+     * Accesseur de si il reste des murs ou pas
+     *
+     * @return un boolean
+     */
+    public boolean getOutOfWalls() {
+        return this.outOfWall;
     }
 
     /**
@@ -177,8 +184,8 @@ public class Player {
      *
      * @param Position la position
      */
-    public void turnWall(int indexWall, WallDirection direction) {
-        this.walls[indexWall].setWallDirection(direction);
+    public void turnWall(Wall wall, WallDirection direction) {
+        wall.setWallDirection(direction);
     }
 
     /**
@@ -186,8 +193,8 @@ public class Player {
      *
      * @param Position la position
      */
-    public void moveWall(Position position) {
-        this.walls[getWallIndex()].setPosition(position);
-        this.wallIndex--;
+    public void moveWall(Wall wall, Position position) {
+        wall.setPosition(position);
+        setWallIndex();
     }
 }
