@@ -1,6 +1,7 @@
 package be.nicolasdelp.quoridor.gui;
 
 import be.nicolasdelp.quoridor.objects.*;
+import be.nicolasdelp.quoridor.rules.RuleViolated;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -9,8 +10,10 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Cursor;
+import javafx.scene.control.Alert;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
@@ -92,6 +95,8 @@ public class FXMLControllerBoard implements Initializable{
     final Image imageMurVertV2 = new Image(URLMurVertV2.toExternalForm());
     final URL URLMurVertV3 = getClass().getResource("../img/mur-vert-3-V.png");  //Image du mur vert Vertical 3
     final Image imageMurVertV3 = new Image(URLMurVertV3.toExternalForm());
+    final URL URLMurBlanc = getClass().getResource("../img/mur-blanc-milieu.png");  //Image du mur blanc milieu
+    final Image imageMurBlanc = new Image(URLMurBlanc.toExternalForm());
 
     private Board board; //Le plateau
 
@@ -103,13 +108,16 @@ public class FXMLControllerBoard implements Initializable{
                 if(this.board.getBoardBoxes()[i][j].getisPawnBox()){
                     ImageView img = new ImageView(imageCase);
                     img.setCursor(Cursor.HAND);
-                    img.setOnMouseClicked(event -> game(GridPane.getColumnIndex(img), GridPane.getRowIndex(img)));
+                    img.setOnMouseClicked(event -> pawn(GridPane.getColumnIndex(img), GridPane.getRowIndex(img)));
                     grid.add(img, i, j);
                 }
                 if(isImpair(i) && isImpair(j)){
-                    ImageView img = new ImageView(imageMurVertV2);
+                    ImageView img = new ImageView(imageMurBlanc);
                     img.setCursor(Cursor.CROSSHAIR);
-                    img.setOnMouseClicked(event -> game(GridPane.getColumnIndex(img), GridPane.getRowIndex(img)));
+                    img.setOnMouseClicked(event -> wall(GridPane.getColumnIndex(img), GridPane.getRowIndex(img)));
+                    grid.add(img, i, j);
+                } else {
+                    ImageView img = new ImageView();
                     grid.add(img, i, j);
                 }
             }
@@ -247,7 +255,70 @@ public class FXMLControllerBoard implements Initializable{
 
     private Position[] oldPosition = new Position[2]; //Liste de la dernière position de chaque pion
 
-    public void game(int i, int j){
-        System.out.println(i + "+" + j);
+    public void pawn(int i, int j){
+        try {
+            board.movePawnOnBoard(board.players[board.getcurrentIDPlayer()], new Position(i, j)); //On vérifie le mouvement est possible
+            ImageView caseVide = new ImageView(imageCase);
+            caseVide.setCursor(Cursor.HAND);
+            caseVide.setOnMouseClicked(event -> pawn(GridPane.getColumnIndex(caseVide), GridPane.getRowIndex(caseVide)));
+            grid.add(caseVide, oldPosition[board.getcurrentIDPlayer()].getX(), oldPosition[board.getcurrentIDPlayer()].getY());
+            ImageView casePawn = new ImageView(getColorPawn(board.players[board.getcurrentIDPlayer()]));
+            grid.add(casePawn, i, j);
+            oldPosition[board.getcurrentIDPlayer()] = new Position(i, j); //On enregistre la case actuel pour la vider au prochain coup
+            if(this.board.getWin()){
+                grid.setDisable(true);
+                Alert alert = new Alert(AlertType.ERROR);
+                alert.setTitle(null);
+                alert.setHeaderText(null);
+                alert.setContentText("BRAVO " + this.board.getWinner() + ", VOUS AVEZ GAGNE LA PARTIE !");
+                alert.showAndWait();
+            }
+            board.nextPlayer();
+        } catch (RuleViolated e) {
+            Alert alert = new Alert(AlertType.ERROR);
+            alert.setTitle(null);
+            alert.setHeaderText(null);
+            alert.setContentText(e.getMessage());
+            alert.showAndWait();
+        }
+    }
+
+    public void wall(int i, int j){
+        if(Horizontal.isSelected()){
+            try {
+                board.setWallOnBoard(board.players[board.getcurrentIDPlayer()], new Wall(), WallDirection.Horizontal, new Position(i, j)); //On vérifie le mouvement est possible 
+                ImageView wall1 = new ImageView(getWall(board.players[board.getcurrentIDPlayer()], WallDirection.Horizontal)[0]);
+                ImageView wall2 = new ImageView(getWall(board.players[board.getcurrentIDPlayer()], WallDirection.Horizontal)[1]);
+                ImageView wall3 = new ImageView(getWall(board.players[board.getcurrentIDPlayer()], WallDirection.Horizontal)[2]);
+                grid.add(wall1, i-1, j);
+                grid.add(wall2, i, j);
+                grid.add(wall3, i+1, j);
+                board.nextPlayer();
+            } catch (RuleViolated e) {
+                Alert alert = new Alert(AlertType.ERROR);
+                alert.setTitle(null);
+                alert.setHeaderText(null);
+                alert.setContentText(e.getMessage());
+                alert.showAndWait();
+            }
+        }
+        if(Vertical.isSelected()){
+            try {
+                board.setWallOnBoard(board.players[board.getcurrentIDPlayer()], new Wall(), WallDirection.Vertical, new Position(i, j)); //On vérifie le mouvement est possible 
+                ImageView wall1 = new ImageView(getWall(board.players[board.getcurrentIDPlayer()], WallDirection.Vertical)[0]);
+                ImageView wall2 = new ImageView(getWall(board.players[board.getcurrentIDPlayer()], WallDirection.Vertical)[1]);
+                ImageView wall3 = new ImageView(getWall(board.players[board.getcurrentIDPlayer()], WallDirection.Vertical)[2]);
+                grid.add(wall1, i, j-1);
+                grid.add(wall2, i, j);
+                grid.add(wall3, i, j+1);
+                board.nextPlayer();
+            } catch (RuleViolated e) {
+                Alert alert = new Alert(AlertType.ERROR);
+                alert.setTitle(null);
+                alert.setHeaderText(null);
+                alert.setContentText(e.getMessage());
+                alert.showAndWait();
+            }
+        }
     }
 }

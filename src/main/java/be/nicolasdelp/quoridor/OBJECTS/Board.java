@@ -25,6 +25,8 @@ public class Board {
     private PlayerRule[] playerRules = {new PlayerIsInBounds(), new IsAWallBox(), new PawnAlreadyHere(), new BlockedByAWall(), new IllegalMovement()};
     private WallRule[] wallRules = {new WallIsInBounds(), new IsAPawnBox(), new WallAlreadyHere(), new NoMoreWalls(), new BlockAnotherPlayer()};
     private int currentIDPlayer = 0;
+    private boolean win = false;
+    private String winner = null;
 
     /**
      * Constructeur
@@ -108,6 +110,22 @@ public class Board {
     }
 
     /**
+     * Récupère si on a gagné
+     *
+     */
+    public boolean getWin(){
+        return this.win;
+    }
+
+    /**
+     * Récupère le gagnant
+     *
+     */
+    public String getWinner(){
+        return this.winner;
+    }
+
+    /**
      * Création du plateau de jeu
      *
      */
@@ -146,7 +164,9 @@ public class Board {
         boardBoxes[newPosition.getX()][newPosition.getY()].setObject(player.getPawn()); //On assigne à la box d'arrivée qu'un objet est dedans
         for(int i=0; i<player.getFinishPosition().length; i++){ //Si on a gagné
             if(newPosition.getX() == player.getFinishPosition()[i].getX() && newPosition.getY() == player.getFinishPosition()[i].getY()){
-                System.out.println(player.getUsername() + " a gagne");
+                //System.out.println(player.getUsername() + " a gagne");
+                this.win = true;
+                this.winner = player.getUsername();
             }
         }
     }
