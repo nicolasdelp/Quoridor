@@ -5,6 +5,7 @@ import be.nicolasdelp.quoridor.rules.RuleViolated;
 import be.nicolasdelp.quoridor.saveload.LoadGame;
 import be.nicolasdelp.quoridor.saveload.SaveGame;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 import javafx.event.ActionEvent;
@@ -166,6 +167,22 @@ public class FXMLControllerBoard implements Initializable{
         for(int i=0; i < board.getPlayers()[0].getWallIndex()+1; i++){ //On mets les stocks de murs aux joueurs
             stackPlayer1.add(new ImageView(getColorWall(board.getPlayers()[0])), 0, i);
             stackPlayer2.add(new ImageView(getColorWall(board.getPlayers()[1])), 0, i);
+        }
+        if(this.board.getPlayers()[0].getType() == "Ordinateur"){
+            if(this.board.getPlayers()[0].getIALevel() == "Facile"){
+                IAEasy(this.board.getPlayers()[0]);
+            }
+            if(this.board.getPlayers()[0].getIALevel() == "Difficile"){
+                IAHard(this.board.getPlayers()[0]);
+            }
+        }
+        if(this.board.getPlayers()[1].getType() == "Ordinateur"){
+            if(this.board.getPlayers()[1].getIALevel() == "Facile"){
+                IAEasy(this.board.getPlayers()[1]);
+            }
+            if(this.board.getPlayers()[1].getIALevel() == "Difficile"){
+                IAHard(this.board.getPlayers()[1]);
+            }
         }
     }
 
@@ -387,10 +404,14 @@ public class FXMLControllerBoard implements Initializable{
     }
 
     public void IAEasy(Player player){
-        //TO DO
+        // while(player.getPawn().getPosition().getX() != player.getFinishPosition()[0].getX()){
+            
+        // }
     }
 
     public void IAHard(Player player){
-        //TO DO
+        // while(player.getPawn().getPosition().getX() != player.getFinishPosition()[0].getX()){
+            
+        // }
     }
 }

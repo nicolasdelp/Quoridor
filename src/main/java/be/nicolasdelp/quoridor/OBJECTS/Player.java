@@ -187,6 +187,14 @@ public class Player implements Serializable {
     }
 
     /**
+     * Accesseur du niveau de l'IA
+     *
+     */
+    public String getIALevel(){
+        return this.levelIA;
+    }
+
+    /**
      * Bouge le pion à une position
      *
      * @param Position la position

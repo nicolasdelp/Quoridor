@@ -15,6 +15,7 @@ public class Graph {
     private Node[][] Nodes = new Node[17][17]; //plateau quoridor
     private ArrayList<Link> Links = new ArrayList<Link>();
     private Node currentNode = new Node(new Position(0, 0));
+    private ArrayList<Node> path = new ArrayList<Node>();
 
     /**
      * Constructeur
@@ -219,6 +220,7 @@ public class Graph {
                 for(int i=1; i<closeList.size(); i++){
                     System.out.println("(" + closeList.get(i).getNodePosition().getX() + "," + closeList.get(i).getNodePosition().getY() + ")");
                 }
+                this.path = closeList;
                 return true;
             }
         }
@@ -235,5 +237,9 @@ public class Graph {
     private int getNodeDistance(Position node, Position target){
         int res = Math.abs(target.getX()-node.getX()) + Math.abs(target.getY()-node.getY());
         return res;
+    }
+
+    public ArrayList<Node> getPath(){
+        return path;
     }
 }
