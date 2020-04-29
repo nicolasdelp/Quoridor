@@ -1,5 +1,6 @@
 package be.nicolasdelp.quoridor.gui;
 
+import java.io.File;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -26,10 +27,10 @@ public class FXMLControllerMenu implements Initializable {
     
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        if(true){ //Si un fichier de sauvegarde existe
+        File f = new File("board.dat");
+        if(f.exists()){
             resumeButton.setVisible(true);
-        }
-        else {
+        }else{
             resumeButton.setVisible(false);
         }
     }
