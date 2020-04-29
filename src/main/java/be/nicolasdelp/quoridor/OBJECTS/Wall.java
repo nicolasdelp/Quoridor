@@ -14,7 +14,6 @@ public class Wall extends GamePieces{
 
     private Position position;
     private WallDirection direction;
-    private int ID;
 
     /**
      * Constructeur de Wall
@@ -63,23 +62,5 @@ public class Wall extends GamePieces{
      */
     public void setWallDirection(WallDirection direction) {
         this.direction = direction;
-    }
-
-    /**
-     * Mutateur de l'ID du mur
-     *
-     * @param ID d'un joueur
-     */
-    public void setID(int ID) {
-        this.ID = ID;
-    }
-
-    /**
-     * Accesseur de l'ID du mur
-     *
-     * @return l'ID du mur
-     */
-    public int getID() {
-        return this.ID;
     }
 }

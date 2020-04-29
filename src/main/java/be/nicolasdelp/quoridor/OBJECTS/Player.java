@@ -20,6 +20,7 @@ public class Player implements Serializable {
     private final Color color;
     private Pawn pawnPlayer;
     private int wallIndex;
+    private Wall[] stockOfWalls = new Wall[10];
     private boolean outOfWall = false;
     private Position[] finishPosition = new Position[9];
     private String levelIA = null;
@@ -100,6 +101,9 @@ public class Player implements Serializable {
      */
     public void setWalls(int walls) {
         this.wallIndex = walls-1;
+        for(int i =0; i<this.stockOfWalls.length; i++){
+            this.stockOfWalls[i] = new Wall();
+        }
     }
 
     /**
@@ -120,6 +124,24 @@ public class Player implements Serializable {
         if(this.wallIndex < 0){
             this.outOfWall = true;
         }
+    }
+
+    /**
+     * Accesseur du mur actuel
+     *
+     * @return le mur actuel
+     */
+    public Wall getCurrentWall() {
+        return this.stockOfWalls[this.wallIndex];
+    }
+
+    /**
+     * Accesseur du stocks de mur
+     *
+     * @return le stock de mur
+     */
+    public Wall[] getStockOfWalls() {
+        return this.stockOfWalls;
     }
 
     /**

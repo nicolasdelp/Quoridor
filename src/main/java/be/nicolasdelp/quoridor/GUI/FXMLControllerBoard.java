@@ -135,6 +135,28 @@ public class FXMLControllerBoard implements Initializable{
                 }
             }
         }
+        if(FXMLControllerMenu.resumeParty == true){
+            for (int i = 0; i < this.board.getPlayers().length; i++) {
+                for (int j = 0; j < this.board.getPlayers()[i].getStockOfWalls().length; j++) {
+                    if(this.board.getPlayers()[i].getStockOfWalls()[j].getWallDirection() == WallDirection.Horizontal){
+                        ImageView wall1 = new ImageView(getWall(board.players[this.board.getPlayers()[i].getID()], WallDirection.Horizontal)[0]);
+                        ImageView wall2 = new ImageView(getWall(board.players[this.board.getPlayers()[i].getID()], WallDirection.Horizontal)[1]);
+                        ImageView wall3 = new ImageView(getWall(board.players[this.board.getPlayers()[i].getID()], WallDirection.Horizontal)[2]);
+                        grid.add(wall1, this.board.getPlayers()[i].getStockOfWalls()[j].getPosition().getX()-1, this.board.getPlayers()[i].getStockOfWalls()[j].getPosition().getY());
+                        grid.add(wall2, this.board.getPlayers()[i].getStockOfWalls()[j].getPosition().getX(), this.board.getPlayers()[i].getStockOfWalls()[j].getPosition().getY());
+                        grid.add(wall3, this.board.getPlayers()[i].getStockOfWalls()[j].getPosition().getX()+1, this.board.getPlayers()[i].getStockOfWalls()[j].getPosition().getY());
+                    }
+                    if(this.board.getPlayers()[i].getStockOfWalls()[j].getWallDirection() == WallDirection.Vertical){
+                        ImageView wall1 = new ImageView(getWall(board.players[this.board.getPlayers()[i].getID()], WallDirection.Vertical)[0]);
+                        ImageView wall2 = new ImageView(getWall(board.players[this.board.getPlayers()[i].getID()], WallDirection.Vertical)[1]);
+                        ImageView wall3 = new ImageView(getWall(board.players[this.board.getPlayers()[i].getID()], WallDirection.Vertical)[2]);
+                        grid.add(wall1, this.board.getPlayers()[i].getStockOfWalls()[j].getPosition().getX(), this.board.getPlayers()[i].getStockOfWalls()[j].getPosition().getY()-1);
+                        grid.add(wall2, this.board.getPlayers()[i].getStockOfWalls()[j].getPosition().getX(), this.board.getPlayers()[i].getStockOfWalls()[j].getPosition().getY());
+                        grid.add(wall3, this.board.getPlayers()[i].getStockOfWalls()[j].getPosition().getX(), this.board.getPlayers()[i].getStockOfWalls()[j].getPosition().getY()+1);
+                    }
+                }
+            }
+        }
         joueur1.setText(this.board.players[0].getUsername());
         joueur2.setText(this.board.players[1].getUsername());
         for(int i=0; i < board.getPlayers().length; i++){ //On mets les pions des joueurs
@@ -321,10 +343,8 @@ public class FXMLControllerBoard implements Initializable{
 
     public void wall(int i, int j){
         if(Horizontal.isSelected()){
-            Wall wall = new Wall();
-            wall.setID(board.getcurrentIDPlayer());
             try {
-                board.setWallOnBoard(board.players[board.getcurrentIDPlayer()], wall, WallDirection.Horizontal, new Position(i, j)); //On vérifie le mouvement est possible 
+                board.setWallOnBoard(board.players[board.getcurrentIDPlayer()], board.players[board.getcurrentIDPlayer()].getCurrentWall(), WallDirection.Horizontal, new Position(i, j)); //On vérifie le mouvement est possible 
                 ImageView wall1 = new ImageView(getWall(board.players[board.getcurrentIDPlayer()], WallDirection.Horizontal)[0]);
                 ImageView wall2 = new ImageView(getWall(board.players[board.getcurrentIDPlayer()], WallDirection.Horizontal)[1]);
                 ImageView wall3 = new ImageView(getWall(board.players[board.getcurrentIDPlayer()], WallDirection.Horizontal)[2]);
@@ -347,10 +367,8 @@ public class FXMLControllerBoard implements Initializable{
             }
         }
         if(Vertical.isSelected()){
-            Wall wall = new Wall();
-            wall.setID(board.getcurrentIDPlayer());
             try {
-                board.setWallOnBoard(board.players[board.getcurrentIDPlayer()], wall, WallDirection.Vertical, new Position(i, j)); //On vérifie le mouvement est possible 
+                board.setWallOnBoard(board.players[board.getcurrentIDPlayer()], board.players[board.getcurrentIDPlayer()].getCurrentWall(), WallDirection.Vertical, new Position(i, j)); //On vérifie le mouvement est possible 
                 ImageView wall1 = new ImageView(getWall(board.players[board.getcurrentIDPlayer()], WallDirection.Vertical)[0]);
                 ImageView wall2 = new ImageView(getWall(board.players[board.getcurrentIDPlayer()], WallDirection.Vertical)[1]);
                 ImageView wall3 = new ImageView(getWall(board.players[board.getcurrentIDPlayer()], WallDirection.Vertical)[2]);
