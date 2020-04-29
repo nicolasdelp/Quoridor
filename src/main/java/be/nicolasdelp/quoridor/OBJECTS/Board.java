@@ -1,5 +1,6 @@
 package be.nicolasdelp.quoridor.objects;
 
+import java.io.Serializable;
 
 import be.nicolasdelp.quoridor.rules.*;
 
@@ -8,9 +9,14 @@ import be.nicolasdelp.quoridor.rules.*;
  *
  * @author Delplanque Nicolas
  */
-public class Board {
+public class Board implements Serializable{
 
-    private final int totalWall = 20; //nombre de murs au total
+    /**
+     *
+     */
+    private static final long serialVersionUID = 1L;
+    
+    private final int totalWall = 20; // nombre de murs au total
     private final int boardSize = 9; //nombre de cases pour pions par cote
     private final Position[] startPosition = { new Position(0, 8), new Position(16, 8) }; //les 2 cases de depart possible
 

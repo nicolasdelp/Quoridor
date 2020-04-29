@@ -1,8 +1,15 @@
 package be.nicolasdelp.quoridor.rules;
 
+import java.io.Serializable;
+
 import be.nicolasdelp.quoridor.objects.*;
 
-public class PlayerIsInBounds implements PlayerRule {
+public class PlayerIsInBounds implements PlayerRule, Serializable {
+
+    /**
+     *
+     */
+    private static final long serialVersionUID = 1L;
 
     @Override
     public void verify(Board board, Player player, Position position) throws RuleViolated{

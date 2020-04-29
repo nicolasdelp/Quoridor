@@ -1,11 +1,16 @@
 package be.nicolasdelp.quoridor.objects;
 
 /**
-* La class Pawn représente un objet Pion
-*
-* @author Delplanque Nicolas
-*/
-public class Pawn extends GamePieces {
+ * La class Pawn représente un objet Pion
+ *
+ * @author Delplanque Nicolas
+ */
+public class Pawn extends GamePieces{
+
+    /**
+     *
+     */
+    private static final long serialVersionUID = 1L;
 
     private Position position;
 

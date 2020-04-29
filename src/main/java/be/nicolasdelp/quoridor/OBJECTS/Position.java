@@ -1,12 +1,19 @@
 package be.nicolasdelp.quoridor.objects;
 
-/**
-* La class Position représente un objet Position
-*
-* @author Delplanque Nicolas
-*/
-public class Position {
+import java.io.Serializable;
 
+/**
+ * La class Position représente un objet Position
+ *
+ * @author Delplanque Nicolas
+ */
+public class Position  implements Serializable{
+
+    /**
+     *
+     */
+    private static final long serialVersionUID = 1L;
+    
     private int x;
     private int y;
     

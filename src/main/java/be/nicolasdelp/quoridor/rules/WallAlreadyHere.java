@@ -1,8 +1,15 @@
 package be.nicolasdelp.quoridor.rules;
 
+import java.io.Serializable;
+
 import be.nicolasdelp.quoridor.objects.*;
 
-public class WallAlreadyHere implements WallRule {
+public class WallAlreadyHere implements WallRule, Serializable {
+
+    /**
+     *
+     */
+    private static final long serialVersionUID = 1L;
 
     @Override
     public void verify(Board board, Player player, Wall wall, Position position) throws RuleViolated{

@@ -3,6 +3,7 @@ package be.nicolasdelp.quoridor.gui;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import be.nicolasdelp.quoridor.saveload.LoadGame;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -14,6 +15,8 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 public class FXMLControllerMenu implements Initializable {
+
+    public static boolean resumeParty = false;
 
     @FXML
     private VBox menuWindow;
@@ -33,7 +36,21 @@ public class FXMLControllerMenu implements Initializable {
 
     @FXML
     void resumeButtonClicked(MouseEvent event) {
-        //Chargement de la partie sauvegardée
+        LoadGame.loadGame();
+        resumeParty = true;
+        try{
+            FXMLLoader fxmloader = new FXMLLoader(getClass().getResource("../fxml/quoridorBoard.fxml"));
+            Parent root = (Parent) fxmloader.load();
+            Stage secondStage = new Stage();
+            secondStage.setScene(new Scene(root, 1075, 1000));
+            secondStage.setResizable(false);
+            secondStage.setTitle("QUORIDOR");
+            secondStage.centerOnScreen();
+            menuWindow.getScene().getWindow().hide();
+            secondStage.show();
+        } catch(Exception exception){
+            System.out.println(exception);
+        }
     }
     
     @FXML

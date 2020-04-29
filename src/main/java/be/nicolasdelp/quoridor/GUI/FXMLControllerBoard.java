@@ -2,7 +2,8 @@ package be.nicolasdelp.quoridor.gui;
 
 import be.nicolasdelp.quoridor.objects.*;
 import be.nicolasdelp.quoridor.rules.RuleViolated;
-
+import be.nicolasdelp.quoridor.saveload.LoadGame;
+import be.nicolasdelp.quoridor.saveload.SaveGame;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -110,7 +111,11 @@ public class FXMLControllerBoard implements Initializable{
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        this.board = FXMLControllerMenuPlayers.getBoard();
+        if(FXMLControllerMenu.resumeParty == true){
+            this.board = LoadGame.getBoard();
+        } else {
+            this.board = FXMLControllerMenuPlayers.getBoard();
+        }
         for (int i = 0; i < this.board.getLength(); i++) {
             for (int j = 0; j < this.board.getWidth(); j++) {
                 if(this.board.getBoardBoxes()[i][j].getisPawnBox()){
@@ -144,6 +149,7 @@ public class FXMLControllerBoard implements Initializable{
 
     @FXML
     void backToMenuClicked(ActionEvent event) {
+        SaveGame.saveBoard(this.board);
         try{
             FXMLLoader fxmloader = new FXMLLoader(getClass().getResource("../fxml/quoridorMenu.fxml"));
             Parent root = (Parent) fxmloader.load();
@@ -161,7 +167,7 @@ public class FXMLControllerBoard implements Initializable{
 
     @FXML
     void saveTheGameClicked(ActionEvent event) {
-        //TO DO
+        SaveGame.saveBoard(this.board);
     }
 
     @FXML
@@ -315,8 +321,10 @@ public class FXMLControllerBoard implements Initializable{
 
     public void wall(int i, int j){
         if(Horizontal.isSelected()){
+            Wall wall = new Wall();
+            wall.setID(board.getcurrentIDPlayer());
             try {
-                board.setWallOnBoard(board.players[board.getcurrentIDPlayer()], new Wall(), WallDirection.Horizontal, new Position(i, j)); //On vérifie le mouvement est possible 
+                board.setWallOnBoard(board.players[board.getcurrentIDPlayer()], wall, WallDirection.Horizontal, new Position(i, j)); //On vérifie le mouvement est possible 
                 ImageView wall1 = new ImageView(getWall(board.players[board.getcurrentIDPlayer()], WallDirection.Horizontal)[0]);
                 ImageView wall2 = new ImageView(getWall(board.players[board.getcurrentIDPlayer()], WallDirection.Horizontal)[1]);
                 ImageView wall3 = new ImageView(getWall(board.players[board.getcurrentIDPlayer()], WallDirection.Horizontal)[2]);
@@ -339,8 +347,10 @@ public class FXMLControllerBoard implements Initializable{
             }
         }
         if(Vertical.isSelected()){
+            Wall wall = new Wall();
+            wall.setID(board.getcurrentIDPlayer());
             try {
-                board.setWallOnBoard(board.players[board.getcurrentIDPlayer()], new Wall(), WallDirection.Vertical, new Position(i, j)); //On vérifie le mouvement est possible 
+                board.setWallOnBoard(board.players[board.getcurrentIDPlayer()], wall, WallDirection.Vertical, new Position(i, j)); //On vérifie le mouvement est possible 
                 ImageView wall1 = new ImageView(getWall(board.players[board.getcurrentIDPlayer()], WallDirection.Vertical)[0]);
                 ImageView wall2 = new ImageView(getWall(board.players[board.getcurrentIDPlayer()], WallDirection.Vertical)[1]);
                 ImageView wall3 = new ImageView(getWall(board.players[board.getcurrentIDPlayer()], WallDirection.Vertical)[2]);

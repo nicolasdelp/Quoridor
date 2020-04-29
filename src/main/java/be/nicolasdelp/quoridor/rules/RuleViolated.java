@@ -4,6 +4,11 @@ import be.nicolasdelp.quoridor.objects.*;
 
 public class RuleViolated extends Exception{
 
+    /**
+     *
+     */
+    private static final long serialVersionUID = 1L;
+    
     private Player player;
     private Position position;
     private Board board;

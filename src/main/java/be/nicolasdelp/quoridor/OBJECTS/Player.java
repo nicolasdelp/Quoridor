@@ -1,12 +1,19 @@
 package be.nicolasdelp.quoridor.objects;
 
-/**
-* La class Player représente un objet Joueur
-*
-* @author Delplanque Nicolas
-*/
-public class Player {
+import java.io.Serializable;
 
+/**
+ * La class Player représente un objet Joueur
+ *
+ * @author Delplanque Nicolas
+ */
+public class Player implements Serializable {
+
+    /**
+     *
+     */
+    private static final long serialVersionUID = 1L;
+    
     private final String type;
     private final String username;
     private final int ID;

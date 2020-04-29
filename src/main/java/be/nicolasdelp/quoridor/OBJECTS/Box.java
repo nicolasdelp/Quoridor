@@ -1,11 +1,18 @@
 package be.nicolasdelp.quoridor.objects;
 
+import java.io.Serializable;
+
 /**
  * La class Box représente un objet Case
  *
  * @author Delplanque Nicolas
  */
-public class Box {
+public class Box implements Serializable{
+
+    /**
+     *
+     */
+    private static final long serialVersionUID = 1L;
 
     private boolean isPawnBox;
     private boolean isWallBox;
