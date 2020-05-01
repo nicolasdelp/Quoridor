@@ -127,7 +127,7 @@ public class FXMLControllerBoard implements Initializable{
                 if(this.board.getBoardBoxes()[i][j].getisPawnBox()){
                     ImageView img = new ImageView(imageCase);
                     img.setCursor(Cursor.HAND);
-                    img.setOnMouseClicked(event -> pawn(GridPane.getColumnIndex(img), GridPane.getRowIndex(img)));
+                    img.setOnMouseClicked(event -> handleClickOnBox(GridPane.getColumnIndex(img), GridPane.getRowIndex(img)));
                     grid.add(img, i, j);
                 }
                 if(isImpair(i) && isImpair(j)){
@@ -367,7 +367,10 @@ public class FXMLControllerBoard implements Initializable{
         }
     }
 
-    public void pawn(int i, int j){
+    /*
+     * Deplace le pion dans l'objet board et met a jour l'interface graphique.
+     */
+    public void pawn(int i, int j) throws RuleViolated{
         board.movePawnOnBoard(board.players[board.getcurrentIDPlayer()], new Position(i, j)); //On vérifie le mouvement est possible
         ImageView caseVide = new ImageView(imageCase);
         caseVide.setCursor(Cursor.HAND);
@@ -418,14 +421,6 @@ public class FXMLControllerBoard implements Initializable{
                 }
                 board.nextPlayer();
                 changeLabelColor();
-            } catch (RuleViolated e) {
-                Alert alert = new Alert(AlertType.ERROR);
-                alert.setTitle(null);
-                alert.setHeaderText(null);
-                alert.setContentText(e.getMessage());
-                alert.showAndWait();
-            }
-            if(board.getWin() == false){
                 if(this.board.getPlayers()[1].getType() == "Ordinateur"){
                     if(this.board.getPlayers()[1].getIALevel() == "Facile"){
                         if(board.getcurrentIDPlayer() == 1){
@@ -438,6 +433,12 @@ public class FXMLControllerBoard implements Initializable{
                         }
                     }
                 }
+            } catch (RuleViolated e) {
+                Alert alert = new Alert(AlertType.ERROR);
+                alert.setTitle(null);
+                alert.setHeaderText(null);
+                alert.setContentText(e.getMessage());
+                alert.showAndWait();
             }
         }
         if(Vertical.isSelected()){
@@ -457,14 +458,6 @@ public class FXMLControllerBoard implements Initializable{
                 }
                 board.nextPlayer();
                 changeLabelColor();
-            } catch (RuleViolated e) {
-                Alert alert = new Alert(AlertType.ERROR);
-                alert.setTitle(null);
-                alert.setHeaderText(null);
-                alert.setContentText(e.getMessage());
-                alert.showAndWait();
-            }
-            if(board.getWin() == false){
                 if(this.board.getPlayers()[1].getType() == "Ordinateur"){
                     if(this.board.getPlayers()[1].getIALevel() == "Facile"){
                         if(board.getcurrentIDPlayer() == 1){
@@ -477,6 +470,12 @@ public class FXMLControllerBoard implements Initializable{
                         }
                     }
                 }
+            } catch (RuleViolated e) {
+                Alert alert = new Alert(AlertType.ERROR);
+                alert.setTitle(null);
+                alert.setHeaderText(null);
+                alert.setContentText(e.getMessage());
+                alert.showAndWait();
             }
         }
     }
@@ -521,8 +520,27 @@ public class FXMLControllerBoard implements Initializable{
             g.pathForIA();
             if(g.pathFinding(player.getPawn().getPosition(), player.getFinishPosition()[i])){
                 g.pathFinding(player.getPawn().getPosition(), player.getFinishPosition()[i]);
-                pawn(g.getPath().get(1).getNodePosition().getX(), g.getPath().get(1).getNodePosition().getY());
+                handleClickOnBox(g.getPath().get(1).getNodePosition().getX(), g.getPath().get(1).getNodePosition().getY());
                 break;
             }
         }
+        
+        // try {
+        //     pawn(player.getPawn().getPosition().getX()+2, player.getPawn().getPosition().getY());
+        // } catch (Exception e1) {
+        //     try {
+        //         pawn(player.getPawn().getPosition().getX(), player.getPawn().getPosition().getY()+2);
+        //     } catch (Exception e2) {
+        //         try {
+        //             pawn(player.getPawn().getPosition().getX(), player.getPawn().getPosition().getY()-2);
+        //         } catch (Exception e3) {
+        //             try {
+        //                 pawn(player.getPawn().getPosition().getX()-2, player.getPawn().getPosition().getY());
+        //             } catch (Exception e4) {
+                        
+        //             }
+        //         }
+        //     }
+        // }
     }
+}
