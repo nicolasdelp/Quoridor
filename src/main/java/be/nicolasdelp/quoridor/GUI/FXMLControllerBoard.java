@@ -366,7 +366,7 @@ public class FXMLControllerBoard implements Initializable{
             alert.showAndWait();
         }
     }
-    
+
     public void pawn(int i, int j){
         board.movePawnOnBoard(board.players[board.getcurrentIDPlayer()], new Position(i, j)); //On vérifie le mouvement est possible
         ImageView caseVide = new ImageView(imageCase);
@@ -505,7 +505,7 @@ public class FXMLControllerBoard implements Initializable{
             } catch(RuleViolated e){
                 continueToTry = true;
             }
-        }}
+        }
     }
 
     public void IAHard(Player player){ //Pose des murs
@@ -526,4 +526,3 @@ public class FXMLControllerBoard implements Initializable{
             }
         }
     }
-}
