@@ -53,11 +53,18 @@ public class FXMLControllerMenuPlayers implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         typePlayer12.setItems(typeOfPlayer);
+        typePlayer12.setValue(typeOfPlayer.get(0));
         typePlayer22.setItems(typeOfPlayer);
+        typePlayer22.setValue(typeOfPlayer.get(1));
+        pseudoOfPlayer12.setText("Joueur 1");
         colorPlayer12.setItems(colorOfPlayer);
+        colorPlayer12.setValue(colorOfPlayer.get(0));
         colorPlayer22.setItems(colorOfPlayer);
+        colorPlayer22.setValue(colorOfPlayer.get(1));
         levelIAPlayer12.setItems(levelOfIA);
+        levelIAPlayer12.setValue(levelOfIA.get(0));
         levelIAPlayer22.setItems(levelOfIA);
+        levelIAPlayer22.setValue(levelOfIA.get(0));
     }
 
     /**
