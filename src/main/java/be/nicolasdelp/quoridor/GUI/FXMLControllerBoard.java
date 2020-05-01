@@ -516,7 +516,7 @@ public class FXMLControllerBoard implements Initializable{
                 allPathSize[i] = g.getPath().size();
             }
             else{
-                allPathSize[i] = -1;
+                allPathSize[i] = 100;
             }
         }
         int res = 100;
