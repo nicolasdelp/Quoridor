@@ -17,7 +17,7 @@ public class Player implements Serializable {
     private final String type;
     private final String username;
     private final int ID;
-    private final Color color;
+    private final ColorPawn color;
     private Pawn pawnPlayer;
     private int wallIndex;
     private Wall[] stockOfWalls = new Wall[10];
@@ -32,7 +32,7 @@ public class Player implements Serializable {
      * @param ID ID unique du joueur
      * @param pawn un pion
      */
-    public Player(String type, String username, int ID, Color color, Pawn pawn) {
+    public Player(String type, String username, int ID, ColorPawn color, Pawn pawn) {
         this.type = type;
         this.username = username;
         this.ID = ID;
@@ -72,7 +72,7 @@ public class Player implements Serializable {
      *
      * @return la couleur du joueur
      */
-    public Color getColor() {
+    public ColorPawn getColor() {
         return this.color;
     }
 

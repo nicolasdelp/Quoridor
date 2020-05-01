@@ -4,6 +4,8 @@ import be.nicolasdelp.quoridor.objects.*;
 import be.nicolasdelp.quoridor.rules.RuleViolated;
 import be.nicolasdelp.quoridor.saveload.LoadGame;
 import be.nicolasdelp.quoridor.saveload.SaveGame;
+
+import java.io.File;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
@@ -22,7 +24,10 @@ import javafx.scene.control.Label;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
+import javafx.scene.paint.Color;
+// import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
 public class FXMLControllerBoard implements Initializable{
@@ -158,8 +163,10 @@ public class FXMLControllerBoard implements Initializable{
                 }
             }
         }
-        joueur1.setText(this.board.players[0].getUsername());
-        joueur2.setText(this.board.players[1].getUsername());
+        joueur1.setText(this.board.players[0].getUsername().toUpperCase());
+        joueur1.setTextFill(Color.web("#4cd137"));
+        joueur1.setStyle("-fx-font-weight: bold");
+        joueur2.setText(this.board.players[1].getUsername().toUpperCase());
         for(int i=0; i < board.getPlayers().length; i++){ //On mets les pions des joueurs
             grid.add(new ImageView(getColorPawn(board.getPlayers()[i])), board.getPlayers()[i].getPawn().getPosition().getX(), board.getPlayers()[i].getPawn().getPosition().getY());
             oldPosition[i] = new Position(board.getPlayers()[i].getPawn().getPosition().getX(), board.getPlayers()[i].getPawn().getPosition().getY());
@@ -168,22 +175,16 @@ public class FXMLControllerBoard implements Initializable{
             stackPlayer1.add(new ImageView(getColorWall(board.getPlayers()[0])), 0, i);
             stackPlayer2.add(new ImageView(getColorWall(board.getPlayers()[1])), 0, i);
         }
-        if(this.board.getPlayers()[0].getType() == "Ordinateur"){
-            if(this.board.getPlayers()[0].getIALevel() == "Facile"){
-                IAEasy(this.board.getPlayers()[0]);
-            }
-            if(this.board.getPlayers()[0].getIALevel() == "Difficile"){
-                IAHard(this.board.getPlayers()[0]);
-            }
-        }
-        if(this.board.getPlayers()[1].getType() == "Ordinateur"){
-            if(this.board.getPlayers()[1].getIALevel() == "Facile"){
-                IAEasy(this.board.getPlayers()[1]);
-            }
-            if(this.board.getPlayers()[1].getIALevel() == "Difficile"){
-                IAHard(this.board.getPlayers()[1]);
-            }
-        }
+        // if(this.board.getPlayers()[1].getType() == "Ordinateur"){
+        //     if(this.board.getPlayers()[1].getIALevel() == "Facile"){
+        //         while(board.getWin() == false){
+        //             IAEasy(this.board.getPlayers()[1]);
+        //         }
+        //     }
+        //     if(this.board.getPlayers()[1].getIALevel() == "Difficile"){
+        //         IAHard(this.board.getPlayers()[1]);
+        //     }
+        // }
     }
 
     @FXML
@@ -206,7 +207,13 @@ public class FXMLControllerBoard implements Initializable{
 
     @FXML
     void saveTheGameClicked(ActionEvent event) {
-        SaveGame.saveBoard(this.board);
+        File f = new File("board.dat");
+        if(f.exists()){
+            f.delete();
+            SaveGame.saveBoard(this.board);
+        }else{
+            SaveGame.saveBoard(this.board);
+        }
     }
 
     @FXML
@@ -244,13 +251,13 @@ public class FXMLControllerBoard implements Initializable{
     }
     
     private Image getColorPawn(Player player){ //Récupérer la couleur du pion du joueur
-        if(player.getColor() == Color.Vert){
+        if(player.getColor() == ColorPawn.Vert){
             return imagePionVert;
-        }if(player.getColor() == Color.Rouge){
+        }if(player.getColor() == ColorPawn.Rouge){
             return imagePionRouge;
-        }if(player.getColor() == Color.Bleu){
+        }if(player.getColor() == ColorPawn.Bleu){
             return imagePionBleu;
-        }if(player.getColor() == Color.Jaune){
+        }if(player.getColor() == ColorPawn.Jaune){
             return imagePionJaune;
         }
         else{
@@ -259,13 +266,13 @@ public class FXMLControllerBoard implements Initializable{
     }
 
     private Image getColorWall(Player player){ //Récupérer la couleur du pion du joueur
-        if(player.getColor() == Color.Vert){
+        if(player.getColor() == ColorPawn.Vert){
             return imageMurVert;
-        }if(player.getColor() == Color.Rouge){
+        }if(player.getColor() == ColorPawn.Rouge){
             return imageMurRouge;
-        }if(player.getColor() == Color.Bleu){
+        }if(player.getColor() == ColorPawn.Bleu){
             return imageMurBleu;
-        }if(player.getColor() == Color.Jaune){
+        }if(player.getColor() == ColorPawn.Jaune){
             return imageMurJaune;
         }
         else{
@@ -275,49 +282,49 @@ public class FXMLControllerBoard implements Initializable{
 
     private Image[] getWall(Player player, WallDirection wall){ //Récupérer la couleur du pion du joueur
         Image[] res = new Image[3];
-        if(player.getColor() == Color.Bleu && wall == WallDirection.Horizontal){
+        if(player.getColor() == ColorPawn.Bleu && wall == WallDirection.Horizontal){
             res[0] = imageMurBleuH1;
             res[1] = imageMurBleuH2;
             res[2] = imageMurBleuH3;
             return res;
         }
-        if(player.getColor() == Color.Bleu && wall == WallDirection.Vertical){
+        if(player.getColor() == ColorPawn.Bleu && wall == WallDirection.Vertical){
             res[0] = imageMurBleuV1;
             res[1] = imageMurBleuV2;
             res[2] = imageMurBleuV3;
             return res;
         }
-        if(player.getColor() == Color.Rouge && wall == WallDirection.Horizontal){
+        if(player.getColor() == ColorPawn.Rouge && wall == WallDirection.Horizontal){
             res[0] = imageMurRougeH1;
             res[1] = imageMurRougeH2;
             res[2] = imageMurRougeH3;
             return res;
         }
-        if(player.getColor() == Color.Rouge && wall == WallDirection.Vertical){
+        if(player.getColor() == ColorPawn.Rouge && wall == WallDirection.Vertical){
             res[0] = imageMurRougeV1;
             res[1] = imageMurRougeV2;
             res[2] = imageMurRougeV3;
             return res;
         }
-        if(player.getColor() == Color.Vert && wall == WallDirection.Horizontal){
+        if(player.getColor() == ColorPawn.Vert && wall == WallDirection.Horizontal){
             res[0] = imageMurVertH1;
             res[1] = imageMurVertH2;
             res[2] = imageMurVertH3;
             return res;
         }
-        if(player.getColor() == Color.Vert && wall == WallDirection.Vertical){
+        if(player.getColor() == ColorPawn.Vert && wall == WallDirection.Vertical){
             res[0] = imageMurVertV1;
             res[1] = imageMurVertV2;
             res[2] = imageMurVertV3;
             return res;
         }
-        if(player.getColor() == Color.Jaune && wall == WallDirection.Horizontal){
+        if(player.getColor() == ColorPawn.Jaune && wall == WallDirection.Horizontal){
             res[0] = imageMurJauneH1;
             res[1] = imageMurJauneH2;
             res[2] = imageMurJauneH3;
             return res;
         }
-        if(player.getColor() == Color.Jaune && wall == WallDirection.Vertical){
+        if(player.getColor() == ColorPawn.Jaune && wall == WallDirection.Vertical){
             res[0] = imageMurJauneV1;
             res[1] = imageMurJauneV2;
             res[2] = imageMurJauneV3;
@@ -325,6 +332,20 @@ public class FXMLControllerBoard implements Initializable{
         }
         else{
             return null;
+        }
+    }
+
+    private void changeLabelColor(){
+        if(board.getcurrentIDPlayer() == 0){
+            joueur1.setTextFill(Color.web("#4cd137"));
+            joueur1.setStyle("-fx-font-weight: bold");
+            joueur2.setTextFill(Color.BLACK);
+            joueur2.setStyle("-fx-font-weight: regular");
+        } else if(board.getcurrentIDPlayer() == 1){
+            joueur2.setTextFill(Color.web("#4cd137"));
+            joueur2.setStyle("-fx-font-weight: bold");
+            joueur1.setTextFill(Color.BLACK);
+            joueur1.setStyle("-fx-font-weight: regular");
         }
     }
 
@@ -349,6 +370,19 @@ public class FXMLControllerBoard implements Initializable{
                 alert.showAndWait();
             }
             board.nextPlayer();
+            changeLabelColor();
+            if(this.board.getPlayers()[1].getType() == "Ordinateur"){
+                if(this.board.getPlayers()[1].getIALevel() == "Facile"){
+                    if(board.getcurrentIDPlayer() == 1){
+                        IAEasy(this.board.getPlayers()[1]);
+                    }
+                }
+                if(this.board.getPlayers()[1].getIALevel() == "Difficile"){
+                    if(board.getcurrentIDPlayer() == 1){
+                        IAHard(this.board.getPlayers()[1]);
+                    }
+                }
+            }
         } catch (RuleViolated e) {
             Alert alert = new Alert(AlertType.ERROR);
             alert.setTitle(null);
@@ -375,6 +409,19 @@ public class FXMLControllerBoard implements Initializable{
                     stackPlayer2.getChildren().remove(0);
                 }
                 board.nextPlayer();
+                changeLabelColor();
+                if(this.board.getPlayers()[1].getType() == "Ordinateur"){
+                    if(this.board.getPlayers()[1].getIALevel() == "Facile"){
+                        if(board.getcurrentIDPlayer() == 1){
+                            IAEasy(this.board.getPlayers()[1]);
+                        }
+                    }
+                    if(this.board.getPlayers()[1].getIALevel() == "Difficile"){
+                        if(board.getcurrentIDPlayer() == 1){
+                            IAHard(this.board.getPlayers()[1]);
+                        }
+                    }
+                }
             } catch (RuleViolated e) {
                 Alert alert = new Alert(AlertType.ERROR);
                 alert.setTitle(null);
@@ -392,7 +439,26 @@ public class FXMLControllerBoard implements Initializable{
                 grid.add(wall1, i, j-1);
                 grid.add(wall2, i, j);
                 grid.add(wall3, i, j+1);
+                if(board.getcurrentIDPlayer() == 0){
+                    stackPlayer1.getChildren().remove(0);
+                }
+                if(board.getcurrentIDPlayer() == 1){
+                    stackPlayer2.getChildren().remove(0);
+                }
                 board.nextPlayer();
+                changeLabelColor();
+                if(this.board.getPlayers()[1].getType() == "Ordinateur"){
+                    if(this.board.getPlayers()[1].getIALevel() == "Facile"){
+                        if(board.getcurrentIDPlayer() == 1){
+                            IAEasy(this.board.getPlayers()[1]);
+                        }
+                    }
+                    if(this.board.getPlayers()[1].getIALevel() == "Difficile"){
+                        if(board.getcurrentIDPlayer() == 1){
+                            IAHard(this.board.getPlayers()[1]);
+                        }
+                    }
+                }
             } catch (RuleViolated e) {
                 Alert alert = new Alert(AlertType.ERROR);
                 alert.setTitle(null);
@@ -403,13 +469,46 @@ public class FXMLControllerBoard implements Initializable{
         }
     }
 
-    public void IAEasy(Player player){
-        // while(player.getPawn().getPosition().getX() != player.getFinishPosition()[0].getX()){
-            
+    private ArrayList<Position> Positions = new ArrayList<Position>(); //Position déjà visité
+
+    public void IAEasy(Player player){ //Pose pas de mur
+        Graph g = new Graph(this.board, this.board.getPlayers()[0]);
+        Positions.add(new Position(player.getPawn().getPosition().getX(),player.getPawn().getPosition().getY()));
+        if(Positions.size() > 3){
+            Positions.remove(0);
+        }
+        for(int i = 0; i < Positions.size(); i++){
+            g.Nodes[Positions.get(i).getX()][Positions.get(i).getY()].setVisited(true);
+        }
+        for(int i = 0; i < player.getFinishPosition().length; i++){
+            g.pathForIA();
+            if(g.pathFinding(player.getPawn().getPosition(), player.getFinishPosition()[i])){
+                g.pathFinding(player.getPawn().getPosition(), player.getFinishPosition()[i]);
+                pawn(g.getPath().get(1).getNodePosition().getX(), g.getPath().get(1).getNodePosition().getY());
+                break;
+            }
+        }
+        
+        // try {
+        //     pawn(player.getPawn().getPosition().getX()+2, player.getPawn().getPosition().getY());
+        // } catch (Exception e1) {
+        //     try {
+        //         pawn(player.getPawn().getPosition().getX(), player.getPawn().getPosition().getY()+2);
+        //     } catch (Exception e2) {
+        //         try {
+        //             pawn(player.getPawn().getPosition().getX(), player.getPawn().getPosition().getY()-2);
+        //         } catch (Exception e3) {
+        //             try {
+        //                 pawn(player.getPawn().getPosition().getX()-2, player.getPawn().getPosition().getY());
+        //             } catch (Exception e4) {
+                        
+        //             }
+        //         }
+        //     }
         // }
     }
 
-    public void IAHard(Player player){
+    public void IAHard(Player player){ //Pose des murs
         // while(player.getPawn().getPosition().getX() != player.getFinishPosition()[0].getX()){
             
         // }

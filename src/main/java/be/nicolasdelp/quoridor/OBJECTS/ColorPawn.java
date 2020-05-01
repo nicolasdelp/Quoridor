@@ -5,7 +5,7 @@ package be.nicolasdelp.quoridor.objects;
 *
 * @author Delplanque Nicolas
 */
-public enum Color {
+public enum ColorPawn {
 
     Rouge(0), Bleu(1), Vert(2), Jaune(3);
 
@@ -16,7 +16,7 @@ public enum Color {
      *
      * @param index 0 ou 1 ou 2 ou 3
      */
-    private Color(int index) {
+    private ColorPawn(int index) {
         this.index = index;
     }
 

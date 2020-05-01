@@ -11,7 +11,7 @@ public class GraphTest {
     @Test
     public void testGraph1(){
         Board b = new Board();
-        Player[] p = {new Player("Humain", "Nico", 0, Color.Rouge, new Pawn()), new Player("Ordinateur", "Ordi1", 1, Color.Rouge, new Pawn())};
+        Player[] p = {new Player("Humain", "Nico", 0, ColorPawn.Rouge, new Pawn()), new Player("Ordinateur", "Ordi1", 1, ColorPawn.Rouge, new Pawn())};
         b.setPlayer(p);
         b.createBoard();
         try {
@@ -22,14 +22,15 @@ public class GraphTest {
         } catch (RuleViolated e) {
             System.out.println(e);
         }
-        Graph g = new Graph(b, b.players[1], new Position(3,15), WallDirection.Vertical);
+        Graph g = new Graph(b, b.players[1]);
+        g.setWall(WallDirection.Vertical, new Position(3,15));
         assertEquals(g.pathFinding(b.players[0].getPawn().getPosition(), new Position(16,6)), true);
     }
 
     @Test
     public void testGraph2(){
         Board b = new Board();
-        Player[] p = {new Player("Humain", "Nico", 0, Color.Rouge, new Pawn()), new Player("Ordinateur", "Ordi1", 1, Color.Rouge, new Pawn())};
+        Player[] p = {new Player("Humain", "Nico", 0, ColorPawn.Rouge, new Pawn()), new Player("Ordinateur", "Ordi1", 1, ColorPawn.Rouge, new Pawn())};
         b.setPlayer(p);
         b.createBoard();
         try {
@@ -41,14 +42,15 @@ public class GraphTest {
         } catch (RuleViolated e) {
             System.out.println(e);
         }
-        Graph g = new Graph(b, b.players[1], new Position(3,9), WallDirection.Horizontal);
+        Graph g = new Graph(b, b.players[1]);
+        g.setWall(WallDirection.Horizontal, new Position(3,9));
         assertEquals(g.pathFinding(b.players[0].getPawn().getPosition(), new Position(16,6)), false);
     }
 
     @Test
     public void testGraph3(){
         Board b = new Board();
-        Player[] p = {new Player("Humain", "Nico", 0, Color.Rouge, new Pawn()), new Player("Ordinateur", "Ordi1", 1, Color.Rouge, new Pawn())};
+        Player[] p = {new Player("Humain", "Nico", 0, ColorPawn.Rouge, new Pawn()), new Player("Ordinateur", "Ordi1", 1, ColorPawn.Rouge, new Pawn())};
         b.setPlayer(p);
         b.createBoard();
         try {
@@ -65,14 +67,15 @@ public class GraphTest {
         } catch (RuleViolated e) {
             System.out.println(e);
         }
-        Graph g = new Graph(b, b.players[1], new Position(9,1), WallDirection.Vertical);
+        Graph g = new Graph(b, b.players[1]);
+        g.setWall(WallDirection.Vertical, new Position(9,1));
         assertEquals(g.pathFinding(b.players[0].getPawn().getPosition(), new Position(16,6)), true);
     }
 
     @Test
     public void testGraph4(){
         Board b = new Board();
-        Player[] p = {new Player("Humain", "Nico", 0, Color.Rouge, new Pawn()), new Player("Ordinateur", "Ordi1", 1, Color.Rouge, new Pawn())};
+        Player[] p = {new Player("Humain", "Nico", 0, ColorPawn.Rouge, new Pawn()), new Player("Ordinateur", "Ordi1", 1, ColorPawn.Rouge, new Pawn())};
         b.setPlayer(p);
         b.createBoard();
         try {
@@ -90,7 +93,8 @@ public class GraphTest {
         } catch (RuleViolated e) {
             System.out.println(e);
         }
-        Graph g = new Graph(b, b.players[1], new Position(9,3), WallDirection.Horizontal);
+        Graph g = new Graph(b, b.players[1]);
+        g.setWall(WallDirection.Horizontal, new Position(9,3));
         assertEquals(g.pathFinding(b.players[0].getPawn().getPosition(), new Position(16,6)), false);
     }
 }

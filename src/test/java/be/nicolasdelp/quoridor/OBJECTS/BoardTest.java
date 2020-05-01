@@ -9,7 +9,7 @@ public class BoardTest {
     @Test
     public void testCreateBoard1(){
         Board b = new Board();
-        Player[] p = {new Player("Humain", "Nico", 0, Color.Rouge, new Pawn()), new Player("Ordinateur", "Ordi", 1, Color.Rouge, new Pawn())};
+        Player[] p = {new Player("Humain", "Nico", 0, ColorPawn.Rouge, new Pawn()), new Player("Ordinateur", "Ordi", 1, ColorPawn.Rouge, new Pawn())};
         b.setPlayer(p);
         b.createBoard();
         assertEquals(b.players[0].getWallIndex(), 9);
@@ -18,7 +18,7 @@ public class BoardTest {
     @Test
     public void testCreateBoard2(){
         Board b = new Board();
-        Player[] p = {new Player("Humain", "Nico", 0, Color.Rouge, new Pawn()), new Player("Ordinateur", "Ordi", 1, Color.Rouge, new Pawn())};
+        Player[] p = {new Player("Humain", "Nico", 0, ColorPawn.Rouge, new Pawn()), new Player("Ordinateur", "Ordi", 1, ColorPawn.Rouge, new Pawn())};
         b.setPlayer(p);
         b.createBoard();
         assertEquals(b.getBoardBoxes()[10][4].getisPawnBox(), true);
@@ -30,7 +30,7 @@ public class BoardTest {
     @Test
     public void testCreateBoard3(){
         Board b = new Board();
-        Player[] p = {new Player("Humain", "Nico", 0, Color.Rouge, new Pawn()), new Player("Ordinateur", "Ordi", 1, Color.Rouge, new Pawn())};
+        Player[] p = {new Player("Humain", "Nico", 0, ColorPawn.Rouge, new Pawn()), new Player("Ordinateur", "Ordi", 1, ColorPawn.Rouge, new Pawn())};
         b.setPlayer(p);
         b.createBoard();
         assertEquals(b.players[0].getPawn().getPosition().getX(), 0);
@@ -40,7 +40,7 @@ public class BoardTest {
     @Test
     public void testCreateBoard4(){
         Board b = new Board();
-        Player[] p = {new Player("Humain", "Nico", 0, Color.Rouge, new Pawn()), new Player("Ordinateur", "Ordi", 1, Color.Rouge, new Pawn())};
+        Player[] p = {new Player("Humain", "Nico", 0, ColorPawn.Rouge, new Pawn()), new Player("Ordinateur", "Ordi", 1, ColorPawn.Rouge, new Pawn())};
         b.setPlayer(p);
         b.createBoard();
         assertEquals(b.players[1].getPawn().getPosition().getX(), 16);
@@ -50,7 +50,7 @@ public class BoardTest {
     @Test
     public void testMovePawnOnBoard1(){
         Board b = new Board();
-        Player[] p = {new Player("Humain", "Nico", 0, Color.Rouge, new Pawn()), new Player("Ordinateur", "Ordi1", 1, Color.Rouge, new Pawn())};
+        Player[] p = {new Player("Humain", "Nico", 0, ColorPawn.Rouge, new Pawn()), new Player("Ordinateur", "Ordi1", 1, ColorPawn.Rouge, new Pawn())};
         b.setPlayer(p);
         b.createBoard();
         try {
@@ -65,7 +65,7 @@ public class BoardTest {
     @Test
     public void testMovePawnOnBoard2(){
         Board b = new Board();
-        Player[] p = {new Player("Humain", "Nico", 0, Color.Rouge, new Pawn()), new Player("Ordinateur", "Ordi1", 1, Color.Rouge, new Pawn())};
+        Player[] p = {new Player("Humain", "Nico", 0, ColorPawn.Rouge, new Pawn()), new Player("Ordinateur", "Ordi1", 1, ColorPawn.Rouge, new Pawn())};
         b.setPlayer(p);
         b.createBoard();
         try {
@@ -88,7 +88,7 @@ public class BoardTest {
     @Test
     public void testSetWallOnBoard1(){
         Board b = new Board();
-        Player[] p = {new Player("Humain", "Nico", 0, Color.Rouge, new Pawn()), new Player("Ordinateur", "Ordi1", 1, Color.Rouge, new Pawn())};
+        Player[] p = {new Player("Humain", "Nico", 0, ColorPawn.Rouge, new Pawn()), new Player("Ordinateur", "Ordi1", 1, ColorPawn.Rouge, new Pawn())};
         b.setPlayer(p);
         b.createBoard();
         try {
@@ -107,7 +107,7 @@ public class BoardTest {
     @Test
     public void testSetWallOnBoard2(){
         Board b = new Board();
-        Player[] p = {new Player("Humain", "Nico", 0, Color.Rouge, new Pawn()), new Player("Ordinateur", "Ordi1", 1, Color.Rouge, new Pawn())};
+        Player[] p = {new Player("Humain", "Nico", 0, ColorPawn.Rouge, new Pawn()), new Player("Ordinateur", "Ordi1", 1, ColorPawn.Rouge, new Pawn())};
         b.setPlayer(p);
         b.createBoard();
         try {

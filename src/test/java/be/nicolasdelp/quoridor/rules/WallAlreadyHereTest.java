@@ -10,7 +10,7 @@ public class WallAlreadyHereTest {
     @Test
     public void testVerify1(){
         Board b = new Board();
-        Player[] p = {new Player("Humain", "Nico", 0, Color.Rouge, new Pawn()), new Player("Ordinateur", "Ordi1", 1, Color.Rouge, new Pawn())};
+        Player[] p = {new Player("Humain", "Nico", 0, ColorPawn.Rouge, new Pawn()), new Player("Ordinateur", "Ordi1", 1, ColorPawn.Rouge, new Pawn())};
         b.setPlayer(p);
         b.createBoard();
         try {
@@ -27,7 +27,7 @@ public class WallAlreadyHereTest {
     @Test
     public void testVerify2(){
         Board b = new Board();
-        Player[] p = {new Player("Humain", "Nico", 0, Color.Rouge, new Pawn()), new Player("Ordinateur", "Ordi1", 1, Color.Rouge, new Pawn())};
+        Player[] p = {new Player("Humain", "Nico", 0, ColorPawn.Rouge, new Pawn()), new Player("Ordinateur", "Ordi1", 1, ColorPawn.Rouge, new Pawn())};
         b.setPlayer(p);
         b.createBoard();
         try {
@@ -44,7 +44,7 @@ public class WallAlreadyHereTest {
     @Test
     public void testVerify3(){
         Board b = new Board();
-        Player[] p = {new Player("Humain", "Nico", 0, Color.Rouge, new Pawn()), new Player("Ordinateur", "Ordi1", 1, Color.Rouge, new Pawn())};
+        Player[] p = {new Player("Humain", "Nico", 0, ColorPawn.Rouge, new Pawn()), new Player("Ordinateur", "Ordi1", 1, ColorPawn.Rouge, new Pawn())};
         b.setPlayer(p);
         b.createBoard();
         try {
@@ -61,7 +61,7 @@ public class WallAlreadyHereTest {
     @Test
     public void testVerify4(){
         Board b = new Board();
-        Player[] p = {new Player("Humain", "Nico", 0, Color.Rouge, new Pawn()), new Player("Ordinateur", "Ordi1", 1, Color.Rouge, new Pawn())};
+        Player[] p = {new Player("Humain", "Nico", 0, ColorPawn.Rouge, new Pawn()), new Player("Ordinateur", "Ordi1", 1, ColorPawn.Rouge, new Pawn())};
         b.setPlayer(p);
         b.createBoard();
         try {
@@ -78,7 +78,7 @@ public class WallAlreadyHereTest {
     @Test
     public void testVerify5(){
         Board b = new Board();
-        Player[] p = {new Player("Humain", "Nico", 0, Color.Rouge, new Pawn()), new Player("Ordinateur", "Ordi1", 1, Color.Rouge, new Pawn())};
+        Player[] p = {new Player("Humain", "Nico", 0, ColorPawn.Rouge, new Pawn()), new Player("Ordinateur", "Ordi1", 1, ColorPawn.Rouge, new Pawn())};
         b.setPlayer(p);
         b.createBoard();
         try {
@@ -95,7 +95,7 @@ public class WallAlreadyHereTest {
     @Test
     public void testVerify6(){
         Board b = new Board();
-        Player[] p = {new Player("Humain", "Nico", 0, Color.Rouge, new Pawn()), new Player("Ordinateur", "Ordi1", 1, Color.Rouge, new Pawn())};
+        Player[] p = {new Player("Humain", "Nico", 0, ColorPawn.Rouge, new Pawn()), new Player("Ordinateur", "Ordi1", 1, ColorPawn.Rouge, new Pawn())};
         b.setPlayer(p);
         b.createBoard();
         try {

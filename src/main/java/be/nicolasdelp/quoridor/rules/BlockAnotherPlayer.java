@@ -13,27 +13,24 @@ public class BlockAnotherPlayer implements WallRule, Serializable {
 
     @Override
     public void verify(Board board, Player player, Wall wall, Position position) throws RuleViolated{
-        boolean[] ok1 = new boolean[9]; //Les 9 possiblilités d'arrivée du joueur 1
-        boolean[] ok2 = new boolean[9]; //Les 9 possiblilités d'arrivée du joueur 2
-        for (int i= 0; i < 9; i++){
-            Graph g1 = new Graph(board, board.getPlayers()[1], position, wall.getWallDirection());
-            ok1[i] = g1.pathFinding(board.getPlayers()[0].getPawn().getPosition(), board.getPlayers()[0].getFinishPosition()[i]);
-            Graph g2 = new Graph(board, board.getPlayers()[0], position, wall.getWallDirection());
-            ok2[i] = g2.pathFinding(board.getPlayers()[1].getPawn().getPosition(), board.getPlayers()[1].getFinishPosition()[i]);
-        }
         int res1 = 0;
-        for (int i= 0; i < ok1.length; i++){
-            if(ok1[i] == false){
+        int res2 = 0;
+        for (int i= 0; i < 9; i++){
+            Graph g1 = new Graph(board, board.getPlayers()[1]);
+            g1.setWall(wall.getWallDirection(), position);
+            if(g1.pathFinding(board.getPlayers()[0].getPawn().getPosition(), board.getPlayers()[0].getFinishPosition()[i]) == false){
                 res1++;
             }
-        }
-        int res2 = 0;
-        for (int i= 0; i < ok2.length; i++){
-            if(ok2[i] == false){
+            Graph g2 = new Graph(board, board.getPlayers()[0]);
+            g2.setWall(wall.getWallDirection(), position);
+            if(g2.pathFinding(board.getPlayers()[1].getPawn().getPosition(), board.getPlayers()[1].getFinishPosition()[i]) == false){
                 res2++;
             }
         }
-        if(res1 == 9 || res2 == 9){ //Si il n'y a eu aucun chemin
+        if(res1 == 9){ //Si il n'y a eu aucun chemin
+            throw new RuleViolated(player, position, board, "Vous ne pouvez pas placer de mur la, vous bloquez un joueur !");
+        }
+        if(res2 == 9){ //Si il n'y a eu aucun chemin
             throw new RuleViolated(player, position, board, "Vous ne pouvez pas placer de mur la, vous bloquez un joueur !");
         }
     }

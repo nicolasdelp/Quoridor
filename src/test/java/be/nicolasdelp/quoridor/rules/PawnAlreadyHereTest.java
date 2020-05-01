@@ -10,7 +10,7 @@ public class PawnAlreadyHereTest {
     @Test
     public void testVerify1(){ //A gauche
         Board b = new Board();
-        Player[] p = {new Player("Humain", "Nico", 0, Color.Rouge, new Pawn()), new Player("Ordinateur", "Ordi1", 1, Color.Rouge, new Pawn())};
+        Player[] p = {new Player("Humain", "Nico", 0, ColorPawn.Rouge, new Pawn()), new Player("Ordinateur", "Ordi1", 1, ColorPawn.Rouge, new Pawn())};
         b.setPlayer(p);
         b.createBoard();
         try {
@@ -37,7 +37,7 @@ public class PawnAlreadyHereTest {
     @Test
     public void testVerify2(){ //Au dessus
         Board b = new Board();
-        Player[] p = {new Player("Humain", "Nico", 0, Color.Rouge, new Pawn()), new Player("Ordinateur", "Ordi1", 1, Color.Rouge, new Pawn())};
+        Player[] p = {new Player("Humain", "Nico", 0, ColorPawn.Rouge, new Pawn()), new Player("Ordinateur", "Ordi1", 1, ColorPawn.Rouge, new Pawn())};
         b.setPlayer(p);
         b.createBoard();
         try {
@@ -62,7 +62,7 @@ public class PawnAlreadyHereTest {
     @Test
     public void testVerify3(){ //A droite
         Board b = new Board();
-        Player[] p = {new Player("Humain", "Nico", 0, Color.Rouge, new Pawn()), new Player("Ordinateur", "Ordi1", 1, Color.Rouge, new Pawn())};
+        Player[] p = {new Player("Humain", "Nico", 0, ColorPawn.Rouge, new Pawn()), new Player("Ordinateur", "Ordi1", 1, ColorPawn.Rouge, new Pawn())};
         b.setPlayer(p);
         b.createBoard();
         try {
@@ -85,7 +85,7 @@ public class PawnAlreadyHereTest {
     @Test
     public void testVerify4(){ //En dessous
         Board b = new Board();
-        Player[] p = {new Player("Humain", "Nico", 0, Color.Rouge, new Pawn()), new Player("Ordinateur", "Ordi1", 1, Color.Rouge, new Pawn())};
+        Player[] p = {new Player("Humain", "Nico", 0, ColorPawn.Rouge, new Pawn()), new Player("Ordinateur", "Ordi1", 1, ColorPawn.Rouge, new Pawn())};
         b.setPlayer(p);
         b.createBoard();
         try {
@@ -110,7 +110,7 @@ public class PawnAlreadyHereTest {
     @Test
     public void testVerify5(){ //En haut à droite
         Board b = new Board();
-        Player[] p = {new Player("Humain", "Nico", 0, Color.Rouge, new Pawn()), new Player("Ordinateur", "Ordi1", 1, Color.Rouge, new Pawn())};
+        Player[] p = {new Player("Humain", "Nico", 0, ColorPawn.Rouge, new Pawn()), new Player("Ordinateur", "Ordi1", 1, ColorPawn.Rouge, new Pawn())};
         b.setPlayer(p);
         b.createBoard();
         try {
@@ -134,7 +134,7 @@ public class PawnAlreadyHereTest {
     @Test
     public void testVerify6(){ //En bas à droite
         Board b = new Board();
-        Player[] p = {new Player("Humain", "Nico", 0, Color.Rouge, new Pawn()), new Player("Ordinateur", "Ordi1", 1, Color.Rouge, new Pawn())};
+        Player[] p = {new Player("Humain", "Nico", 0, ColorPawn.Rouge, new Pawn()), new Player("Ordinateur", "Ordi1", 1, ColorPawn.Rouge, new Pawn())};
         b.setPlayer(p);
         b.createBoard();
         try {
@@ -158,7 +158,7 @@ public class PawnAlreadyHereTest {
     @Test
     public void testVerify7(){ //En haut à gauche
         Board b = new Board();
-        Player[] p = {new Player("Humain", "Nico", 0, Color.Rouge, new Pawn()), new Player("Ordinateur", "Ordi1", 1, Color.Rouge, new Pawn())};
+        Player[] p = {new Player("Humain", "Nico", 0, ColorPawn.Rouge, new Pawn()), new Player("Ordinateur", "Ordi1", 1, ColorPawn.Rouge, new Pawn())};
         b.setPlayer(p);
         b.createBoard();
         try {
@@ -182,7 +182,7 @@ public class PawnAlreadyHereTest {
     @Test
     public void testVerify8(){ //En bas à gauche
         Board b = new Board();
-        Player[] p = {new Player("Humain", "Nico", 0, Color.Rouge, new Pawn()), new Player("Ordinateur", "Ordi1", 1, Color.Rouge, new Pawn())};
+        Player[] p = {new Player("Humain", "Nico", 0, ColorPawn.Rouge, new Pawn()), new Player("Ordinateur", "Ordi1", 1, ColorPawn.Rouge, new Pawn())};
         b.setPlayer(p);
         b.createBoard();
         try {

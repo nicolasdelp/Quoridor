@@ -1,5 +1,6 @@
 package be.nicolasdelp.quoridor.gui;
 
+import java.io.File;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -42,7 +43,7 @@ public class FXMLControllerMenuPlayers implements Initializable {
 
     private final ObservableList<String> typeOfPlayer = FXCollections.observableArrayList("Humain", "Ordinateur");
     private final ObservableList<String> colorOfPlayer = FXCollections.observableArrayList("Vert", "Rouge", "Jaune", "Bleu");
-    private final ObservableList<String> levelOfIA = FXCollections.observableArrayList("Facile", "Moyen", "Difficile");
+    private final ObservableList<String> levelOfIA = FXCollections.observableArrayList("Facile", "Difficile");
 
     private static Board board; //Le plateau
     /**
@@ -144,21 +145,21 @@ public class FXMLControllerMenuPlayers implements Initializable {
     }
     
     /**
-     * Retourne un objet Color selon la couleur choisit dans la ChoiceBox
+     * Retourne un objet ColorPawn selon la couleur choisit dans la ChoiceBox
      *
      */
-    private Color getColor(ChoiceBox<String> x){
+    private ColorPawn getColorPawn(ChoiceBox<String> x){
         if(x.getValue() == "Vert"){
-            return Color.Vert;
+            return ColorPawn.Vert;
         }
         if(x.getValue() == "Bleu"){
-            return Color.Bleu;
+            return ColorPawn.Bleu;
         }
         if(x.getValue() == "Jaune"){
-            return Color.Jaune;
+            return ColorPawn.Jaune;
         }
         if(x.getValue() == "Rouge"){
-            return Color.Rouge;
+            return ColorPawn.Rouge;
         }
         else {
             return null;
@@ -175,9 +176,13 @@ public class FXMLControllerMenuPlayers implements Initializable {
 
     @FXML
     void startGameClicked(MouseEvent event) {
+        File f = new File("board.dat");
+        if(f.exists()){
+            f.delete();
+        }
         FXMLControllerMenuPlayers.board = new Board();
-        Player[] p = {new Player(typePlayer12.getValue(), pseudoOfPlayer12.getText(), 0, getColor(colorPlayer12), new Pawn()), 
-                        new Player(typePlayer22.getValue(), pseudoOfPlayer22.getText(), 1, getColor(colorPlayer22), new Pawn())};
+        Player[] p = {new Player(typePlayer12.getValue(), pseudoOfPlayer12.getText(), 0, getColorPawn(colorPlayer12), new Pawn()), 
+                        new Player(typePlayer22.getValue(), pseudoOfPlayer22.getText(), 1, getColorPawn(colorPlayer22), new Pawn())};
         if(typePlayer12.getValue() == "Ordinateur"){
             p[0].setIALevel(levelIAPlayer12.getValue());
         }else if(typePlayer22.getValue() == "Ordinateur"){

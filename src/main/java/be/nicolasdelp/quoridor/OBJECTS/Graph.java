@@ -12,20 +12,28 @@ public class Graph {
     private Board board;
     private Position wallPosition;
     private WallDirection wallDirection;
-    private Node[][] Nodes = new Node[17][17]; //plateau quoridor
+    public Node[][] Nodes = new Node[17][17]; //plateau quoridor
     private ArrayList<Link> Links = new ArrayList<Link>();
     private Node currentNode = new Node(new Position(0, 0));
-    private ArrayList<Node> path = new ArrayList<Node>();
+    // private ArrayList<Node> path;
+    private ArrayList<Node> closeList = new ArrayList<Node>(); //Liste des noeuds utilisés pour arriver à à destination
 
     /**
      * Constructeur
      * 
      */
-    public Graph(Board board, Player otherPlayer, Position position, WallDirection direction){
+    public Graph(Board board, Player otherPlayer){
         this.board = board;
-        this.wallPosition = position;
-        this.wallDirection = direction;
         setNodes(otherPlayer);
+    }
+
+    public void setWall(WallDirection direction, Position position){
+        this.wallDirection = direction;
+        this.wallPosition = position;
+        makeLinks();
+    }
+
+    public void pathForIA(){
         makeLinks();
     }
 
@@ -54,62 +62,64 @@ public class Graph {
         for(int j=0; j<17; j+=2){ //X    
             for(int i=1; i<17; i+=2){ //Y
                 if(this.board.getBoardBoxes()[j][i].getisOccuped() == false){ //Si il n'y a pas de mur horizontal
-                    if(this.Nodes[j][i-1] != null && this.Nodes[j][i+1] != null){
+                    if(this.Nodes[j][i-1] != null && this.Nodes[j][i+1] != null){ //Si il n'y a pas de pion dans les noeuds
                         this.Links.add(new Link(this.Nodes[j][i-1], this.Nodes[j][i+1])); //Lie 2 noeuds
                         this.Links.add(new Link(this.Nodes[j][i+1], this.Nodes[j][i-1])); //Lie 2 noeuds
                     }
                 }
             }
         }
-        for(int i=1; i<17; i+=2){ //X
-            for(int j=0; j<17; j+=2){ //Y    
-                if(this.board.getBoardBoxes()[i][j].getisOccuped() == false){ //Si il n'y a pas de mur vertical
-                    if(this.Nodes[i-1][j] != null && this.Nodes[i+1][j] != null){
-                        this.Links.add(new Link(this.Nodes[i-1][j], this.Nodes[i+1][j])); //Lie 2 noeuds
-                        this.Links.add(new Link(this.Nodes[i+1][j], this.Nodes[i-1][j])); //Lie 2 noeuds
+        for(int j=1; j<17; j+=2){ //X  
+            for(int i=0; i<17; i+=2){ //Y 
+                if(this.board.getBoardBoxes()[j][i].getisOccuped() == false){ //Si il n'y a pas de mur vertical
+                    if(this.Nodes[j-1][i] != null && this.Nodes[j+1][i] != null){ //Si il n'y a pas de pion dans les noeuds
+                        this.Links.add(new Link(this.Nodes[j-1][i], this.Nodes[j+1][i])); //Lie 2 noeuds
+                        this.Links.add(new Link(this.Nodes[j+1][i], this.Nodes[j-1][i])); //Lie 2 noeuds
                     }
                 }
             }
         }
         if(this.wallDirection == WallDirection.Horizontal){ //On supprime les lien entre les noeuds de part et d'autre du mur
             for(int i=0; i<this.Links.size(); i++){
-                if(this.Links.get(i).getFromNode() == this.Nodes[this.wallPosition.getX()+1][this.wallPosition.getY()-1] 
-                    && this.Links.get(i).getToNode() == this.Nodes[this.wallPosition.getX()+1][this.wallPosition.getY()+1]){
-                        this.Links.remove(i);
+                if(this.Links.get(i).getFromNode() == this.Nodes[this.wallPosition.getX()+1][this.wallPosition.getY()-1] && this.Links.get(i).getToNode() == this.Nodes[this.wallPosition.getX()+1][this.wallPosition.getY()+1]){
+                    this.Links.remove(i);
                 }
-                if(this.Links.get(i).getFromNode() == this.Nodes[this.wallPosition.getX()+1][this.wallPosition.getY()+1] 
-                    && this.Links.get(i).getToNode() == this.Nodes[this.wallPosition.getX()+1][this.wallPosition.getY()-1]){
-                        this.Links.remove(i);
+            }
+            for(int i=0; i<this.Links.size(); i++){
+                if(this.Links.get(i).getFromNode() == this.Nodes[this.wallPosition.getX()+1][this.wallPosition.getY()+1] && this.Links.get(i).getToNode() == this.Nodes[this.wallPosition.getX()+1][this.wallPosition.getY()-1]){
+                    this.Links.remove(i);
                 }
-
-                if(this.Links.get(i).getFromNode() == this.Nodes[this.wallPosition.getX()-1][this.wallPosition.getY()-1] 
-                    && this.Links.get(i).getToNode() == this.Nodes[this.wallPosition.getX()-1][this.wallPosition.getY()+1]){
-                        this.Links.remove(i);
+            }
+            for(int i=0; i<this.Links.size(); i++){
+                if(this.Links.get(i).getFromNode() == this.Nodes[this.wallPosition.getX()-1][this.wallPosition.getY()-1] && this.Links.get(i).getToNode() == this.Nodes[this.wallPosition.getX()-1][this.wallPosition.getY()+1]){
+                    this.Links.remove(i);
                 }
-                if(this.Links.get(i).getFromNode() == this.Nodes[this.wallPosition.getX()-1][this.wallPosition.getY()+1] 
-                    && this.Links.get(i).getToNode() == this.Nodes[this.wallPosition.getX()-1][this.wallPosition.getY()-1]){
-                        this.Links.remove(i);
+            }
+            for(int i=0; i<this.Links.size(); i++){
+                if(this.Links.get(i).getFromNode() == this.Nodes[this.wallPosition.getX()-1][this.wallPosition.getY()+1] && this.Links.get(i).getToNode() == this.Nodes[this.wallPosition.getX()-1][this.wallPosition.getY()-1]){
+                    this.Links.remove(i);
                 }
             }
         }
         if(this.wallDirection == WallDirection.Vertical){
             for(int i=0; i<this.Links.size(); i++){
-                if(this.Links.get(i).getFromNode() == this.Nodes[this.wallPosition.getX()-1][this.wallPosition.getY()+1] 
-                    && this.Links.get(i).getToNode() == this.Nodes[this.wallPosition.getX()+1][this.wallPosition.getY()+1]){
-                        this.Links.remove(i);
+                if(this.Links.get(i).getFromNode() == this.Nodes[this.wallPosition.getX()-1][this.wallPosition.getY()+1] && this.Links.get(i).getToNode() == this.Nodes[this.wallPosition.getX()+1][this.wallPosition.getY()+1]){
+                    this.Links.remove(i);
                 }
-                if(this.Links.get(i).getFromNode() == this.Nodes[this.wallPosition.getX()+1][this.wallPosition.getY()+1] 
-                    && this.Links.get(i).getToNode() == this.Nodes[this.wallPosition.getX()-1][this.wallPosition.getY()+1]){
-                        this.Links.remove(i);
+            }
+            for(int i=0; i<this.Links.size(); i++){
+                if(this.Links.get(i).getFromNode() == this.Nodes[this.wallPosition.getX()+1][this.wallPosition.getY()+1] && this.Links.get(i).getToNode() == this.Nodes[this.wallPosition.getX()-1][this.wallPosition.getY()+1]){
+                    this.Links.remove(i);
                 }
-
-                if(this.Links.get(i).getFromNode() == this.Nodes[this.wallPosition.getX()-1][this.wallPosition.getY()-1] 
-                    && this.Links.get(i).getToNode() == this.Nodes[this.wallPosition.getX()+1][this.wallPosition.getY()-1]){
-                        this.Links.remove(i);
+            }
+            for(int i=0; i<this.Links.size(); i++){
+                if(this.Links.get(i).getFromNode() == this.Nodes[this.wallPosition.getX()-1][this.wallPosition.getY()-1] && this.Links.get(i).getToNode() == this.Nodes[this.wallPosition.getX()+1][this.wallPosition.getY()]){
+                    this.Links.remove(i);
                 }
-                if(this.Links.get(i).getFromNode() == this.Nodes[this.wallPosition.getX()+1][this.wallPosition.getY()-1] 
-                    && this.Links.get(i).getToNode() == this.Nodes[this.wallPosition.getX()-1][this.wallPosition.getY()-1]){
-                        this.Links.remove(i);
+            }
+            for(int i=0; i<this.Links.size(); i++){
+                if(this.Links.get(i).getFromNode() == this.Nodes[this.wallPosition.getX()+1][this.wallPosition.getY()-1] && this.Links.get(i).getToNode() == this.Nodes[this.wallPosition.getX()-1][this.wallPosition.getY()-1]){
+                    this.Links.remove(i);
                 }
             }
         }
@@ -127,7 +137,6 @@ public class Graph {
         Node minimum;
         boolean go = true;
         ArrayList<Node> openList = new ArrayList<Node>(); //Liste des noeuds ouvert
-        ArrayList<Node> closeList = new ArrayList<Node>(); //Liste des noeuds utilisés pour arriver à à destination
 
         openList.add(this.currentNode); //On ajoute à l'openList le noeud actuel
         closeList.add(this.currentNode); //On ajoute à la closeList le noeud de départ
@@ -201,6 +210,7 @@ public class Graph {
             if(openList.size() > 0){ //Si il y a toujours un noeud dans l'openList
                 minimum = openList.get(0);
             } else {
+                System.out.println("Aucun chemin trouvé");
                 return false; //Si il n'y a plus de posibilitées c'est qu'il ne peut pas y arriver
             }
             for(int i=1; i<openList.size(); i++){
@@ -215,12 +225,14 @@ public class Graph {
             }
             closeList.add(minimum); //On ajoute le noeud à la closeList
             this.currentNode = closeList.get(closeList.size()-1); //Le noeud courrant devient le minimum
+
             if(currentNode.getNodePosition().getX() ==  target.getX() && currentNode.getNodePosition().getY() == target.getY()){ //Si on est arrivée à destination
                 go = false; 
                 for(int i=1; i<closeList.size(); i++){
                     System.out.println("(" + closeList.get(i).getNodePosition().getX() + "," + closeList.get(i).getNodePosition().getY() + ")");
                 }
-                this.path = closeList;
+                closeList.remove(0);
+                System.out.println("----------------------");
                 return true;
             }
         }
@@ -240,6 +252,6 @@ public class Graph {
     }
 
     public ArrayList<Node> getPath(){
-        return path;
+        return this.closeList;
     }
 }

@@ -10,7 +10,7 @@ public class BlockAnotherPlayerTest {
     @Test
     public void testVerify1(){
         Board b = new Board();
-        Player[] p = {new Player("Humain", "Nico", 0, Color.Rouge, new Pawn()), new Player("Ordinateur", "Ordi1", 1, Color.Rouge, new Pawn())};
+        Player[] p = {new Player("Humain", "Nico", 0, ColorPawn.Rouge, new Pawn()), new Player("Ordinateur", "Ordi1", 1, ColorPawn.Rouge, new Pawn())};
         b.setPlayer(p);
         b.createBoard();
         try {
