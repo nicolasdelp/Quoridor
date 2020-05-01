@@ -480,11 +480,8 @@ public class FXMLControllerBoard implements Initializable{
         }
     }
 
-    private ArrayList<Position> Positions = new ArrayList<Position>(); //Position déjà visité
-
     public void IAEasy(Player player){ //Pose pas de mur
-        // On cree et initialise les positions que l'on va essayer.
-        ArrayList<Position> positionsToTry = new ArrayList<Position>();
+        ArrayList<Position> positionsToTry = new ArrayList<Position>(); // On cree et initialise les positions que l'on va essayer.
         for(int i = player.getPawn().getPosition().getX()-2; i<=player.getPawn().getPosition().getX()+2; i+=2){
             for(int j = player.getPawn().getPosition().getY()-2; j<=player.getPawn().getPosition().getY()+2; j+=2){
                 if (!(i == player.getPawn().getPosition().getX() && j == player.getPawn().getPosition().getY())){ //On ne peut pas se déplacer sur la position actuelle du pion
@@ -492,12 +489,11 @@ public class FXMLControllerBoard implements Initializable{
                 }
             }
         }
-        // On melange les positions disponibles.
-        Collections.shuffle(positionsToTry);
+        Collections.shuffle(positionsToTry); // On melange les positions disponibles.
         
         boolean continueToTry = true;
         while(continueToTry){
-            Position currentPositionToTry = positionsToTry.remove(0);
+            Position currentPositionToTry = positionsToTry.remove(0); //Mets dans la variable avant de la supprimer
             try{
                 continueToTry = false;
                 pawn(currentPositionToTry.getX(), currentPositionToTry.getY());
@@ -507,22 +503,47 @@ public class FXMLControllerBoard implements Initializable{
         }
     }
 
+    private ArrayList<Position> Positions = new ArrayList<Position>(); //Position déjà visité
+
     public void IAHard(Player player){ //Pose des murs
         Graph g = new Graph(this.board, this.board.getPlayers()[0]);
-        Positions.add(new Position(player.getPawn().getPosition().getX(),player.getPawn().getPosition().getY()));
-        if(Positions.size() > 3){
-            Positions.remove(0);
-        }
-        for(int i = 0; i < Positions.size(); i++){
-            g.Nodes[Positions.get(i).getX()][Positions.get(i).getY()].setVisited(true);
-        }
+        g.pathForIA();
+
+        int[] allPathSize = new int[9];
         for(int i = 0; i < player.getFinishPosition().length; i++){
-            g.pathForIA();
             if(g.pathFinding(player.getPawn().getPosition(), player.getFinishPosition()[i])){
                 g.pathFinding(player.getPawn().getPosition(), player.getFinishPosition()[i]);
-                handleClickOnBox(g.getPath().get(1).getNodePosition().getX(), g.getPath().get(1).getNodePosition().getY());
-                break;
+                allPathSize[i] = g.getPath().size();
+            }
+            else{
+                allPathSize[i] = -1;
             }
         }
+        int res = 100;
+        for(int i = 0; i < allPathSize.length; i++){
+            if(allPathSize[i] < res){
+                res = i;
+            }
+        }
+
+        g.pathFinding(player.getPawn().getPosition(), player.getFinishPosition()[res]);
+        handleClickOnBox(g.getPath().get(0).getNodePosition().getX(), g.getPath().get(0).getNodePosition().getY());
+        
+        // if(Positions.size() > 3){
+        //     Positions.remove(0);
+        // }
+        // for(int i = 0; i < Positions.size(); i++){
+        //     g.Nodes[Positions.get(i).getX()][Positions.get(i).getY()].setVisited(true);
+        // }
+
+
+        // for(int i = 0; i < player.getFinishPosition().length; i++){
+        //     g.pathForIA();
+        //     if(g.pathFinding(player.getPawn().getPosition(), player.getFinishPosition()[i])){
+        //         g.pathFinding(player.getPawn().getPosition(), player.getFinishPosition()[i]);
+        //         handleClickOnBox(g.getPath().get(0).getNodePosition().getX(), g.getPath().get(0).getNodePosition().getY());
+        //         break;
+        //     }
+        // }
     }
 }

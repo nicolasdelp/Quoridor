@@ -113,7 +113,7 @@ public class Graph {
                 }
             }
             for(int i=0; i<this.Links.size(); i++){
-                if(this.Links.get(i).getFromNode() == this.Nodes[this.wallPosition.getX()-1][this.wallPosition.getY()-1] && this.Links.get(i).getToNode() == this.Nodes[this.wallPosition.getX()+1][this.wallPosition.getY()]){
+                if(this.Links.get(i).getFromNode() == this.Nodes[this.wallPosition.getX()-1][this.wallPosition.getY()-1] && this.Links.get(i).getToNode() == this.Nodes[this.wallPosition.getX()+1][this.wallPosition.getY()-1]){
                     this.Links.remove(i);
                 }
             }
@@ -139,7 +139,7 @@ public class Graph {
         ArrayList<Node> openList = new ArrayList<Node>(); //Liste des noeuds ouvert
 
         openList.add(this.currentNode); //On ajoute à l'openList le noeud actuel
-        closeList.add(this.currentNode); //On ajoute à la closeList le noeud de départ
+        //closeList.add(this.currentNode); //On ajoute à la closeList le noeud de départ
         this.currentNode.setVisited(true); 
 
         while(go){
@@ -148,58 +148,61 @@ public class Graph {
                     if(this.Nodes[i][j] != null){
                         if((this.Nodes[i][j].getNodePosition().getX() == this.currentNode.getNodePosition().getX()+2) && (this.Nodes[i][j].getNodePosition().getY() == this.currentNode.getNodePosition().getY())){ //Droite
                             for(int x=0; x<this.Links.size(); x++){
-                                if(this.Links.get(x).getFromNode() == this.currentNode && this.Links.get(x).getToNode() == Nodes[i][j]){ //Si il y a un lien entre les deux noeuds
-                                    if(Nodes[i][j].isVisited() == false){
-                                        Nodes[i][j].setG(1); //On lui donne un coup
-                                        Nodes[i][j].setH(getNodeDistance(Nodes[i][j].getNodePosition(), target)); //On lui donne sa distance par rapport à l'arrivée
-                                        Nodes[i][j].setParent(this.currentNode); //On lui assigne son parent
-                                        Nodes[i][j].setVisited(true);
-                                        openList.add(Nodes[i][j]); //On l'ajoute à l'openList
+                                if(this.Links.get(x).getFromNode() == this.currentNode && this.Links.get(x).getToNode() == this.Nodes[i][j]){ //Si il y a un lien entre les deux noeuds
+                                    if(this.Nodes[i][j].isVisited() == false){
+                                        this.Nodes[i][j].setParent(this.currentNode); //On lui assigne son parent
+                                        this.Nodes[i][j].setG(this.Nodes[i][j].getParent().getG()+1); //On lui donne le coup
+                                        this.Nodes[i][j].setG(1); //On lui donne un coup
+                                        this.Nodes[i][j].setH(getNodeDistance(this.Nodes[i][j].getNodePosition(), target)); //On lui donne sa distance par rapport à l'arrivée
+                                        this.Nodes[i][j].setVisited(true);
+                                        openList.add(this.Nodes[i][j]); //On l'ajoute à l'openList
                                     }
                                 }
                             }
                         }
                     }
                     if(this.Nodes[i][j] != null){
-                        if((Nodes[i][j].getNodePosition().getX() == this.currentNode.getNodePosition().getX()-2) && (Nodes[i][j].getNodePosition().getY() == this.currentNode.getNodePosition().getY())){ //Gauche
+                        if((this.Nodes[i][j].getNodePosition().getX() == this.currentNode.getNodePosition().getX()-2) && (this.Nodes[i][j].getNodePosition().getY() == this.currentNode.getNodePosition().getY())){ //Gauche
                             for(int x=0; x<this.Links.size(); x++){
-                                if(this.Links.get(x).getFromNode() == this.currentNode && this.Links.get(x).getToNode() == Nodes[i][j]){ //Si il y a un lien entre les deux noeuds
-                                    if(Nodes[i][j].isVisited() == false){
-                                        Nodes[i][j].setG(1); //On lui donne un coup
-                                        Nodes[i][j].setH(getNodeDistance(Nodes[i][j].getNodePosition(), target)); //On lui donne sa distance par rapport à l'arrivée
-                                        Nodes[i][j].setParent(this.currentNode); //On lui assigne son parent
-                                        Nodes[i][j].setVisited(true);
-                                        openList.add(Nodes[i][j]); //On l'ajoute à l'openList
+                                if(this.Links.get(x).getFromNode() == this.currentNode && this.Links.get(x).getToNode() == this.Nodes[i][j]){ //Si il y a un lien entre les deux noeuds
+                                    if(this.Nodes[i][j].isVisited() == false){
+                                        this.Nodes[i][j].setParent(this.currentNode); //On lui assigne son parent
+                                        this.Nodes[i][j].setG(this.Nodes[i][j].getParent().getG()+1); //On lui donne un coup
+                                        this.Nodes[i][j].setG(1); //On lui donne un coup
+                                        this.Nodes[i][j].setH(getNodeDistance(this.Nodes[i][j].getNodePosition(), target)); //On lui donne sa distance par rapport à l'arrivée
+                                        this.Nodes[i][j].setVisited(true);
+                                        openList.add(this.Nodes[i][j]); //On l'ajoute à l'openList
                                     }
                                 }
                             }
                         }
                     }
                     if(this.Nodes[i][j] != null){
-                        if((Nodes[i][j].getNodePosition().getX() == this.currentNode.getNodePosition().getX()) && (Nodes[i][j].getNodePosition().getY() == this.currentNode.getNodePosition().getY()-2)){ //Haut
+                        if((this.Nodes[i][j].getNodePosition().getX() == this.currentNode.getNodePosition().getX()) && (this.Nodes[i][j].getNodePosition().getY() == this.currentNode.getNodePosition().getY()-2)){ //Haut
                             for(int x=0; x<this.Links.size(); x++){
-                                if(this.Links.get(x).getFromNode() == this.currentNode && this.Links.get(x).getToNode() == Nodes[i][j]){ //Si il y a un lien entre les deux noeuds
-                                    if(Nodes[i][j].isVisited() == false){
-                                        Nodes[i][j].setG(1); //On lui donne un coup
-                                        Nodes[i][j].setH(getNodeDistance(Nodes[i][j].getNodePosition(), target)); //On lui donne sa distance par rapport à l'arrivée
-                                        Nodes[i][j].setParent(this.currentNode); //On lui assigne son parent
-                                        Nodes[i][j].setVisited(true);
-                                        openList.add(Nodes[i][j]); //On l'ajoute à l'openList
+                                if(this.Links.get(x).getFromNode() == this.currentNode && this.Links.get(x).getToNode() == this.Nodes[i][j]){ //Si il y a un lien entre les deux noeuds
+                                    if(this.Nodes[i][j].isVisited() == false){
+                                        this.Nodes[i][j].setParent(this.currentNode); //On lui assigne son parent
+                                        this.Nodes[i][j].setG(this.Nodes[i][j].getParent().getG()+1); //On lui donne un coup
+                                        this.Nodes[i][j].setG(1); //On lui donne un coup
+                                        this.Nodes[i][j].setH(getNodeDistance(this.Nodes[i][j].getNodePosition(), target)); //On lui donne sa distance par rapport à l'arrivée
+                                        this.Nodes[i][j].setVisited(true);
+                                        openList.add(this.Nodes[i][j]); //On l'ajoute à l'openList
                                     }
                                 }
                             }
                         }
                     }
                     if(this.Nodes[i][j] != null){
-                        if((Nodes[i][j].getNodePosition().getX() == this.currentNode.getNodePosition().getX()) && (Nodes[i][j].getNodePosition().getY() == this.currentNode.getNodePosition().getY()+2)){ //Bas
+                        if((this.Nodes[i][j].getNodePosition().getX() == this.currentNode.getNodePosition().getX()) && (this.Nodes[i][j].getNodePosition().getY() == this.currentNode.getNodePosition().getY()+2)){ //Bas
                             for(int x=0; x<this.Links.size(); x++){
-                                if(this.Links.get(x).getFromNode() == this.currentNode && this.Links.get(x).getToNode() == Nodes[i][j]){ //Si il y a un lien entre les deux noeuds
-                                    if(Nodes[i][j].isVisited() == false){
-                                        Nodes[i][j].setG(1); //On lui donne un coup
-                                        Nodes[i][j].setH(getNodeDistance(Nodes[i][j].getNodePosition(), target)); //On lui donne sa distance par rapport à l'arrivée
-                                        Nodes[i][j].setParent(this.currentNode); //On lui assigne son parent
-                                        Nodes[i][j].setVisited(true);
-                                        openList.add(Nodes[i][j]); //On l'ajoute à l'openList
+                                if(this.Links.get(x).getFromNode() == this.currentNode && this.Links.get(x).getToNode() == this.Nodes[i][j]){ //Si il y a un lien entre les deux noeuds
+                                    if(this.Nodes[i][j].isVisited() == false){
+                                        this.Nodes[i][j].setParent(this.currentNode); //On lui assigne son parent
+                                        this.Nodes[i][j].setG(this.Nodes[i][j].getParent().getG()+1); //On lui donne un coup
+                                        this.Nodes[i][j].setH(getNodeDistance(this.Nodes[i][j].getNodePosition(), target)); //On lui donne sa distance par rapport à l'arrivée
+                                        this.Nodes[i][j].setVisited(true);
+                                        openList.add(this.Nodes[i][j]); //On l'ajoute à l'openList
                                     }
                                 }
                             }
@@ -214,7 +217,7 @@ public class Graph {
                 return false; //Si il n'y a plus de posibilitées c'est qu'il ne peut pas y arriver
             }
             for(int i=1; i<openList.size(); i++){
-                if(minimum.getF() >= openList.get(i).getF()){ //On récupère le F minimum
+                if(minimum.getF() > openList.get(i).getF()){ //On récupère le F minimum
                     minimum = openList.get(i);
                 }
             }
@@ -227,11 +230,11 @@ public class Graph {
             this.currentNode = closeList.get(closeList.size()-1); //Le noeud courrant devient le minimum
 
             if(currentNode.getNodePosition().getX() ==  target.getX() && currentNode.getNodePosition().getY() == target.getY()){ //Si on est arrivée à destination
-                go = false; 
+                go = false;
                 for(int i=1; i<closeList.size(); i++){
                     System.out.println("(" + closeList.get(i).getNodePosition().getX() + "," + closeList.get(i).getNodePosition().getY() + ")");
                 }
-                closeList.remove(0);
+                closeList.remove(0); //On enlève le noeud de départ
                 System.out.println("----------------------");
                 return true;
             }
@@ -253,5 +256,24 @@ public class Graph {
 
     public ArrayList<Node> getPath(){
         return this.closeList;
+    }
+
+    public static void main(String[] args){
+        Board b = new Board();
+        Player[] p = {new Player("Humain", "Nico", 0, ColorPawn.Rouge, new Pawn()), new Player("Ordinateur", "Ordi1", 1, ColorPawn.Rouge, new Pawn())};
+        b.setPlayer(p);
+        b.createBoard();
+        Graph g = new Graph(b, b.getPlayers()[1]);
+        g.setWall(WallDirection.Vertical, new Position(13,7));
+        for(int i=0; i<g.Nodes.length; i++){
+            for(int j=0; j<g.Nodes.length; j++){
+                if(g.Nodes[i][j] != null){
+                    System.out.println("(" + g.Nodes[i][j].getNodePosition().getX() + "," + g.Nodes[i][j].getNodePosition().getY() + ")");
+                }
+            }
+        }
+        for(int i=0; i<g.Links.size(); i++){
+            System.out.println("(" + g.Links.get(i).getFromNode().getNodePosition().getX() + "," + g.Links.get(i).getFromNode().getNodePosition().getY() + ")  -->  (" + g.Links.get(i).getToNode().getNodePosition().getX() + "," + g.Links.get(i).getToNode().getNodePosition().getY() + ")");
+        }
     }
 }

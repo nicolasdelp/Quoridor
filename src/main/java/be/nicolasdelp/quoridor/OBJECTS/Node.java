@@ -59,6 +59,15 @@ public class Node {
     }
 
     /**
+     * Accesseur du coût de déplacement
+     * 
+     * @param g un entier
+     */
+    public int getG() {
+        return this.G;
+    }
+
+    /**
      * Mutateur de la distance de la case d'arrivée
      * 
      * @param h un entier

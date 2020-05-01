@@ -96,18 +96,18 @@
                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
               </rowConstraints>
             </GridPane>
-            <Label fx:id="joueur1" layoutX="63.0" layoutY="295.0" text="Pseudo">
+            <Label fx:id="joueur1" layoutX="92.0" layoutY="294.0" text="Pseudo" textAlignment="CENTER">
                <font>
                   <Font size="20.0" />
                </font>
             </Label>
-            <Label fx:id="joueur2" layoutX="871.0" layoutY="294.0" text="Pseudo">
+            <Label fx:id="joueur2" layoutX="872.0" layoutY="294.0" text="Pseudo" textAlignment="JUSTIFY">
                <font>
                   <Font size="20.0" />
                </font>
             </Label>
-            <CheckBox fx:id="Horizontal" layoutX="457.0" layoutY="890.0" mnemonicParsing="false" onAction="#HorizontalCheckboxCheck" selected="true" text="Horizontal" />
-            <CheckBox fx:id="Vertical" layoutX="560.0" layoutY="890.0" mnemonicParsing="false" onAction="#VerticalCheckboxCheck" text="Vertical" />
+            <CheckBox fx:id="Horizontal" layoutX="305.0" layoutY="56.0" mnemonicParsing="false" onAction="#HorizontalCheckboxCheck" selected="true" text="Horizontal" />
+            <CheckBox fx:id="Vertical" layoutX="305.0" layoutY="121.0" mnemonicParsing="false" onAction="#VerticalCheckboxCheck" text="Vertical" />
             <Button fx:id="backToMenu" layoutX="466.0" layoutY="109.0" mnemonicParsing="false" onAction="#backToMenuClicked" prefHeight="41.0" prefWidth="145.0" styleClass="buttonMenu" stylesheets="@../css/quoridorMenu.css" text="Retour au menu" />
          </children>
       </AnchorPane>
