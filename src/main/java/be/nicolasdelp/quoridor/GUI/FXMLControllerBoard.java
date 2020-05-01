@@ -524,23 +524,5 @@ public class FXMLControllerBoard implements Initializable{
                 break;
             }
         }
-        
-        // try {
-        //     pawn(player.getPawn().getPosition().getX()+2, player.getPawn().getPosition().getY());
-        // } catch (Exception e1) {
-        //     try {
-        //         pawn(player.getPawn().getPosition().getX(), player.getPawn().getPosition().getY()+2);
-        //     } catch (Exception e2) {
-        //         try {
-        //             pawn(player.getPawn().getPosition().getX(), player.getPawn().getPosition().getY()-2);
-        //         } catch (Exception e3) {
-        //             try {
-        //                 pawn(player.getPawn().getPosition().getX()-2, player.getPawn().getPosition().getY());
-        //             } catch (Exception e4) {
-                        
-        //             }
-        //         }
-        //     }
-        // }
     }
 }
