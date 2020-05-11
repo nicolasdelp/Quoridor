@@ -8,7 +8,7 @@
    <children>
       <AnchorPane prefHeight="400.0" prefWidth="650.0">
          <children>
-            <Button fx:id="resumeButton" layoutX="203.0" layoutY="160.0" mnemonicParsing="false" onMouseClicked="#resumeButtonClicked" prefHeight="40.0" prefWidth="245.0" styleClass="buttonMenu" stylesheets="@../css/quoridorMenu.css" text="REPRENDRE UNE PARTIE" visible="false" />
+            <Button fx:id="resumeButton" layoutX="203.0" layoutY="160.0" mnemonicParsing="false" onMouseClicked="#resumeButtonClicked" prefHeight="40.0" prefWidth="245.0" styleClass="buttonMenu" stylesheets="@../css/quoridorMenu.css" text="REPRENDRE LA PARTIE" visible="false" />
             <Button fx:id="newPartyButton" layoutX="203.0" layoutY="229.0" mnemonicParsing="false" onMouseClicked="#newPartyButtonClicked" prefHeight="40.0" prefWidth="245.0" styleClass="buttonMenu" stylesheets="@../css/quoridorMenu.css" text="NOUVELLE PARTIE" />
             <Button fx:id="creditsButton" layoutX="203.0" layoutY="300.0" mnemonicParsing="false" onMouseClicked="#creditsButtonClicked" prefHeight="40.0" prefWidth="245.0" styleClass="buttonMenu" stylesheets="@../css/quoridorMenu.css" text="CREDITS" />
          </children>
