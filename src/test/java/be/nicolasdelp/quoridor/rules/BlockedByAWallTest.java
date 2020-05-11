@@ -14,15 +14,15 @@ public class BlockedByAWallTest {
         b.setPlayer(p);
         b.createBoard();
         try {
-            b.movePawnOnBoard(b.players[0], new Position(2, 8));
-            b.setWallOnBoard(b.players[0], new Wall(), WallDirection.Vertical, new Position(1, 7));
-            b.setWallOnBoard(b.players[0], new Wall(), WallDirection.Vertical, new Position(3, 7));
+            b.movePawnOnBoard(b.getPlayers()[0], new Position(2, 8));
+            b.setWallOnBoard(b.getPlayers()[0], new Wall(), WallDirection.Vertical, new Position(1, 7));
+            b.setWallOnBoard(b.getPlayers()[0], new Wall(), WallDirection.Vertical, new Position(3, 7));
         } catch (RuleViolated e) {
             System.out.println(e);
         }
         PlayerRule playerRule = new BlockedByAWall();
-        Assertions.assertThrows(RuleViolated.class, () -> {playerRule.verify(b, b.players[0], new Position(0, 8));});
-        Assertions.assertThrows(RuleViolated.class, () -> {playerRule.verify(b, b.players[0], new Position(4, 8));});
+        Assertions.assertThrows(RuleViolated.class, () -> {playerRule.verify(b, b.getPlayers()[0], new Position(0, 8));});
+        Assertions.assertThrows(RuleViolated.class, () -> {playerRule.verify(b, b.getPlayers()[0], new Position(4, 8));});
     }
 
     @Test
@@ -32,13 +32,13 @@ public class BlockedByAWallTest {
         b.setPlayer(p);
         b.createBoard();
         try {
-            b.setWallOnBoard(b.players[0], new Wall(), WallDirection.Horizontal, new Position(1, 7));
-            b.setWallOnBoard(b.players[0], new Wall(), WallDirection.Horizontal, new Position(1, 9));
+            b.setWallOnBoard(b.getPlayers()[0], new Wall(), WallDirection.Horizontal, new Position(1, 7));
+            b.setWallOnBoard(b.getPlayers()[0], new Wall(), WallDirection.Horizontal, new Position(1, 9));
         } catch (RuleViolated e) {
             System.out.println(e);
         }
         PlayerRule playerRule = new BlockedByAWall();
-        Assertions.assertThrows(RuleViolated.class, () -> {playerRule.verify(b, b.players[0], new Position(0, 6));});
-        Assertions.assertThrows(RuleViolated.class, () -> {playerRule.verify(b, b.players[0], new Position(0, 10));});
+        Assertions.assertThrows(RuleViolated.class, () -> {playerRule.verify(b, b.getPlayers()[0], new Position(0, 6));});
+        Assertions.assertThrows(RuleViolated.class, () -> {playerRule.verify(b, b.getPlayers()[0], new Position(0, 10));});
     }
 }

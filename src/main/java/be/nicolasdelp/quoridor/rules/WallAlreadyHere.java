@@ -4,6 +4,11 @@ import java.io.Serializable;
 
 import be.nicolasdelp.quoridor.objects.*;
 
+/**
+ * La class WallAlreadyHere est la regle qui empeche de poser un mur ou il y en a deja un
+ * 
+ * @author Delplanque Nicolas
+ */
 public class WallAlreadyHere implements WallRule, Serializable {
 
     /**

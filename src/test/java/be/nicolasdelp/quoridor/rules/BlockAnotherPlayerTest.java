@@ -14,17 +14,17 @@ public class BlockAnotherPlayerTest {
         b.setPlayer(p);
         b.createBoard();
         try {
-            b.movePawnOnBoard(b.players[0], new Position(2, 8));
-            b.movePawnOnBoard(b.players[0], new Position(4, 8));
-            b.setWallOnBoard(b.players[0], new Wall(), WallDirection.Vertical, new Position(5,1));
-            b.setWallOnBoard(b.players[0], new Wall(), WallDirection.Vertical, new Position(5,5));
-            b.setWallOnBoard(b.players[0], new Wall(), WallDirection.Vertical, new Position(5,9));
-            b.setWallOnBoard(b.players[0], new Wall(), WallDirection.Vertical, new Position(5,13));
-            b.setWallOnBoard(b.players[0], new Wall(), WallDirection.Vertical, new Position(7,15));
-            b.setWallOnBoard(b.players[0], new Wall(), WallDirection.Vertical, new Position(7,11));
-            b.setWallOnBoard(b.players[0], new Wall(), WallDirection.Vertical, new Position(7,7));
-            b.setWallOnBoard(b.players[0], new Wall(), WallDirection.Vertical, new Position(7,3));
-            b.setWallOnBoard(b.players[0], new Wall(), WallDirection.Vertical, new Position(9,1));
+            b.movePawnOnBoard(b.getPlayers()[0], new Position(2, 8));
+            b.movePawnOnBoard(b.getPlayers()[0], new Position(4, 8));
+            b.setWallOnBoard(b.getPlayers()[0], new Wall(), WallDirection.Vertical, new Position(5,1));
+            b.setWallOnBoard(b.getPlayers()[0], new Wall(), WallDirection.Vertical, new Position(5,5));
+            b.setWallOnBoard(b.getPlayers()[0], new Wall(), WallDirection.Vertical, new Position(5,9));
+            b.setWallOnBoard(b.getPlayers()[0], new Wall(), WallDirection.Vertical, new Position(5,13));
+            b.setWallOnBoard(b.getPlayers()[0], new Wall(), WallDirection.Vertical, new Position(7,15));
+            b.setWallOnBoard(b.getPlayers()[0], new Wall(), WallDirection.Vertical, new Position(7,11));
+            b.setWallOnBoard(b.getPlayers()[0], new Wall(), WallDirection.Vertical, new Position(7,7));
+            b.setWallOnBoard(b.getPlayers()[0], new Wall(), WallDirection.Vertical, new Position(7,3));
+            b.setWallOnBoard(b.getPlayers()[0], new Wall(), WallDirection.Vertical, new Position(9,1));
         } catch (RuleViolated e) {
             Assertions.fail(e);
         }

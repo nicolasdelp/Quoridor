@@ -3,7 +3,7 @@ package be.nicolasdelp.quoridor.objects;
 import java.io.Serializable;
 
 /**
- * La class Box représente un objet Case
+ * La class Box represente un objet Case
  *
  * @author Delplanque Nicolas
  */
@@ -23,6 +23,7 @@ public class Box implements Serializable{
     /**
      * Constructeur de Box
      *
+     * @param position une position de case
      */
     public Box(Position position) {
         this.position = position;
@@ -129,7 +130,7 @@ public class Box implements Serializable{
     }
 
     /**
-     * Verifie si la case est bien une case à pion
+     * Verifie si la case est bien une case a pion
      * 
      */
     public void isPawnBox() {
@@ -139,7 +140,7 @@ public class Box implements Serializable{
     }
 
     /**
-     * Verifie si la case est bien une case à mur
+     * Verifie si la case est bien une case a mur
      *
      */
     public void isWallBox() {

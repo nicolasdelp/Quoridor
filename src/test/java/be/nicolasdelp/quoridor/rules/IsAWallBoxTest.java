@@ -14,7 +14,7 @@ public class IsAWallBoxTest {
         b.setPlayer(p);
         b.createBoard();
         PlayerRule playerRule = new IsAWallBox();
-        Assertions.assertThrows(RuleViolated.class, () -> {playerRule.verify(b, b.players[0], new Position(1, 8));});
+        Assertions.assertThrows(RuleViolated.class, () -> {playerRule.verify(b, b.getPlayers()[0], new Position(1, 8));});
     }
 
     @Test
@@ -24,7 +24,7 @@ public class IsAWallBoxTest {
         b.setPlayer(p);
         b.createBoard();
         PlayerRule playerRule = new IsAWallBox();
-        Assertions.assertThrows(RuleViolated.class, () -> {playerRule.verify(b, b.players[0], new Position(0, 7));});
+        Assertions.assertThrows(RuleViolated.class, () -> {playerRule.verify(b, b.getPlayers()[0], new Position(0, 7));});
     }
 
     @Test
@@ -34,7 +34,7 @@ public class IsAWallBoxTest {
         b.setPlayer(p);
         b.createBoard();
         PlayerRule playerRule = new IsAWallBox();
-        Assertions.assertThrows(RuleViolated.class, () -> {playerRule.verify(b, b.players[0], new Position(0, 9));});
+        Assertions.assertThrows(RuleViolated.class, () -> {playerRule.verify(b, b.getPlayers()[0], new Position(0, 9));});
     }
 
     @Test
@@ -44,6 +44,6 @@ public class IsAWallBoxTest {
         b.setPlayer(p);
         b.createBoard();
         PlayerRule playerRule = new IsAWallBox();
-        Assertions.assertThrows(RuleViolated.class, () -> {playerRule.verify(b, b.players[1], new Position(15, 8));});
+        Assertions.assertThrows(RuleViolated.class, () -> {playerRule.verify(b, b.getPlayers()[1], new Position(15, 8));});
     }
 }

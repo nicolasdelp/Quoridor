@@ -5,7 +5,7 @@ import java.io.Serializable;
 import be.nicolasdelp.quoridor.rules.*;
 
 /**
- * La class Board représente un objet Plateau
+ * La class Board represente un objet Plateau
  *
  * @author Delplanque Nicolas
  */
@@ -19,14 +19,7 @@ public class Board implements Serializable{
     private final int totalWall = 20; // nombre de murs au total
     private final int boardSize = 9; //nombre de cases pour pions par cote
     private final Position[] startPosition = { new Position(0, 8), new Position(16, 8) }; //les 2 cases de depart possible
-
-
-    //METTRE EN PRIVE
-    public Player[] players; //la liste des joueurs
-
-
-
-
+    private Player[] players; //la liste des joueurs
     private Box[][] boardBoxes; //stockage dans un tableau des Box
     private PlayerRule[] playerRules = {new PlayerIsInBounds(), new IsAWallBox(), new PawnAlreadyHere(), new BlockedByAWall(), new IllegalMovement()};
     private WallRule[] wallRules = {new WallIsInBounds(), new IsAPawnBox(), new WallAlreadyHere(), new NoMoreWalls(), new BlockAnotherPlayer()};
@@ -46,6 +39,7 @@ public class Board implements Serializable{
     /**
      * Accesseur du tableau contenant les box
      *
+     * @return Box[][] un double tableau de cases
      */
     public Box[][] getBoardBoxes(){
         return this.boardBoxes;
@@ -54,15 +48,17 @@ public class Board implements Serializable{
     /**
      * Accesseur de la liste des joueurs
      *
+     * @return players[] une liste de joueur
      */
     public Player[] getPlayers(){
         return this.players;
     }
 
     /**
-     * Récupère un joueur grâce à son ID dans la liste Players
+     * Recupere un joueur grâce a son ID dans la liste Players
      *
      * @param ID du joueur
+     * @return un joueur
      */
     public Player getAPlayer(int ID){
         Player res = null;
@@ -86,6 +82,7 @@ public class Board implements Serializable{
     /**
      * Accesseur la largueur du plateau
      *
+     * @return la longeur du tableau
      */
     public int getLength(){
         return boardBoxes.length;
@@ -94,14 +91,16 @@ public class Board implements Serializable{
     /**
      * Accesseur la longueur du plateau
      *
+     * @return la largeur du tableau
      */
     public int getWidth(){
         return boardBoxes[0].length;
     }
 
     /**
-     * Récupère l'ID du joueur qui joue actuellement
+     * Recupere l'ID du joueur qui joue actuellement
      *
+     * @return l'ID du joueur actuel
      */
     public int getcurrentIDPlayer(){
         return this.currentIDPlayer;
@@ -117,31 +116,34 @@ public class Board implements Serializable{
     }
 
     /**
-     * Récupère si on a gagné
-     *
+     * Recupere si on a gagne
+     * 
+     *@return vrai ou faux
      */
     public boolean getWin(){
         return this.win;
     }
 
     /**
-     * Récupère le nom du gagnant
+     * Recupere le nom du gagnant
      *
+     * @return le nom du joueur gagnant
      */
     public String getWinner(){
         return this.winner;
     }
 
     /**
-     * Récupère le joueur gagnant
+     * Recupere le joueur gagnant
      *
+     * @return le joueur gagnant
      */
     public Player getWinnerPlayer(){
         return this.winnerPlayer;
     }
 
     /**
-     * Création du plateau de jeu
+     * Creation du plateau de jeu
      *
      */
     public void createBoard() {
@@ -151,7 +153,7 @@ public class Board implements Serializable{
         this.boardBoxes = new Box[(2*this.boardSize) - 1][(2*this.boardSize) - 1]; // Cree un tableau 17x17 de Box
         for (int i = 0; i < this.boardBoxes.length; i++) {
             for (int j = 0; j < this.boardBoxes.length; j++) {
-                this.boardBoxes[i][j] = new Box(new Position(i, j)); //Donne à chaque box une Position(x,y)
+                this.boardBoxes[i][j] = new Box(new Position(i, j)); //Donne a chaque box une Position(x,y)
                 this.boardBoxes[i][j].isPawnBox(); // Si la case est une case a pion isPawnBox sera egal a True sinon False
                 this.boardBoxes[i][j].isWallBox(); // Si la case est une case a mur isWallBox sera egal a True sinon False
             }
@@ -159,25 +161,27 @@ public class Board implements Serializable{
         for (int i = 0; i < this.players.length; i++) {
             this.players[i].setWalls(this.totalWall / this.players.length); // donne a chaque joueur ses murs de depart (20/nmbr de joueurs)
             this.players[i].movePawn(this.startPosition[i]); // mets chaque pion a sa position de depart
-            this.players[i].setFinishPosition(this.startPosition[i]); //Position d'arrivée
-            this.boardBoxes[this.startPosition[i].getX()][this.startPosition[i].getY()].setObject(players[i].getPawn());//Met un objet pion dans leur casde de départ
+            this.players[i].setFinishPosition(this.startPosition[i]); //Position d'arrivee
+            this.boardBoxes[this.startPosition[i].getX()][this.startPosition[i].getY()].setObject(players[i].getPawn());//Met un objet pion dans leur casde de depart
         }
     }
 
     /**
-     * Bouge le pion à une position sur le plateau
+     * Bouge le pion a une position sur le plateau
      *
-     * @param newPosition la position
+     * @param player un joueur
+     * @param newPosition la nouvelle position
+     * @throws RuleViolated les regles du jeu
      */
     public void movePawnOnBoard(Player player, Position newPosition) throws RuleViolated{
         for(int i=0; i<this.playerRules.length; i++){
-            playerRules[i].verify(this, player, newPosition); //Vérifie si il n'y a pas d'exceptions
+            playerRules[i].verify(this, player, newPosition); //Verifie si il n'y a pas d'exceptions
         }
         Position old = player.getPawn().getPosition(); //On recupere l'ancienne position du pion 
         boardBoxes[old.getX()][old.getY()].removeObject(); //On nettoie l'ancienne case
         player.movePawn(newPosition); //On bouge le pion
-        boardBoxes[newPosition.getX()][newPosition.getY()].setObject(player.getPawn()); //On assigne à la box d'arrivée qu'un objet est dedans
-        for(int i=0; i<player.getFinishPosition().length; i++){ //Si on a gagné
+        boardBoxes[newPosition.getX()][newPosition.getY()].setObject(player.getPawn()); //On assigne a la box d'arrivee qu'un objet est dedans
+        for(int i=0; i<player.getFinishPosition().length; i++){ //Si on a gagne
             if(newPosition.getX() == player.getFinishPosition()[i].getX() && newPosition.getY() == player.getFinishPosition()[i].getY()){
                 // System.out.println(player.getUsername() + " a gagne");
                 this.win = true;
@@ -188,14 +192,18 @@ public class Board implements Serializable{
     }
 
     /**
-     * Place un mur à une position sur le plateau
+     * Place un mur a une position sur le plateau
      *
-     * @param newPosition la position
+     * @param player un joueur
+     * @param wall un mur
+     * @param direction une direction
+     * @param position une position
+     * @throws RuleViolated les regles du jeu
      */
     public void setWallOnBoard(Player player, Wall wall, WallDirection direction, Position position) throws RuleViolated{
         player.turnWall(wall, direction);
         for(int i=0; i<this.wallRules.length; i++){
-            wallRules[i].verify(this, player, wall, position); //Vérifie si il n'y a pas d'exceptions
+            wallRules[i].verify(this, player, wall, position); //Verifie si il n'y a pas d'exceptions
         }
         player.moveWall(wall, position); //On donne au mur sa position
         if(direction == WallDirection.Horizontal){ //Si il est horizontal on remplie les case a sa droite et a sa gauche

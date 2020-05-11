@@ -28,9 +28,13 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
 import javafx.scene.paint.Color;
-// import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
+/**
+ * La class FXMLControllerBoard est le controlleur de la fenetre du plateau de jeu
+ *
+ * @author Delplanque Nicolas
+ */
 public class FXMLControllerBoard implements Initializable{
 
     @FXML
@@ -146,17 +150,17 @@ public class FXMLControllerBoard implements Initializable{
             for (int i = 0; i < this.board.getPlayers().length; i++) {
                 for (int j = 0; j < this.board.getPlayers()[i].getStockOfWalls().length; j++) {
                     if(this.board.getPlayers()[i].getStockOfWalls()[j].getWallDirection() == WallDirection.Horizontal){
-                        ImageView wall1 = new ImageView(getWall(board.players[this.board.getPlayers()[i].getID()], WallDirection.Horizontal)[0]);
-                        ImageView wall2 = new ImageView(getWall(board.players[this.board.getPlayers()[i].getID()], WallDirection.Horizontal)[1]);
-                        ImageView wall3 = new ImageView(getWall(board.players[this.board.getPlayers()[i].getID()], WallDirection.Horizontal)[2]);
+                        ImageView wall1 = new ImageView(getWall(board.getPlayers()[this.board.getPlayers()[i].getID()], WallDirection.Horizontal)[0]);
+                        ImageView wall2 = new ImageView(getWall(board.getPlayers()[this.board.getPlayers()[i].getID()], WallDirection.Horizontal)[1]);
+                        ImageView wall3 = new ImageView(getWall(board.getPlayers()[this.board.getPlayers()[i].getID()], WallDirection.Horizontal)[2]);
                         grid.add(wall1, this.board.getPlayers()[i].getStockOfWalls()[j].getPosition().getX()-1, this.board.getPlayers()[i].getStockOfWalls()[j].getPosition().getY());
                         grid.add(wall2, this.board.getPlayers()[i].getStockOfWalls()[j].getPosition().getX(), this.board.getPlayers()[i].getStockOfWalls()[j].getPosition().getY());
                         grid.add(wall3, this.board.getPlayers()[i].getStockOfWalls()[j].getPosition().getX()+1, this.board.getPlayers()[i].getStockOfWalls()[j].getPosition().getY());
                     }
                     if(this.board.getPlayers()[i].getStockOfWalls()[j].getWallDirection() == WallDirection.Vertical){
-                        ImageView wall1 = new ImageView(getWall(board.players[this.board.getPlayers()[i].getID()], WallDirection.Vertical)[0]);
-                        ImageView wall2 = new ImageView(getWall(board.players[this.board.getPlayers()[i].getID()], WallDirection.Vertical)[1]);
-                        ImageView wall3 = new ImageView(getWall(board.players[this.board.getPlayers()[i].getID()], WallDirection.Vertical)[2]);
+                        ImageView wall1 = new ImageView(getWall(board.getPlayers()[this.board.getPlayers()[i].getID()], WallDirection.Vertical)[0]);
+                        ImageView wall2 = new ImageView(getWall(board.getPlayers()[this.board.getPlayers()[i].getID()], WallDirection.Vertical)[1]);
+                        ImageView wall3 = new ImageView(getWall(board.getPlayers()[this.board.getPlayers()[i].getID()], WallDirection.Vertical)[2]);
                         grid.add(wall1, this.board.getPlayers()[i].getStockOfWalls()[j].getPosition().getX(), this.board.getPlayers()[i].getStockOfWalls()[j].getPosition().getY()-1);
                         grid.add(wall2, this.board.getPlayers()[i].getStockOfWalls()[j].getPosition().getX(), this.board.getPlayers()[i].getStockOfWalls()[j].getPosition().getY());
                         grid.add(wall3, this.board.getPlayers()[i].getStockOfWalls()[j].getPosition().getX(), this.board.getPlayers()[i].getStockOfWalls()[j].getPosition().getY()+1);
@@ -164,10 +168,10 @@ public class FXMLControllerBoard implements Initializable{
                 }
             }
         }
-        joueur1.setText(this.board.players[0].getUsername().toUpperCase());
+        joueur1.setText(this.board.getPlayers()[0].getUsername().toUpperCase());
         joueur1.setTextFill(Color.web("#4cd137"));
         joueur1.setStyle("-fx-font-weight: bold");
-        joueur2.setText(this.board.players[1].getUsername().toUpperCase());
+        joueur2.setText(this.board.getPlayers()[1].getUsername().toUpperCase());
         for(int i=0; i < board.getPlayers().length; i++){ //On mets les pions des joueurs
             grid.add(new ImageView(getColorPawn(board.getPlayers()[i])), board.getPlayers()[i].getPawn().getPosition().getX(), board.getPlayers()[i].getPawn().getPosition().getY());
             oldPosition[i] = new Position(board.getPlayers()[i].getPawn().getPosition().getX(), board.getPlayers()[i].getPawn().getPosition().getY());
@@ -176,21 +180,12 @@ public class FXMLControllerBoard implements Initializable{
             stackPlayer1.add(new ImageView(getColorWall(board.getPlayers()[0])), 0, i);
             stackPlayer2.add(new ImageView(getColorWall(board.getPlayers()[1])), 0, i);
         }
-        // if(this.board.getPlayers()[1].getType() == "Ordinateur"){
-        //     if(this.board.getPlayers()[1].getIALevel() == "Facile"){
-        //         while(board.getWin() == false){
-        //             IAEasy(this.board.getPlayers()[1]);
-        //         }
-        //     }
-        //     if(this.board.getPlayers()[1].getIALevel() == "Difficile"){
-        //         IAHard(this.board.getPlayers()[1]);
-        //     }
-        // }
     }
 
     @FXML
     void backToMenuClicked(ActionEvent event) {
         SaveGame.saveBoard(this.board);
+        FXMLControllerMenu.resumeParty = true;
         try{
             FXMLLoader fxmloader = new FXMLLoader(getClass().getResource("../fxml/quoridorMenu.fxml"));
             Parent root = (Parent) fxmloader.load();
@@ -211,10 +206,10 @@ public class FXMLControllerBoard implements Initializable{
         File f = new File("board.dat");
         if(f.exists()){
             f.delete();
-            SaveGame.saveBoard(this.board);
-        }else{
-            SaveGame.saveBoard(this.board);
         }
+        FXMLControllerMenu.resumeParty = false;
+        SaveGame.saveBoard(this.board);
+        FXMLControllerMenu.resumeParty = true;
     }
 
     @FXML
@@ -251,7 +246,13 @@ public class FXMLControllerBoard implements Initializable{
         }
     }
     
-    private Image getColorPawn(Player player){ //Récupérer la couleur du pion du joueur
+    /**
+     * Recupere une image de pion selon la couleur du joueur
+     * 
+     * @param player un joueur
+     * @return une image de pion
+     */
+    private Image getColorPawn(Player player){
         if(player.getColor() == ColorPawn.Vert){
             return imagePionVert;
         }if(player.getColor() == ColorPawn.Rouge){
@@ -266,7 +267,13 @@ public class FXMLControllerBoard implements Initializable{
         }
     }
 
-    private Image getColorWall(Player player){ //Récupérer la couleur du pion du joueur
+    /**
+     * Recupere une image de mur selon la couleur du joueur
+     * 
+     * @param player un joueur
+     * @return une image de mur a stocker
+     */
+    private Image getColorWall(Player player){
         if(player.getColor() == ColorPawn.Vert){
             return imageMurVert;
         }if(player.getColor() == ColorPawn.Rouge){
@@ -281,7 +288,13 @@ public class FXMLControllerBoard implements Initializable{
         }
     }
 
-    private Image[] getWall(Player player, WallDirection wall){ //Récupérer la couleur du pion du joueur
+    /**
+     * Recupere une liste d'images de mur selon la couleur du joueur
+     * 
+     * @param player un joueur
+     * @return une liste d'image de mur
+     */
+    private Image[] getWall(Player player, WallDirection wall){
         Image[] res = new Image[3];
         if(player.getColor() == ColorPawn.Bleu && wall == WallDirection.Horizontal){
             res[0] = imageMurBleuH1;
@@ -336,6 +349,10 @@ public class FXMLControllerBoard implements Initializable{
         }
     }
 
+    /**
+     * Change la couleur du pseudo
+     * 
+     */
     private void changeLabelColor(){
         if(board.getcurrentIDPlayer() == 0){
             joueur1.setTextFill(Color.web("#4cd137"));
@@ -350,10 +367,13 @@ public class FXMLControllerBoard implements Initializable{
         }
     }
 
-    private Position[] oldPosition = new Position[2]; //Liste de la dernière position de chaque pion
+    private Position[] oldPosition = new Position[2]; //Liste de la derniere position de chaque pion
 
-    /*
-     * Essaie de placer le pion et si cela ne fonctionne pas, attrape la RuleViolation et affiche un popup.
+    /**
+     * Essaie de placer le pion et si cela ne fonctionne pas, attrape la RuleViolation et affiche un popup
+     * 
+     * @param i un abscisse
+     * @param j une ordonnee
      */
     public void handleClickOnBox(int i, int j){
         try{
@@ -368,53 +388,85 @@ public class FXMLControllerBoard implements Initializable{
         }
     }
 
-    /*
-     * Deplace le pion dans l'objet board et met a jour l'interface graphique.
+    /**
+     * Deplace le pion dans l'objet board et met a jour l'interface graphique
+     * 
+     * @param i un abscisse
+     * @param j une ordonnee
+     * @throws RuleViolated les regles de jeu
      */
     public void pawn(int i, int j) throws RuleViolated{
-        board.movePawnOnBoard(board.players[board.getcurrentIDPlayer()], new Position(i, j)); //On vérifie le mouvement est possible
+        board.movePawnOnBoard(board.getPlayers()[board.getcurrentIDPlayer()], new Position(i, j)); //On verifie le mouvement est possible
         ImageView caseVide = new ImageView(imageCase);
         caseVide.setCursor(Cursor.HAND);
         caseVide.setOnMouseClicked(event -> handleClickOnBox(GridPane.getColumnIndex(caseVide), GridPane.getRowIndex(caseVide)));
         grid.add(caseVide, oldPosition[board.getcurrentIDPlayer()].getX(), oldPosition[board.getcurrentIDPlayer()].getY());
-        ImageView casePawn = new ImageView(getColorPawn(board.players[board.getcurrentIDPlayer()]));
+        ImageView casePawn = new ImageView(getColorPawn(board.getPlayers()[board.getcurrentIDPlayer()]));
         grid.add(casePawn, i, j);
         oldPosition[board.getcurrentIDPlayer()] = new Position(i, j); //On enregistre la case actuel pour la vider au prochain coup
         if(this.board.getWin()){
+            File f = new File("board.dat");
+            if(f.exists()){
+                f.delete();
+            }
+            FXMLControllerMenu.resumeParty = false;
             grid.setDisable(true);
             Alert alert = new Alert(AlertType.ERROR);
             alert.setTitle(null);
             alert.setHeaderText(null);
             alert.setContentText("BRAVO " + this.board.getWinner().toUpperCase() + ", VOUS AVEZ GAGNE LA PARTIE !");
             alert.showAndWait();
-        }
-        board.nextPlayer();
-        changeLabelColor();
-        if(this.board.getPlayers()[1].getType() == "Ordinateur"){
-            if(this.board.getPlayers()[1].getIALevel() == "Facile"){
-                if(board.getcurrentIDPlayer() == 1){
-                    if(!board.getWin()){
-                        IAEasy(this.board.getPlayers()[1]);
+        }else{
+            board.nextPlayer();
+            changeLabelColor();
+            if(this.board.getPlayers()[0].getType() == "Ordinateur"){
+                if(this.board.getPlayers()[0].getIALevel() == "Facile"){
+                    if(board.getcurrentIDPlayer() == 0){
+                        if(!board.getWin()){
+                            IAEasy(this.board.getPlayers()[0]);
+                        }
+                    }
+                }
+                if(this.board.getPlayers()[0].getIALevel() == "Difficile"){
+                    if(board.getcurrentIDPlayer() == 0){
+                        if(!board.getWin()){
+                            IAHard(this.board.getPlayers()[0]);
+                        }
                     }
                 }
             }
-            if(this.board.getPlayers()[1].getIALevel() == "Difficile"){
-                if(board.getcurrentIDPlayer() == 1){
-                    if(!board.getWin()){
-                        IAHard(this.board.getPlayers()[1]);
+            if(this.board.getPlayers()[1].getType() == "Ordinateur"){
+                if(this.board.getPlayers()[1].getIALevel() == "Facile"){
+                    if(board.getcurrentIDPlayer() == 1){
+                        if(!board.getWin()){
+                            IAEasy(this.board.getPlayers()[1]);
+                        }
+                    }
+                }
+                if(this.board.getPlayers()[1].getIALevel() == "Difficile"){
+                    if(board.getcurrentIDPlayer() == 1){
+                        if(!board.getWin()){
+                            IAHard(this.board.getPlayers()[1]);
+                        }
                     }
                 }
             }
         }
     }
 
+    /**
+     * Pose un mur dans l'objet board et met a jour l'interface graphique
+     * 
+     * @param i un abscisse
+     * @param j une ordonnee
+     */
     public void wall(int i, int j){
         if(Horizontal.isSelected()){
             try {
-                board.setWallOnBoard(board.players[board.getcurrentIDPlayer()], board.players[board.getcurrentIDPlayer()].getCurrentWall(), WallDirection.Horizontal, new Position(i, j)); //On vérifie le mouvement est possible 
-                ImageView wall1 = new ImageView(getWall(board.players[board.getcurrentIDPlayer()], WallDirection.Horizontal)[0]);
-                ImageView wall2 = new ImageView(getWall(board.players[board.getcurrentIDPlayer()], WallDirection.Horizontal)[1]);
-                ImageView wall3 = new ImageView(getWall(board.players[board.getcurrentIDPlayer()], WallDirection.Horizontal)[2]);
+                board.setWallOnBoard(board.getPlayers()[board.getcurrentIDPlayer()], board.getPlayers()[board.getcurrentIDPlayer()].getCurrentWall(), WallDirection.Horizontal, new Position(i, j)); //On verifie le mouvement est possible 
+                ImageView wall1 = new ImageView(getWall(board.getPlayers()[board.getcurrentIDPlayer()], WallDirection.Horizontal)[0]);
+                ImageView wall2 = new ImageView(getWall(board.getPlayers()[board.getcurrentIDPlayer()], WallDirection.Horizontal)[1]);
+                ImageView wall3 = new ImageView(getWall(board.getPlayers()[board.getcurrentIDPlayer()], WallDirection.Horizontal)[2]);
                 grid.add(wall1, i-1, j);
                 grid.add(wall2, i, j);
                 grid.add(wall3, i+1, j);
@@ -426,6 +478,22 @@ public class FXMLControllerBoard implements Initializable{
                 }
                 board.nextPlayer();
                 changeLabelColor();
+                if(this.board.getPlayers()[0].getType() == "Ordinateur"){
+                    if(this.board.getPlayers()[0].getIALevel() == "Facile"){
+                        if(board.getcurrentIDPlayer() == 0){
+                            if(!board.getWin()){
+                                IAEasy(this.board.getPlayers()[0]);
+                            }
+                        }
+                    }
+                    if(this.board.getPlayers()[0].getIALevel() == "Difficile"){
+                        if(board.getcurrentIDPlayer() == 0){
+                            if(!board.getWin()){
+                                IAHard(this.board.getPlayers()[0]);
+                            }
+                        }
+                    }
+                }
                 if(this.board.getPlayers()[1].getType() == "Ordinateur"){
                     if(this.board.getPlayers()[1].getIALevel() == "Facile"){
                         if(board.getcurrentIDPlayer() == 1){
@@ -452,10 +520,10 @@ public class FXMLControllerBoard implements Initializable{
         }
         if(Vertical.isSelected()){
             try {
-                board.setWallOnBoard(board.players[board.getcurrentIDPlayer()], board.players[board.getcurrentIDPlayer()].getCurrentWall(), WallDirection.Vertical, new Position(i, j)); //On vérifie le mouvement est possible 
-                ImageView wall1 = new ImageView(getWall(board.players[board.getcurrentIDPlayer()], WallDirection.Vertical)[0]);
-                ImageView wall2 = new ImageView(getWall(board.players[board.getcurrentIDPlayer()], WallDirection.Vertical)[1]);
-                ImageView wall3 = new ImageView(getWall(board.players[board.getcurrentIDPlayer()], WallDirection.Vertical)[2]);
+                board.setWallOnBoard(board.getPlayers()[board.getcurrentIDPlayer()], board.getPlayers()[board.getcurrentIDPlayer()].getCurrentWall(), WallDirection.Vertical, new Position(i, j)); //On verifie le mouvement est possible 
+                ImageView wall1 = new ImageView(getWall(board.getPlayers()[board.getcurrentIDPlayer()], WallDirection.Vertical)[0]);
+                ImageView wall2 = new ImageView(getWall(board.getPlayers()[board.getcurrentIDPlayer()], WallDirection.Vertical)[1]);
+                ImageView wall3 = new ImageView(getWall(board.getPlayers()[board.getcurrentIDPlayer()], WallDirection.Vertical)[2]);
                 grid.add(wall1, i, j-1);
                 grid.add(wall2, i, j);
                 grid.add(wall3, i, j+1);
@@ -467,6 +535,22 @@ public class FXMLControllerBoard implements Initializable{
                 }
                 board.nextPlayer();
                 changeLabelColor();
+                if(this.board.getPlayers()[0].getType() == "Ordinateur"){
+                    if(this.board.getPlayers()[0].getIALevel() == "Facile"){
+                        if(board.getcurrentIDPlayer() == 0){
+                            if(!board.getWin()){
+                                IAEasy(this.board.getPlayers()[0]);
+                            }
+                        }
+                    }
+                    if(this.board.getPlayers()[0].getIALevel() == "Difficile"){
+                        if(board.getcurrentIDPlayer() == 0){
+                            if(!board.getWin()){
+                                IAHard(this.board.getPlayers()[0]);
+                            }
+                        }
+                    }
+                }
                 if(this.board.getPlayers()[1].getType() == "Ordinateur"){
                     if(this.board.getPlayers()[1].getIALevel() == "Facile"){
                         if(board.getcurrentIDPlayer() == 1){
@@ -493,11 +577,16 @@ public class FXMLControllerBoard implements Initializable{
         }
     }
 
+    /**
+     * Une IA aleatoire
+     * 
+     * @param player un joueur ordinateur
+     */
     public void IAEasy(Player player){
         ArrayList<Position> positionsToTry = new ArrayList<Position>(); // On cree et initialise les positions que l'on va essayer.
         for(int i = player.getPawn().getPosition().getX()-2; i<=player.getPawn().getPosition().getX()+2; i+=2){
             for(int j = player.getPawn().getPosition().getY()-2; j<=player.getPawn().getPosition().getY()+2; j+=2){
-                if (!(i == player.getPawn().getPosition().getX() && j == player.getPawn().getPosition().getY())){ //On ne peut pas se déplacer sur la position actuelle du pion
+                if (!(i == player.getPawn().getPosition().getX() && j == player.getPawn().getPosition().getY())){ //On ne peut pas se deplacer sur la position actuelle du pion
                     positionsToTry.add(new Position(i, j));
                 }
             }
@@ -516,8 +605,16 @@ public class FXMLControllerBoard implements Initializable{
         }
     }
 
+    /**
+     * Une IA suivant le chemin donne par le pathfinding
+     * 
+     * @param player un joueur ordinateur
+     */
     public void IAHard(Player player){
-        Graph g = new Graph(this.board, this.board.getPlayers()[0]);
+        Graph g = new Graph(this.board, this.board.getPlayers()[1]);
+        if(player.getID() == this.board.getPlayers()[1].getID()){
+            g = new Graph(this.board, this.board.getPlayers()[0]);
+        }
         g.pathForIA();
 
         int[] allPathSize = new int[9];

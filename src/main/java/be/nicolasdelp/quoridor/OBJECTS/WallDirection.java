@@ -1,7 +1,7 @@
 package be.nicolasdelp.quoridor.objects;
 
 /**
-* L'enum WallDirection représente les sens possible pour les murs
+* L'enum WallDirection represente les sens possible pour les murs
 *
 * @author Delplanque Nicolas
 */

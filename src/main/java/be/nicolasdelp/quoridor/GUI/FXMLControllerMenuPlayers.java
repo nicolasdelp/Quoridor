@@ -21,6 +21,11 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
+/**
+ * La class FXMLControllerMenuPlayer est le controlleur de la fenetre d'option de partie
+ *
+ * @author Delplanque Nicolas
+ */
 public class FXMLControllerMenuPlayers implements Initializable {
 
     @FXML
@@ -114,7 +119,7 @@ public class FXMLControllerMenuPlayers implements Initializable {
             labelIALevel22.setVisible(false);
             pseudoOfPlayer22.setEditable(true);
         }
-        if(allIsOKPlayers12() && allIsOKPlayers22()){ //On vérifie que tout les champs sont remplis
+        if(allIsOKPlayers12() && allIsOKPlayers22()){ //On verifie que tout les champs sont remplis
             startGame.setDisable(false);
         } else {
             startGame.setDisable(true);
@@ -122,7 +127,7 @@ public class FXMLControllerMenuPlayers implements Initializable {
     }
 
     /**
-     * Vérification que tout les champs du joueur 1 sont remplis
+     * Verification que tout les champs du joueur 1 sont remplis
      *
      */
     private boolean allIsOKPlayers12() {
@@ -137,7 +142,7 @@ public class FXMLControllerMenuPlayers implements Initializable {
     }
     
     /**
-     * Vérification que tout les champs du joueur 2 sont remplis
+     * Verification que tout les champs du joueur 2 sont remplis
      *
      */
     private boolean allIsOKPlayers22() {
@@ -174,8 +179,9 @@ public class FXMLControllerMenuPlayers implements Initializable {
     }
     
     /**
-     * Accesseur du plateau créé selon ce que les joueurs ont choisit
+     * Accesseur du plateau cree selon ce que les joueurs ont choisit
      *
+     * @return un plateau
      */
     public static Board getBoard(){
         return board;

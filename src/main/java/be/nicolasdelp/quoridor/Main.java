@@ -8,6 +8,11 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
+/**
+ * La class Main est la classe d'entree pour la partie graphique
+ * 
+ * @author Delplanque Nicolas
+ */
 public class Main extends Application {
 
     @Override

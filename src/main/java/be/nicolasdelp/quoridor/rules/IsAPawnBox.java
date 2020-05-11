@@ -4,6 +4,11 @@ import java.io.Serializable;
 
 import be.nicolasdelp.quoridor.objects.*;
 
+/**
+ * La class IsAPawnBox est la regle qui empeche de poser un mur dans une case pour pion
+ *
+ * @author Delplanque Nicolas
+ */
 public class IsAPawnBox implements WallRule, Serializable {
 
     /**

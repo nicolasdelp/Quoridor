@@ -1,7 +1,7 @@
 package be.nicolasdelp.quoridor.objects;
 
 /**
- * La class Pawn représente un objet Pion
+ * La class Pawn represente un objet Pion
  *
  * @author Delplanque Nicolas
  */
@@ -17,8 +17,6 @@ public class Pawn extends GamePieces{
     /**
      * Constructeur de Pawn
      *
-     * @param color une couleur de pion
-     * @param Position une positon
      */
     public Pawn() {
         this.position = null;

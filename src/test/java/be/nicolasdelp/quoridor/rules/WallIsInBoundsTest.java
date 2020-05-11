@@ -14,7 +14,7 @@ public class WallIsInBoundsTest {
         b.setPlayer(p);
         b.createBoard();
         WallRule wallRule = new WallIsInBounds();
-        Assertions.assertThrows(RuleViolated.class, () -> {wallRule.verify(b, b.players[0], new Wall(), new Position(1, 17));});
+        Assertions.assertThrows(RuleViolated.class, () -> {wallRule.verify(b, b.getPlayers()[0], new Wall(), new Position(1, 17));});
     }
 
     @Test
@@ -24,7 +24,7 @@ public class WallIsInBoundsTest {
         b.setPlayer(p);
         b.createBoard();
         WallRule wallRule = new WallIsInBounds();
-        Assertions.assertThrows(RuleViolated.class, () -> {wallRule.verify(b, b.players[0], new Wall(), new Position(17, 1));});
+        Assertions.assertThrows(RuleViolated.class, () -> {wallRule.verify(b, b.getPlayers()[0], new Wall(), new Position(17, 1));});
     }
 
     @Test
@@ -34,7 +34,7 @@ public class WallIsInBoundsTest {
         b.setPlayer(p);
         b.createBoard();
         WallRule wallRule = new WallIsInBounds();
-        Assertions.assertThrows(RuleViolated.class, () -> {wallRule.verify(b, b.players[0], new Wall(), new Position(-1, -1));});
+        Assertions.assertThrows(RuleViolated.class, () -> {wallRule.verify(b, b.getPlayers()[0], new Wall(), new Position(-1, -1));});
     }
 
     @Test
@@ -44,6 +44,6 @@ public class WallIsInBoundsTest {
         b.setPlayer(p);
         b.createBoard();
         WallRule wallRule = new WallIsInBounds();
-        Assertions.assertThrows(RuleViolated.class, () -> {wallRule.verify(b, b.players[0], new Wall(), new Position(17, 17));});
+        Assertions.assertThrows(RuleViolated.class, () -> {wallRule.verify(b, b.getPlayers()[0], new Wall(), new Position(17, 17));});
     }
 }

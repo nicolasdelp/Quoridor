@@ -1,7 +1,7 @@
 package be.nicolasdelp.quoridor.objects;
 
 /**
- * La class Wall représente un objet Mur
+ * La class Wall represente un objet Mur
  *
  * @author Delplanque Nicolas
  */
@@ -18,8 +18,6 @@ public class Wall extends GamePieces{
     /**
      * Constructeur de Wall
      *
-     * @param color la couleur du mur
-     * @param position une position
      */
     public Wall() {
         this.position = null;

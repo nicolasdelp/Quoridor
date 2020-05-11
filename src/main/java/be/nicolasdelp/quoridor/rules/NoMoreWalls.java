@@ -4,6 +4,11 @@ import java.io.Serializable;
 
 import be.nicolasdelp.quoridor.objects.*;
 
+/**
+ * La class NoMoreWalls est la regle qui empeche de poser un mur lorsque le joueur n'en a plus
+ *
+ * @author Delplanque Nicolas
+ */
 public class NoMoreWalls implements WallRule, Serializable {
 
     /**

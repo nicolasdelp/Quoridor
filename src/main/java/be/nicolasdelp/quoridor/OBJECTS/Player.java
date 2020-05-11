@@ -3,7 +3,7 @@ package be.nicolasdelp.quoridor.objects;
 import java.io.Serializable;
 
 /**
- * La class Player représente un objet Joueur
+ * La class Player represente un objet Joueur
  *
  * @author Delplanque Nicolas
  */
@@ -29,7 +29,9 @@ public class Player implements Serializable {
      * Constructeur de Player
      *
      * @param type le type de joueur (Ordiateur ou Humain)
+     * @param username un pseudo
      * @param ID ID unique du joueur
+     * @param color une couleur
      * @param pawn un pion
      */
     public Player(String type, String username, int ID, ColorPawn color, Pawn pawn) {
@@ -156,6 +158,7 @@ public class Player implements Serializable {
     /**
      * Mutateur de la valeur x ou y pour qu'un joueur gagne
      *
+     * @param startPosition la position de depart du joueur
      */
     public void setFinishPosition(Position startPosition){
         if(startPosition.getX() == 0 && startPosition.getY() == 8){
@@ -173,6 +176,7 @@ public class Player implements Serializable {
     /**
      * Accesseur des positions pour gagner
      *
+     * @return Position[] une liste de position d'arrivee
      */
     public Position[] getFinishPosition(){
         return this.finishPosition;
@@ -181,6 +185,7 @@ public class Player implements Serializable {
     /**
      * Mutateur du niveau de l'IA
      *
+     * @param level un niveau d'IA
      */
     public void setIALevel(String level){
         this.levelIA = level;
@@ -189,15 +194,16 @@ public class Player implements Serializable {
     /**
      * Accesseur du niveau de l'IA
      *
+     * @return le niveau de l'IA si le joueur est un ordinateur
      */
     public String getIALevel(){
         return this.levelIA;
     }
 
     /**
-     * Bouge le pion à une position
+     * Bouge le pion a une position
      *
-     * @param Position la position
+     * @param position la position
      */
     public void movePawn(Position position) {
         this.pawnPlayer.setPosition(position);
@@ -206,16 +212,18 @@ public class Player implements Serializable {
     /**
      * Change de sens un mur
      *
-     * @param Position la position
+     * @param wall un mur
+     * @param direction une direction
      */
     public void turnWall(Wall wall, WallDirection direction) {
         wall.setWallDirection(direction);
     }
 
     /**
-     * Met un mur à une position sur le plateau
+     * Met un mur a une position sur le plateau
      *
-     * @param Position la position
+     * @param wall un mur
+     * @param position la position
      */
     public void moveWall(Wall wall, Position position) {
         wall.setPosition(position);

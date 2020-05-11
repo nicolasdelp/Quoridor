@@ -14,23 +14,23 @@ public class PawnAlreadyHereTest {
         b.setPlayer(p);
         b.createBoard();
         try {
-            b.movePawnOnBoard(b.players[0], new Position(2, 8));
-            b.movePawnOnBoard(b.players[0], new Position(4, 8));
-            b.movePawnOnBoard(b.players[0], new Position(6, 8));
-            b.movePawnOnBoard(b.players[0], new Position(8, 8));
-            b.movePawnOnBoard(b.players[1], new Position(14, 8));
-            b.movePawnOnBoard(b.players[1], new Position(12, 8));
-            b.movePawnOnBoard(b.players[1], new Position(10, 8));
-            b.movePawnOnBoard(b.players[1], new Position(10, 6));
-            b.movePawnOnBoard(b.players[1], new Position(8, 6));
-            b.movePawnOnBoard(b.players[1], new Position(6, 6));
-            b.movePawnOnBoard(b.players[1], new Position(6, 8));
+            b.movePawnOnBoard(b.getPlayers()[0], new Position(2, 8));
+            b.movePawnOnBoard(b.getPlayers()[0], new Position(4, 8));
+            b.movePawnOnBoard(b.getPlayers()[0], new Position(6, 8));
+            b.movePawnOnBoard(b.getPlayers()[0], new Position(8, 8));
+            b.movePawnOnBoard(b.getPlayers()[1], new Position(14, 8));
+            b.movePawnOnBoard(b.getPlayers()[1], new Position(12, 8));
+            b.movePawnOnBoard(b.getPlayers()[1], new Position(10, 8));
+            b.movePawnOnBoard(b.getPlayers()[1], new Position(10, 6));
+            b.movePawnOnBoard(b.getPlayers()[1], new Position(8, 6));
+            b.movePawnOnBoard(b.getPlayers()[1], new Position(6, 6));
+            b.movePawnOnBoard(b.getPlayers()[1], new Position(6, 8));
         } catch (RuleViolated e) {
             System.out.println(e);
         }
         PlayerRule playerRule = new PawnAlreadyHere();
         Assertions.assertThrows(RuleViolated.class, () -> {
-            playerRule.verify(b, b.players[0], new Position(6, 8));
+            playerRule.verify(b, b.getPlayers()[0], new Position(6, 8));
           });
     }
 
@@ -41,21 +41,21 @@ public class PawnAlreadyHereTest {
         b.setPlayer(p);
         b.createBoard();
         try {
-            b.movePawnOnBoard(b.players[0], new Position(2, 8));
-            b.movePawnOnBoard(b.players[0], new Position(4, 8));
-            b.movePawnOnBoard(b.players[0], new Position(6, 8));
-            b.movePawnOnBoard(b.players[0], new Position(8, 8));
-            b.movePawnOnBoard(b.players[1], new Position(14, 8));
-            b.movePawnOnBoard(b.players[1], new Position(12, 8));
-            b.movePawnOnBoard(b.players[1], new Position(10, 8));
-            b.movePawnOnBoard(b.players[1], new Position(10, 6));
-            b.movePawnOnBoard(b.players[1], new Position(8, 6));
+            b.movePawnOnBoard(b.getPlayers()[0], new Position(2, 8));
+            b.movePawnOnBoard(b.getPlayers()[0], new Position(4, 8));
+            b.movePawnOnBoard(b.getPlayers()[0], new Position(6, 8));
+            b.movePawnOnBoard(b.getPlayers()[0], new Position(8, 8));
+            b.movePawnOnBoard(b.getPlayers()[1], new Position(14, 8));
+            b.movePawnOnBoard(b.getPlayers()[1], new Position(12, 8));
+            b.movePawnOnBoard(b.getPlayers()[1], new Position(10, 8));
+            b.movePawnOnBoard(b.getPlayers()[1], new Position(10, 6));
+            b.movePawnOnBoard(b.getPlayers()[1], new Position(8, 6));
         } catch (RuleViolated e) {
             Assertions.fail("rule violated");
         }
         PlayerRule playerRule = new PawnAlreadyHere();
         Assertions.assertThrows(RuleViolated.class, () -> {
-            playerRule.verify(b, b.players[0], new Position(8, 6));
+            playerRule.verify(b, b.getPlayers()[0], new Position(8, 6));
           });
     }
 
@@ -66,19 +66,19 @@ public class PawnAlreadyHereTest {
         b.setPlayer(p);
         b.createBoard();
         try {
-            b.movePawnOnBoard(b.players[0], new Position(2, 8));
-            b.movePawnOnBoard(b.players[0], new Position(4, 8));
-            b.movePawnOnBoard(b.players[0], new Position(6, 8));
-            b.movePawnOnBoard(b.players[0], new Position(8, 8));
-            b.movePawnOnBoard(b.players[1], new Position(14, 8));
-            b.movePawnOnBoard(b.players[1], new Position(12, 8));
-            b.movePawnOnBoard(b.players[1], new Position(10, 8));
+            b.movePawnOnBoard(b.getPlayers()[0], new Position(2, 8));
+            b.movePawnOnBoard(b.getPlayers()[0], new Position(4, 8));
+            b.movePawnOnBoard(b.getPlayers()[0], new Position(6, 8));
+            b.movePawnOnBoard(b.getPlayers()[0], new Position(8, 8));
+            b.movePawnOnBoard(b.getPlayers()[1], new Position(14, 8));
+            b.movePawnOnBoard(b.getPlayers()[1], new Position(12, 8));
+            b.movePawnOnBoard(b.getPlayers()[1], new Position(10, 8));
         } catch (RuleViolated e) {
             Assertions.fail("rule violated");
         }
         PlayerRule playerRule = new PawnAlreadyHere();
         Assertions.assertThrows(RuleViolated.class, () -> {
-            playerRule.verify(b, b.players[0], new Position(10, 8));
+            playerRule.verify(b, b.getPlayers()[0], new Position(10, 8));
           });
     }
 
@@ -89,21 +89,21 @@ public class PawnAlreadyHereTest {
         b.setPlayer(p);
         b.createBoard();
         try {
-            b.movePawnOnBoard(b.players[0], new Position(2, 8));
-            b.movePawnOnBoard(b.players[0], new Position(4, 8));
-            b.movePawnOnBoard(b.players[0], new Position(6, 8));
-            b.movePawnOnBoard(b.players[0], new Position(8, 8));
-            b.movePawnOnBoard(b.players[1], new Position(14, 8));
-            b.movePawnOnBoard(b.players[1], new Position(12, 8));
-            b.movePawnOnBoard(b.players[1], new Position(10, 8));
-            b.movePawnOnBoard(b.players[1], new Position(10, 10));
-            b.movePawnOnBoard(b.players[1], new Position(8, 10));
+            b.movePawnOnBoard(b.getPlayers()[0], new Position(2, 8));
+            b.movePawnOnBoard(b.getPlayers()[0], new Position(4, 8));
+            b.movePawnOnBoard(b.getPlayers()[0], new Position(6, 8));
+            b.movePawnOnBoard(b.getPlayers()[0], new Position(8, 8));
+            b.movePawnOnBoard(b.getPlayers()[1], new Position(14, 8));
+            b.movePawnOnBoard(b.getPlayers()[1], new Position(12, 8));
+            b.movePawnOnBoard(b.getPlayers()[1], new Position(10, 8));
+            b.movePawnOnBoard(b.getPlayers()[1], new Position(10, 10));
+            b.movePawnOnBoard(b.getPlayers()[1], new Position(8, 10));
         } catch (RuleViolated e) {
             Assertions.fail("rule violated");
         }
         PlayerRule playerRule = new PawnAlreadyHere();
         Assertions.assertThrows(RuleViolated.class, () -> {
-            playerRule.verify(b, b.players[0], new Position(8, 10));
+            playerRule.verify(b, b.getPlayers()[0], new Position(8, 10));
           });
     }
 
@@ -114,20 +114,20 @@ public class PawnAlreadyHereTest {
         b.setPlayer(p);
         b.createBoard();
         try {
-            b.movePawnOnBoard(b.players[0], new Position(2, 8));
-            b.movePawnOnBoard(b.players[0], new Position(4, 8));
-            b.movePawnOnBoard(b.players[0], new Position(6, 8));
-            b.movePawnOnBoard(b.players[0], new Position(8, 8));
-            b.movePawnOnBoard(b.players[1], new Position(14, 8));
-            b.movePawnOnBoard(b.players[1], new Position(12, 8));
-            b.movePawnOnBoard(b.players[1], new Position(10, 8));
-            b.movePawnOnBoard(b.players[1], new Position(10, 6));
+            b.movePawnOnBoard(b.getPlayers()[0], new Position(2, 8));
+            b.movePawnOnBoard(b.getPlayers()[0], new Position(4, 8));
+            b.movePawnOnBoard(b.getPlayers()[0], new Position(6, 8));
+            b.movePawnOnBoard(b.getPlayers()[0], new Position(8, 8));
+            b.movePawnOnBoard(b.getPlayers()[1], new Position(14, 8));
+            b.movePawnOnBoard(b.getPlayers()[1], new Position(12, 8));
+            b.movePawnOnBoard(b.getPlayers()[1], new Position(10, 8));
+            b.movePawnOnBoard(b.getPlayers()[1], new Position(10, 6));
         } catch (RuleViolated e) {
             Assertions.fail("rule violated");
         }
         PlayerRule playerRule = new PawnAlreadyHere();
         Assertions.assertThrows(RuleViolated.class, () -> {
-            playerRule.verify(b, b.players[0], new Position(10, 6));
+            playerRule.verify(b, b.getPlayers()[0], new Position(10, 6));
           });
     }
 
@@ -138,20 +138,20 @@ public class PawnAlreadyHereTest {
         b.setPlayer(p);
         b.createBoard();
         try {
-            b.movePawnOnBoard(b.players[0], new Position(2, 8));
-            b.movePawnOnBoard(b.players[0], new Position(4, 8));
-            b.movePawnOnBoard(b.players[0], new Position(6, 8));
-            b.movePawnOnBoard(b.players[0], new Position(8, 8));
-            b.movePawnOnBoard(b.players[1], new Position(14, 8));
-            b.movePawnOnBoard(b.players[1], new Position(12, 8));
-            b.movePawnOnBoard(b.players[1], new Position(10, 8));
-            b.movePawnOnBoard(b.players[1], new Position(10, 10));
+            b.movePawnOnBoard(b.getPlayers()[0], new Position(2, 8));
+            b.movePawnOnBoard(b.getPlayers()[0], new Position(4, 8));
+            b.movePawnOnBoard(b.getPlayers()[0], new Position(6, 8));
+            b.movePawnOnBoard(b.getPlayers()[0], new Position(8, 8));
+            b.movePawnOnBoard(b.getPlayers()[1], new Position(14, 8));
+            b.movePawnOnBoard(b.getPlayers()[1], new Position(12, 8));
+            b.movePawnOnBoard(b.getPlayers()[1], new Position(10, 8));
+            b.movePawnOnBoard(b.getPlayers()[1], new Position(10, 10));
         } catch (RuleViolated e) {
             Assertions.fail("rule violated");
         }
         PlayerRule playerRule = new PawnAlreadyHere();
         Assertions.assertThrows(RuleViolated.class, () -> {
-            playerRule.verify(b, b.players[0], new Position(10, 10));
+            playerRule.verify(b, b.getPlayers()[0], new Position(10, 10));
           });
     }
 
@@ -162,20 +162,20 @@ public class PawnAlreadyHereTest {
         b.setPlayer(p);
         b.createBoard();
         try {
-            b.movePawnOnBoard(b.players[0], new Position(2, 8));
-            b.movePawnOnBoard(b.players[0], new Position(4, 8));
-            b.movePawnOnBoard(b.players[0], new Position(6, 8));
-            b.movePawnOnBoard(b.players[0], new Position(6, 6));
-            b.movePawnOnBoard(b.players[1], new Position(14, 8));
-            b.movePawnOnBoard(b.players[1], new Position(12, 8));
-            b.movePawnOnBoard(b.players[1], new Position(10, 8));
-            b.movePawnOnBoard(b.players[1], new Position(8, 8));
+            b.movePawnOnBoard(b.getPlayers()[0], new Position(2, 8));
+            b.movePawnOnBoard(b.getPlayers()[0], new Position(4, 8));
+            b.movePawnOnBoard(b.getPlayers()[0], new Position(6, 8));
+            b.movePawnOnBoard(b.getPlayers()[0], new Position(6, 6));
+            b.movePawnOnBoard(b.getPlayers()[1], new Position(14, 8));
+            b.movePawnOnBoard(b.getPlayers()[1], new Position(12, 8));
+            b.movePawnOnBoard(b.getPlayers()[1], new Position(10, 8));
+            b.movePawnOnBoard(b.getPlayers()[1], new Position(8, 8));
         } catch (RuleViolated e) {
             Assertions.fail("rule violated");
         }
         PlayerRule playerRule = new PawnAlreadyHere();
         Assertions.assertThrows(RuleViolated.class, () -> {
-            playerRule.verify(b, b.players[1], new Position(6, 6));
+            playerRule.verify(b, b.getPlayers()[1], new Position(6, 6));
           });
     }
 
@@ -186,20 +186,20 @@ public class PawnAlreadyHereTest {
         b.setPlayer(p);
         b.createBoard();
         try {
-            b.movePawnOnBoard(b.players[0], new Position(2, 8));
-            b.movePawnOnBoard(b.players[0], new Position(4, 8));
-            b.movePawnOnBoard(b.players[0], new Position(6, 8));
-            b.movePawnOnBoard(b.players[0], new Position(6, 10));
-            b.movePawnOnBoard(b.players[1], new Position(14, 8));
-            b.movePawnOnBoard(b.players[1], new Position(12, 8));
-            b.movePawnOnBoard(b.players[1], new Position(10, 8));
-            b.movePawnOnBoard(b.players[1], new Position(8, 8));
+            b.movePawnOnBoard(b.getPlayers()[0], new Position(2, 8));
+            b.movePawnOnBoard(b.getPlayers()[0], new Position(4, 8));
+            b.movePawnOnBoard(b.getPlayers()[0], new Position(6, 8));
+            b.movePawnOnBoard(b.getPlayers()[0], new Position(6, 10));
+            b.movePawnOnBoard(b.getPlayers()[1], new Position(14, 8));
+            b.movePawnOnBoard(b.getPlayers()[1], new Position(12, 8));
+            b.movePawnOnBoard(b.getPlayers()[1], new Position(10, 8));
+            b.movePawnOnBoard(b.getPlayers()[1], new Position(8, 8));
         } catch (RuleViolated e) {
             Assertions.fail("rule violated");
         }
         PlayerRule playerRule = new PawnAlreadyHere();
         Assertions.assertThrows(RuleViolated.class, () -> {
-            playerRule.verify(b, b.players[1], new Position(6, 10));
+            playerRule.verify(b, b.getPlayers()[1], new Position(6, 10));
           });
     }
 }

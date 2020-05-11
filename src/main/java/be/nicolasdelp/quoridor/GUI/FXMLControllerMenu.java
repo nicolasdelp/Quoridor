@@ -15,6 +15,11 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
+/**
+ * La class FXMLControllerMenu est le controlleur du menu d'accueil
+ *
+ * @author Delplanque Nicolas
+ */
 public class FXMLControllerMenu implements Initializable {
 
     public static boolean resumeParty = false;

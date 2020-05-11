@@ -1,7 +1,7 @@
 package be.nicolasdelp.quoridor.graph;
 
 /**
- * La class Link représente un lien entre deux noeuds
+ * La class Link represente un lien entre deux noeuds
  *
  * @author Delplanque Nicolas
  */
@@ -13,6 +13,8 @@ public class Link {
     /**
      * Constructeur
      * 
+     * @param fromNode le noeud de depart
+     * @param toNode le noeud d'arrive
      */
     public Link(Node fromNode, Node toNode){
         this.fromNode = fromNode;
@@ -20,18 +22,18 @@ public class Link {
     }
 
     /**
-     * Accesseur du noeud de départ du lien
+     * Accesseur du noeud de depart du lien
      * 
-     * @return le noeud de départ
+     * @return le noeud de depart
      */
     public Node getFromNode(){
         return this.fromNode;
     }
 
     /**
-     * Accesseur du noeud de d'arrivée du lien
+     * Accesseur du noeud de d'arrivee du lien
      * 
-     * @return le noeud d'arrivé
+     * @return le noeud d'arrive
      */
     public Node getToNode(){
         return this.toNode;

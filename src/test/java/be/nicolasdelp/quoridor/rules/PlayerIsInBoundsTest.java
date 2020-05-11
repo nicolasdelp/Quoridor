@@ -14,7 +14,7 @@ public class PlayerIsInBoundsTest {
         b.setPlayer(p);
         b.createBoard();
         PlayerRule playerRule = new PlayerIsInBounds();
-        Assertions.assertThrows(RuleViolated.class, () -> {playerRule.verify(b, b.players[0], new Position(0, -2));});
+        Assertions.assertThrows(RuleViolated.class, () -> {playerRule.verify(b, b.getPlayers()[0], new Position(0, -2));});
     }
 
     @Test
@@ -24,7 +24,7 @@ public class PlayerIsInBoundsTest {
         b.setPlayer(p);
         b.createBoard();
         PlayerRule playerRule = new PlayerIsInBounds();
-        Assertions.assertThrows(RuleViolated.class, () -> {playerRule.verify(b, b.players[0], new Position(-2, 0));});
+        Assertions.assertThrows(RuleViolated.class, () -> {playerRule.verify(b, b.getPlayers()[0], new Position(-2, 0));});
     }
 
     @Test
@@ -34,7 +34,7 @@ public class PlayerIsInBoundsTest {
         b.setPlayer(p);
         b.createBoard();
         PlayerRule playerRule = new PlayerIsInBounds();
-        Assertions.assertThrows(RuleViolated.class, () -> {playerRule.verify(b, b.players[0], new Position(18, 2));});
+        Assertions.assertThrows(RuleViolated.class, () -> {playerRule.verify(b, b.getPlayers()[0], new Position(18, 2));});
     }
 
     @Test
@@ -44,7 +44,7 @@ public class PlayerIsInBoundsTest {
         b.setPlayer(p);
         b.createBoard();
         PlayerRule playerRule = new PlayerIsInBounds();
-        Assertions.assertThrows(RuleViolated.class, () -> {playerRule.verify(b, b.players[0], new Position(2, 18));});
+        Assertions.assertThrows(RuleViolated.class, () -> {playerRule.verify(b, b.getPlayers()[0], new Position(2, 18));});
     }
 
     @Test
@@ -54,7 +54,7 @@ public class PlayerIsInBoundsTest {
         b.setPlayer(p);
         b.createBoard();
         PlayerRule playerRule = new PlayerIsInBounds();
-        Assertions.assertThrows(RuleViolated.class, () -> {playerRule.verify(b, b.players[0], new Position(18, 18));});
+        Assertions.assertThrows(RuleViolated.class, () -> {playerRule.verify(b, b.getPlayers()[0], new Position(18, 18));});
     }
 
     @Test
@@ -64,6 +64,6 @@ public class PlayerIsInBoundsTest {
         b.setPlayer(p);
         b.createBoard();
         PlayerRule playerRule = new PlayerIsInBounds();
-        Assertions.assertThrows(RuleViolated.class, () -> {playerRule.verify(b, b.players[0], new Position(-2, -2));});
+        Assertions.assertThrows(RuleViolated.class, () -> {playerRule.verify(b, b.getPlayers()[0], new Position(-2, -2));});
     }
 }

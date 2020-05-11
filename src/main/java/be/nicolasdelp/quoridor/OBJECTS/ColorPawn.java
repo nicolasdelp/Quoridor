@@ -1,7 +1,7 @@
 package be.nicolasdelp.quoridor.objects;
 
 /**
-* L'enum Color représente les couleurs possible pour les murs/pions
+* L'enum ColorPawn represente les couleurs possible pour les murs/pions
 *
 * @author Delplanque Nicolas
 */

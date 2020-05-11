@@ -7,13 +7,18 @@ import be.nicolasdelp.quoridor.graph.Graph;
 import be.nicolasdelp.quoridor.objects.*;
 import be.nicolasdelp.quoridor.rules.RuleViolated;
 
+/**
+ * La class MainStat est la classe d'entree pour la partie statistique
+ * 
+ * @author Delplanque Nicolas
+ */
 public class MainStat {
 
     public static void IAEasy(Board board, Player player) throws RuleViolated{
         ArrayList<Position> positionsToTry = new ArrayList<Position>(); // On cree et initialise les positions que l'on va essayer.
         for (int i = player.getPawn().getPosition().getX() - 2; i <= player.getPawn().getPosition().getX()+ 2; i += 2) {
             for (int j = player.getPawn().getPosition().getY() - 2; j <= player.getPawn().getPosition().getY()+ 2; j += 2) {
-                if (!(i == player.getPawn().getPosition().getX() && j == player.getPawn().getPosition().getY())) { // On ne peut pas se déplacer sur la position actuelle du pion
+                if (!(i == player.getPawn().getPosition().getX() && j == player.getPawn().getPosition().getY())) { // On ne peut pas se deplacer sur la position actuelle du pion
                     positionsToTry.add(new Position(i, j));
                 }
             }
@@ -102,10 +107,10 @@ public class MainStat {
                 }
                 if(b1.getWinnerPlayer().getID() == 0){
                     player1Win++;
-                    System.out.println("L'IA " + b1.getAPlayer(0).getUsername() +  " a gagnée la partie " + go);
+                    System.out.println("L'IA " + b1.getAPlayer(0).getUsername() +  " a gagnee la partie " + go);
                 } else if(b1.getWinnerPlayer().getID() == 1){
                     player2Win++;
-                    System.out.println("L'IA " + b1.getAPlayer(1).getUsername() +  " a gagnée la partie " + go);
+                    System.out.println("L'IA " + b1.getAPlayer(1).getUsername() +  " a gagnee la partie " + go);
                 }
             }
             if(numberOfParty%2 == 1){
@@ -134,18 +139,26 @@ public class MainStat {
                 }
                 if(b2.getWinnerPlayer().getID() == 0){
                     player2Win++;
-                    System.out.println("L'IA " + b2.getAPlayer(0).getUsername() + " a gagnée la partie " + go);
+                    System.out.println("L'IA " + b2.getAPlayer(0).getUsername() + " a gagnee la partie " + go);
                 } else if(b2.getWinnerPlayer().getID() == 1){
                     player1Win++;
-                    System.out.println("L'IA " + b2.getAPlayer(1).getUsername() +  " a gagnée la partie " + go);
+                    System.out.println("L'IA " + b2.getAPlayer(1).getUsername() +  " a gagnee la partie " + go);
                 }
             }
             go++;
         }
-        System.out.println("\u001B[32m" + "------------------------------------------" + "\u001B[0m");
-        System.out.println("\u001B[34m" + numberOfParty + " parties ont été jouées" + "\u001B[0m");
-        System.out.println("L'IA " + firstPlayerLevel + " (Joueur 1) a gagnée " + player1Win + " parties sur " + numberOfParty);
-        System.out.println("L'IA " + secondPlayerLevel + " (Joueur 2) a gagnée " + player2Win + " parties sur " + numberOfParty);
-        System.out.println("\u001B[32m" + "------------------------------------------" + "\u001B[0m");
+        System.out.println("\u001B[32m" + "-----------------------------------------------------------" + "\u001B[0m");
+        System.out.println("\u001B[34m" + numberOfParty + " parties ont ete jouees" + "\u001B[0m");
+        if(player1Win > player2Win){
+            System.out.println("\u001B[32m" + "L'IA " + firstPlayerLevel + " (Joueur 1) a gagnee " + player1Win + " parties sur " + numberOfParty + "\u001B[0m");
+            System.out.println("\u001B[31m" + "L'IA " + secondPlayerLevel + " (Joueur 2) a gagnee " + player2Win + " parties sur " + numberOfParty + "\u001B[0m");
+        } else if(player1Win < player2Win){
+            System.out.println("\u001B[31m" + "L'IA " + firstPlayerLevel + " (Joueur 1) a gagnee " + player1Win + " parties sur " + numberOfParty + "\u001B[0m");
+            System.out.println("\u001B[32m" + "L'IA " + secondPlayerLevel + " (Joueur 2) a gagnee " + player2Win + " parties sur " + numberOfParty + "\u001B[0m");
+        } else {
+            System.out.println("\u001B[33m" + "L'IA " + firstPlayerLevel + " (Joueur 1) a gagnee " + player1Win + " parties sur " + numberOfParty + "\u001B[0m");
+            System.out.println("\u001B[33m" + "L'IA " + secondPlayerLevel + " (Joueur 2) a gagnee " + player2Win + " parties sur " + numberOfParty + "\u001B[0m");
+        }
+        System.out.println("\u001B[32m" + "-----------------------------------------------------------" + "\u001B[0m");
     }
 }

@@ -4,6 +4,11 @@ import java.io.Serializable;
 
 import be.nicolasdelp.quoridor.objects.*;
 
+/**
+ * La class IsAWallBox est la regle qui empeche de deplacer un pion dans une case pour mur
+ *
+ * @author Delplanque Nicolas
+ */
 public class IsAWallBox implements PlayerRule, Serializable {
 
     /**

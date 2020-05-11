@@ -14,7 +14,7 @@ public class IsAPawnBoxTest {
         b.setPlayer(p);
         b.createBoard();
         WallRule wallRule = new IsAPawnBox();
-        Assertions.assertThrows(RuleViolated.class, () -> {wallRule.verify(b, b.players[0], new Wall(), new Position(0, 0));});
+        Assertions.assertThrows(RuleViolated.class, () -> {wallRule.verify(b, b.getPlayers()[0], new Wall(), new Position(0, 0));});
     }
 
     @Test
@@ -24,7 +24,7 @@ public class IsAPawnBoxTest {
         b.setPlayer(p);
         b.createBoard();
         WallRule wallRule = new IsAPawnBox();
-        Assertions.assertThrows(RuleViolated.class, () -> {wallRule.verify(b, b.players[0], new Wall(), new Position(16, 16));});
+        Assertions.assertThrows(RuleViolated.class, () -> {wallRule.verify(b, b.getPlayers()[0], new Wall(), new Position(16, 16));});
     }
 
     @Test
@@ -34,7 +34,7 @@ public class IsAPawnBoxTest {
         b.setPlayer(p);
         b.createBoard();
         WallRule wallRule = new IsAPawnBox();
-        Assertions.assertThrows(RuleViolated.class, () -> {wallRule.verify(b, b.players[0], new Wall(), new Position(8, 8));});
+        Assertions.assertThrows(RuleViolated.class, () -> {wallRule.verify(b, b.getPlayers()[0], new Wall(), new Position(8, 8));});
     }
 
     @Test
@@ -44,6 +44,6 @@ public class IsAPawnBoxTest {
         b.setPlayer(p);
         b.createBoard();
         WallRule wallRule = new IsAPawnBox();
-        Assertions.assertThrows(RuleViolated.class, () -> {wallRule.verify(b, b.players[1], new Wall(), new Position(14, 2));});
+        Assertions.assertThrows(RuleViolated.class, () -> {wallRule.verify(b, b.getPlayers()[1], new Wall(), new Position(14, 2));});
     }
 }

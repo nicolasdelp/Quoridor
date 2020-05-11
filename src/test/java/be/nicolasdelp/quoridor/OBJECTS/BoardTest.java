@@ -12,7 +12,7 @@ public class BoardTest {
         Player[] p = {new Player("Humain", "Nico", 0, ColorPawn.Rouge, new Pawn()), new Player("Ordinateur", "Ordi", 1, ColorPawn.Rouge, new Pawn())};
         b.setPlayer(p);
         b.createBoard();
-        assertEquals(b.players[0].getWallIndex(), 9);
+        assertEquals(b.getPlayers()[0].getWallIndex(), 9);
     }
 
     @Test
@@ -33,8 +33,8 @@ public class BoardTest {
         Player[] p = {new Player("Humain", "Nico", 0, ColorPawn.Rouge, new Pawn()), new Player("Ordinateur", "Ordi", 1, ColorPawn.Rouge, new Pawn())};
         b.setPlayer(p);
         b.createBoard();
-        assertEquals(b.players[0].getPawn().getPosition().getX(), 0);
-        assertEquals(b.players[0].getPawn().getPosition().getY(), 8);
+        assertEquals(b.getPlayers()[0].getPawn().getPosition().getX(), 0);
+        assertEquals(b.getPlayers()[0].getPawn().getPosition().getY(), 8);
     }
 
     @Test
@@ -43,8 +43,8 @@ public class BoardTest {
         Player[] p = {new Player("Humain", "Nico", 0, ColorPawn.Rouge, new Pawn()), new Player("Ordinateur", "Ordi", 1, ColorPawn.Rouge, new Pawn())};
         b.setPlayer(p);
         b.createBoard();
-        assertEquals(b.players[1].getPawn().getPosition().getX(), 16);
-        assertEquals(b.players[1].getPawn().getPosition().getY(), 8);
+        assertEquals(b.getPlayers()[1].getPawn().getPosition().getX(), 16);
+        assertEquals(b.getPlayers()[1].getPawn().getPosition().getY(), 8);
     }
 
     @Test
@@ -54,12 +54,12 @@ public class BoardTest {
         b.setPlayer(p);
         b.createBoard();
         try {
-            b.movePawnOnBoard(b.players[0], new Position(2, 8));
+            b.movePawnOnBoard(b.getPlayers()[0], new Position(2, 8));
         } catch (Exception e) {
             System.out.println(e);
         }
-        assertEquals(b.players[0].getPawn().getPosition().getX(), 2);
-        assertEquals(b.players[0].getPawn().getPosition().getY(), 8);
+        assertEquals(b.getPlayers()[0].getPawn().getPosition().getX(), 2);
+        assertEquals(b.getPlayers()[0].getPawn().getPosition().getY(), 8);
     }
 
     @Test
@@ -69,20 +69,20 @@ public class BoardTest {
         b.setPlayer(p);
         b.createBoard();
         try {
-            b.movePawnOnBoard(b.players[0], new Position(2, 8));
-            b.movePawnOnBoard(b.players[0], new Position(4, 8));
-            b.movePawnOnBoard(b.players[0], new Position(6, 8));
-            b.movePawnOnBoard(b.players[0], new Position(8, 8));
-            b.movePawnOnBoard(b.players[0], new Position(10, 8));
-            b.movePawnOnBoard(b.players[0], new Position(12, 8));
-            b.movePawnOnBoard(b.players[0], new Position(14, 8));
-            b.movePawnOnBoard(b.players[0], new Position(14, 10));
-            b.movePawnOnBoard(b.players[0], new Position(16, 10));
+            b.movePawnOnBoard(b.getPlayers()[0], new Position(2, 8));
+            b.movePawnOnBoard(b.getPlayers()[0], new Position(4, 8));
+            b.movePawnOnBoard(b.getPlayers()[0], new Position(6, 8));
+            b.movePawnOnBoard(b.getPlayers()[0], new Position(8, 8));
+            b.movePawnOnBoard(b.getPlayers()[0], new Position(10, 8));
+            b.movePawnOnBoard(b.getPlayers()[0], new Position(12, 8));
+            b.movePawnOnBoard(b.getPlayers()[0], new Position(14, 8));
+            b.movePawnOnBoard(b.getPlayers()[0], new Position(14, 10));
+            b.movePawnOnBoard(b.getPlayers()[0], new Position(16, 10));
         } catch (Exception e) {
             System.out.println(e);
         }
-        assertEquals(b.players[0].getPawn().getPosition().getX(), 16);
-        assertEquals(b.players[0].getPawn().getPosition().getY(), 10);
+        assertEquals(b.getPlayers()[0].getPawn().getPosition().getX(), 16);
+        assertEquals(b.getPlayers()[0].getPawn().getPosition().getY(), 10);
     }
 
     @Test
@@ -92,7 +92,7 @@ public class BoardTest {
         b.setPlayer(p);
         b.createBoard();
         try {
-            b.setWallOnBoard(b.players[0], new Wall(), WallDirection.Horizontal, new Position(5, 3));
+            b.setWallOnBoard(b.getPlayers()[0], new Wall(), WallDirection.Horizontal, new Position(5, 3));
         } catch (Exception e) {
             System.out.println(e);
         }
@@ -111,7 +111,7 @@ public class BoardTest {
         b.setPlayer(p);
         b.createBoard();
         try {
-            b.setWallOnBoard(b.players[0], new Wall(), WallDirection.Vertical, new Position(5, 3));
+            b.setWallOnBoard(b.getPlayers()[0], new Wall(), WallDirection.Vertical, new Position(5, 3));
         } catch (Exception e) {
             System.out.println(e);
         }

@@ -4,6 +4,11 @@ import java.io.Serializable;
 
 import be.nicolasdelp.quoridor.objects.*;
 
+/**
+ * La class BlockByAWall est la regle qui empeche de passer au dessus d'un mur
+ *
+ * @author Delplanque Nicolas
+ */
 public class BlockedByAWall implements PlayerRule, Serializable {
 
     /**
@@ -16,18 +21,18 @@ public class BlockedByAWall implements PlayerRule, Serializable {
         int x = Math.abs(position.getX() - player.getPawn().getPosition().getX());
         int y = Math.abs(position.getY() - player.getPawn().getPosition().getY());
 
-        if(position.getX() - player.getPawn().getPosition().getX() > 0){ //Si on va à droite
+        if(position.getX() - player.getPawn().getPosition().getX() > 0){ //Si on va a droite
             for(int i = 0; i < x; i++){ //On regarde chaque case entre le pion et sa future position
                 if(board.getBoardBoxes()[player.getPawn().getPosition().getX()+i][player.getPawn().getPosition().getY()].getisWallBox() //On regarde si la case est une case pour mur
-                    && board.getBoardBoxes()[player.getPawn().getPosition().getX()+i][player.getPawn().getPosition().getY()].getisOccuped()){ //On regarde si la case est occupée
+                    && board.getBoardBoxes()[player.getPawn().getPosition().getX()+i][player.getPawn().getPosition().getY()].getisOccuped()){ //On regarde si la case est occupee
                         throw new RuleViolated(player, position, board, "Vous ne pouvez pas avancez, il y a un mur !");
                 }
             }
         }
-        if(position.getX() - player.getPawn().getPosition().getX() < 0){ //Si on va à gauche
+        if(position.getX() - player.getPawn().getPosition().getX() < 0){ //Si on va a gauche
             for(int i = 0; i < x; i++){ //On regarde chaque case entre le pion et sa future position
                 if(board.getBoardBoxes()[player.getPawn().getPosition().getX()-i][player.getPawn().getPosition().getY()].getisWallBox() //On regarde si la case est une case pour mur
-                    && board.getBoardBoxes()[player.getPawn().getPosition().getX()-i][player.getPawn().getPosition().getY()].getisOccuped()){ //On regarde si la case est occupée
+                    && board.getBoardBoxes()[player.getPawn().getPosition().getX()-i][player.getPawn().getPosition().getY()].getisOccuped()){ //On regarde si la case est occupee
                         throw new RuleViolated(player, position, board, "Vous ne pouvez pas avancez, il y a un mur !");
                 }
             }
@@ -35,7 +40,7 @@ public class BlockedByAWall implements PlayerRule, Serializable {
         if(position.getY() - player.getPawn().getPosition().getY() > 0){ //Si on va en bas
             for(int i = 1; i < y; i++){ //On regarde chaque case entre le pion et sa future position
                 if(board.getBoardBoxes()[player.getPawn().getPosition().getX()][player.getPawn().getPosition().getY()+i].getisWallBox() //On regarde si la case est une case pour mur
-                    && board.getBoardBoxes()[player.getPawn().getPosition().getX()][player.getPawn().getPosition().getY()+i].getisOccuped()){ //On regarde si la case est occupée
+                    && board.getBoardBoxes()[player.getPawn().getPosition().getX()][player.getPawn().getPosition().getY()+i].getisOccuped()){ //On regarde si la case est occupee
                         throw new RuleViolated(player, position, board, "Vous ne pouvez pas avancez, il y a un mur !");
                 }
             }
@@ -43,7 +48,7 @@ public class BlockedByAWall implements PlayerRule, Serializable {
         if(position.getY() - player.getPawn().getPosition().getY() < 0){ //Si on va en haut
             for(int i = 0; i < y; i++){ //On regarde chaque case entre le pion et sa future position
                 if(board.getBoardBoxes()[player.getPawn().getPosition().getX()][player.getPawn().getPosition().getY()-i].getisWallBox()){ //On regarde si la case est une case pour mur
-                    if(board.getBoardBoxes()[player.getPawn().getPosition().getX()][player.getPawn().getPosition().getY()-i].getisOccuped()){ //On regarde si la case est occupée
+                    if(board.getBoardBoxes()[player.getPawn().getPosition().getX()][player.getPawn().getPosition().getY()-i].getisOccuped()){ //On regarde si la case est occupee
                         throw new RuleViolated(player, position, board, "Vous ne pouvez pas avancez, il y a un mur !");
                     }
                 }
@@ -51,22 +56,3 @@ public class BlockedByAWall implements PlayerRule, Serializable {
         }
     }
 }
-
-
-//ANCIEN CODE
-
-// if(position.getX() < player.getPawn().getPosition().getX()){ //Si on change de collone (en allant à gauche)
-//     if(x == player.getPawn().getPosition().getX()){ //Si on arrive dans la collone 0 (car x - 0 = x)
-//         if(board.getBoardBoxes()[position.getX()+1][position.getY()].getisOccuped()){ //Si il y a un mur dans la case de la collone 1
-//             throw new RuleViolated(player, position, board, "Vous ne pouvez pas avancez, il y a un mur !");
-//         }
-//     }
-// }
-
-// if(position.getY() != player.getPawn().getPosition().getY()){ //Si on change de ligne (en allant en haut)
-//     if(y == player.getPawn().getPosition().getY()){ //Si on arrive dans la ligne 0 (car y - 0 = y)
-//         if(board.getBoardBoxes()[position.getX()][position.getY()+1].getisOccuped()){ //Si il y a un mur dans la case de la ligne 1
-//             throw new RuleViolated(player, position, board, "Vous ne pouvez pas avancez, il y a un mur !");
-//         }
-//     }
-// }

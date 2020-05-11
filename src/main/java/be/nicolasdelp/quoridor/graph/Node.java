@@ -3,7 +3,7 @@ package be.nicolasdelp.quoridor.graph;
 import be.nicolasdelp.quoridor.objects.*;
 
 /**
- * La class Node représente un noeud
+ * La class Node represente un noeud
  * 
  * @author Delplanque Nicolas
  */
@@ -11,21 +11,22 @@ public class Node {
 
     private boolean alreadyVisited;
     private Position nodePosition;
-    private int G; //Cout de déplacement
-    private int H; //Distance de la case d'arrivée
+    private int G; //Cout de deplacement
+    private int H; //Distance de la case d'arrivee
     private int F; //= G+H
     private Node parent;
 
     /**
      * Constructeur
      * 
+     * @param position la position du noeud
      */
     public Node(Position position){
         this.nodePosition = position;
     }
 
     /**
-     * Accesseur de la valeur de isVisited
+     * Accesseur de la valeur isVisited
      * 
      * @return true ou false
      */
@@ -34,7 +35,7 @@ public class Node {
     }
     
     /**
-     * Mutateur de la valeur de isVisited
+     * Mutateur de la valeur isVisited
      * 
      * @param value true ou false
      */
@@ -43,7 +44,7 @@ public class Node {
     }
 
     /**
-     * Accesseur de la position d'un noeud
+     * Accesseur de la position du noeud
      * 
      * @return une position
      */
@@ -52,7 +53,7 @@ public class Node {
     }
 
     /**
-     * Mutateur du coût de déplacement
+     * Mutateur du coût de deplacement
      * 
      * @param g un entier
      */
@@ -61,16 +62,16 @@ public class Node {
     }
 
     /**
-     * Accesseur du coût de déplacement
+     * Accesseur du coût de deplacement
      * 
-     * @param g un entier
+     * @return un entier
      */
     public int getG() {
         return this.G;
     }
 
     /**
-     * Mutateur de la distance de la case d'arrivée
+     * Mutateur de la distance par rapport a la case d'arrivee
      * 
      * @param h un entier
      */

@@ -4,6 +4,11 @@ import java.io.Serializable;
 
 import be.nicolasdelp.quoridor.objects.*;
 
+/**
+ * La class PlayerIsInBounds est la regle qui empeche de se deplacer en dehors du plateau
+ *
+ * @author Delplanque Nicolas
+ */
 public class PlayerIsInBounds implements PlayerRule, Serializable {
 
     /**

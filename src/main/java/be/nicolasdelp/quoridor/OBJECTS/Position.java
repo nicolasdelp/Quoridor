@@ -3,7 +3,7 @@ package be.nicolasdelp.quoridor.objects;
 import java.io.Serializable;
 
 /**
- * La class Position représente un objet Position
+ * La class Position represente un objet Position
  *
  * @author Delplanque Nicolas
  */

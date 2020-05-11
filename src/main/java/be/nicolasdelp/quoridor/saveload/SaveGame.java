@@ -5,6 +5,11 @@ import java.io.ObjectOutputStream;
 
 import be.nicolasdelp.quoridor.objects.Board;
 
+/**
+ * La class LoadGame est la classe qui permet de sauvegarder une partie
+ * 
+ * @author Delplanque Nicolas
+ */
 public class SaveGame {
 
     public static void saveBoard(Board board){

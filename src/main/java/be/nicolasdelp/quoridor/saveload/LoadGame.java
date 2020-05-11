@@ -6,6 +6,11 @@ import java.io.ObjectInputStream;
 
 import be.nicolasdelp.quoridor.objects.Board;
 
+/**
+ * La class LoadGame est la classe qui permet de charger une partie
+ * 
+ * @author Delplanque Nicolas
+ */
 public class LoadGame {
 
     private static Board loadBoard = null;
@@ -35,8 +40,9 @@ public class LoadGame {
     }
 
     /**
-     * Accesseur du plateau créé selon ce que les joueurs ont choisit
+     * Accesseur du plateau cree selon ce que les joueurs ont choisit
      *
+     * @return vraie ou faux
      */
     public static Board getBoard(){
         return loadBoard;

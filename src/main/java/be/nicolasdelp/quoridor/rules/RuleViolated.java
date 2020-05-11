@@ -2,6 +2,11 @@ package be.nicolasdelp.quoridor.rules;
 
 import be.nicolasdelp.quoridor.objects.*;
 
+/**
+ * La class RuleViolated est une classe heritiaire de l'objet Exception
+ *
+ * @author Delplanque Nicolas
+ */
 public class RuleViolated extends Exception{
 
     /**
