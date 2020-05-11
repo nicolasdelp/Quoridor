@@ -1,4 +1,6 @@
-package be.nicolasdelp.quoridor.objects;
+package be.nicolasdelp.quoridor.graph;
+
+import be.nicolasdelp.quoridor.objects.*;
 
 /**
  * La class Node représente un noeud

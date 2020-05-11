@@ -1,5 +1,6 @@
 package be.nicolasdelp.quoridor.gui;
 
+import be.nicolasdelp.quoridor.graph.Graph;
 import be.nicolasdelp.quoridor.objects.*;
 import be.nicolasdelp.quoridor.rules.RuleViolated;
 import be.nicolasdelp.quoridor.saveload.LoadGame;
@@ -392,12 +393,16 @@ public class FXMLControllerBoard implements Initializable{
         if(this.board.getPlayers()[1].getType() == "Ordinateur"){
             if(this.board.getPlayers()[1].getIALevel() == "Facile"){
                 if(board.getcurrentIDPlayer() == 1){
-                    IAEasy(this.board.getPlayers()[1]);
+                    if(!board.getWin()){
+                        IAEasy(this.board.getPlayers()[1]);
+                    }
                 }
             }
             if(this.board.getPlayers()[1].getIALevel() == "Difficile"){
                 if(board.getcurrentIDPlayer() == 1){
-                    IAHard(this.board.getPlayers()[1]);
+                    if(!board.getWin()){
+                        IAHard(this.board.getPlayers()[1]);
+                    }
                 }
             }
         }
@@ -424,12 +429,16 @@ public class FXMLControllerBoard implements Initializable{
                 if(this.board.getPlayers()[1].getType() == "Ordinateur"){
                     if(this.board.getPlayers()[1].getIALevel() == "Facile"){
                         if(board.getcurrentIDPlayer() == 1){
-                            IAEasy(this.board.getPlayers()[1]);
+                            if(!board.getWin()){
+                                IAEasy(this.board.getPlayers()[1]);
+                            }
                         }
                     }
                     if(this.board.getPlayers()[1].getIALevel() == "Difficile"){
                         if(board.getcurrentIDPlayer() == 1){
-                            IAHard(this.board.getPlayers()[1]);
+                            if(!board.getWin()){
+                                IAHard(this.board.getPlayers()[1]);
+                            }
                         }
                     }
                 }
@@ -461,12 +470,16 @@ public class FXMLControllerBoard implements Initializable{
                 if(this.board.getPlayers()[1].getType() == "Ordinateur"){
                     if(this.board.getPlayers()[1].getIALevel() == "Facile"){
                         if(board.getcurrentIDPlayer() == 1){
-                            IAEasy(this.board.getPlayers()[1]);
+                            if(!board.getWin()){
+                                IAEasy(this.board.getPlayers()[1]);
+                            }
                         }
                     }
                     if(this.board.getPlayers()[1].getIALevel() == "Difficile"){
                         if(board.getcurrentIDPlayer() == 1){
-                            IAHard(this.board.getPlayers()[1]);
+                            if(!board.getWin()){
+                                IAHard(this.board.getPlayers()[1]);
+                            }
                         }
                     }
                 }
@@ -480,7 +493,7 @@ public class FXMLControllerBoard implements Initializable{
         }
     }
 
-    public void IAEasy(Player player){ //Pose pas de mur
+    public void IAEasy(Player player){
         ArrayList<Position> positionsToTry = new ArrayList<Position>(); // On cree et initialise les positions que l'on va essayer.
         for(int i = player.getPawn().getPosition().getX()-2; i<=player.getPawn().getPosition().getX()+2; i+=2){
             for(int j = player.getPawn().getPosition().getY()-2; j<=player.getPawn().getPosition().getY()+2; j+=2){
@@ -503,9 +516,7 @@ public class FXMLControllerBoard implements Initializable{
         }
     }
 
-    private ArrayList<Position> Positions = new ArrayList<Position>(); //Position déjà visité
-
-    public void IAHard(Player player){ //Pose des murs
+    public void IAHard(Player player){
         Graph g = new Graph(this.board, this.board.getPlayers()[0]);
         g.pathForIA();
 
@@ -528,22 +539,5 @@ public class FXMLControllerBoard implements Initializable{
 
         g.pathFinding(player.getPawn().getPosition(), player.getFinishPosition()[res]);
         handleClickOnBox(g.getPath().get(0).getNodePosition().getX(), g.getPath().get(0).getNodePosition().getY());
-        
-        // if(Positions.size() > 3){
-        //     Positions.remove(0);
-        // }
-        // for(int i = 0; i < Positions.size(); i++){
-        //     g.Nodes[Positions.get(i).getX()][Positions.get(i).getY()].setVisited(true);
-        // }
-
-
-        // for(int i = 0; i < player.getFinishPosition().length; i++){
-        //     g.pathForIA();
-        //     if(g.pathFinding(player.getPawn().getPosition(), player.getFinishPosition()[i])){
-        //         g.pathFinding(player.getPawn().getPosition(), player.getFinishPosition()[i]);
-        //         handleClickOnBox(g.getPath().get(0).getNodePosition().getX(), g.getPath().get(0).getNodePosition().getY());
-        //         break;
-        //     }
-        // }
     }
 }

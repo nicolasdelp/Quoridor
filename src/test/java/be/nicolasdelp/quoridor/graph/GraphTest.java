@@ -1,9 +1,9 @@
-package be.nicolasdelp.quoridor.objects;
+package be.nicolasdelp.quoridor.graph;
+
+import be.nicolasdelp.quoridor.objects.*;
+import be.nicolasdelp.quoridor.rules.*;
 
 import org.junit.jupiter.api.Test;
-
-import be.nicolasdelp.quoridor.rules.RuleViolated;
-
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class GraphTest {

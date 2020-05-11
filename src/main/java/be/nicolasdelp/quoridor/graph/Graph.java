@@ -1,6 +1,8 @@
-package be.nicolasdelp.quoridor.objects;
+package be.nicolasdelp.quoridor.graph;
 
 import java.util.ArrayList;
+
+import be.nicolasdelp.quoridor.objects.*;
 
 /**
  * La class Graph représent un Board sous forme de graphe
@@ -213,7 +215,7 @@ public class Graph {
             if(openList.size() > 0){ //Si il y a toujours un noeud dans l'openList
                 minimum = openList.get(0);
             } else {
-                System.out.println("Aucun chemin trouvé");
+                //System.out.println("Aucun chemin trouvé");
                 return false; //Si il n'y a plus de posibilitées c'est qu'il ne peut pas y arriver
             }
             for(int i=1; i<openList.size(); i++){
@@ -232,10 +234,10 @@ public class Graph {
             if(currentNode.getNodePosition().getX() ==  target.getX() && currentNode.getNodePosition().getY() == target.getY()){ //Si on est arrivée à destination
                 go = false;
                 for(int i=1; i<closeList.size(); i++){
-                    System.out.println("(" + closeList.get(i).getNodePosition().getX() + "," + closeList.get(i).getNodePosition().getY() + ")");
+                    // System.out.println("(" + closeList.get(i).getNodePosition().getX() + "," + closeList.get(i).getNodePosition().getY() + ")");
                 }
                 closeList.remove(0); //On enlève le noeud de départ
-                System.out.println("----------------------");
+                // System.out.println("----------------------");
                 return true;
             }
         }

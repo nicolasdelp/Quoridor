@@ -38,6 +38,11 @@ test {
 application {
     // Define the main class for the application.
     mainClassName = 'be.nicolasdelp.quoridor.Main'
+
+    task(runStat, dependsOn: 'classes', type: JavaExec) {
+        main = 'be.nicolasdelp.quoridor.MainStat'
+        classpath = sourceSets.main.runtimeClasspath
+    }
 }
 
 javafx {

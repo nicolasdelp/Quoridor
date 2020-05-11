@@ -13,7 +13,7 @@ public class PlayerIsInBounds implements PlayerRule, Serializable {
 
     @Override
     public void verify(Board board, Player player, Position position) throws RuleViolated{
-        if((position.getX() >= board.getLength()) || (position.getX() < 0) || (position.getY() >= board.getWidth() || (position.getY() < 0))){
+        if((position.getX() > 16) || (position.getX() < 0) || (position.getY() > 16 || (position.getY() < 0))){
             throw new RuleViolated(player, position, board, "Vous êtes en dehors des limites du plateau !");
         }
     }

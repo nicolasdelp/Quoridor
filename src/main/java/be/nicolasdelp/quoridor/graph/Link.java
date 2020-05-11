@@ -1,4 +1,4 @@
-package be.nicolasdelp.quoridor.objects;
+package be.nicolasdelp.quoridor.graph;
 
 /**
  * La class Link représente un lien entre deux noeuds

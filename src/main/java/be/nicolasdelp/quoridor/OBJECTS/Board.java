@@ -33,6 +33,7 @@ public class Board implements Serializable{
     private int currentIDPlayer = 0;
     private boolean win = false;
     private String winner = null;
+    private Player winnerPlayer = null;
 
     /**
      * Constructeur
@@ -124,11 +125,19 @@ public class Board implements Serializable{
     }
 
     /**
-     * Récupère le gagnant
+     * Récupère le nom du gagnant
      *
      */
     public String getWinner(){
         return this.winner;
+    }
+
+    /**
+     * Récupère le joueur gagnant
+     *
+     */
+    public Player getWinnerPlayer(){
+        return this.winnerPlayer;
     }
 
     /**
@@ -170,9 +179,10 @@ public class Board implements Serializable{
         boardBoxes[newPosition.getX()][newPosition.getY()].setObject(player.getPawn()); //On assigne à la box d'arrivée qu'un objet est dedans
         for(int i=0; i<player.getFinishPosition().length; i++){ //Si on a gagné
             if(newPosition.getX() == player.getFinishPosition()[i].getX() && newPosition.getY() == player.getFinishPosition()[i].getY()){
-                //System.out.println(player.getUsername() + " a gagne");
+                // System.out.println(player.getUsername() + " a gagne");
                 this.win = true;
                 this.winner = player.getUsername();
+                this.winnerPlayer = player;
             }
         }
     }

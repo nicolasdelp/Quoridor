@@ -2,6 +2,7 @@ package be.nicolasdelp.quoridor.rules;
 
 import java.io.Serializable;
 
+import be.nicolasdelp.quoridor.graph.Graph;
 import be.nicolasdelp.quoridor.objects.*;
 
 public class BlockAnotherPlayer implements WallRule, Serializable {
