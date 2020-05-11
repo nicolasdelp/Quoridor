@@ -70,12 +70,6 @@ public class MainStat {
         int numberOfParty = Integer.parseInt(args[0]);
         String firstPlayerLevel = args[1];
         String secondPlayerLevel = args[2];
-        // System.out.println(numberOfParty);
-        // System.out.println(firstPlayerLevel);
-        // System.out.println(secondPlayerLevel);
-        // int numberOfParty = 1000;
-        // String firstPlayerLevel = "Facile";
-        // String secondPlayerLevel = "Facile";
 
         int player1Win = 0;
         int player2Win = 0;
@@ -149,7 +143,7 @@ public class MainStat {
             go++;
         }
         System.out.println("\u001B[32m" + "------------------------------------------" + "\u001B[0m");
-        System.out.println(numberOfParty + " parties ont été joués");
+        System.out.println("\u001B[34m" + numberOfParty + " parties ont été jouées" + "\u001B[0m");
         System.out.println("L'IA " + firstPlayerLevel + " (Joueur 1) a gagnée " + player1Win + " parties sur " + numberOfParty);
         System.out.println("L'IA " + secondPlayerLevel + " (Joueur 2) a gagnée " + player2Win + " parties sur " + numberOfParty);
         System.out.println("\u001B[32m" + "------------------------------------------" + "\u001B[0m");

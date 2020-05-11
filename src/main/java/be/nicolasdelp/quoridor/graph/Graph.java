@@ -135,76 +135,67 @@ public class Graph {
      * @return true si il y a un chemin, false si il n'y en a pas
      */
     public boolean pathFinding(Position source, Position target){
-        this.currentNode = this.Nodes[source.getX()][source.getY()]; //Noeud actuel (ou il y a le pion)
+        this.currentNode = this.Nodes[source.getX()][source.getY()]; //Noeud actuel (où est le pion)
         Node minimum;
-        boolean go = true;
         ArrayList<Node> openList = new ArrayList<Node>(); //Liste des noeuds ouvert
+        boolean go = true;
 
         openList.add(this.currentNode); //On ajoute à l'openList le noeud actuel
         //closeList.add(this.currentNode); //On ajoute à la closeList le noeud de départ
-        this.currentNode.setVisited(true); 
+        this.currentNode.setVisited(true); //Le noeud de départ a été visité
 
         while(go){
-            for(int i=0; i<this.Nodes.length; i++){
+            for(int i=0; i<this.Nodes.length; i++){ //Pour chaque noeuds
                 for(int j=0; j<this.Nodes.length; j++){
-                    if(this.Nodes[i][j] != null){
-                        if((this.Nodes[i][j].getNodePosition().getX() == this.currentNode.getNodePosition().getX()+2) && (this.Nodes[i][j].getNodePosition().getY() == this.currentNode.getNodePosition().getY())){ //Droite
-                            for(int x=0; x<this.Links.size(); x++){
-                                if(this.Links.get(x).getFromNode() == this.currentNode && this.Links.get(x).getToNode() == this.Nodes[i][j]){ //Si il y a un lien entre les deux noeuds
-                                    if(this.Nodes[i][j].isVisited() == false){
-                                        this.Nodes[i][j].setParent(this.currentNode); //On lui assigne son parent
-                                        this.Nodes[i][j].setG(this.Nodes[i][j].getParent().getG()+1); //On lui donne le coup
-                                        this.Nodes[i][j].setG(1); //On lui donne un coup
-                                        this.Nodes[i][j].setH(getNodeDistance(this.Nodes[i][j].getNodePosition(), target)); //On lui donne sa distance par rapport à l'arrivée
-                                        this.Nodes[i][j].setVisited(true);
+                    if(this.Nodes[i][j] != null){ //Si le noeud existe (cad si il n'est pas occupé)
+                        if((this.Nodes[i][j].getNodePosition().getX() == this.currentNode.getNodePosition().getX()+2) && (this.Nodes[i][j].getNodePosition().getY() == this.currentNode.getNodePosition().getY())){ //Si le noeud que l'on regarde est celui de droite
+                            for(int x=0; x<this.Links.size(); x++){ //On regarde chaque lien créé entre tout les noeuds
+                                if(this.Links.get(x).getFromNode() == this.currentNode && this.Links.get(x).getToNode() == this.Nodes[i][j]){ //Si il y a un lien entre les deux noeuds dans les 2 sens 
+                                    if(this.Nodes[i][j].isVisited() == false){ //Si le noeud n'a pas déjà été visité
+                                        this.Nodes[i][j].setParent(this.currentNode); //On lui assigne son noeud parent
+                                        this.Nodes[i][j].setG(this.Nodes[i][j].getParent().getG()+1); //On lui donne un coup
+                                        this.Nodes[i][j].setH(getNodeDistance(this.Nodes[i][j].getNodePosition(), target)); //On lui donne sa distance par rapport au noeud d'arrivé
+                                        this.Nodes[i][j].setVisited(true); //Il a été visité
                                         openList.add(this.Nodes[i][j]); //On l'ajoute à l'openList
                                     }
                                 }
                             }
                         }
-                    }
-                    if(this.Nodes[i][j] != null){
-                        if((this.Nodes[i][j].getNodePosition().getX() == this.currentNode.getNodePosition().getX()-2) && (this.Nodes[i][j].getNodePosition().getY() == this.currentNode.getNodePosition().getY())){ //Gauche
+                        if((this.Nodes[i][j].getNodePosition().getX() == this.currentNode.getNodePosition().getX()-2) && (this.Nodes[i][j].getNodePosition().getY() == this.currentNode.getNodePosition().getY())){ //Si le noeud que l'on regarde est celui de gauche
                             for(int x=0; x<this.Links.size(); x++){
-                                if(this.Links.get(x).getFromNode() == this.currentNode && this.Links.get(x).getToNode() == this.Nodes[i][j]){ //Si il y a un lien entre les deux noeuds
+                                if(this.Links.get(x).getFromNode() == this.currentNode && this.Links.get(x).getToNode() == this.Nodes[i][j]){
                                     if(this.Nodes[i][j].isVisited() == false){
-                                        this.Nodes[i][j].setParent(this.currentNode); //On lui assigne son parent
-                                        this.Nodes[i][j].setG(this.Nodes[i][j].getParent().getG()+1); //On lui donne un coup
-                                        this.Nodes[i][j].setG(1); //On lui donne un coup
-                                        this.Nodes[i][j].setH(getNodeDistance(this.Nodes[i][j].getNodePosition(), target)); //On lui donne sa distance par rapport à l'arrivée
+                                        this.Nodes[i][j].setParent(this.currentNode);
+                                        this.Nodes[i][j].setG(this.Nodes[i][j].getParent().getG()+1);
+                                        this.Nodes[i][j].setH(getNodeDistance(this.Nodes[i][j].getNodePosition(), target));
                                         this.Nodes[i][j].setVisited(true);
-                                        openList.add(this.Nodes[i][j]); //On l'ajoute à l'openList
+                                        openList.add(this.Nodes[i][j]);
                                     }
                                 }
                             }
                         }
-                    }
-                    if(this.Nodes[i][j] != null){
-                        if((this.Nodes[i][j].getNodePosition().getX() == this.currentNode.getNodePosition().getX()) && (this.Nodes[i][j].getNodePosition().getY() == this.currentNode.getNodePosition().getY()-2)){ //Haut
+                        if((this.Nodes[i][j].getNodePosition().getX() == this.currentNode.getNodePosition().getX()) && (this.Nodes[i][j].getNodePosition().getY() == this.currentNode.getNodePosition().getY()-2)){ //Si le noeud que l'on regarde est celui d'en haut
                             for(int x=0; x<this.Links.size(); x++){
-                                if(this.Links.get(x).getFromNode() == this.currentNode && this.Links.get(x).getToNode() == this.Nodes[i][j]){ //Si il y a un lien entre les deux noeuds
+                                if(this.Links.get(x).getFromNode() == this.currentNode && this.Links.get(x).getToNode() == this.Nodes[i][j]){
                                     if(this.Nodes[i][j].isVisited() == false){
-                                        this.Nodes[i][j].setParent(this.currentNode); //On lui assigne son parent
-                                        this.Nodes[i][j].setG(this.Nodes[i][j].getParent().getG()+1); //On lui donne un coup
-                                        this.Nodes[i][j].setG(1); //On lui donne un coup
-                                        this.Nodes[i][j].setH(getNodeDistance(this.Nodes[i][j].getNodePosition(), target)); //On lui donne sa distance par rapport à l'arrivée
+                                        this.Nodes[i][j].setParent(this.currentNode);
+                                        this.Nodes[i][j].setG(this.Nodes[i][j].getParent().getG()+1);
+                                        this.Nodes[i][j].setH(getNodeDistance(this.Nodes[i][j].getNodePosition(), target));
                                         this.Nodes[i][j].setVisited(true);
-                                        openList.add(this.Nodes[i][j]); //On l'ajoute à l'openList
+                                        openList.add(this.Nodes[i][j]);
                                     }
                                 }
                             }
                         }
-                    }
-                    if(this.Nodes[i][j] != null){
-                        if((this.Nodes[i][j].getNodePosition().getX() == this.currentNode.getNodePosition().getX()) && (this.Nodes[i][j].getNodePosition().getY() == this.currentNode.getNodePosition().getY()+2)){ //Bas
+                        if((this.Nodes[i][j].getNodePosition().getX() == this.currentNode.getNodePosition().getX()) && (this.Nodes[i][j].getNodePosition().getY() == this.currentNode.getNodePosition().getY()+2)){ //Si le noeud que l'on regarde est celui d'en bas
                             for(int x=0; x<this.Links.size(); x++){
-                                if(this.Links.get(x).getFromNode() == this.currentNode && this.Links.get(x).getToNode() == this.Nodes[i][j]){ //Si il y a un lien entre les deux noeuds
+                                if(this.Links.get(x).getFromNode() == this.currentNode && this.Links.get(x).getToNode() == this.Nodes[i][j]){
                                     if(this.Nodes[i][j].isVisited() == false){
-                                        this.Nodes[i][j].setParent(this.currentNode); //On lui assigne son parent
-                                        this.Nodes[i][j].setG(this.Nodes[i][j].getParent().getG()+1); //On lui donne un coup
-                                        this.Nodes[i][j].setH(getNodeDistance(this.Nodes[i][j].getNodePosition(), target)); //On lui donne sa distance par rapport à l'arrivée
+                                        this.Nodes[i][j].setParent(this.currentNode);
+                                        this.Nodes[i][j].setG(this.Nodes[i][j].getParent().getG()+1);
+                                        this.Nodes[i][j].setH(getNodeDistance(this.Nodes[i][j].getNodePosition(), target));
                                         this.Nodes[i][j].setVisited(true);
-                                        openList.add(this.Nodes[i][j]); //On l'ajoute à l'openList
+                                        openList.add(this.Nodes[i][j]);
                                     }
                                 }
                             }
@@ -213,25 +204,24 @@ public class Graph {
                 }
             }
             if(openList.size() > 0){ //Si il y a toujours un noeud dans l'openList
-                minimum = openList.get(0);
+                minimum = openList.get(0); //Le minimum est le noeud de départ
             } else {
-                //System.out.println("Aucun chemin trouvé");
-                return false; //Si il n'y a plus de posibilitées c'est qu'il ne peut pas y arriver
+                return false; //Si il n'y a plus de posibilitées c'est qu'il n'y a pas de chemin
             }
-            for(int i=1; i<openList.size(); i++){
-                if(minimum.getF() > openList.get(i).getF()){ //On récupère le F minimum
+            for(int i=1; i<openList.size(); i++){ 
+                if(minimum.getF() > openList.get(i).getF()){ //On récupère le noeud ayant le F (G + H) minimum de l'openList
                     minimum = openList.get(i);
                 }
             }
-            for(int i=0; i<openList.size(); i++){ //On retire le noeud de l'openList
-                if(minimum == openList.get(i)){
+            for(int i=0; i<openList.size(); i++){ //On retire le noeud ayant le F minimum de l'openList
+                if(minimum.equals(openList.get(i))){
                     openList.remove(i);
                 }
             }
-            closeList.add(minimum); //On ajoute le noeud à la closeList
-            this.currentNode = closeList.get(closeList.size()-1); //Le noeud courrant devient le minimum
+            closeList.add(minimum); //On ajoute le noeud à la closeList (le chemin à suivre)
+            this.currentNode = closeList.get(closeList.size()-1); //Le noeud minimum devient le noeud courant
 
-            if(currentNode.getNodePosition().getX() ==  target.getX() && currentNode.getNodePosition().getY() == target.getY()){ //Si on est arrivée à destination
+            if(currentNode.getNodePosition().getX() ==  target.getX() && currentNode.getNodePosition().getY() == target.getY()){ //Si on est arrivée au noeud de destination
                 go = false;
                 for(int i=1; i<closeList.size(); i++){
                     // System.out.println("(" + closeList.get(i).getNodePosition().getX() + "," + closeList.get(i).getNodePosition().getY() + ")");
