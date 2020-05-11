@@ -67,9 +67,15 @@ public class MainStat {
     }
 
     public static void main(String[] args) throws RuleViolated{
-        int numberOfParty = 1000;
-        String firstPlayerLevel = "Facile";
-        String secondPlayerLevel = "Facile";
+        int numberOfParty = Integer.parseInt(args[0]);
+        String firstPlayerLevel = args[1];
+        String secondPlayerLevel = args[2];
+        // System.out.println(numberOfParty);
+        // System.out.println(firstPlayerLevel);
+        // System.out.println(secondPlayerLevel);
+        // int numberOfParty = 1000;
+        // String firstPlayerLevel = "Facile";
+        // String secondPlayerLevel = "Facile";
 
         int player1Win = 0;
         int player2Win = 0;
@@ -87,15 +93,15 @@ public class MainStat {
                 
                 while(!b1.getWin()){
                     if(b1.getcurrentIDPlayer() == 0){
-                        if (b1.getAPlayer(0).getIALevel() == "Facile") {
+                        if (b1.getAPlayer(0).getIALevel().equals("Facile")) {
                             IAEasy(b1, b1.getPlayers()[0]);
-                        } else if(b1.getAPlayer(0).getIALevel() == "Difficile"){
+                        } else if(b1.getAPlayer(0).getIALevel().equals("Difficile")){
                             IAHard(b1, b1.getPlayers()[0]);
                         }
                     } else if(b1.getcurrentIDPlayer() == 1){
-                        if (b1.getAPlayer(1).getIALevel() == "Facile") {
+                        if (b1.getAPlayer(1).getIALevel().equals("Facile")) {
                             IAEasy(b1, b1.getPlayers()[1]);
-                        } else if(b1.getAPlayer(1).getIALevel() == "Difficile"){
+                        } else if(b1.getAPlayer(1).getIALevel().equals("Difficile")){
                             IAHard(b1, b1.getPlayers()[1]);
                         }
                     }
@@ -119,15 +125,15 @@ public class MainStat {
                 
                 while(!b2.getWin()){
                     if(b2.getcurrentIDPlayer() == 0){
-                        if (b2.getAPlayer(0).getIALevel() == "Facile") {
+                        if (b2.getAPlayer(0).getIALevel().equals("Facile")) {
                             IAEasy(b2, b2.getPlayers()[0]);
-                        } else if(b2.getAPlayer(0).getIALevel() == "Difficile"){
+                        } else if(b2.getAPlayer(0).getIALevel().equals("Difficile")){
                             IAHard(b2, b2.getPlayers()[0]);
                         }
                     } else if(b2.getcurrentIDPlayer() == 1){
-                        if (b2.getAPlayer(1).getIALevel() == "Facile") {
+                        if (b2.getAPlayer(1).getIALevel().equals("Facile")) {
                             IAEasy(b2, b2.getPlayers()[1]);
-                        } else if(b2.getAPlayer(1).getIALevel() == "Difficile"){
+                        } else if(b2.getAPlayer(1).getIALevel().equals("Difficile")){
                             IAHard(b2, b2.getPlayers()[1]);
                         }
                     }
