@@ -64,7 +64,7 @@ public class IllegalMovement implements PlayerRule, Serializable {
             }
         }
         if((position.getX() == player.getPawn().getPosition().getX()+2) && (position.getY() == player.getPawn().getPosition().getY()+2)){ //Si on va en bas à droite
-            if(position.getX() == 16 && position.getY() == 0){ //Si on arrive en (16,16)
+            if(position.getX() == 16 && position.getY() == 16){ //Si on arrive en (16,16)
                 if((board.getBoardBoxes()[position.getX()][position.getY()-2].getisOccuped() == false) 
                     && board.getBoardBoxes()[position.getX()-2][position.getY()].getisOccuped() == false){
                     throw new RuleViolated(player, position, board, "Vous ne pouvez avancer que vers le haut, le bas, la droite et la gauche si vous n'etes pas bloque !");
