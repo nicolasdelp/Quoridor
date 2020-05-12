@@ -184,8 +184,16 @@ public class FXMLControllerBoard implements Initializable{
 
     @FXML
     void backToMenuClicked(ActionEvent event) {
-        SaveGame.saveBoard(this.board);
-        FXMLControllerMenu.resumeParty = true;
+        if(this.board.getWin() == true){
+            File f = new File("board.dat");
+            if(f.exists()){
+                f.delete();
+            }
+            FXMLControllerMenu.resumeParty = false;
+        } else{
+            SaveGame.saveBoard(this.board);
+            FXMLControllerMenu.resumeParty = true;
+        }
         try{
             FXMLLoader fxmloader = new FXMLLoader(getClass().getResource("../fxml/quoridorMenu.fxml"));
             Parent root = (Parent) fxmloader.load();
@@ -208,8 +216,11 @@ public class FXMLControllerBoard implements Initializable{
             f.delete();
         }
         FXMLControllerMenu.resumeParty = false;
-        SaveGame.saveBoard(this.board);
-        FXMLControllerMenu.resumeParty = true;
+        
+        if(this.board.getWin() == false){
+            SaveGame.saveBoard(this.board);
+            FXMLControllerMenu.resumeParty = true;
+        }
     }
 
     @FXML

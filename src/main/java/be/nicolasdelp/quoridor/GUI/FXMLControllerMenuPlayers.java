@@ -193,6 +193,7 @@ public class FXMLControllerMenuPlayers implements Initializable {
         if(f.exists()){
             f.delete();
         }
+        FXMLControllerMenu.resumeParty = false;
         FXMLControllerMenuPlayers.board = new Board();
         Player[] p = {new Player(typePlayer12.getValue(), pseudoOfPlayer12.getText(), 0, getColorPawn(colorPlayer12), new Pawn()), 
                         new Player(typePlayer22.getValue(), pseudoOfPlayer22.getText(), 1, getColorPawn(colorPlayer22), new Pawn())};
