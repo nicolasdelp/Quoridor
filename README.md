@@ -1,4 +1,4 @@
-## PROJET D'INFORMATIQUE BAB1 : Jeu QUORIDOR
+## Projet de Programmation & Algorithmique II : Jeu Quorior
 
 ##### par Delplanque Nicolas
 
