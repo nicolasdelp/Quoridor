@@ -1,4 +1,4 @@
-## Projet de Programmation & Algorithmique II : Jeu Quorior
+## Projet de Programmation & Algorithmique II : Quorior
 
 ##### par Delplanque Nicolas
 
