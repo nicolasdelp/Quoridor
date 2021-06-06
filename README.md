@@ -1,4 +1,4 @@
-## Projet de Programmation & Algorithmique II : Quorior
+## Projet de Programmation & Algorithmique II : Quoridor
 
 ##### par Delplanque Nicolas
 
